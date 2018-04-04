@@ -1,6 +1,6 @@
 Language-neutral NUMBERTEXT and MONEYTEXT functions for OpenOffice.org Calc
 
-version 0.6 (2009-09-03)
+version 0.7 (2009-11-10)
 
 Numbertext OOo extension,
 Soros programming language specification (draft) and IDE*,
@@ -28,6 +28,7 @@ CC/LGPL/BSD tri-license, 2009 (C) Goran Rakić (grakic at devbase dot net)
 af-ZA	Africaans
 ca-ES	Catalan
 cs-CZ	Czech
+da-DK	Danish
 de-DE	German
 el-EL	Greek
 en-US	English (USD 20.25 -> twenty dollars and twenty-five cents)
@@ -56,6 +57,7 @@ sl-SI	Slovenian
 sr-RS	Serbian
 sv-SV	Swedish
 th-TH	Thai
+tr-TR	Turkish
 zh-ZH	Chinese (simplified)
 zh-ZH-2	Chinese (simplified, formal)
 

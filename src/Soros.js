@@ -5,7 +5,7 @@ function Soros(program) {
     this.lines = []
     if (/__numbertext__/.test(program)) {
 	this.numbertext = true
-	program = "0+(0|[^0]\\d*) $1\n" + program.replace("__numbertext__", "")
+	program = "0+(0|[1-9]\\d*) $1\n" + program.replace("__numbertext__", "")
     } else this.numbertext = false
 
     // subclass for line data

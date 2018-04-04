@@ -66,25 +66,6 @@ __numbertext__
 ([-−]?\d+[.,])(\d)(\d)(\d) |$1 |$2| |$3| |$4
 ([-−]?\d+[.,]\d*)(\d) $1| |$2
 
-
-# currency
-
-"EUR 1" un euro
-"EUR (\d+0{6,})" $1 di euro
-"EUR (\d+)" $1 euro
-
-# currency with decimals
-
-"(EUR \d+)[.]00" $1
-"(EUR \d+)[.]01" $1 e un centesimo
-"(EUR \d+)[.](\d\d)" $1 e $2 centesimi
-
-# other currencies
-
-[A-Z]{3}
-"([A-Z]{3}) (\d[\d.]*)" $2| $1
-
-
 # currencies
 	
 # unit/subunit

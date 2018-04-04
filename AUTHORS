@@ -26,6 +26,11 @@ Dániel Darabos:
 	- suggested __import__ for simple lazy loading in PyUNO implementation
 	  of OpenOffice.org NUMBERTEXT extension
 
+Susana Sotelo Docío:
+
+	- fix for numbers containing the string "ientos" (doscientos/as,
+	  quinientos/as, novecientos/as, etc) in Spanish module
+
 Sophie Gautier:
 
 	- bug report for French: milliard etc. instead of *milliarde
@@ -48,6 +53,8 @@ Joan Montané (jmontane at openoffice dot org):
 		- "menys" for negative
 
 	- reported missing gender support for Catalan and Spanish (http://wiki.services.openoffice.org/wiki/Talk:NUMBERTEXT/MONEYTEXT_development#Some_languages_need_male.2Ffemale_option_for_number_to_text)
+	
+	- various fixes and extensions for Catalan
 
 Bernard Marcelly (bmarcelly at openoffice dot org):
 
@@ -58,6 +65,9 @@ Bernard Marcelly (bmarcelly at openoffice dot org):
 		- "et" instead of "y"
 		- virgule instead of comma
 		- point instead of comma in fr-CH
+		- "moins" instead of "négatif de"
+
+	- bug report about missing conversion beetween 0 and 1
 
 Eduardo Moreno (emoreno at tokonhu dot com):
 
@@ -68,6 +78,9 @@ Eduardo Moreno (emoreno at tokonhu dot com):
 Goran Rakić (grakic at devbase dot net):
 
 	- author of Serbian modules (sh-RS, sr-RS)
+
+Randem:
+	- author of Turkish module
 
 Eike Rathke (er at OpenOffice dot org):
 

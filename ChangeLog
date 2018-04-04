@@ -1,3 +1,45 @@
+2009-11-10: László Németh (nemeth openoffice org):
+	* data/da_DK.sor: new Danish module
+
+	* data/ca_ES.sor, es_ES.sor, fr_*.sor: 0 euro (without plural),
+	  reported by Bernard Marcelly
+
+	* data/sv_SE.sor: fix bad language code (*sv_SV.sor) and missing
+	  plural form of krone. Reported by Bernard Marcelly.
+
+	* data/fr_*.sor: "moins" for negative. Reported by Bernard
+	  Marcelly.
+
+	* data/tr_TR.sor: add space removing, fix large numbers
+
+	* src/Soros.{py,js}: replace bad [^0] pattern with [1-9] in the
+	  __numbertext__ directive implementation. Missing decimals leading by
+	  zero reported by Bernard Marcelly.
+	* doc/sorosspec.odt: replace bad [^0] pattern with [1-9].
+
+2009-09-25: Susana Sotelo Docío (Roebek at OpenOffice.org Wiki):
+	* data/es_ES.sor: gender fix for numbers containing the string "ientos"
+	  (doscientos/as, quinientos/as, novecientos/as, etc)
+
+2009-09-12: Ramdem at OpenOffice.org Wiki:
+	* data/tr_TR.sor: new Turkish module
+
+2009-09-06: Joan Montané:
+	* data/ca_ES.sor: fixes
+	- "1000-1999" must be spelled only "mil ...", it can't be spelled "un mil" (the same fixed French bug)
+	- decimal units for EUR changed from "cent" to "cèntim", as it's usual and accepted
+	- decimal units for USD changed form "cent" to "centau", as it's usual and accepted
+	- millions are spelled as in French:
+	  EUR 1000000 --> un milió d'euros (note the " de/d' " preposition")
+	  EUR 1000001 --> un milió un euros (it lacks " de/d' " preposition).
+	  EUR 1000000,xx --> un milió d'euros amb xx cèntims
+	  EUR 1000001,xx --> un milió un euros amb xx cèntims
+	                
+	Improvements:
+	- Added all the currencies replaced by EUR
+	- Added all the actives code beginning by A (I'm working in B-Z)
+	- Added some actives codes beginning by X
+
 2009-09-04: László Németh (nemeth openoffice org):
 	* data/en_US*: fix English decimal conversion by replacing bad [^0]
 	  (matched decimal separators, too) with "[1-9]", reported by

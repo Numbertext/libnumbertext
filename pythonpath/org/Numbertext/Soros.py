@@ -30,7 +30,7 @@ class _Soros:
 	self.numbertext = False
 	if prg.find("__numbertext__") > -1:
 	    self.numbertext = True
-	    prg = "0+(0|[^0]\\d*) $1\n" + prg.replace("__numbertext__", "")
+	    prg = "0+(0|[1-9]\\d*) $1\n" + prg.replace("__numbertext__", "")
 	prg = _tr(prg, _m[:4], _c[:4], "\\") # \\, \", \;, \# -> \uE000..\uE003
 	for s in re.sub("(#[^\n]*)?(\n|$)", ";", prg).split(";"):
 	    m = re.match("^\s*(\"[^\"]*\"|[^\s]*)\s*(.*[^\s])?\s*$", s)

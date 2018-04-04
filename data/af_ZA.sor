@@ -29,7 +29,7 @@ __numbertext__
 (\d)(\d) $2-en-$(\10)
 
 # function a
-a:0* " "	# eenhonderd een-en-twintig
+a:0* " "	# eenhonderd
 a:0*1?\d -en-	# eenhonderd-en-een
 a:0*\d0 -en-	# eenhonderd-en-twintig
 a:\d+ " "	# eenhonderd een-en-twintig

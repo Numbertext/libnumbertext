@@ -52,6 +52,7 @@ __numbertext__
 
 # decimals
 
+0[.,] point
 ([-−]?\d+)[.,] $1| point
 ([-−]?\d+[.,]\d*)(\d) $1| |$2
 

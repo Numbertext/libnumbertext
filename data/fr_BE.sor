@@ -52,7 +52,7 @@ __numbertext__
 
 # negative number
 
-[-−](\d+) négatif de |$1
+[-−](\d+) moins |$1
 
 # decimals
 
@@ -96,7 +96,7 @@ X[AO]F:(\D+) $(\1: franc CFA, francs CFA, de francs CFA, centime, centimes)
 "(GNF|LBP|VUV) ([-−]?\d+0{6,})" $2 $(\1:ud)
 "(GNF|LBP|VUV) ([-−]?\d+[.,]\d+)" $2 $(\1:up)
 
-"([A-Z]{3}) ([-−]?1)" $2 $(\1:us)
+"([A-Z]{3}) ([-−]?[01])" $2 $(\1:us)
 "([A-Z]{3}) ([-−]?\d+0{6,})" $2 $(\1:ud)
 "([A-Z]{3}) ([-−]?\d+)" $2 $(\1:up)
 

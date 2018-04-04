@@ -2,6 +2,7 @@ locales = """
 af_ZA
 ca_ES
 cs_CZ
+da_DK
 de_DE
 el_EL
 en_US_2
@@ -33,8 +34,9 @@ sh_RS
 sl_SI
 sr_RS
 Suzhou
-sv_SV
+sv_SE
 th_TH
+tr_TR
 zh_ZH_2
 zh_ZH
 """.strip().split("\n")
