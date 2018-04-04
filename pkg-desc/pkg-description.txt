@@ -1,13 +1,16 @@
+Usage
+
+=numbertext(5) -> "five"
+=numbertext(5;"de") -> "fünf"
+=moneytext(5;"USD") -> "five dollars"
+=moneytext(5;"HUF";"hu") -> "öt forint"
+
 Help for extra functions and modules of the default language:
 
-=NUMBERTEXT("help")
+=numbertext("help")
 
 Examples for using extra functions:
 
-=MONEYTEXT(1; "ord"; "en")  (English ordinal numbers)
+=moneytext(1; "ord"; "en")  (English ordinal numbers) -> "first"
 
--> first
-
-=MONEYTEXT(999; "ord2"; "en")  (English ordinal abbreviations)
-
--> 1st
+=moneytext(999; "ord2"; "en")  (English ordinal abbreviations) -> "1st"

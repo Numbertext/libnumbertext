@@ -1,3 +1,19 @@
+2010-04-22: László Németh (nemeth openoffice org):
+	* data/sv_SE.sor: fix Swedish 11000 (elvatusen instead of elvausen)
+	
+	* data/{he_IL,pl_PL,ru_RU}.sor: replace the complementer bracket
+	  expressions (eg. [^1]) to non-complementers (eg. [02-9]). The
+	  problem with the Polish Moneytext reported by geo78 at OOo Extensions.
+
+	* src/soros.py: extended syntax: range with steps by tilde (0-100~10)
+
+	* data/fr_FR.sor: add ordinal numbers (ord, ord-fem, ord-mas):
+	=MONEYTEXT(5;"ord";"fr") -> cinquième
+	=MONEYTEXT(1;"ord-fem";"fr") -> première
+	=MONEYTEXT(1;"ord-mas";"fr") -> premier
+
+	* data/th_TH.sor: add ordinal numbers (ord)
+
 2010-04-19: László Németh (nemeth openoffice org):
 	* pythonpath/org/__init__.py:
 	- remove Asian and CTL lang. detection temporarily (problems with

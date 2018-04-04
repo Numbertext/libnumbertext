@@ -1,3 +1,15 @@
+2010-04-22: version 0.8.1
+    - bug fixes in Hebrew, Polish, Russian and Swedish modules
+
+    - ordinal numbers in French and Thai
+
+    - extended syntax in src/soros.py tool (ranges with different steps):
+
+    $ python src/soros.py data/en_US.sor 0-10~5
+    zero
+    five
+    ten
+
 2010-04-19: version 0.8
     - new modules: he_HE from Alex Bodnaru, and hu_HU_2 (formal Hungarian)
 

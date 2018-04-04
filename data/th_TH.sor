@@ -59,3 +59,11 @@ __numbertext__
 
 [A-Z]{3}
 "([A-Z]{3}) ([-−]?\d[\d.,]*)" $2$1
+
+# ordinal numbers
+
+"ord ([-−]?\d+([.,]\d+)?)" ที่$1
+
+# help
+
+help Functions: ord (ordinal numbers)
