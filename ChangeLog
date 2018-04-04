@@ -1,3 +1,17 @@
+2010-08-03: László Németh (nemeth openoffice org):
+	* pythonpath/org/Numbertext/__init__.py: fix rounding differences
+	  between Calc and Numbertext functions: rounding by Calc round()
+	  in Python code of Numbertext. The problem was reported by
+	  Bernard Marcelly on Numbertext OOo Wiki page.
+	
+	* data/{el,en,es,fr,pt,tr}*.sor, : remove "zero cents" etc. from
+	  Moneytext output, reported by Bernard Marcelly.
+
+	* data/{af,sv,tr}*.sor: add missing zero to Moneytext (eg. "nul rand")
+
+2010-08-03: Eko Prasetiyo (ekoprasetiyo at gmail):
+	* data/id_ID.sor: Indonesian module
+
 2010-06-07: László Németh (nemeth openoffice org):
 	* data/ru_RU.sor: fix bad back references in Russian rules. Missing
 	  conversion reported by Birioukoff at OOo Extension site.

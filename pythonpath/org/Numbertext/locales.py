@@ -19,6 +19,7 @@ hu_HU_2
 hu_HU
 Hung_2
 Hung
+id_ID
 it_IT
 ja_JP_2
 ja_JP

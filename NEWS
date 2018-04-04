@@ -1,3 +1,11 @@
+2010-08-03: version 0.9.3
+    - fix rounding difference of Calc and Numbertext functions
+    - Indonesian module by Eko Prasetiyo
+    - remove "zero subunit" from Moneytext outputs of Greek, English,
+      French, Spanish, Portuguese and Turkish modules.
+    - fix missing zero in Afrikaans, Swedish and Turkish Moneytext
+      descriptions.
+
 2010-06-07: version 0.9.2
     - fix Russian module
 

@@ -85,14 +85,14 @@ USD:(\D+,.*) $(\1: cardr, US-dollar, US-dollar, cardn, cent, cent)
 # cardinals (cardf, cardm, cardn, cardr)
 
 "cardn 1" ett
-"card[fmnr] (.*)" $(card:$1)
+"card[fmnr] (.*)" $(card:|$1)
 "card:(.*[^ ]e)t(tusen.*)" $(card:\1n\2) 	# 21000, 31000 .. 991000
 "card:(.*e)tt([ ].*|$)" $(card:\1n\2)		# !etthundra, !ettusen
 card:(.*) \1
 
 #  ordinals (ordf, ordn, ordm)
 
-"ordm? ([-−]?\d+)" $(ord:$1)
+"ordm? ([-−]?\d+)" $(ord:|$1)
 ord:(.*)ett	\1förste	# 1
 ord:(.*)två	\1andre		# 2
 ord:(.*)tre	\1tredje	# 3
@@ -106,7 +106,7 @@ ord:(.*)tolv	\1tolfte	# 12
 "ord:(.*)er *"	\1te		# milljoner...
 "ord:(.*[^ ]) *"	\1te	# 0, 5, milljon...
 
-"ord[fn] ([-−]?\d+)" $(ordf:$(ord:$1))
+"ord[fn] ([-−]?\d+)" $(ordf:$(ord:|$1))
 ordf:(.*(först|andr))e \1a	# 1, 2
 ordf:(.*)	\1
 

@@ -33,6 +33,7 @@ class NUMBERTEXT( unohelper.Base, XNumberText):
 		self.aSettings = aConfigProvider.createInstanceWithArguments(sAccess,(prop,))
 		self.uilocale = self.aSettings.getByName("ooLocale")
 		self.locale = Locale("en", "US", "")
+		self.func = ctx.ServiceManager.createInstance('com.sun.star.sheet.FunctionAccess')
 		for i in locales:
 		    langname[i.split("_")[0]] = i
 
@@ -113,7 +114,8 @@ class NUMBERTEXT( unohelper.Base, XNumberText):
 				pl = 10**decimalplaces;
 				num = str(round(num * pl) / pl)
 			else:
-				num = str(round(num, decimalplaces))
+#				num = str(round(num, decimalplaces))
+				num = str(self.func.callFunction("round", (num, decimalplaces)))
 		return get_numbertext(outcurr + num, patterns[mod])
 
 	def numbertext(self, prop, num, loc):

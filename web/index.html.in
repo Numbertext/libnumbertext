@@ -22,7 +22,7 @@ with currency: <select id="money" onChange='usernum();'>
 <option value="GBP">GBP</option>
 <option value="JPY">JPY</option>
 <option value="USD">USD</option>
-</select></td><td align='right'><b>2010-06-07</b> v0.9.2 (<a href="http://extensions.services.openoffice.org/project/numbertext">oxt</a>, <a href="dist/numbertext.jar">jar</a>)
+</select></td><td align='right'><b>2010-08-03</b> v0.9.3 (<a href="http://extensions.services.openoffice.org/project/numbertext">oxt</a>, <a href="dist/numbertext.jar">jar</a>)
 <span class='nowrap'>
 <!--<a class="menu2" href="IDE.html">IDE</a>-->
 <a class="menu2" href="#about">Help</a>
@@ -39,7 +39,7 @@ Edit your <a href="Soros.html">Soros program</a>.-->
 <div id="space" class="lang" style="height: 200%;"></div>
 
 <div class='title'><a name='about'>
-<table width="100%"><tr><td><span>News: Fixed Russian module</span>
+<table width="100%"><tr><td><span>News: Indonesian module, fixed rounding difference</span>
 </td><td align='right'>
 <span class='nowrap'>
 <!--<a class="menu2" href="IDE.html">IDE</a>-->
@@ -136,6 +136,7 @@ language = {
 "fr_FR": "Français",
 "he_IL": "עברית",
 "hu_HU": "Magyar",
+"id_ID": "Bahasa Indonesia",
 "it_IT": "Italiano",
 "ja_JP": "日本語",
 "ja_JP_2": "大字",
@@ -177,6 +178,7 @@ default_currency = {
 "fr_BE": "EUR",
 "fr_CH": "CHF",
 "fr_FR": "EUR",
+"id_ID": "IDR",
 "it_IT": "EUR",
 "ja_JP": "JPY",
 "ja_JP_2": "JPY",

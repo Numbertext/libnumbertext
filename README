@@ -1,6 +1,6 @@
 Language-neutral NUMBERTEXT and MONEYTEXT functions for OpenOffice.org Calc
 
-version 0.9.1 (2010-05-28)
+version 0.9.3 (2010-08-03)
 
 Numbertext OOo extension,
 Soros programming language specification (draft) and IDE*,
@@ -47,6 +47,7 @@ fr-FR	French
 he-IL	Hebrew
 hu-HU	Hungarian
 hu-HU_2	Hungarian (formal)
+id-ID	Indonesian
 it-IT	Italian
 ja-JP	Japanese
 ja-JP-2	Japanese (formal)
