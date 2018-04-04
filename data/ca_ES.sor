@@ -42,9 +42,9 @@ __numbertext__
 1(\d{24}) un quadrilió $1
 (\d{1,6})(\d{24}) $1 quadrilions $2
 
-# negative number?
+# negative number
 
-[-−](\d+) negativa |$1
+[-−](\d+) menys |$1
 
 # decimals
 
@@ -53,22 +53,36 @@ __numbertext__
 
 # currency
 
+# convert masculine to feminine (<1000000)
+
+f:(.*u)n([^a].*|$) $(f:\1na\2)	# un -> una
+f:(.*d)o(s.*) $(f:\1ue\2)	# dos -> dues
+f:(.*cent)(s.*) $(f:\1e\2)	# cents -> centes
+.:(.*) \1
+
 # unit/subunit singular/plural
 
-us:([^,]*),([^,]*),([^,]*),([^,]*) \1
-up:([^,]*),([^,]*),([^,]*),([^,]*) \2
-ss:([^,]*),([^,]*),([^,]*),([^,]*) \3
-sp:([^,]*),([^,]*),([^,]*),([^,]*) \4
+# million or greater part of the number name separated by "ili" pattern
+# before masculine to feminine conversion
 
-CHF:(\D+) $(\1: franc suís, francs suís, cèntim, cèntims)
-EUR:(\D+) $(\1: euro, euros, cent, cents)
-GBP:(\D+) $(\1: lliura esterlina, lliures esterlina, penic, penics)
-JPY:(\D+) $(\1: ien, iens, sen, sen)
-USD:(\D+) $(\1: dòlar EUA, dòlar EUA, cent, cents)
+us(.).:([^,]*),([^,]*),([^,]*),([^,]*),([^,]*ili)?([^,]*) \6$(\1:\7) \2
+up(.).:([^,]*),([^,]*),([^,]*),([^,]*),([^,]*ili)?([^,]*) \6$(\1:\7) \3
+ss.(.):([^,]*),([^,]*),([^,]*),([^,]*),([^,]*ili)?([^,]*) \6$(\1:\7) \4
+sp.(.):([^,]*),([^,]*),([^,]*),([^,]*),([^,]*ili)?([^,]*) \6$(\1:\7) \5
 
-"([A-Z]{3}) ([-−]?1)([.,]00?)?" $2 $(\1:us)
-"([A-Z]{3}) ([-−]?\d+)([.,]00?)?" $2 $(\1:up)
+# "mm" means masculine unit and masculine subunit
 
-"(([A-Z]{3}) [-−]?\d+)[.,](01)" $1 und $(1) $(\2:ss)
-"(([A-Z]{3}) [-−]?\d+)[.,](\d)" $1 und $(\30) $(\2:sp)
-"(([A-Z]{3}) [-−]?\d+)[.,](\d\d)" $1 $3 $(\2:sp)
+CHF:(.+),(.+) $(\2mm: franc suís, francs suís, cèntim, cèntims, \1)
+ESP:(.+),(.+) $(\2fm: pesseta, pessetes, cèntim, cèntims, \1)
+EUR:(.+),(.+) $(\2mm: euro, euros, cent, cents, \1)
+GBP:(.+),(.+) $(\2fm: lliura esterlina, lliures esterlines, penic, penics, \1)
+JPY:(.+),(.+) $(\2mm: ien, iens, sen, sen, \1)
+USD:(.+),(.+) $(\2mm: dòlar EUA, dòlar EUA, cent, cents, \1)
+
+"([A-Z]{3}) ([-−]?1)([.,]00?)?" $(\1:|$2,us)
+"([A-Z]{3}) ([-−]?\d+)([.,]00?)?" $(\1:|$2,up)
+
+"(([A-Z]{3}) [-−]?\d+)[.,](01)" $1 amb $(\2:un,ss)
+"(([A-Z]{3}) [-−]?\d+)[.,](\d)" $1 amb $(\2:|$(\30),sp)
+"(([A-Z]{3}) [-−]?\d+)[.,](\d\d)" $1 amb $(\2:|$3,sp)
+
