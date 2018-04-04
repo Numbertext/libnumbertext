@@ -1,0 +1,56 @@
+Language-neutral NUMBERTEXT and MONEYTEXT functions for OpenOffice.org Calc
+
+version 0.1 (2009-05-22)
+
+License: LGPL/BSD dual-license
+
+Soros programming language specification (draft) and IDE
+
+2009 (C) László Németh
+
+Home: http://launchpad.net/numbertext
+
+= Supported languages in this version =
+
+de-DE Dutch
+en-US, en-* English
+eo Esperanto
+de-DE German
+hu-HU Hungarian
+it-IT Italian
+th-TH Thai
+zh-ZH Chinese (simplified)
+zh-shuzou Chinese Shuzou numerals
+
+= Installation in OpenOffice.org =
+
+Tools->Extension Manager->Add
+
+= Usage =
+
+After restarting OpenOffice.org, there are two new Calc functions,
+NUMBERTEXT() and MONEYTEXT().
+
+Examples:
+
+=NUMBERTEXT(25)
+=NUMBERTEXT(25;"th-TH")
+=MONEYTEXT(25)
+=MONEYTEXT(25;"USD")
+=MONEYTEXT(25;"CNY";"zh-shuzou")
+
+= Development =
+
+See doc/addnewlocale.txt and doc/sorosspec.odt
+
+== Integrated development environment ==
+
+There is a JavaScript/HTML IDE in this distribution:
+
+open Soros.html in a JavaScript capable browser.
+
+= Test =
+
+test/thaicheck.ods is a simple test of the equivalence of
+the Soros implementation of Thai number to number name conversion
+and BAHTTEXT function.

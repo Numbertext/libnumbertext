@@ -1,0 +1,21 @@
+Adding a new locale to the Numbertext distribution
+
+1. Make a new Soros program in the data/ subdirectory under the
+name of your locale (the format and the numbertext algorithm
+are described in format.txt).
+
+2. Translate the function description for your localized OpenOffice.org
+in the data/titles.txt
+
+3. Type make in the root directory or without a Unix or Cygwin
+environment, you can manually extend the
+pythonpath/numbertext_locales.py and compile your Soros program with the
+following command in the pythonpath subfolder:
+
+python Compile.py data/your_locale.sor >numbertext_your_locale.py
+python CompileTitles.py data/titles.txt >numbertext_titles.py
+
+4. Type make dist to zip the distribution or use your zip compresser
+in the root directory, eg. 
+
+zip -r numbertext.oxt .

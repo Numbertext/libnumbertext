@@ -1,0 +1,105 @@
+# English number names,
+# described by László Németh.
+# License: LGPL and BSD dual-license
+^0 zero
+1 one
+2 two
+3 three
+4 four
+5 five
+6 six
+7 seven
+8 eight
+9 nine
+10 ten
+11 eleven
+12 twelve
+13 thirteen
+15 fifteen
+18 eighteen
+1(\d) $1teen
+20 twenty
+2(\d) twenty-$1
+30 thirty
+3(\d) thirty-$1
+40 forty
+4(\d) forty-$1
+50 fifty
+5(\d) fifty-$1
+80 eighty
+8(\d) eighty-$1
+(\d)0 $1ty
+(\d)(\d) $1ty-$2
+(\d)(00) $1 hundred
+(\d)(\d\d) $1 hundred and $2
+(\d{1,3})(000) $1 thousand
+(\d{1,3})(0\d\d) $1 thousand and $2
+(\d{1,3})(\d{3}) $1 thousand $2
+(\d{1,3})(0{6}) $1 million
+(\d{1,3})(0{4}\d\d) $1 million and $2
+(\d{1,3})(\d{6}) $1 million $2
+(\d{1,3})(0{9}) $1 billion
+(\d{1,3})(0{7}\d\d) $1 billion and $2
+(\d{1,3})(\d{9}) $1 billion $2
+(\d{1,3})(0{12}) $1 trillion
+(\d{1,3})(0{10}\d\d) $1 trillion and $2
+(\d{1,3})(\d{12}) $1 trillion $2
+(\d{1,3})(0{15}) $1 quadrillion 
+(\d{1,3})(0{13}\d\d) $1 quadrillion and $2
+(\d{1,3})(\d{15}) $1 quadrillion $2
+(\d{1,3})(0{18}) $1 quintillion 
+(\d{1,3})(0{16}\d\d) $1 quintillion and $2
+(\d{1,3})(\d{18}) $1 quintillion $2
+(\d{1,3})(0{21}) $1 sextillion 
+(\d{1,3})(0{19}\d\d) $1 sextillion and $2
+(\d{1,3})(\d{21}) $1 sextillion $2
+
+# negative number
+
+[-−](\d\d*) negative |$1
+
+# decimals
+
+"([-−]?\d\d*)[.](\d)(\d)" $1| dot |$2| $3
+
+# currency
+
+AUD Australian dollar
+CAD Canadian dollar
+EUR euro
+HKD Hong Kong dollar
+INR Indian rupee
+NZD New Zealand dollar
+SGD Singapore dollar
+USD U.S. dollar
+ZAR rand
+
+"(AUD|CAD|HKD|INR|NZD|SGD|USD) ([-−]?[01])" $2 $1
+"(AUD|CAD|HKD|INR|NZD|SGD|USD) ([-−]?\d\d*)" $2 $1s
+
+"GBP ([-−]?[01])" $1 pound sterling
+"GBP ([-−]?\d\d*)" $1 pounds sterling
+
+# other currencies
+
+[A-Z]{3}
+"([A-Z]{3}) ([-−]?\d\d*)" $2 $1
+
+# currencies with zero decimals
+
+"([A-Z]{3} [-−]?\d\d*)[.,]00" $1
+
+# currencies with decimals
+
+"((AUD|CAD|HKD|NZD|USD|ZAR) [-−]?\d\d*)[.,]01" $1 and one cent
+"((AUD|CAD|HKD|NZD|USD|ZAR) [-−]?\d\d*)[.,](\d\d)" $1 and $3 cents
+
+"(EUR [-−]?\d\d*)[.,](\d\d)" $1 and $2 cent
+
+"(GBP [-−]?\d\d*)[.,]01" $1 and one penny
+"(GBP [-−]?\d\d*)[.,](\d\d)" $1 and $2 pences
+
+"(INR [-−]?\d\d*)[.,]01" $1 and one paisa
+"(INR [-−]?\d\d*)[.,](\d\d)" $1 and $2 paise
+
+"([A-Z]{3}) ([-−]?\d[.,]\d\d)" $2| $1

@@ -1,0 +1,7 @@
+Soros language is the key of the easy implementation of
+the platform-independent number to number name conversion.
+
+Soros language specification: see sorosspec.odt.
+
+See also regex tutorial/Wikipedia article about regular expressions
+and use Soros development environment (Soros.html).

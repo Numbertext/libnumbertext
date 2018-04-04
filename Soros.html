@@ -1,0 +1,823 @@
+<html>
+<head><title>Soros IDE 1.0 &ndash; Integrated developing environment of the Soros programming language</title>
+<body>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
+</body>
+<body>
+<style>.hidden { visibility:hidden; } </style>
+<script type="text/javascript">
+MAXLIST=1000
+String.prototype.trim = function() { return this.replace(/^\s+|\s+$/g, ''); }
+String.prototype.trim2 = function() { return this.replace(/^\s+\"*|\"*\s+$/g, ''); }
+function numbertext(num, begin, end) {
+  num = num.replace(/^0+/,"")
+  if (num == "") num = "0"
+  for (var i = 0; i < pat.length; i++) if (pat[i] != undefined) {
+    if ((!begin && pat[i].begin) || (!end && pat[i].end)) continue;
+    var m = pat[i][0].exec(num);
+    if (m == null) continue;
+	if (pat[i][1] == "") return num
+	var sp = num.replace(pat[i][0], pat[i][1]).split("\\(")
+	var res = "";
+	var cut = 0;
+	var lbegin = begin;
+	var lend = false;
+	for (var j = 0; j < sp.length; j++) {
+		if (j == 0 && sp[j].length == 0) continue;
+		if (j > 0) {
+			var parpos = sp[j].indexOf(")")
+			cut = parpos + 1
+			if (j == sp.length - 1 && sp[j].length == cut) lend = end;
+			if (sp[j].charAt(cut) == "|") { lend = true; cut++ }
+			res = res + numbertext(sp[j].slice(0, parpos), lbegin, lend)
+		}
+		if (sp[j].slice(-1) == "|") {
+			res = res + sp[j].slice(cut, -1)
+			lbegin = true
+		} else {
+			res = res + sp[j].slice(cut)
+			lbegin = false
+		}
+	}
+	return res.trim();
+  }
+  return ""
+}
+function convert() {
+  var s = document.getElementById('number').value;
+  if (s.match(/\d-/)) {
+    var nums = s.split("-")
+    var res = ""
+    var maxi = parseInt(nums[1])
+    for (var i = parseInt(nums[0]); i <= (maxi > MAXLIST ? MAXLIST: maxi); i++) {
+	res = res + i + "\t" + numbertext(i+"", true, true) + "\n"
+    }
+    document.getElementById('numbers').value = res;
+    document.getElementById('result').value = "";
+  } else { document.getElementById('result').value = numbertext(s, true, true); }
+}
+function comp() {
+pat = document.getElementById('def').value.split("\n");
+for (var i = 0; i < pat.length; i++) {
+  if (pat[i].match(/^\s*$/) || pat[i].match(/^#/)) {
+    pat[i] = undefined;
+    continue;
+  }
+  pat[i] = pat[i].trim()
+  if (pat[i].match(/^\"/)) {
+    pat[i] = pat[i].concat(" ").split(/\"\s+/)
+    pat[i][0] = pat[i][0].replace(/^\"/,"")
+    pat[i][1] = pat[i][1].trim2()
+  } else {
+	var x = pat[i].concat(" ").split(/\s+/,2)
+	x[1] = pat[i].slice(x[0].length).trim2()
+	pat[i] = x
+  }
+  pat[i].begin = /^\^/.test(pat[i][0])
+  pat[i].end = /\$$/.test(pat[i][0])
+  pat[i][0] = new RegExp("^" + pat[i][0].replace(/^\^/, "").replace(/\$$/, "") + "$");
+  pat[i][1] = pat[i][1].replace(/\\n/g,"\n").replace(/\\/g,"@@@").replace(/\$/g,"\\").replace(/\\(\d)/g,"\\($$$1)").replace(/@@@/g,"$")
+}
+}
+function load_prg() {
+	document.getElementById('def').value = document.getElementById(document.getElementById('select').value).value;
+}
+function copy_result() {
+	document.getElementById('number').value = document.getElementById('result').value;
+}
+</script>
+<table>
+<tr>
+<td valign="top"><p><textarea title="Program" id="def" cols="40"  rows="80" onkeyup="comp();convert();"></textarea>
+<td valign="top"><p>
+Input: <input type="text" title="Number (eg. 1234) or number range (1-100)?" id="number" onkeyup="convert();" value="1-100" />
+Example: <select id="select" onchange="load_prg(); comp(); convert();">
+<option value="xx">&ndash;</option>
+<option value="en">English</option>
+<option value="eo">Esperanto</option>
+<option value="nl_NL">Nederlands</option>
+<option value="hu_HU">magyar</option>
+<option value="de_DE">deutsch</option>
+<option value="it_IT">italiano</option>
+<option value="Roman">Roman I</option>
+<option value="Roman_2">Roman II</option>
+<option value="th_TH">ไทย</option>
+<option value="zh_ZH">中文</option>
+<option value="zh_ZH_Suzhou">花码</option>
+</select>
+<input type="button" value="About" onclick="alert('Soros IDE 1.0\nLászló Németh (c) 2009\nLicense: LGPL and BSD dual-license\nSee http://launchpad.net/numbertext');" />
+<br><input type="button" id="result" value="The result for a single number input" onclick="copy_result();js();" />
+<br><textarea id="numbers" title="list" readonly cols="100" rows="80"></textarea>
+</table>
+<textarea id="en" class="hidden">
+# English number names,
+# described by László Németh.
+# License: LGPL and BSD dual-license
+^0 zero
+1 one
+2 two
+3 three
+4 four
+5 five
+6 six
+7 seven
+8 eight
+9 nine
+10 ten
+11 eleven
+12 twelve
+13 thirteen
+15 fifteen
+18 eighteen
+1(\d) $1teen
+20 twenty
+2(\d) twenty-$1
+30 thirty
+3(\d) thirty-$1
+40 forty
+4(\d) forty-$1
+50 fifty
+5(\d) fifty-$1
+80 eighty
+8(\d) eighty-$1
+(\d)0 $1ty
+(\d)(\d) $1ty-$2
+(\d)(00) $1 hundred
+(\d)(\d\d) $1 hundred and $2
+(\d{1,3})(000) $1 thousand
+(\d{1,3})(0\d\d) $1 thousand and $2
+(\d{1,3})(\d{3}) $1 thousand $2
+(\d{1,3})(0{6}) $1 million
+(\d{1,3})(0{4}\d\d) $1 million and $2
+(\d{1,3})(\d{6}) $1 million $2
+(\d{1,3})(0{9}) $1 billion
+(\d{1,3})(0{7}\d\d) $1 billion and $2
+(\d{1,3})(\d{9}) $1 billion $2
+(\d{1,3})(0{12}) $1 trillion
+(\d{1,3})(0{10}\d\d) $1 trillion and $2
+(\d{1,3})(\d{12}) $1 trillion $2
+(\d{1,3})(0{15}) $1 quadrillion 
+(\d{1,3})(0{13}\d\d) $1 quadrillion and $2
+(\d{1,3})(\d{15}) $1 quadrillion $2
+(\d{1,3})(0{18}) $1 quintillion 
+(\d{1,3})(0{16}\d\d) $1 quintillion and $2
+(\d{1,3})(\d{18}) $1 quintillion $2
+(\d{1,3})(0{21}) $1 sextillion 
+(\d{1,3})(0{19}\d\d) $1 sextillion and $2
+(\d{1,3})(\d{21}) $1 sextillion $2
+
+# negative number
+
+[-−](\d\d*) negative |$1
+
+# decimals
+
+"([-−]?\d\d*)[.](\d)(\d)" $1| dot |$2| $3
+
+# currency
+
+AUD Australian dollar
+CAD Canadian dollar
+EUR euro
+HKD Hong Kong dollar
+INR Indian rupee
+NZD New Zealand dollar
+SGD Singapore dollar
+USD U.S. dollar
+ZAR rand
+
+"(AUD|CAD|HKD|INR|NZD|SGD|USD) ([-−]?[01])" $2 $1
+"(AUD|CAD|HKD|INR|NZD|SGD|USD) ([-−]?\d\d*)" $2 $1s
+
+"GBP ([-−]?[01])" $1 pound sterling
+"GBP ([-−]?\d\d*)" $1 pounds sterling
+
+# other currencies
+
+[A-Z]{3}
+"([A-Z]{3}) ([-−]?\d\d*)" $2 $1
+
+# currencies with zero decimals
+
+"([A-Z]{3} [-−]?\d\d*)[.,]00" $1
+
+# currencies with decimals
+
+"((AUD|CAD|HKD|NZD|USD|ZAR) [-−]?\d\d*)[.,]01" $1 and one cent
+"((AUD|CAD|HKD|NZD|USD|ZAR) [-−]?\d\d*)[.,](\d\d)" $1 and $3 cents
+
+"(EUR [-−]?\d\d*)[.,](\d\d)" $1 and $2 cent
+
+"(GBP [-−]?\d\d*)[.,]01" $1 and one penny
+"(GBP [-−]?\d\d*)[.,](\d\d)" $1 and $2 pences
+
+"(INR [-−]?\d\d*)[.,]01" $1 and one paisa
+"(INR [-−]?\d\d*)[.,](\d\d)" $1 and $2 paise
+
+"([A-Z]{3}) ([-−]?\d[.,]\d\d)" $2| $1
+</textarea>
+<textarea id="eo" class="hidden">
+# Esperanto number names,
+# described by László Németh.
+# License: LGPL and BSD dual-license
+^0 nulo
+1 unu
+2 du
+3 tri
+4 kvar
+5 kvin
+6 ses
+7 sep
+8 ok
+9 naŭ
+(\d)(\d) $1dek $2
+(\d)(\d\d) $1cent $2
+1(\d{3}) mil $1
+(\d{1,3})(\d{3}) $1 mil $2
+1(\d{6}) miliono $1
+(\d{1,3})(\d{6}) $1 milionoj $2
+1(\d{9}) miliardo $1
+(\d{1,3})(\d{9}) $1miliardoj $2
+1(\d{12}) duiliono $1
+(\d{1,3})(\d{12}) $1duilionoj $2
+1(\d{15}) duiliardo $1
+(\d{1,3})(\d{15}) $1duiliardoj $2
+1(\d{18}) triiliono $1
+(\d{1,3})(\d{18}) $1triilionoj $2
+1(\d{21}) triiliardo $1
+(\d{1,3})(\d{21}) $1triiliardoj $2
+
+# negative number
+
+[-−](\d\d*) negativa |$1
+
+# decimals
+
+"([-−]?\d\d*)[.,]" "$1| komo "
+"([-−]?\d\d*[.,]\d*)(\d)" $1| |$3
+
+ARS peso
+"ARS " centavo
+EUR eŭro
+"EUR " cendo
+USD dolaro
+"USD " cendo
+
+"([A-Z]{3}) ([0-1])" $2 $1
+"([A-Z]{3}) (\d+)" $2 $1j
+"(([A-Z]{3} )\d+)[.,]01" $1 unu $2
+"(([A-Z]{3} )\d+)[.,](\d\d)" $1 $3 $2j
+</textarea>
+<textarea id="nl_NL" class="hidden">
+# Dutch number name patterns
+# described by László Németh
+# with help from Ruud Baars.
+# version 2009-05-08
+
+^0$ nul
+1$ een
+1 eenen
+2$ twee
+2 tweeën
+3$ drie
+3 drieën
+4$ vier
+4 vieren
+5$ vijf
+5 vijfen
+6$ zes
+6 zesen
+7$ zeven
+7 zevenen
+8$ acht
+8 achten
+9$ negen
+9 negenen
+
+10 tien
+11 elf
+12 twaalf
+13 dertien
+14 veertien
+1(\d) $1|tien
+
+2(\d) $1twintig
+3(\d) $1dertig
+4(\d) $1veertig
+8(\d) $1tachtig
+(\d)(\d) $2$1|tig
+
+1(\d\d) honderd$1
+(\d)(\d\d) $1|honderd$2
+10(\d{2}) duizend $1
+(\d)0(\d{2}) $1|duizend $2
+(1\d)(\d{2}) $1|honderd$2
+(\d\d)(\d{2}) $1|honderd$2
+(\d{2,3})(\d{3}) $1|duizend $2
+
+(\d{1,3})(\d{6}) $1| miljoen $2
+(\d{1,3})(\d{9}) $1| miljard $2
+(\d{1,3})(\d{12}) $1| biljoen $2
+(\d{1,3})(\d{15}) $1| biljard $2
+(\d{1,3})(\d{18}) $1| triljoen $2
+(\d{1,3})(\d{21}) $1| triljard $2
+
+# negative number
+
+[-−](\d\d*) min |$1
+
+# decimals
+
+"([-−]?\d\d*)[.,]00" |$1|
+"([-−]?\d\d*)[.,](\d)(\d)" |$1| komma |$2| $3
+
+# currencies
+	
+EUR euro
+[A-Z]{3} 
+"([A-Z]{3}) ([-−]?\d\d*)" $2| $1
+"([A-Z]{3} [-−]?\d\d*)[.,]00" $1|
+"(EUR [-−]?\d\d*)[.,]0(\d)" $1| en \2 cent
+"(EUR [-−]?\d\d*)[.,](\d\d)" $1| en \2 cent
+"([A-Z]{3}) ([-−]?\d\d*[.,]\d\d)" $2| $1
+</textarea>
+<textarea id="hu_HU" class="hidden">
+# Hungarian number names,
+# described by László Németh.
+# License: LGPL and BSD dual-license
+^0 nulla
+1 egy
+2$ kettő
+2 két
+3 három
+4 négy
+5 öt
+6 hat
+7 hét
+8 nyolc
+9 kilenc
+10 tíz
+1(\d) tizen$1
+20 húsz
+2(\d) huszon$1
+3(\d) harminc$1
+4(\d) negyven$1
+5(\d) ötven$1
+6(\d) hatvan$1
+7(\d) hetven$1
+8(\d) nyolcvan$1
+9(\d) kilencven$1
+1(\d\d) száz$1
+(\d)(\d\d) $1száz$2
+1(\d{3}) ezer$1
+(\d{1,3})000 $1ezer
+(\d{1,3})(\d{3}) $1ezer-$2
+(\d{1,3})0{6} $1millió
+(\d{1,3})(\d{6}) $1millió-$2
+(\d{1,3})0{9} $1milliárd
+(\d{1,3})(\d{9}) $1milliárd-$2
+(\d{1,3})0{12} $1billió
+(\d{1,3})(\d{12}) $1billió-$2
+(\d{1,3})0{15} $1billiárd
+(\d{1,3})(\d{15}) $1billiárd-$2
+(\d{1,3})0{18} $1trillió
+(\d{1,3})(\d{18}) $1trillió-$2
+(\d{1,3})0{21} $1trilliárd
+(\d{1,3})(\d{21}) $1trilliárd-$2
+
+# negative numbers
+
+[-−](\d\d*) mínusz $1
+
+# decimals
+
+"(\d\d*)[.,](\d)0" |$1| egész $2 tized
+"(\d\d*)[.,](\d\d)" |$1| egész $2 század
+
+# currency
+
+"HUF ([-−]?\d\d*)" $1 forint
+"EUR ([-−]?\d\d*)" $1 euró
+"USD ([-−]?\d\d*)" $1 dollár
+"CHF ([-−]?\d\d*)" $1 svájci frank
+
+# currency with decimals
+
+[-−] mínusz
+"HUF ([-−]?)1[.,]50" $1 másfél forint
+"(HUF [-−]?\d\d*)[.,]00" $1
+"HUF ([-−]?\d\d*)[.,]50" $1 és fél forint
+"HUF ([-−]?\d\d*)[.,](\d\d)" $1 forint $2 fillér
+
+"EUR ([-−]?)1,50" $1 másfél euró
+"(EUR [-−]?\d\d*)[.,]00" $1
+"EUR ([-−]?\d\d*)[.,]50" $1 és fél euró
+"EUR ([-−]?\d\d*)[.,](\d\d)" $1 euró $2 cent
+
+"USD ([-−]?)1,50" $1 másfél dollár
+"(USD [-−]?\d\d*)[.,]00" $1
+"USD ([-−]?\d\d*)[.,]50" $1 és fél dollár
+"USD ([-−]?\d\d*)[.,](\d\d)" $1 dollár $2 cent
+
+"CHF ([-−]?)1,50" $1 másfél svájci frank
+"(CHF [-−]?\d\d*)[.,]00" $1
+"CHF ([-−]?\d\d*)[.,]50" $1 és fél svájci frank
+"CHF ([-−]?\d\d*)[.,](\d\d)" $1 svájci frank $2 cent
+
+# other currencies
+
+[A-Z]{3}
+"([A-Z]{3}) ([-−]?\d[\d.,]*)" $2 $1
+</textarea>
+<textarea id="de_DE" class="hidden">
+# German number names,
+# described by László Németh.
+# License: LGPL and BSD dual-license
+^0 null
+1$ eins
+1 ein
+2 zwei
+3 drei
+4 vier
+5 fünf
+6 sechs
+7 sieben
+8 acht
+9 neun
+10 zehn
+11 elf
+12 zwölf
+16 sechzehn
+17 siebzehn
+1(\d) $1zehn
+20 zwanzig
+2(\d) $1undzwanzig
+30 dreißig
+3(\d) $1unddreißig
+60 sechzig
+6(\d) $1undsechzig
+70 siebzig
+7(\d) $1undsiebzig
+(\d)0 $1zig
+(\d)(\d) $2und$1zig
+1(\d\d) hundert$1
+(\d)(\d\d) $1hundert$2
+1(\d{3}) tausend$1
+(\d{1,3})(\d{3}) $1tausend$2
+1(\d{6}) eine Million $1
+(\d{1,3})(\d{6}) $1 Millionen $2
+1(\d{9}) eine Milliarde $1
+(\d{1,3})(\d{9}) $1 Milliarden $2
+1(\d{12}) eine Billion $1
+(\d{1,3})(\d{12}) $1 Billionen $2
+1(\d{15}) eine Billiarde $1
+(\d{1,3})(\d{15}) $1 Billiarden $2
+1(\d{18}) eine Trillion $1
+(\d{1,3})(\d{18}) $1 Trillionen $2
+1(\d{21}) eine Trilliarde $1
+(\d{1,3})(\d{21}) $1 Trilliarden $2
+
+# negative number
+
+[-−](\d\d*) minus $1
+
+# decimals
+
+"([-−]?\d\d*)[.,](\d)(\d)" |$1| Komma |$2| $3
+
+# currency
+
+"EUR ([-−]?\d\d*)" $1 Euro
+
+# other currencies
+
+[A-Z]{3}
+"([A-Z]{3}) ([-−]?\d\d*)" $2 $1
+
+# currencies with zero decimals
+
+"([A-Z]{3} [-−]?\d\d*)[.,]00" $1
+
+# currencies with decimals
+
+"(EUR [-−]?\d\d*)[.,](\d\d)" $1 und $2 Cent
+
+# other currencies
+
+[A-Z]{3}
+"([A-Z]{3}) ([-−]?\d[.,]\d\d)" $2| $1
+</textarea>
+<textarea id="it_IT" class="hidden">
+# Italian number names,
+# described by László Németh
+# based on Wikipedia.
+# License: LGPL and BSD dual-license
+^0 zero
+1 uno
+2 due
+^3$ tre
+3$ tré
+3 tre
+4 quattro
+5 cinque
+6 sei
+7 sette
+8 otto
+9 nove
+10 dieci
+11 undici
+12 dodici
+13 tredici
+14 quattordici
+15 quindici
+16 sedici
+17 diciassette
+18 diciotto
+19 diciannove
+2([18]) vent$1
+2(\d) venti$1
+3([18]) trent$1
+3(\d) trenta$1
+4([18]) quarant$1
+4(\d) quaranta$1
+5([18]) cinquant$1
+5(\d) cinquanta$1
+6([18]) sessant$1
+6(\d) sessanta$1
+7([18]) settant$1
+7(\d) settanta$1
+8([18]) ottant$1
+8(\d) ottanta$1
+9([18]) novant$1
+9(\d) novanta$1
+(\d)(\d\d) $1cento$2
+1(\d{3}) mille$1
+(\d{1,2})(\d{3}) $1mila$2
+(\d{3})(\d{3}) $1mila $2
+1(\d{6}) un milione $1
+(\d{1,3})(\d{6}) $1 milioni $2
+1(\d{9}) un miliardo $1
+(\d{1,3})(\d{9}) $1 miliardi $2
+1(\d{12}) un bilione $1
+(\d{1,3})(\d{12}) $1 bilioni $2
+1(\d{15}) un biliardo $1
+(\d{1,3})(\d{15}) $1 biliardi $2
+1(\d{18}) un trilione $1
+(\d{1,3})(\d{18}) $1 trilioni $2
+1(\d{21}) un triliardo $1
+(\d{1,3})(\d{21}) $1 triliardi $2
+
+# negative numbers
+
+[-−](\d\d*) meno $1
+
+# decimals
+
+"(\d\d*)[.](\d)(\d)" |$1| punto |$2| \3
+
+# currency
+
+"EUR 1" un euro
+"EUR (\d\d*0{6,})" $1 di euro
+"EUR (\d\d*)" $1 euro
+
+# currency with decimals
+
+"(EUR \d\d*)[.]00" $1
+"(EUR \d\d*)[.]01" $1 un centesimo
+"(EUR \d\d*)[.](\d\d)" $1 $2 centesimi
+
+# other currencies
+
+[A-Z]{3}
+"([A-Z]{3}) (\d[\d.]*)" $2| $1
+</textarea>
+<textarea id="Roman" class="hidden">
+# Roman numerals (1-3999999),
+# Described by László Németh.
+# License: LGPL and BSD dual-license
+1 I
+2 II
+3 III
+4 IV
+5 V
+6 VI
+7 VII
+8 VIII
+9 IX
+1(\d) X$1
+2(\d) XX$1
+3(\d) XXX$1
+4(\d) XL$1
+5(\d) L$1
+6(\d) LX$1
+7(\d) LXX$1
+8(\d) LXXX$1
+9(\d) XC$1
+1(\d\d) C$1
+2(\d\d) CC$1
+3(\d\d) CCC$1
+4(\d\d) CD$1
+5(\d\d) D$1
+6(\d\d) DC$1
+7(\d\d) DCC$1
+8(\d\d) DCCC$1
+9(\d\d) CM$1
+1(\d{3}) M$1
+2(\d{3}) MM$1
+3(\d{3}) MMM$1
+(\d{1,3})(\d{3}) ($1)$2
+([1-3]\d{1,3})(\d{3}) ($1)$2
+</textarea>
+<textarea id="Roman_2" class="hidden">
+# Roman numerals (1-3999999),
+# Described by László Németh.
+# License: LGPL and BSD dual-license
+(\D)..1 \1
+(\D)..2 \1\1
+(\D)..3 \1\1\1
+(\D)(\D).4 \1\2
+.(\D).5 \1
+(\D)(\D).6 \2\1
+(\D)(\D).7 \2\1\1
+(\D)(\D).8 \2\1\1\1
+(\D).(\D)9  \1\2
+
+(\d) $(IVX\1)
+(\d)(\d) $(XLC\1)$2
+(\d)(\d\d) $(CDM\1)$2
+([123])(\d\d\d) $(M..\1)$2
+(\d{1,3})(\d\d\d) ($(\1))$2
+([1-3]\d{1,3})(\d\d\d) ($(\1))$2
+</textarea>
+<textarea id="th_TH" class="hidden">
+# Thai number name patterns,
+# described by László Németh
+# based on Thai numerals article of Wikipedia.
+# License: LGPL and BSD dual-license
+^0 ศูนย์
+1 หนึ่ง
+2 สอง
+3 สาม
+4 สี่
+5 ห้า
+6 หก
+7 เจ็ด
+8 แปด
+9 เก้า
+11 สิบเอ็ด
+1(\d) สิบ$1
+21 ยี่สิบเอ็ด
+2(\d) ยี่สิบ$1
+(\d)1 $1สิบเอ็ด
+(\d)(\d) $1สิบ$2
+(\d)(\d\d) $1ร้อย$2
+(\d)(\d{3}) $1พัน$2
+(\d)(\d{4}) $1หมื่น$2
+(\d)(\d{5}) $1แสน$2
+(\d)(\d{6}) $1ล้าน$2
+(\d\d)(\d{6}) $1ล้าน$2
+(\d)(\d{8}) $1ร้อยล้าน$2
+(\d)(\d{9}) $1พันล้าน$2
+(\d)(\d{10}) $1หมื่นล้าน$2
+(\d)(\d{11}) $1แสนล้าน$2
+(\d)(\d{12}) $1ล้านล้าน$2
+(\d\d)(\d{12}) $1ล้านล้าน$2
+(\d)(\d{14}) $1ร้อยล้านล้าน$2
+(\d)(\d{15}) $1พันล้านล้าน$2
+(\d)(\d{16}) $1หมื่นล้านล้าน$2
+(\d)(\d{17}) $1แสนล้านล้าน$2
+(\d)(\d{18}) $1ล้านล้านล้าน$2
+(\d\d)(\d{18}) $1ล้านล้านล้าน$2
+(\d)(\d{20}) $1ร้อยล้านล้านล้าน$2
+(\d)(\d{21}) $1พันล้านล้านล้าน$2
+(\d)(\d{22}) $1หมื่นล้านล้านล้าน$2
+(\d)(\d{23}) $1แสนล้านล้านล้าน$2
+(\d)(\d{24}) $1ล้านล้านล้านล้าน$2
+
+# negative numbers
+
+[-−](\d\d*) ลบ$1
+
+# decimals
+
+"(\d\d*)[.,](\d)(\d)" |$1จุด|$2|$3
+
+# currency
+
+"THB (\d\d*)" $1บาทถ้วน
+
+# currency with decimals
+
+"(THB \d\d*)[,.]00" $1
+"THB (\d\d*)[,.](\d\d)" $1บาท$2สตางค์
+
+# other currencies?
+
+[A-Z]{3}
+"([A-Z]{3}) (\d[\d.,]*)" $2$1
+</textarea>
+<textarea id="zh_ZH" class="hidden">
+# Mandarin Chinese number names (simplified)
+# described by László Németh
+# based on Chinese numerals article
+# of Wikipedia
+^0 零
+1 一
+2$ 二
+2 两
+3 三
+4 四
+5 五
+6 六
+7 七
+8 八
+9 九
+^1(\d) 十$1
+(\d)(\d) $1|十$2
+(\d)0{2} $1百
+(\d)0(\d) $1百零$2
+(\d)(\d\d) $1百$2
+(\d)0{3} $1千
+(\d)0(\d\d) $1千零$2
+(\d)(\d\d\d) $1千$2
+(\d{1,4})0{4} $1|万
+(\d{1,4})0(\d{3}) $1|万零$2
+(\d{1,4})(\d{4}) $1|万$2
+(\d{1,4})0{8} $1|亿
+(\d{1,4})0(\d{7}) $1|亿零$2
+(\d{1,4})(\d{8}) $1|亿$2
+(\d{1,4})0{12} $1|兆
+(\d{1,4})0(\d{11}) $1|兆零$2
+(\d{1,4})(\d{12}) $1|兆$2
+(\d{1,4})0{16} $1|京
+(\d{1,4})0(\d{15}) $1|京零$2
+(\d{1,4})(\d{16}) $1|京$2
+(\d{1,4})0{20} $1|垓
+(\d{1,4})0(\d{19}) $1|垓零$2
+(\d{1,4})(\d{20}) $1|垓$2
+(\d{1,4})0{24} $1|秭
+(\d{1,4})0(\d{23}) $1|秭零$2
+(\d{1,4})(\d{24}) $1|秭$2
+(\d{1,4})0{28} $1|穰
+(\d{1,4})0(\d{27}) $1|穰零$2
+(\d{1,4})(\d{28}) $1|穰$2
+(\d{1,4})0{32} $1|沟
+(\d{1,4})0(\d{31}) $1|沟零$2
+(\d{1,4})(\d{32}) $1|沟$2
+(\d{1,4})0{36} $1|涧
+(\d{1,4})0(\d{35}) $1|涧零$2
+(\d{1,4})(\d{36}) $1|涧$2
+(\d{1,4})0{40} $1|正
+(\d{1,4})0(\d{39}) $1|正零$2
+(\d{1,4})(\d{40}) $1|正$2
+(\d{1,4})0{44} $1|载
+(\d{1,4})0(\d{43}) $1|载零$2
+(\d{1,4})(\d{44}) $1|载$2
+
+# negative numbers
+
+[-−](\d+) 负$1
+</textarea>
+<textarea id="zh_ZH_Suzhou" class="hidden">
+# Chinese Suzhou numbers
+# Described by László Németh
+# based on Suzhou numerals article of Wikipedia.
+# License: LGPL and BSD dual-license
+(\d+)[.,](\d+) $(\1\2::)\n$(:\1:)
+(\d+) $(\1::)\n$(:\1:)
+(\d+)0:: $(\1::)
+(\d+):: $(\1:)
+
+0: 〇
+^1: 〡
+^2: 〢
+^3: 〣
+1: 一
+2: 二
+3: 三
+4: 〤
+5: 〥
+6: 〦
+7: 〧
+8: 〨
+9: 〩
+:\d{2}: 拾
+:\d{3}: 百
+:\d{4}: 千
+:\d{5}: 萬
+
+(\d+)0: $(\1:)〇
+(\d+)0([1-9]\d*): $(\1:)〇|$(\2:)
+^([123])(\d+):	$(\1:)$(\2:)
+(\d)(\d+):	$(\1:)|$(\2:)
+
+"CNY (\d[.,\d]*)" $1元
+"USD (\d[.,\d]*)" $1元
+
+# formal currency: 圆
+</textarea>
+<textarea id="xx" class="hidden">
+</textarea>
+</html>
+

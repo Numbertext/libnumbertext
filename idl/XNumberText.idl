@@ -1,0 +1,28 @@
+#ifndef org_openoffice_addin_sample_XNumberText
+#define org_openoffice_addin_sample_XNumberText
+
+#include <com/sun/star/uno/XInterface.idl>
+#include <com/sun/star/beans/XPropertySet.idl>
+
+module org { module openoffice { module addin { module sample {
+
+    interface XNumberText : com::sun::star::uno::XInterface
+        {
+            string numbertext(
+		[in] com::sun::star::beans::XPropertySet prop,
+		[in] string num,
+		[in] any lang
+	    );
+
+            string moneytext(
+		[in] com::sun::star::beans::XPropertySet prop,
+		[in] string num,
+		[in] any currency,
+		[in] any lang
+	    );
+
+        };
+
+}; }; }; };
+
+#endif

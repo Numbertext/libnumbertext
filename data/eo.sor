@@ -1,0 +1,51 @@
+# Esperanto number names,
+# described by László Németh.
+# License: LGPL and BSD dual-license
+^0 nulo
+1 unu
+2 du
+3 tri
+4 kvar
+5 kvin
+6 ses
+7 sep
+8 ok
+9 naŭ
+(\d)(\d) $1dek $2
+(\d)(\d\d) $1cent $2
+1(\d{3}) mil $1
+(\d{1,3})(\d{3}) $1 mil $2
+1(\d{6}) miliono $1
+(\d{1,3})(\d{6}) $1 milionoj $2
+1(\d{9}) miliardo $1
+(\d{1,3})(\d{9}) $1miliardoj $2
+1(\d{12}) duiliono $1
+(\d{1,3})(\d{12}) $1duilionoj $2
+1(\d{15}) duiliardo $1
+(\d{1,3})(\d{15}) $1duiliardoj $2
+1(\d{18}) triiliono $1
+(\d{1,3})(\d{18}) $1triilionoj $2
+1(\d{21}) triiliardo $1
+(\d{1,3})(\d{21}) $1triiliardoj $2
+
+# negative number
+
+[-−](\d\d*) negativa |$1
+
+# decimals
+
+"([-−]?\d\d*)[.,]" "$1| komo"
+"([-−]?\d\d*[.,]\d*)(\d)" $1| |$3
+
+ARS peso
+"ARS " centavo
+EUR eŭro
+"EUR " cendo
+USD dolaro
+"USD " cendo
+
+"([A-Z]{3}) ([0-1])" $2 $1
+"([A-Z]{3}) (\d+)" $2 $1j
+"(([A-Z]{3} )\d+)[.,]01" $1 unu $2
+"(([A-Z]{3} )\d+)[.,](\d\d)" $1 $3 $2j
+

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<description xmlns="http://openoffice.org/extensions/description/2006" 
+xmlns:d="http://openoffice.org/extensions/description/2006"
+xmlns:xlink="http://www.w3.org/1999/xlink">
+    <display-name>
+        <name lang="en">NUMBERTEXT() and MONEYTEXT() Calc functions</name>
+        <name lang="de">NUMBERTEXT() und MONEYTEXT() Calc Funktions</name>
+        <name lang="hu">NUMBERTEXT() és MONEYTEXT() Calc függvények</name>
+        <name lang="it">NUMBERTEXT() e MONEYTEXT() Calc funzione</name>
+    </display-name>
+    <version value="0.1" />
+    <identifier value="org.openoffice.comp.addin.sample.python.numbertext-calc-addin" />
+    <publisher>
+        <name lang="en" xlink:href="http://launchpad.net/numbertext/">http://launchpad.net/numbertext</name>
+    </publisher>
+    <platform value="all" />
+
+<dependencies>
+    <OpenOffice.org-minimal-version value="2.4" d:name="OpenOffice.org 2.4"/>
+</dependencies>
+
+</description>

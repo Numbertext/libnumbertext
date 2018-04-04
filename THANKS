@@ -1,0 +1,5 @@
+Thanks to FSF.hu Foundation, Hungary and NLnet Foundation, Nederland for
+their financial support.
+
+Thanks to Dániel Darabos for his hint about using Python modules by import()
+instead of raw data files (it simplifies the PyUNO implementation).
