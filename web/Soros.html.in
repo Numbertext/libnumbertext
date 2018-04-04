@@ -17,7 +17,7 @@ IDE of Soros programming language (<a href="sorosspec.pdf">specification</a>) </
 <script type="text/javascript" language="javascript1.3">
 MAXLIST=1000
 <!-- **************************************************************************************************** -->
-<!--!cat ../Soros.js-->
+<!--!cat ../src/Soros.js-->
 <!-- **************************************************************************************************** -->
 function convert() {
   var s = document.getElementById('number').value;
@@ -32,7 +32,10 @@ function convert() {
     }
     document.getElementById('numbers').value = res;
     document.getElementById('result').value = "";
-  } else { document.getElementById('result').value = mySoros.run(s); }
+  } else { 
+    document.getElementById('result').value = mySoros.run(s); 
+    document.getElementById('numbers').value = "";
+}
 }
 function comp() {
  mySoros = new Soros(document.getElementById('def').value);

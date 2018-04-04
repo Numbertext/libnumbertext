@@ -4,7 +4,7 @@
 #include <com/sun/star/uno/XInterface.idl>
 #include <com/sun/star/beans/XPropertySet.idl>
 
-module org { module openoffice { module addin { module sample {
+module org { module numbertext {
 
     interface XNumberText : com::sun::star::uno::XInterface
         {
@@ -23,6 +23,6 @@ module org { module openoffice { module addin { module sample {
 
         };
 
-}; }; }; };
+}; };
 
 #endif

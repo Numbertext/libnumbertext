@@ -1,17 +1,23 @@
 Language-neutral NUMBERTEXT and MONEYTEXT functions for OpenOffice.org Calc
 
-version 0.2 (2009-07-25)
+version 0.4 (2009-08-10)
+
+Numbertext OOo extension,
+Soros programming language specification (draft) and IDE,
+Soros interpreter in Python: pythonpath/Soros.py,
+Soros interpreter in JavaScript: Soros.js:
 
 License: LGPL/BSD dual-license, 2009 (C) László Németh
 
-Soros programming language specification (draft) and IDE
-Soros interpreter in Python: pythonpath/Soros.py
-Soros interpreter in JavaScript: Soros.js
+Numbertext language data (Soros programs):
+
+License: LGPL/BSD dual-license, 2009 (C) László Németh et al.
 
 Home: http://numbertext.org
 
 = Supported languages in this version =
 
+af-ZA	Africaans
 ca-ES	Catalan
 cs-CZ	Czech
 de-DE	German
@@ -26,17 +32,20 @@ hu-HU	Hungarian
 it-IT	Italian
 nl-NL	Dutch
 pl-PL	Polish
+pt-BR	Brazilian Portuguese
+pt-PT	Portuguese
 ro-RO	Romanian
 ru-RU	Russian
 sl-SI	Slovenian
 sv-SV	Swedish
 th-TH	Thai
 zh-ZH	Chinese (simplified)
+zh-ZH-2	Chinese (simplified, financial)
 
 Number formats:
 
-Roman		Roman numbers
-zh-suzhou	Chinese Suzhou numerals
+Roman	Roman numbers
+Suzhou	Chinese Suzhou numerals
 
 = Installation in OpenOffice.org =
 
@@ -53,22 +62,17 @@ Examples:
 =NUMBERTEXT(25;"th-TH")
 =MONEYTEXT(25)
 =MONEYTEXT(25;"USD")
-=MONEYTEXT(25;"CNY";"zh-suzhou")
-
-Note: the arguments will be extended by the decimal place
-argument in the next version, according to the
-NUMBERTEXT/MONEYTEXT specification
-(See in OpenOffice.org Issue 103746):
-
-=NUMBERTEXT(25)
-=NUMBERTEXT(25.1234;2;"th-TH")
-=MONEYTEXT(25)
-=MONEYTEXT(25;"USD")
-=MONEYTEXT(25;"CNY";2;"zh-suzhou")
+=MONEYTEXT(25;"CNY";"zh-ZH")
 
 = Development =
 
 See doc/addnewlocale.txt and doc/sorosspec.odt
+
+For general Calc and (portable Excel) Add-In developments, see
+
+Jan Holst Jensen's excellent Add-in example and documentation:
+
+http://biochemfusion.com/doc/Calc_addin_howto.html
 
 == Integrated development environment ==
 

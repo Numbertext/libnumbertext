@@ -1,9 +1,15 @@
 Thanks to NLnet Foundation, Nederland and FSF.hu Foundation, Hungary and 
 for their donation and support.
 
-Thanks to Dániel Darabos for his hint about using Python modules by import()
-instead of raw data files (it simplifies the PyUNO implementation).
+Thanks to the contributors and the following authors:
 
-Thanks to the contributors:
+Mushtaque Asghar: reporting XLS portability bug
+Claudio Colombo (claudio_c77 at yahoo.it): Italian bug report
+Dániel Darabos: suggesting __import__ data modules instead of difficult text file handling
+Eduardo Moreno (emoreno tokonhu com): Portuguese data, Spanish bug reports
+Eike Rathke (er at OpenOffice dot org): suggesting new namespace and compatibility name usage.
 
-Eduardo Moreno (emoreno tokonhu com)
+Jan Holst Jensen (biochemfusion.com): for his detailed Add-In example
+(http://biochemfusion.com/doc/Calc_addin_howto.html)
+
+Authors of Wikipedia and other articles about numerals

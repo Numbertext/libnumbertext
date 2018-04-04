@@ -49,6 +49,7 @@ div#header {
 .lang {
 	width: 75pt;
 	display: inline-block;
+	text-align: left;
 }
 .input {
 	padding: 1pt;
@@ -56,9 +57,8 @@ div#header {
 	background-color: rgb(83%,65%,65%);
 }
 img {
-	border-width: 2px 2px 2px 2px;
+	border-width: 0px;
 /*	border-style: solid; */
-	border-color: red;
 }
 a:hover img {
 	border-color: black;
@@ -74,4 +74,27 @@ table.logos td {
 tr.text td {	
 	padding: 5pt;
 }
-
+@font-face {
+   font-family: rovas;
+/*   src: url("rstdcsjb.ttf") format("truetype"); */
+   src: url("RovasLudtollPUA.ttf") format("truetype"); 
+}
+.rovas {
+	font-family: rovas;
+	width: 100%;
+}
+table#conv {
+	width: 100%;
+	border-spacing: 0;
+}
+table#conv tr{
+	margin: 0px;
+}
+table#conv td{
+	margin: 0px;
+	padding: 2pt;
+	padding-left: 5pt;
+	padding-right: 5pt;
+	border-width: 0px;
+	border-style: solid;
+}

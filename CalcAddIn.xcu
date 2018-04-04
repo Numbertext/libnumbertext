@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<oor:component-data xmlns:oor="http://openoffice.org/2001/registry" xmlns:xs="http://www.w3.org/2001/XMLSchema" oor:name="CalcAddIns" oor:package="org.openoffice.Office">
+<node oor:name="AddInInfo">
+<node oor:name="org.numbertext" oor:op="replace">
+<node oor:name="AddInFunctions">
+  <node oor:name="numbertext" oor:op="replace">
+    <prop oor:name="DisplayName"><value xml:lang="en">NUMBERTEXT</value></prop>
+    <prop oor:name="Description">
+	<value xml:lang="en">Converts number to number name.</value>
+	<value xml:lang="hu">Számot számnévvé alakít.</value>
+    </prop>
+    <prop oor:name="Category"><value>Add-In</value></prop>
+    <prop oor:name="CompatibilityName"><value xml:lang="en">org.NUMBERTEXT.numbertext</value></prop>
+    <node oor:name="Parameters">
+      <node oor:name="num" oor:op="replace">
+        <prop oor:name="DisplayName">
+	    <value xml:lang="en">Number</value>
+	    <value xml:lang="hu">Szám</value>
+	</prop>
+        <prop oor:name="Description">
+	    <value xml:lang="en">Value.</value>
+	    <value xml:lang="hu">Az átalakítandó szám.</value>
+	</prop>
+      </node>
+      <node oor:name="lang" oor:op="replace">
+        <prop oor:name="DisplayName">
+	    <value xml:lang="en">Language</value>
+	    <value xml:lang="hu">Nyelv</value>
+	</prop>
+        <prop oor:name="Description">
+	    <value xml:lang="en">Language code (eg. en-US).</value>
+	    <value xml:lang="hu">Nyelvkód (pl. hu-HU).</value>
+	</prop>
+      </node>
+    </node>
+  </node>
+  <node oor:name="moneytext" oor:op="replace">
+    <prop oor:name="DisplayName"><value xml:lang="en">MONEYTEXT</value></prop>
+    <prop oor:name="Description">
+	<value xml:lang="en">Converts a number to text with the given currency.</value>
+	<value xml:lang="hu">Számot számnévvé alakít a megadott pénznemmel.</value>
+    </prop>
+    <prop oor:name="Category"><value>Add-In</value></prop>
+    <prop oor:name="CompatibilityName"><value xml:lang="en">org.NUMBERTEXT.moneytext</value></prop>
+    <node oor:name="Parameters">
+      <node oor:name="num" oor:op="replace">
+        <prop oor:name="DisplayName">
+	    <value xml:lang="en">Number</value>
+	    <value xml:lang="hu">Szám</value>
+	</prop>
+        <prop oor:name="Description">
+	    <value xml:lang="en">Input value.</value>
+	    <value xml:lang="hu">Az átalakítandó szám.</value>
+	</prop>
+      </node>
+      <node oor:name="currency" oor:op="replace">
+        <prop oor:name="DisplayName">
+	    <value xml:lang="en">Currency</value>
+	    <value xml:lang="hu">Pénznem</value>
+	</prop>
+        <prop oor:name="Description">
+	    <value xml:lang="en">ISO 4217 code (eg. USD).</value>
+	    <value xml:lang="hu">ISO 4217 kód (pl. HUF).</value>
+	</prop>
+      </node>
+      <node oor:name="lang" oor:op="replace">
+        <prop oor:name="DisplayName">
+	    <value xml:lang="en">Language</value>
+	    <value xml:lang="hu">Nyelv</value>
+	</prop>
+        <prop oor:name="Description">
+	    <value xml:lang="en">Language code (eg. en-US).</value>
+	    <value xml:lang="hu">Nyelvkód (pl. hu-HU).</value>
+	</prop>
+      </node>
+    </node>
+  </node>
+</node>
+</node>
+</node>
+</oor:component-data>

@@ -54,6 +54,7 @@ __numbertext__
 # decimals
 
 "([-−]?\d+)[.,]00" |$1|
+"([-−]?\d+)[.,](\d) $1| komma |$2
 "([-−]?\d+)[.,](\d)(\d)" |$1| komma |$2| |$3
 
 # currencies

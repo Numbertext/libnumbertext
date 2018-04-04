@@ -38,12 +38,12 @@ __numbertext__
 
 # decimals
 
-([-−]?\d+)[.,]([01])	|$1| ja $2 kymmenesosa
-([-−]?\d+)[.,](\d)	|$1| ja $2 kymmenesosaa
-([-−]?\d+)[.,]0([01])	|$1| ja $2 sadasosa
-([-−]?\d+)[.,](\d\d)	|$1| ja $2 sadasosaa
-([-−]?\d+)[.,]00([01])	|$1| ja $2 tuhannesosa
-([-−]?\d+)[.,](\d\d\d)	|$1| ja $2 tuhannesosaa
+([-−]?\d+)[.,]([01])	|$1| ja |$2 kymmenesosa
+([-−]?\d+)[.,](\d)	|$1| ja |$2 kymmenesosaa
+([-−]?\d+)[.,]0([01])	|$1| ja |$2 sadasosa
+([-−]?\d+)[.,](\d\d)	|$1| ja |$2 sadasosaa
+([-−]?\d+)[.,]00([01])	|$1| ja |$2 tuhannesosa
+([-−]?\d+)[.,](\d\d\d)	|$1| ja |$2 tuhannesosaa
 
 # currency
 

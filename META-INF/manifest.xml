@@ -1,6 +1,8 @@
 <manifest:manifest>
 <manifest:file-entry manifest:media-type="application/vnd.sun.star.uno-typelibrary;type=RDB"
                     manifest:full-path="rdb/sample.rdb"/>
+<manifest:file-entry manifest:media-type="application/vnd.sun.star.configuration-data"
+	manifest:full-path="CalcAddIn.xcu"/>
 <manifest:file-entry manifest:media-type="application/vnd.sun.star.uno-component;type=Python"
                     manifest:full-path="reg.uno.py"/>
 </manifest:manifest>

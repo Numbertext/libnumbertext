@@ -19,7 +19,7 @@ __numbertext__
 16 dieciséis
 1(\d) dieci$1
 20 veinte
-21 veintidós
+22 veintidós
 23 veintitrés
 26 veintiséis
 2(\d) veinti$1
@@ -50,14 +50,17 @@ __numbertext__
 1(\d{30}) un quintillón $1
 (\d{1,6})(\d{30}) $1 quintillones $2
 
-# negative number?
+# negative number
 
-[-−](\d+) negativa |$1
+[-−](\d+) menos |$1
 
 # decimals
 
-"([-−]?\d+)[.,]" "$1| coma"
-"([-−]?\d+[.,]\d*)(\d)" $1| |$2
+([-−]?\d+)[.] $1| punto
+([-−]?\d+)[,] $1| coma
+([-−]?\d+[.,])([^0]\d) $1| |$2
+([-−]?\d+[.,])(\d)(\d)(\d) |$1 |$2| |$3| |$4
+([-−]?\d+[.,]\d*)(\d) $1| |$2
 
 # currency
 
@@ -68,12 +71,28 @@ up:([^,]*),([^,]*),([^,]*),([^,]*) \2
 ss:([^,]*),([^,]*),([^,]*),([^,]*) \3
 sp:([^,]*),([^,]*),([^,]*),([^,]*) \4
 
+ARS:(\D+) $(\1: peso argentino, pesos argentinos, centavo, centavos)
+BOB:(\D+) $(\1: boliviano, bolivianos, centavo, centavos)
+BZD:(\D+) $(\1: dólar beliceño, dólares beliceños, centavo, centavos)
+CEC:(\D+) $(\1: peso convertible, pesos convertibles, centavo, centavos)
 CHF:(\D+) $(\1: franco suizo, francos suizos, céntimo, céntimos)
+CLP:(\D+) $(\1: peso chileno, pesos chilenos, centavo, centavos)
 CNY:(\D+) $(\1: yuan renminbi, yuan renminbi, fen, fen)
+COP:(\D+) $(\1: peso colombiano, pesos colombianos, centavo, centavos)
+CRC:(\D+) $(\1: colón costarricense, colones costarricenses, céntimo, céntimos)
+DOP:(\D+) $(\1: peso dominicano, pesos dominicanos, centavo, centavos)
 EUR:(\D+) $(\1: euro, euros, cent, cents)
 GBP:(\D+) $(\1: libra esterlina, libras esterlinas, penique, peniques)
+GTQ:(\D+) $(\1: quetzal, quetzales, centavo, centavos)
+HLN:(\D+) $(\1: lempira, lempiras, centavo, centavos)
 JPY:(\D+) $(\1: yen, yenes, sen, sen)
-USD:(\D+) $(\1: dólar estadounidense, dólares estadounidenses, céntimo, céntimos)
+MXN:(\D+) $(\1: peso mexicano, pesos mexicanos, centavo, centavos)
+NIO:(\D+) $(\1: córdoba, córdobas, centavo, centavos)
+PEN:(\D+) $(\1: sol, soles, centavo, centavos)
+PYG:(\D+) $(\1: guaraní, guaraníes, céntimo, céntimos)
+USD:(\D+) $(\1: dólar estadounidense, dólares estadounidenses, centavo, centavos)
+UYU:(\D+) $(\1: peso uruguayo, pesos uruguayos, centésimo, centésimos)
+VEF:(\D+) $(\1: bolívar fuerte, bolívares fuertes, céntimo, céntimos)
 
 "([A-Z]{3}) ([-−]?1)" $2 $(\1:us)
 "([A-Z]{3}) ([-−]?\d+0{6,})" $2 de $(\1:up)

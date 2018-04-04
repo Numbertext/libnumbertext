@@ -1,0 +1,8 @@
+#!/bin/bash
+
+for i in ../data/*.sor
+do
+    echo $i
+    PYTHONPATH=../src python test.py $i <(seq 0 1000)  /dev/stdout |
+    awk -v fil="$i" '/^$/{print "Missing output: " fil " (input number: " (NR - 1) ")"}'
+done 

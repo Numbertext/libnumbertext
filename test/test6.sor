@@ -1,0 +1,3 @@
+# check quoted space in return value
+a " "
+b a$(a)a

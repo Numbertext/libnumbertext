@@ -10,7 +10,7 @@ xmlns:xlink="http://www.w3.org/1999/xlink">
         <name lang="it">NUMBERTEXT() e MONEYTEXT() Calc funzione</name>
     </display-name>
 <!--!echo "<version value=\"`head -1 VERSION`\" />"-->
-    <identifier value="org.openoffice.comp.addin.sample.python.numbertext-calc-addin" />
+    <identifier value="org.numbertext-calc-addin" />
     <publisher>
         <name lang="en" xlink:href="http://NUMBERTEXT.org">NUMBERTEXT.org</name>
     </publisher>

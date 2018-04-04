@@ -68,14 +68,49 @@ ud:([^,]*),([^,]*),([^,]*),([^,]*),([^,]*) \3
 ss:([^,]*),([^,]*),([^,]*),([^,]*),([^,]*) \4
 sp:([^,]*),([^,]*),([^,]*),([^,]*),([^,]*) \5
 
-CHF:(\D+) $(\1: francs suisse, francs suisses, de francs suisses, centime, centimes)
+BIF:(\D+) $(\1: franc burundais, francs burundais, de francs burundais, centime, centimes)
+CAD:(\D+) $(\1: dollar canadien, dollars canadiens, de dollars canadiens, cent, cents)
+CDF:(\D+) $(\1: franc congolais, francs congolais, de francs congolais, centime, centimes)
+CHF:(\D+) $(\1: franc suisse, francs suisses, de francs suisses, centime, centimes)
+DJF:(\D+) $(\1: franc de Djibouti, francs de Djibouti, de francs de Djibouti, centime, centimes)
+DZD:(\D+) $(\1: dinar algérien, dinars algériens, de dinars algériens, centime, centimes)
 EUR:(\D+) $(\1: euro, euros, d’euros, centime, centimes)
 GBP:(\D+) $(\1: livre sterling, livres sterling, de livres sterling, penny, pennies)
+GNF:(\D+) $(\1: franc guinéen, francs guinéens, de francs guinéens,,)
+HTF:(\D+) $(\1: gourde, gourde, de gourde, centime, centimes)
+KMF:(\D+) $(\1: franc des Comores, francs des Comores, de francs des Comores, centime, centimes)
+LBP:(\D+) $(\1: livre libanaise, livres libanaises, de livres libanaises,,)
+MAD:(\D+) $(\1: dirham marocain, dirhams marocains, de dirhams marocains, centime, centimes)
+MGA:(\D+) $(\1: ariary, ariarys, d’ariarys, iraimbilanja, iraimbilanja)
+MRO:(\D+) $(\1: ouguiya, ouguiya, d’ouguiya, khoum, khoums)
+MUR:(\D+) $(\1: roupie mauricienne, roupies mauriciennes, de roupies mauriciennes, cent, cents)
+RWF:(\D+) $(\1: franc rwandais, francs rwandais, de francs rwandais, centime, centimes)
+SCR:(\D+) $(\1: roupie seychelloise, roupies seychelloises, de roupies seychelloise, cent, cents)
+TND:(\D+) $(\1: dinar tunisien, dinars tunisiens, de dinars tunisiens, millime, millimes)
 USD:(\D+) $(\1: dollar américain, dollars américains, de dollars américains, cent, cents)
+VUV:(\D+) $(\1: vatu, vatus, de vatus,,)
+X[AO]F:(\D+) $(\1: franc CFA, francs CFA, de francs CFA, centime, centimes)
+
+"(GNF|LBP|VUV) ([-−]?1(.0+)?)" $2 $(\1:us)
+"(GNF|LBP|VUV) ([-−]?\d+0{6,})" $2 $(\1:ud)
+"(GNF|LBP|VUV) ([-−]?\d+[.,]\d+)" $2 $(\1:up)
 
 "([A-Z]{3}) ([-−]?1)" $2 $(\1:us)
 "([A-Z]{3}) ([-−]?\d+0{6,})" $2 $(\1:ud)
 "([A-Z]{3}) ([-−]?\d+)" $2 $(\1:up)
+
+"((MGA|MRO) [-−]?\d+)[.,]0" $1
+"((MGA|MRO) [-−]?\d+)[.,]2" $1 y |$(1) $(\2:ss)
+"((MGA|MRO) [-−]?\d+)[.,]4" $1 y |$(2) $(\2:sp)
+"((MGA|MRO) [-−]?\d+)[.,]6" $1 y |$(3) $(\2:sp)
+"((MGA|MRO) [-−]?\d+)[.,]8" $1 y |$(4) $(\2:sp)
+
+"((TND) [-−]?\d+)[.,](001)" $1 y |$(1) $(\2:ss)
+"((TND) [-−]?\d+)[.,](\d)" $1 y |$(\300) $(\2:sp)
+"((TND) [-−]?\d+)[.,](\d\d)" $1 y |$(\30) $(\2:sp)
+"((TND) [-−]?\d+)[.,](\d\d\d)" $1 y |$3 $(\2:sp)
+
 "(([A-Z]{3}) [-−]?\d+)[.,](01)" $1 y |$(1) $(\2:ss)
 "(([A-Z]{3}) [-−]?\d+)[.,](\d)" $1 y |$(\30) $(\2:sp)
 "(([A-Z]{3}) [-−]?\d+)[.,](\d\d)" $1 y |$3 $(\2:sp)
+

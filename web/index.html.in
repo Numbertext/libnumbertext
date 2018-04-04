@@ -36,10 +36,9 @@ Edit your <a href="Soros.html">Soros program</a>.-->
 <noscript><center>Enable JavaScript or click <a class="menu2" href="#about">here</a>!</center></noscript>
 <div id="result"><div style="height: 100%; text-align: center; line-height: 480px;">Compiling Soros programs...</div></div>
 
-<div style="height: 100%;"></div>
+<div id="space" class="lang" style="height: 100%;"></div>
 
-<a name='about'>
-<div class='title'>
+<div class='title'><a name='about'>
 <table width="100%"><tr><td><span>&bull;&bull;&bull; NUMBERTEXT.org &bull;&bull;&bull; </span>
 </td><td align='right'>
 <span class='nowrap'>
@@ -74,7 +73,8 @@ Project leader: László Németh (nemeth at OpenOffice.org).
 <td valign='top'>The NUMBERTEXT/MONEYTEXT functions originally developed for the generalization of the BAHTTEXT spreadsheet function, a function of Microsoft Excel for number to Thai number name and currency conversion, standardized by the ECMA–376 and ISO/IEC 29 500:2008 Office Open XML format. This development can help the upcoming <a href="http://en.wikipedia.org/wiki/OpenFormula">OpenFormula</a> to be top-compliant with the ECMA/ISO BAHTTEXT without degrading its high requirements for an international standard.
 <p>See the <a href="numbertext.pdf">specification</a> and the related <a href="http://lingucomponent.openoffice.org/issues/show_bug.cgi?id=103746">OOo issue 103746</a>.
 
-<td valign='top'>The Soros programming language is a <a href="http://www.wikipedia.org/wiki/regex">regex</a> based programming language for number to text conversion and for other conversions beetween self-similar character sequences.
+<td valign='top'>The Soros programming language is a <a href="http://www.wikipedia.org/wiki/regex">regex</a> based programming language for number to text conversion and for other
+recursive conversions beetween self-similar character sequences.
 <p>The language has simple syntax and implementation (the interpreter in Python is only ~75 lines), and good performance also in
 script language implementations, thanks to the compiled regexes.
 
@@ -99,14 +99,15 @@ iterates this task on the remaining part, and insert the result to the output.--
 <td><a href="http://www.fsf.hu/index.php/About_us_en"><img src="http://extensions.services.openoffice.org/files/providerlogo/fsfhu_logo_0.png" title="FSF.hu Alapítvány, Hungary" alt="FSF.hu Alapítvány, Hungary"></a>
 <td><a href="http://en.wikipedia.org/wiki/ODF"><img src="odf-logo-by-andy-fitzsimon.png" title="OpenDocument" alt="ODF logo by Andy Fitzsimon"></a>
 <td><a href="http://www.openoffice.org"><img src="http://marketing.openoffice.org/art/galleries/logos/main/col/ooo-main-logo-col_200px.gif" title="OpenOffice.org" alt="OpenOffice.org"></a>
-<td><a href="http://www.wikipedia.org" title="Wikipedia" alt="Wikipedia"><img src="http://upload.wikimedia.org/wikipedia/commons/6/62/174px-Wikipedia-word1_7.png"></a>
+<td><a href="http://www.wikipedia.org" title="Wikipedia"><img alt="Wikipedia" src="http://upload.wikimedia.org/wikipedia/commons/6/62/174px-Wikipedia-word1_7.png"></a>
 <tr valign="top">
-<td>Stiching NLnet, Nederlands (donor)
-<td>FSF.hu Alapítvány, Hungary<br>(sponsor of
+<td><a href="http://nlnet.nl">NLnet Foundation, Nederlands</a><br> (donor)
+<td><a href="http://www.fsf.hu/index.php/About_us_en">FSF.hu Foundation, Hungary</a><br>(sponsor of
 <a href="http://extensions.services.openoffice.org/project/lightproof">Lightproof grammar checker</a>,
 <br>the inspiration of Numbertext project)
-<td colspan="2">OpenDocument Formula standard and OpenOffice.org (targets)
-<td>Wikipedia (knowledge base)
+<td><a href="http://en.wikipedia.org/wiki/ODF">OpenDocument</a><br>(target)
+<td><a href="http://www.openoffice.org">OpenOffice.org</a><br>(target)
+<td><a href="http://www.wikipedia.org">Wikipedia</a><br>(knowledge base)
 </table>
 </center>
 
@@ -116,12 +117,13 @@ iterates this task on the remaining part, and insert the result to the output.--
 <!-- **************************************************************************************************** -->
 <script language="javascript1.3">
 <!-- **************************************************************************************************** -->
-<!--!cat ../Soros.js-->
+<!--!cat ../src/Soros.js-->
 <!-- **************************************************************************************************** -->
 
 var keep = this
 
 language = {
+"af_ZA": "Afrikaans",
 "ca_ES": "Català",
 "cs_CZ": "Česky",
 "de_DE": "Deutsch",
@@ -134,6 +136,8 @@ language = {
 "hu_HU": "Magyar",
 "nl_NL": "Nederlands",
 "pl_PL": "Polski",
+"pt_BR": "Português brasileiro",
+"pt_PT": "Português",
 "ro_RO": "Română",
 "ru_RU": "Русский",
 "sl_SI": "Slovenščina",
@@ -141,10 +145,13 @@ language = {
 "sv_SV": "Svenska",
 "th_TH": "ไทย",
 "zh_ZH": "中文",
+"zh_ZH_2": "大写",
+"rovasiras": "𐲭𐲨𐲹𐲽𐲯𐲿𐲭𐲽𐲯",
 "Roman": "Roman"
 }
 
 default_currency = {
+"af_ZA": "ZAR",
 "ca_ES": "EUR",
 "cs_CZ": "CZK",
 "de_DE": "EUR",
@@ -159,6 +166,8 @@ default_currency = {
 "hu_HU": "HUF",
 "nl_NL": "EUR",
 "pl_PL": "PLN",
+"pt_BR": "BRL",
+"pt_PT": "EUR",
 "ro_RO": "RON",
 "ru_RU": "RUB",
 "sl_SI": "EUR",
@@ -166,6 +175,7 @@ default_currency = {
 "sv_SV": "SEK",
 "th_TH": "THB",
 "zh_ZH": "CNY",
+"zh_ZH_2": "CNY",
 "Roman": "-"
 }
 
@@ -190,12 +200,22 @@ return "rgb("+r+"%,"+g+"%,"+b+"%)"
 
 window.currency = document.getElementById('money').value
 
+if (navigator.appName.indexOf("Microsoft")!=-1) {
+window.width = document.body.clientWidth
+window.height = document.body.clientHeight
+}else{
+window.width = window.innerWidth
+window.height = window.innerHeight
+}
+
+window.langlen = document.getElementById('space').offsetWidth
+
 function usernum() {
     clearTimeout(window.time)
     window.num = document.getElementById('num').value
     window.currency = document.getElementById('money').value
     if (window.num != undefined && window.num != "") {
-	window.header = window.num
+	window.header = "x"
     } else {
 	window.header = ""
     }
@@ -211,15 +231,15 @@ function tim( ) {
 	window.num = Math.round(b.getTime()/1000) + ""
 	header = "Unix time in sec (" + num + ")"
 	window.time = setTimeout("tim()", 1000);
-    } else header = window.num
+    } else header = "Number (" + window.num + ")"
     window.range=100
     target = document.getElementById('result')
 //    target.innerHTML = "doc: " + document.body.scrollTop + " tar: " + target.offsetTop 
-    if (document.body.scrollTop < target.offsetTop + target.offsetHeight) target.innerHTML = "<div class='row' id='header' style='background-color:"+rgb(window.range, 2, 60)+"'><div class='lang'>Language</div>" + header + "</div>" +
+    if (document.body.scrollTop < target.offsetTop + target.offsetHeight) target.innerHTML = "<table id='conv'><tbody><tr class='row' id='header' style='background-color:"+rgb(window.range, 2, 60)+"'><td width='75pt'>Language<td>" + header + "</td></tr>" +
 <!-- **************************************************************************************************** -->
-<!--!cd ../data; n=3; for i in `ls *.sor | grep -v 2 | grep -v suzhou | grep -v romanII`; do name=`basename $i .sor`; echo "\"<div class='row' style='background-color:\"+rgb(window.range,$n, $n%2?65:60)+\";' title='\" + \"$name\".replace(\"_\",\"-\") + \"'><div class='lang'>\" + language[\"$name\"] + \"</div>\" + numlang['$name'].run((window.currency == \"-\" ? \"\" : (window.currency == \"def\" ? default_currency[\"$name\"] : window.currency) + \" \") + window.num) + '</div>' +";n=`echo $n+1 | bc`; done-->
+<!--!cd ../data; n=3; for i in `ls *.sor | grep -v en_US_2 | grep -v Suzhou | grep -v Roman_2`; do name=`basename $i .sor`; test "$name" = "rovasiras" && rovas="rovas" || rovas=""; test "$name" = "rovasiras" && rtl="align='right'" || rtl=""; echo "\"<tr class='row $rovas' style='background-color:\"+rgb(window.range,$n, $n%2?65:60)+\";' title='\" + \"$name\".replace(\"_\",\"-\") + \"'><td width='75pt'>\" + language[\"$name\"] + \"</td><td $rtl>\" + numlang['$name'].run((window.currency == \"-\" ? \"\" : (window.currency == \"def\" ? default_currency[\"$name\"] : window.currency) + \" \") + window.num) + '</td></tr>' +";n=`echo $n+1 | bc`; done-->
 <!-- **************************************************************************************************** -->
-    "";
+    "</tbody></table>";
 }
 tim()
 </script>

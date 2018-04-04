@@ -1,5 +1,86 @@
+2009-08-10: László Németh (nemeth openoffice org):
+	* pythonpath/org/Numbertext/__init__.py: add missing Numbertext module
+	
+	* bin/locales.py: fix registration of the first language module
+
+	* data/af_ZA.py: fix helper functions (space handling)
+
+2009-08-09: László Németh (nemeth openoffice org):
+	* numbertext.py: new namespace (incompatible with previous versions):
+	  ORG.NUMBERTEXT.NUMBERTEXT() and ORG.NUMBERTEXT.MONEYTEXT(),
+	  suggested by Eike Rathke (er at OOo).
+
+	* CalcAddIn.xcu: standard resource files for settings and
+	  localizations (see Jan Holst Jensen's excellent Add-in example and
+	  documentation: http://biochemfusion.com/doc/Calc_addin_howto.html)
+
+	* CalcAddIn.xcu: add compatibility names: working XLS export-import
+          (XLS portability bug reported by Mushtaque Asghar).
+    
+	* numbertext.py: now NUMBERTEXT() has no default rounding:
+
+        =NUMBERTEXT(4.12345) -> four dot one two three four five
+        =NUMBERTEXT(4.00) -> four
+        =NUMBERTEXT("4.00") -> four dot zero zero
+
+	* numbertext.py: MONEYTEXT() supports not integer decimal places:
+	=MONEYTEXT(1.8, "MGA") -> one ariary and *four* iraimbilanja
+
+	* src/places.py: add MGA, MRO with decimal place 0.7
+	(eg. one ariary = 5 iraimbilanja, decimal places = 0.7 in places.py)
+
+	* doc/numbertext.odt: NUMBERTEXT specification 1.1:
+        - remove decimal place argument
+
+	* doc/sorosspec.odt:
+	- add number to Devanagari number example to the Soros specification;
+	- add Python implementation
+
+	* data/pt_PT.sor: Portuguese 
+	- initial version from Eduardo Moreno (emoreno tokonhu com):
+          "Nombres en portugues de los números, con ayuda de Flavia Viegas".
+	- extension:
+	  - simplification
+	  - long scale support
+	  - syntax of "e" based on Portuguese test data of PERL::Lingua Words2Nums
+	  - extended with currency names of Portuguese speaking countries
+
+	* data/pt_BR.sor: Brazilian Portuguese
+	- based on pt-PT, but Brazilian Portuguese uses short scale numbers
+	  and different ortography (number 16, 17, 19).
+
+	* data/af_ZA.sor: Africaans
+	- the orthography based on Bruce C. Donaldson: A grammar of Africaans,
+	  MOUTON DE GRUYTER, 1993
+	  
+	* data/zh_ZH_2.sor: Simplified financial Chinese module.
+
+	* data/fr_FR.sor, data/en_US*.sor, data/es_ES.sor: 
+	
+	- extended currency names for English, French and Spanish modules
+
+	* data/*: - fixes for language data:
+
+	- Romanian, Swedish, Slovenian, Czech, etc.: fix decimals (.0n)
+
+        - Greek: removing unnecessary "de"
+
+        - Spanish: 21 (veintidós) -> 22, negativa - -> menos,
+          reported by Eduardo Moreno (emoreno tokonhu com).
+
+	- Italian: unucento -> cento (reported also by Claudio Colombo.
+
+	- Esperanto: unudek -> dek, unucent -> cent, miliono -> unu miliono.
+
+	* tests/test0*: test number 1-1000 in all languages (see make check).
+
+	* web/*: fix for IE, etc.
+
 2009-07-25: László Németh (nemeth openoffice org):
 	* data/*.sor: 11 new languages (see README)
+	- syntax and orthography based mostly on Wikipedia articles
+	- for Greek numerals, see Harry Foundalis' excellent introduction
+	  (http://www.foundalis.com/lan/grknum.htm)
 	
 	* numbertext.py: handling language variants (eg. en-US-2
 	  for USD 20.25 -> twenty and 25/100 dollars)
