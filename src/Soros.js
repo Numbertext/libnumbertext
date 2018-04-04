@@ -26,7 +26,10 @@ function Soros(program) {
     // character translation function
     this.tr = function (text, chars, chars2, delim) {
 	for (var i = 0; i < chars.length; i++) {
-	    text = text.replace(delim + chars[i], chars2[i])
+	    var s = delim + chars[i]
+	    while (text.indexOf(s) >= 0) {
+		text = text.replace(s, chars2[i]);
+	    }
 	}
 	return text
     };
@@ -70,8 +73,12 @@ function Soros(program) {
 	if (this.numbertext) data = this.strip(data, " ").replace(/  +/g, " ")
 	return this.tr(data, this.enc, this.meta, "")
     };
-    
+
     // constructor
+//    program = program.replace(/\\\\/g, "\uE000")
+//    program = program.replace(/\\[(]/g, "\uE003")
+//   program = program.replace(/\\[)]/g, "\uE004")
+//    program = program.replace(/\\[|]/g, "\uE005")
     program = this.tr(program, this.meta, this.enc, "\\")
     var l = program.replace(/(#[^\n]*)?(\n|$)/g, ";").split(";")
     for (var i in l) {

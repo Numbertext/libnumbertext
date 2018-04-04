@@ -1,11 +1,12 @@
 Language-neutral NUMBERTEXT and MONEYTEXT functions for OpenOffice.org Calc
 
-version 0.8.1 (2010-04-22)
+version 0.9 (2010-05-20)
 
 Numbertext OOo extension,
 Soros programming language specification (draft) and IDE*,
 Soros interpreter in Python: pythonpath/Soros.py,
 Soros interpreter in JavaScript: Soros.js*:
+Soros interpreter in Java: see NUMBERTEXT.org
 
 * Not in OpenOffice.org extension, see http://NUMBERTEXT.org for
   the full distribution.
@@ -69,7 +70,8 @@ zh-ZH-2	Chinese (simplified, formal)
 Old number systems:
 
 Hung	Old Hungarian Script
-Roman	Roman numbers
+Roman	Roman numbers (parenthesized variant)
+Roman_2	Roman numbers (with overline, bars, and optionally special characters)
 Suzhou	Chinese Suzhou numerals
 
 = Installation in OpenOffice.org =

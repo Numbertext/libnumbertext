@@ -1,3 +1,22 @@
+2010-05-20: László Németh (nemeth openoffice org):
+	* data/sv_SE.sor: 
+	- fix 30 (trettio)
+	- reference implementation with grammar and year support,
+	  also with gender parameters for currencies. Gender problem
+	  with currencies reported by Kent Karlsson in CLDR ticket 2783
+
+	* data/Roman.sor:
+	- replaced with the more compact Roman_2.sor
+	- replace "(" and ")" with "\(" and "\)" (parenthesized numerals)
+
+	* data/Roman_2.sor:
+	- variant with overline and bars
+	- extra functions: historical with the special Unicode characters for
+	  1000, 5000 and 10000
+
+	* src/Soros.js:
+	- fix character encoding for \(, \) etc.
+
 2010-04-26: László Németh (nemeth openoffice org):
 	* data/fr_*: ordf and ordm instead of ord-fem and ord-mas
 

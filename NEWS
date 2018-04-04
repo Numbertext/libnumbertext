@@ -1,3 +1,25 @@
+2010-05-20: version 0.9
+    - reference implementation for Swedish: 
+	- cardinal and ordinal numbers with gender
+	- ordinal abbreviations with gender
+	- year
+	- gender parameters at currencies
+
+    - reference implementation for Roman numerals:
+      Roman_2.sor: overlined with bars, also historical forms:
+    
+      $ python soroside.py ../data/Roman_2.sor  38000
+
+      X̅X̅X̅V̅I̅I̅I̅
+
+      $ python soroside.py ../data/Roman_2.sor  30000000
+
+      |C̅C̅C̅|
+      
+      $ python soroside.py ../data/Roman_2.sor -p historical 38000
+
+               ↂↂↂↁↀↀↀ
+
 2010-04-26: version 0.8.2
     - fixes for Russian
     - ordinal number support in Hebrew
@@ -8,9 +30,9 @@
 
     - ordinal numbers in French and Thai
 
-    - extended syntax in src/soros.py tool (ranges with different steps):
+    - extended syntax in src/soroside.py tool (ranges with different steps):
 
-    $ python src/soros.py data/en_US.sor 0-10~5
+    $ python src/soroside.py data/en_US.sor 0-10~5
     zero
     five
     ten
@@ -25,7 +47,7 @@
     - new command line tool "soros.py", features:
 
 	- convert numbers and ranges:
-	    $ python src/soros.py data/en_US.sor 1 5-7 10
+	    $ python src/soroside.py data/en_US.sor 1 5-7 10
 	    one
 	    five
 	    six
@@ -33,21 +55,21 @@
 	    ten
 	    
 	- prefix (function) support:
-	    $ python src/soros.py -p ord2 data/en_US.sor 1-4
+	    $ python src/soroside.py -p ord2 data/en_US.sor 1-4
 	    1st
 	    2nd
 	    3rd
 	    4th
 	    
 	- file output:
-	    $ python src/soros.py -o nums data/en_US.sor 100-200
+	    $ python src/soroside.py -o nums data/en_US.sor 100-200
 	    $ head -3 nums
 	    one hundred
 	    one hundred and one
 	    one hundred and two
 
     - new convention: "help" item in some modules:
-	$ python src/soros.py -o nums data/en_US.sor help
+	$ python src/soroside.py -o nums data/en_US.sor help
 	Functions:
 	 ord (ordinal numbers, eg. "first")
 	ord2 (ordinal abbreviations, eg. "1st")

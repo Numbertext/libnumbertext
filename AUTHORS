@@ -48,6 +48,9 @@ Lucian Adrian Grijincu (lucian dot grijincu at gmail):
 	- reported missing gender support in Romanian MONEYTEXT implementation:
 	  https://bugs.launchpad.net/bugs/421309)
 
+Kent Karlsson:
+	- reported Swedish gender problem with currencies in sv_SE.sor.
+
 Marcin Miłkowski (milek_pl at o2 dot pl):
 
 	- patch for Polish: https://bugs.launchpad.net/numbertext/+bug/421031:

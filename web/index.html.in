@@ -22,7 +22,7 @@ with currency: <select id="money" onChange='usernum();'>
 <option value="GBP">GBP</option>
 <option value="JPY">JPY</option>
 <option value="USD">USD</option>
-</select></td><td align='right'><b>2010-04-22</b> v0.8.1 (<a href="http://extensions.services.openoffice.org/project/numbertext">oxt</a>, <a href="dist/numbertext.jar">jar</a>)
+</select></td><td align='right'><b>2010-05-20</b> v0.9 (<a href="http://extensions.services.openoffice.org/project/numbertext">oxt</a>, <a href="dist/numbertext.jar">jar</a>)
 <span class='nowrap'>
 <!--<a class="menu2" href="IDE.html">IDE</a>-->
 <a class="menu2" href="#about">Help</a>
@@ -39,7 +39,7 @@ Edit your <a href="Soros.html">Soros program</a>.-->
 <div id="space" class="lang" style="height: 200%;"></div>
 
 <div class='title'><a name='about'>
-<table width="100%"><tr><td><span>News: <a href="dist/numbertext.jar">Java jar</a> • ordinal numbers, check =MONEYTEXT(num;"ord";"[de/en/hu]") • <a>Hebrew module</a> </span>
+<table width="100%"><tr><td><span>News: improved Swedish (reference for complex grammar) &bull; Roman_2: new variant</span>
 </td><td align='right'>
 <span class='nowrap'>
 <!--<a class="menu2" href="IDE.html">IDE</a>-->
