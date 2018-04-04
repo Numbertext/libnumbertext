@@ -1,3 +1,9 @@
+2010-05-28: version 0.9.1
+    - new module: English with Indian numbering system (en-IN)
+      (lakh = 100.000, crone = 10.000.000)
+
+    - other fixes (see Changelog)
+
 2010-05-20: version 0.9
     - reference implementation for Swedish: 
 	- cardinal and ordinal numbers with gender
@@ -7,7 +13,7 @@
 
     - reference implementation for Roman numerals:
       Roman_2.sor: overlined with bars, also historical forms:
-    
+
       $ python soroside.py ../data/Roman_2.sor  38000
 
       X̅X̅X̅V̅I̅I̅I̅
@@ -15,7 +21,7 @@
       $ python soroside.py ../data/Roman_2.sor  30000000
 
       |C̅C̅C̅|
-      
+
       $ python soroside.py ../data/Roman_2.sor -p historical 38000
 
                ↂↂↂↁↀↀↀ

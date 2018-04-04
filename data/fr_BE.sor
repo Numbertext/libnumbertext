@@ -121,11 +121,11 @@ XPF:(\D+) $(\1: franc Pacifique, francs Pacifique, de francs Pacifique, centime,
 "ordf 1" première
 "ordm? 1" premier
 
-"ord[fm]? ([-−]?\d+)" $(ord:$2)
+"ord[fm]? ([-−]?\d+)" $(ord:|$1)
 
 ord:(.*)e \1ième	# quatre etc.
 ord:(.*)f \1vième	# neuf
 ord:(.*q) \1uième	# cinq
-ord:(.*) \1ième		# others
+"ord:(.*[^ ]) *" \1ième		# others
 
 help Functions: ord (ordinal numbers)\nordf (feminine ordinal numbers)\nordm (masculine ordinal numbers)

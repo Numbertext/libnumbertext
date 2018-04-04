@@ -5,6 +5,7 @@ cs_CZ
 da_DK
 de_DE
 el_EL
+en_IN
 en_US_2
 en_US
 eo

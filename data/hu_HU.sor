@@ -104,7 +104,7 @@ ZAR:(.)	$(\1: dél-afrikai rand, cent)
 
 "ord 1" első
 "ord 2" második
-"ord ([-−]?\d+)" $(ord:$1)
+"ord ([-−]?\d+)" $(ord:|$1)
 
 ord:(.*)nulla	\1nulladik
 ord:(.*)egy	\1egyedik

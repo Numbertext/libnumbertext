@@ -1,6 +1,6 @@
 Language-neutral NUMBERTEXT and MONEYTEXT functions for OpenOffice.org Calc
 
-version 0.9 (2010-05-20)
+version 0.9.1 (2010-05-28)
 
 Numbertext OOo extension,
 Soros programming language specification (draft) and IDE*,
@@ -35,6 +35,7 @@ cs-CZ	Czech
 da-DK	Danish
 de-DE	German
 el-EL	Greek
+en-IN	English with Indian numbering system (lakh = 100.000, crone = 10^7)
 en-US	English (USD 20.25 -> twenty dollars and twenty-five cents)
 en-US-2	English variant (USD 20.25 -> twenty and 25/100 dollars)
 eo	Esperanto
@@ -116,4 +117,6 @@ make check
 test/thaicheck.ods is a simple test of the equivalence of
 the Soros implementation of Thai number to number name conversion
 and BAHTTEXT function.
+
+== Java API ==
 

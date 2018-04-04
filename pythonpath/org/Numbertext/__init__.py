@@ -127,7 +127,7 @@ def get_numbertext(num, conv):
 	try:
 		n = conv.run(num)
 	except:
-		return "Conversion error"	
+		return "Conversion error"
 	if n == "":
 		return num
 	return n

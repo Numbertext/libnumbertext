@@ -98,16 +98,13 @@ ord:(.*)två	\1andre		# 2
 ord:(.*)tre	\1tredje	# 3
 ord:(.*)fyra	\1fjärde	# 4
 ord:(.*)sex	\1sjätte	# 6
-ord:(.*)sju	\1sjunde	# 7
+ord:(.*(sju|io)) \1nde		# 7, 9, 10, 20..90
 ord:(.*)åtta	\1åttonde	# 8
 ord:(.*)elva	\1elfte		# 11
 ord:(.*)tolv	\1tolfte	# 12
-ord:(.*)ton	\1tonde		# 13, 14..19
-ord:(.*)io	\1ionde		# 9, 10, 20..90
-ord:(.*)hundra	\1de		# 100, 200...
-ord:(.*)tusen	\1de		# 1000, 2000...
-ord:(.*)er	\1te		# milljoner...
-ord:(.*)	\1te		# 0, 5, milljon...
+"ord:(.*(ton|hundra|tusen)) *"	\1de	# 13, 14..19, 100, 1000
+"ord:(.*)er *"	\1te		# milljoner...
+"ord:(.*[^ ]) *"	\1te	# 0, 5, milljon...
 
 "ord[fn] ([-−]?\d+)" $(ordf:$(ord:$1))
 ordf:(.*(först|andr))e \1a	# 1, 2

@@ -39,7 +39,7 @@ Edit your <a href="Soros.html">Soros program</a>.-->
 <div id="space" class="lang" style="height: 200%;"></div>
 
 <div class='title'><a name='about'>
-<table width="100%"><tr><td><span>News: improved Swedish (reference for complex grammar) &bull; Roman_2: new variant</span>
+<table width="100%"><tr><td><span>News: Indian English module (lakh = 100.000, crone = 10.000.000)</span>
 </td><td align='right'>
 <span class='nowrap'>
 <!--<a class="menu2" href="IDE.html">IDE</a>-->
@@ -127,6 +127,7 @@ language = {
 "da_DK": "Dansk",
 "de_DE": "Deutsch",
 "el_EL": "Ελληνικά",
+"en_IN": "English&nbsp;(IN)",
 "en_US": "English",
 "es_ES": "Español",
 "eo": "Esperanto",
@@ -169,6 +170,7 @@ default_currency = {
 "da_DK": "DKK",
 "el_EL": "EUR",
 "en_GB": "GBP",
+"en_IN": "INR",
 "en_US": "USD",
 "es_ES": "EUR",
 "eo": "-",

@@ -1,3 +1,20 @@
+2010-05-28: László Németh (nemeth openoffice org):
+	* data/en_IN.sor: Indian numbering system. Lakh = 100.000, crone =
+	  10.000.000 (requested by Dhandip at OOo Extensions site).
+
+	* data/ca_ES.sor: fix Catalan MONEYTEXT in Calc Numbertext extension
+	  (Launchpad bug 585782 reported by Bernard Marcelly).
+
+	* data/en_US.sor, hu_HU.sor: fix 0th
+
+	* data/sv_SE.sor: fix 0th, 100th, 1000th
+
+	* data/fr_*.sor: fix ordinal numbers
+
+	* doc/*odt: modifications: DollarText/BAHTTEXT field formatters of
+	  MS Office and ECMA-376, Unicode CLDR, corrections for RBNF,
+	  BSD license for example Python and Java interpreters
+
 2010-05-20: László Németh (nemeth openoffice org):
 	* data/sv_SE.sor: 
 	- fix 30 (trettio)

@@ -134,7 +134,7 @@ ZWL:(\D+) $(\1: Zimbabwe dollar, Zimbabwe dollars, cent, cents)
 
 # ordinal numbers
 
-"ord ([-−]?\d+)" $(ord:$1)
+"ord ([-−]?\d+)" $(ord:|$1)
 
 ord:(.*)one	\1first
 ord:(.*)two	\1second
@@ -144,8 +144,7 @@ ord:(.*)eight	\1eighth
 ord:(.*)nine	\1ninth
 ord:(.*)twelve	\1twelfth
 ord:(.*)y	\1ieth
-"ord:(.*) " 	\1th
-ord:(.*)	\1th
+"ord:(.*[^ ]) *" \1th
 
 # ordinal abbreviation
 
