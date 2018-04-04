@@ -17,7 +17,7 @@ public class Numbertext {
   private static Soros load(String lang) {
     try {
 	URL url = Numbertext.class.getResource("data/" + lang + ".sor");
-	BufferedReader f = new BufferedReader(new InputStreamReader(url.openStream()));
+	BufferedReader f = new BufferedReader(new InputStreamReader(url.openStream(), "UTF-8"));
 	StringBuffer st = new StringBuffer();
 	String line = null;
 	while (( line = f.readLine()) != null) {
