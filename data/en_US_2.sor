@@ -29,33 +29,22 @@ __numbertext__
 8(\d) eighty-$1
 (\d)0 $1ty
 (\d)(\d) $1ty-$2
-(\d)(00) $1 hundred
-(\d)(\d\d) $1 hundred and $2
-(\d{1,3})(000) $1 thousand
-(\d{1,3})(0\d\d) $1 thousand and $2
-(\d{1,2})(\d{3}) $1 thousand $2
-(\d{3})(\d{3}) $1 thousand, $2
-(\d{1,3})(0{6}) $1 million
-(\d{1,3})(0{4}\d\d) $1 million and $2
-(\d{1,3})(\d{6}) $1 million, $2
-(\d{1,3})(0{9}) $1 billion
-(\d{1,3})(0{7}\d\d) $1 billion and $2
-(\d{1,3})(\d{9}) $1 billion, $2
-(\d{1,3})(0{12}) $1 trillion
-(\d{1,3})(0{10}\d\d) $1 trillion and $2
-(\d{1,3})(\d{12}) $1 trillion, $2
-(\d{1,3})(0{15}) $1 quadrillion 
-(\d{1,3})(0{13}\d\d) $1 quadrillion and $2
-(\d{1,3})(\d{15}) $1 quadrillion, $2
-(\d{1,3})(0{18}) $1 quintillion 
-(\d{1,3})(0{16}\d\d) $1 quintillion and $2
-(\d{1,3})(\d{18}) $1 quintillion, $2
-(\d{1,3})(0{21}) $1 sextillion 
-(\d{1,3})(0{19}\d\d) $1 sextillion and $2
-(\d{1,3})(\d{21}) $1 sextillion, $2
-(\d{1,3})(0{24}) $1 septillion 
-(\d{1,3})(0{22}\d\d) $1 septillion and $2
-(\d{1,3})(\d{24}) $1 septillion, $2
+
+# separator function
+:0+			# one million
+:0*\d?\d " and"		# one million and twenty-two
+:\d+ ,			# one million, one thousand
+
+(\d)(\d\d) $1 hundred$(:\2) $2
+(\d{1,2})([^0]\d\d) $1 thousand $2	# ten thousand two hundred
+(\d{1,3})(\d{3}) $1 thousand$(:\2) $2	# one hundred thousand, two hundred
+(\d{1,3})(\d{6}) $1 million$(:\2) $2
+(\d{1,3})(\d{9}) $1 billion$(:\2) $2
+(\d{1,3})(\d{12}) $1 trillion$(:\2) $2
+(\d{1,3})(\d{15}) $1 quadrillion$(:\2) $2
+(\d{1,3})(\d{18}) $1 quintillion$(:\2) $2
+(\d{1,3})(\d{21}) $1 sextillion$(:\2) $2
+(\d{1,3})(\d{24}) $1 septillion$(:\2) $2
 
 # negative number
 

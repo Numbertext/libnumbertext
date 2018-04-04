@@ -24,20 +24,18 @@ __numbertext__
 1(\d\d) száz$1
 (\d)(\d\d) $1száz$2
 1(\d{3}) ezer$1
-(\d{1,3})000 $1ezer
-(\d{1,3})(\d{3}) $1ezer-$2
-(\d{1,3})0{6} $1millió
-(\d{1,3})(\d{6}) $1millió-$2
-(\d{1,3})0{9} $1milliárd
-(\d{1,3})(\d{9}) $1milliárd-$2
-(\d{1,3})0{12} $1billió
-(\d{1,3})(\d{12}) $1billió-$2
-(\d{1,3})0{15} $1billiárd
-(\d{1,3})(\d{15}) $1billiárd-$2
-(\d{1,3})0{18} $1trillió
-(\d{1,3})(\d{18}) $1trillió-$2
-(\d{1,3})0{21} $1trilliárd
-(\d{1,3})(\d{21}) $1trilliárd-$2
+
+# separator function
+:0*	# kétezer
+:\d* -	# kétezer-egy
+
+(\d{1,3})(\d{3}) $1ezer$(:\2)$2
+(\d{1,3})(\d{6}) $1millió$(:\2)$2
+(\d{1,3})(\d{9}) $1milliárd$(:\2)$2
+(\d{1,3})(\d{12}) $1billió$(:\2)$2
+(\d{1,3})(\d{15}) $1billiárd$(:\2)$2
+(\d{1,3})(\d{18}) $1trillió$(:\2)$2
+(\d{1,3})(\d{21}) $1trilliárd$(:\2)$2
 
 # negative numbers
 

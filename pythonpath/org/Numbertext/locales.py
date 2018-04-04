@@ -11,7 +11,12 @@ es_ES
 fi_FI
 fr_FR
 hu_HU
+Hung
 it_IT
+ja_JP_2
+ja_JP
+ko_KP
+ko_KR
 nl_NL
 pl_PL
 pt_BR

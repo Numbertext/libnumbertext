@@ -1,3 +1,16 @@
+2009-08-20: László Németh (nemeth openoffice org):
+	* data/ko*, ja*, Hang.sor: Korean, Japanese and Old Hungarian modules.
+
+	* data/en_US.*, hu_HU.sor: optimized by separator functions.
+
+	* web/webroot/Hung.ttf: TrueType font with Old Hungarian numbers and
+	  some letters for the native name of the script (ROVÁSÍRÁS)
+
+	* web/*: new section (old number systems)
+
+	* data/it_IT.sor: Using "virgola" for comma. Bug reported by
+	  Attilafdd at launchpad.net.
+
 2009-08-10: László Németh (nemeth openoffice org):
 	* pythonpath/org/Numbertext/__init__.py: add missing Numbertext module
 	

@@ -3,6 +3,7 @@ for their donation and support.
 
 Thanks to the contributors and the following authors:
 
+Attilafdd at launchpad.net: fix the name of the Italian comma (virgula instead of komma).
 Mushtaque Asghar: reporting XLS portability bug
 Claudio Colombo (claudio_c77 at yahoo.it): Italian bug report
 Dániel Darabos: suggesting __import__ data modules instead of difficult text file handling

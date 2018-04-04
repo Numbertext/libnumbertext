@@ -133,10 +133,14 @@ language = {
 "eo": "Esperanto",
 "fr_FR": "Français",
 "it_IT": "Italiano",
+"ja_JP": "日本語",
+"ja_JP_2": "大字",
+"ko_KP": "한국어 (KP)",
+"ko_KR": "한국어 (KR)",
 "hu_HU": "Magyar",
 "nl_NL": "Nederlands",
 "pl_PL": "Polski",
-"pt_BR": "Português brasileiro",
+"pt_BR": "Português&nbsp;(BR)",
 "pt_PT": "Português",
 "ro_RO": "Română",
 "ru_RU": "Русский",
@@ -146,8 +150,9 @@ language = {
 "th_TH": "ไทย",
 "zh_ZH": "中文",
 "zh_ZH_2": "大写",
-"rovasiras": "𐲭𐲨𐲹𐲽𐲯𐲿𐲭𐲽𐲯",
-"Roman": "Roman"
+"Hung": "𐲭𐲨𐲹𐲽𐲯𐲿𐲭𐲽𐲯",
+"Roman": "Roman",
+"Suzhou": "花碼"
 }
 
 default_currency = {
@@ -163,6 +168,10 @@ default_currency = {
 "eo": "-",
 "fr_FR": "EUR",
 "it_IT": "EUR",
+"ja_JP": "JPY",
+"ja_JP_2": "JPY",
+"ko_KP": "KPW",
+"ko_KR": "KRW",
 "hu_HU": "HUF",
 "nl_NL": "EUR",
 "pl_PL": "PLN",
@@ -176,7 +185,9 @@ default_currency = {
 "th_TH": "THB",
 "zh_ZH": "CNY",
 "zh_ZH_2": "CNY",
-"Roman": "-"
+"Roman": "-",
+"Rovas": "-",
+"Suzhou": "CNY"
 }
 
 numlang=[]
@@ -237,7 +248,7 @@ function tim( ) {
 //    target.innerHTML = "doc: " + document.body.scrollTop + " tar: " + target.offsetTop 
     if (document.body.scrollTop < target.offsetTop + target.offsetHeight) target.innerHTML = "<table id='conv'><tbody><tr class='row' id='header' style='background-color:"+rgb(window.range, 2, 60)+"'><td width='75pt'>Language<td>" + header + "</td></tr>" +
 <!-- **************************************************************************************************** -->
-<!--!cd ../data; n=3; for i in `ls *.sor | grep -v en_US_2 | grep -v Suzhou | grep -v Roman_2`; do name=`basename $i .sor`; test "$name" = "rovasiras" && rovas="rovas" || rovas=""; test "$name" = "rovasiras" && rtl="align='right'" || rtl=""; echo "\"<tr class='row $rovas' style='background-color:\"+rgb(window.range,$n, $n%2?65:60)+\";' title='\" + \"$name\".replace(\"_\",\"-\") + \"'><td width='75pt'>\" + language[\"$name\"] + \"</td><td $rtl>\" + numlang['$name'].run((window.currency == \"-\" ? \"\" : (window.currency == \"def\" ? default_currency[\"$name\"] : window.currency) + \" \") + window.num) + '</td></tr>' +";n=`echo $n+1 | bc`; done-->
+<!--!cd ../data; n=3; for i in `ls *.sor | grep -v en_US_2 | grep -v ^[A-Z]` Hung.sor Roman.sor Suzhou.sor; do name=`basename $i .sor`; name2=`echo $name | tr _ -`; head=""; rtl=""; rovas=""; case $name in Hung) head="<tr class='sep' style='background-color:\"+rgb(window.range,$n, $n%2?65:60)+\";' title='$name2'><td colspan='2' class='sep'>Old systems (extended for large numbers) &ndash; Old Hungarian (correct typefaces in Firefox 3.5), Roman and Suzhou numerals</td></tr>"; n=`echo $n+1 | bc`;rovas="rovas"; rtl="align='right'";; esac; echo "\"$head<tr class='row $rovas' style='background-color:\"+rgb(window.range,$n, $n%2?65:60)+\";' title='$name2'><td width='75pt'>\" + language[\"$name\"] + \"</td><td $rtl>\" + numlang['$name'].run((window.currency == \"-\" ? \"\" : (window.currency == \"def\" ? default_currency[\"$name\"] : window.currency) + \" \") + window.num).replace(\"\\\n\",\"<br>\") + '</td></tr>' +";n=`echo $n+1 | bc`; done-->
 <!-- **************************************************************************************************** -->
     "</tbody></table>";
 }

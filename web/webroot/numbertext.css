@@ -75,26 +75,34 @@ tr.text td {
 	padding: 5pt;
 }
 @font-face {
-   font-family: rovas;
-/*   src: url("rstdcsjb.ttf") format("truetype"); */
-   src: url("RovasLudtollPUA.ttf") format("truetype"); 
+   font-family: Hung;
+   src: url("Hung.ttf") format("truetype"); 
 }
 .rovas {
-	font-family: rovas;
+	font-family: Hung;
 	width: 100%;
 }
 table#conv {
 	width: 100%;
-	border-spacing: 0;
+	border-spacing: 0px;
+	border-collapse: collapse;
 }
-table#conv tr{
+table#conv tr {
 	margin: 0px;
 }
-table#conv td{
+table#conv td {
 	margin: 0px;
 	padding: 2pt;
 	padding-left: 5pt;
 	padding-right: 5pt;
 	border-width: 0px;
 	border-style: solid;
+	white-space: nowrap;	
 }
+
+table#conv td.sep {
+	border-width: 1px 0px 0px 0px;
+	border-color: black;
+	border-style: solid;
+}
+

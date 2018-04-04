@@ -1,3 +1,15 @@
+2009-08-20: version 0.5
+    - new modules:
+      ja-JP	Japanese
+      ja-JP-2	Japanese (formal)
+      ko-KP	North-Korean
+      ko-KR	South-Korean
+      Hung	Old Hungarian Script
+
+    - web: add new modules and Chinese Suzhou numerals
+    
+    - fixes
+
 2009-08-10: version 0.4
     - fixes
 

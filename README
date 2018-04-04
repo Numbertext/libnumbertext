@@ -1,6 +1,6 @@
 Language-neutral NUMBERTEXT and MONEYTEXT functions for OpenOffice.org Calc
 
-version 0.4 (2009-08-10)
+version 0.5 (2009-08-20)
 
 Numbertext OOo extension,
 Soros programming language specification (draft) and IDE,
@@ -30,6 +30,10 @@ fi-FI	Finnish
 fr-FR	French
 hu-HU	Hungarian
 it-IT	Italian
+ko-KP	North-Korean
+ko-KR	South-Korean
+ja-JP	Japanese
+ja-JP-2	Japanese (formal)
 nl-NL	Dutch
 pl-PL	Polish
 pt-BR	Brazilian Portuguese
@@ -40,10 +44,11 @@ sl-SI	Slovenian
 sv-SV	Swedish
 th-TH	Thai
 zh-ZH	Chinese (simplified)
-zh-ZH-2	Chinese (simplified, financial)
+zh-ZH-2	Chinese (simplified, formal)
 
-Number formats:
+Old number systems:
 
+Hung	Old Hungarian Script
 Roman	Roman numbers
 Suzhou	Chinese Suzhou numerals
 
