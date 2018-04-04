@@ -1,3 +1,9 @@
+2010-11-03: László Németh (nemeth openoffice org):
+        * data/vi_VN.sor: new Vietnamese module
+        * data/ru_RU.sor:
+        - fix for 2 (subunits of EUR, GBP, USD),
+        - add currency UAH, reports and patch by wasow at extensions ooo
+
 2010-08-03: László Németh (nemeth openoffice org):
 	* pythonpath/org/Numbertext/__init__.py: fix rounding differences
 	  between Calc and Numbertext functions: rounding by Calc round()

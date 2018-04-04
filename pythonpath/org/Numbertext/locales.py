@@ -41,6 +41,7 @@ Suzhou
 sv_SE
 th_TH
 tr_TR
+vi_VN
 zh_ZH_2
 zh_ZH
 """.strip().split("\n")

@@ -136,6 +136,10 @@ Johanna Sørensen:
 
 	- bug report about "Dansk" language name on Numbertext.org home page
 
+Marcin Stępniak:
+
+        - patch to set default UTF-8 encoding in numbertext.jar
+
 Supapong at OOo Wiki:
 
 	- bug report about Thai numbers ending with "01" (Excel BAHTTEXT bug)
@@ -155,6 +159,10 @@ xhydrogene at launchpad dot net:
 		- "comma" must be translated in french "virgule" (https://bugs.launchpad.net/numbertext/+bug/421148)
 		- "y" must be translated in french "et" (https://bugs.launchpad.net/numbertext/+bug/421151)
 		- "un mille" must be writed only "mille" in french (https://bugs.launchpad.net/numbertext/+bug/421164)
+
+wasow at extensions openoffice org:
+
+        - bug report and patch (+UAH) to the Russian module
 
 Michel Weimerskirch (michel at weimerskirch dot net):
 

@@ -1,3 +1,12 @@
+2010-11-03: version 0.9.4
+    - data/vi_VN.sor: new Vietnamese module
+
+    - numbertext.jar: patch to set default UTF-8 encoding by Marcin Stępniak
+
+    - Russian module:
+      - fix for 2 (subunits of EUR, GBP, USD),
+      - add currency UAH, reports and patch by wasow at extensions ooo
+
 2010-08-03: version 0.9.3
     - fix rounding difference of Calc and Numbertext functions
     - Indonesian module by Eko Prasetiyo

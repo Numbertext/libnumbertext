@@ -6,8 +6,7 @@ all:
 	cp src/Soros.js web/webroot
 	cp doc/*.pdf web/webroot
 
-dist:
-	make
+distx:
 	cd web; make clean
 	cd test; make clean
 	tar c . | gzip > ../numbertext-`head -1 VERSION`.tar.gz

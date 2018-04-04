@@ -22,7 +22,8 @@ with currency: <select id="money" onChange='usernum();'>
 <option value="GBP">GBP</option>
 <option value="JPY">JPY</option>
 <option value="USD">USD</option>
-</select></td><td align='right'><b>2010-08-03</b> v0.9.3 (<a href="http://extensions.services.openoffice.org/project/numbertext">oxt</a>, <a href="dist/numbertext.jar">jar</a>)
+</select></td><td align='right'><b>2010-11-03</b> v0.9.4 (<a href="http://extensions.services.openoffice.org/project/numbertext">oxt</a>, <a href="dist/numbertext.jar">jar</a>, 
+<a href="http://www.numbertext.org/linux/">TTF</a>)
 <span class='nowrap'>
 <!--<a class="menu2" href="IDE.html">IDE</a>-->
 <a class="menu2" href="#about">Help</a>
@@ -39,7 +40,7 @@ Edit your <a href="Soros.html">Soros program</a>.-->
 <div id="space" class="lang" style="height: 200%;"></div>
 
 <div class='title'><a name='about'>
-<table width="100%"><tr><td><span>News: Indonesian module, fixed rounding difference</span>
+<table width="100%"><tr><td><span>News: Vietnamese module, fixed numbertext.jar and Russian module</span>
 </td><td align='right'>
 <span class='nowrap'>
 <!--<a class="menu2" href="IDE.html">IDE</a>-->
@@ -157,6 +158,7 @@ language = {
 "th_TH": "ไทย",
 "tr_TR": "Türkçe",
 "zh_ZH": "中文",
+"vi_VN": "Tiếng Việt",
 "zh_ZH_2": "大写",
 "Hung": "𐲭𐲨𐲹𐲽𐲯𐲿𐲭𐲽𐲯*",
 "Roman": "Roman*",
@@ -198,6 +200,7 @@ default_currency = {
 "sv_SE": "SEK",
 "th_TH": "THB",
 "tr_TR": "TRY",
+"vi_VN": "VND",
 "zh_ZH": "CNY",
 "zh_ZH_2": "CNY",
 "Roman": "-",
