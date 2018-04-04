@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+Created-By: 1.5.0_19 (Sun Microsystems Inc.)
+Main-Class: org.numbertext.Numbertext
+Implementation-Version: 0.8
+Implementation-Date: 2010-04-19
+
