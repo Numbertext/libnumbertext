@@ -8,6 +8,8 @@
     <prop oor:name="Description">
 	<value xml:lang="en">Converts number to number name.</value>
 	<value xml:lang="hu">Számot számnévvé alakít.</value>
+	<value xml:lang="sr">Исписује број словима.</value>
+	<value xml:lang="sh">Ispisuje broj slovima.</value>
     </prop>
     <prop oor:name="Category"><value>Add-In</value></prop>
     <prop oor:name="CompatibilityName"><value xml:lang="en">org.NUMBERTEXT.numbertext</value></prop>
@@ -16,20 +18,28 @@
         <prop oor:name="DisplayName">
 	    <value xml:lang="en">Number</value>
 	    <value xml:lang="hu">Szám</value>
+	    <value xml:lang="sr">Број</value>
+	    <value xml:lang="sh">Broj</value>
 	</prop>
         <prop oor:name="Description">
 	    <value xml:lang="en">Value.</value>
 	    <value xml:lang="hu">Az átalakítandó szám.</value>
+	    <value xml:lang="sr">Вредност.</value>
+	    <value xml:lang="sh">Vrednost.</value>
 	</prop>
       </node>
       <node oor:name="lang" oor:op="replace">
         <prop oor:name="DisplayName">
 	    <value xml:lang="en">Language</value>
 	    <value xml:lang="hu">Nyelv</value>
+	    <value xml:lang="sr">Језик</value>
+	    <value xml:lang="sh">Jezik</value>
 	</prop>
         <prop oor:name="Description">
 	    <value xml:lang="en">Language code (eg. en-US).</value>
 	    <value xml:lang="hu">Nyelvkód (pl. hu-HU).</value>
+	    <value xml:lang="sr">Код језика (нпр. sr или sh).</value>
+	    <value xml:lang="sh">Kod jezika (npr. sr ili sh).</value>
 	</prop>
       </node>
     </node>
@@ -39,6 +49,8 @@
     <prop oor:name="Description">
 	<value xml:lang="en">Converts a number to text with the given currency.</value>
 	<value xml:lang="hu">Számot számnévvé alakít a megadott pénznemmel.</value>
+	<value xml:lang="sr">Исписује број словима уз истицање ознаке валуте.</value>
+	<value xml:lang="sh">Ispisuje broj slovima uz isticanje oznake valute.</value>
     </prop>
     <prop oor:name="Category"><value>Add-In</value></prop>
     <prop oor:name="CompatibilityName"><value xml:lang="en">org.NUMBERTEXT.moneytext</value></prop>
@@ -47,30 +59,42 @@
         <prop oor:name="DisplayName">
 	    <value xml:lang="en">Number</value>
 	    <value xml:lang="hu">Szám</value>
+	    <value xml:lang="sr">Број</value>
+	    <value xml:lang="sh">Broj</value>
 	</prop>
         <prop oor:name="Description">
 	    <value xml:lang="en">Input value.</value>
 	    <value xml:lang="hu">Az átalakítandó szám.</value>
+	    <value xml:lang="sr">Улазна вредност.</value>
+	    <value xml:lang="sh">Ulazna vrednost.</value>
 	</prop>
       </node>
       <node oor:name="currency" oor:op="replace">
         <prop oor:name="DisplayName">
 	    <value xml:lang="en">Currency</value>
 	    <value xml:lang="hu">Pénznem</value>
+	    <value xml:lang="sr">Валута</value>
+	    <value xml:lang="sh">Valuta</value>
 	</prop>
         <prop oor:name="Description">
 	    <value xml:lang="en">ISO 4217 code (eg. USD).</value>
 	    <value xml:lang="hu">ISO 4217 kód (pl. HUF).</value>
+	    <value xml:lang="sr">ISO 4217 код (нпр. RSD).</value>
+	    <value xml:lang="sh">ISO 4217 kod (npr. RSD).</value>
 	</prop>
       </node>
       <node oor:name="lang" oor:op="replace">
         <prop oor:name="DisplayName">
 	    <value xml:lang="en">Language</value>
 	    <value xml:lang="hu">Nyelv</value>
+	    <value xml:lang="sr">Језик</value>
+	    <value xml:lang="sh">Jezik</value>
 	</prop>
         <prop oor:name="Description">
 	    <value xml:lang="en">Language code (eg. en-US).</value>
 	    <value xml:lang="hu">Nyelvkód (pl. hu-HU).</value>
+	    <value xml:lang="sr">Код језика (нпр. sr или sh).</value>
+	    <value xml:lang="sh">Kod jezika (npr. sr ili sh).</value>
 	</prop>
       </node>
     </node>
