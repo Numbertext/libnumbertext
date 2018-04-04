@@ -4,5 +4,5 @@ all:
 	cat AUTHORS.html.in | ../bin/shellhtml >webroot/AUTHORS.html
 
 clean:
-	rm webroot/index.html webroot/Soros.html webroot/*.pdf
-	rm webroot/Soros.py webroot/Soros.js
+	rm -f webroot/index.html webroot/Soros.html webroot/AUTHORS.html webroot/*.pdf
+	rm -f webroot/Soros.py webroot/Soros.js

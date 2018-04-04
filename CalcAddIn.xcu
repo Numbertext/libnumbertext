@@ -10,6 +10,7 @@
 	<value xml:lang="hu">Számot számnévvé alakít.</value>
 	<value xml:lang="sr">Исписује број словима.</value>
 	<value xml:lang="sh">Ispisuje broj slovima.</value>
+	<value xml:lang="he">ממיר מספר לייצוגו במילים.</value>
     </prop>
     <prop oor:name="Category"><value>Add-In</value></prop>
     <prop oor:name="CompatibilityName"><value xml:lang="en">org.NUMBERTEXT.numbertext</value></prop>
@@ -20,12 +21,14 @@
 	    <value xml:lang="hu">Szám</value>
 	    <value xml:lang="sr">Број</value>
 	    <value xml:lang="sh">Broj</value>
+	    <value xml:lang="he">מספר</value>
 	</prop>
         <prop oor:name="Description">
 	    <value xml:lang="en">Value.</value>
 	    <value xml:lang="hu">Az átalakítandó szám.</value>
 	    <value xml:lang="sr">Вредност.</value>
 	    <value xml:lang="sh">Vrednost.</value>
+	    <value xml:lang="sh">ערך קלט.</value>
 	</prop>
       </node>
       <node oor:name="lang" oor:op="replace">
@@ -34,12 +37,14 @@
 	    <value xml:lang="hu">Nyelv</value>
 	    <value xml:lang="sr">Језик</value>
 	    <value xml:lang="sh">Jezik</value>
+	    <value xml:lang="he">שפה</value>
 	</prop>
         <prop oor:name="Description">
 	    <value xml:lang="en">Language code (eg. en-US).</value>
 	    <value xml:lang="hu">Nyelvkód (pl. hu-HU).</value>
 	    <value xml:lang="sr">Код језика (нпр. sr или sh).</value>
 	    <value xml:lang="sh">Kod jezika (npr. sr ili sh).</value>
+	    <value xml:lang="he">קוד שפה (כגון he-IL).</value>
 	</prop>
       </node>
     </node>
@@ -51,6 +56,7 @@
 	<value xml:lang="hu">Számot számnévvé alakít a megadott pénznemmel.</value>
 	<value xml:lang="sr">Исписује број словима уз истицање ознаке валуте.</value>
 	<value xml:lang="sh">Ispisuje broj slovima uz isticanje oznake valute.</value>
+	<value xml:lang="he">ממיר מספר לייצוגו במילים עם המטבע הנתון.</value>
     </prop>
     <prop oor:name="Category"><value>Add-In</value></prop>
     <prop oor:name="CompatibilityName"><value xml:lang="en">org.NUMBERTEXT.moneytext</value></prop>
@@ -61,26 +67,30 @@
 	    <value xml:lang="hu">Szám</value>
 	    <value xml:lang="sr">Број</value>
 	    <value xml:lang="sh">Broj</value>
+	    <value xml:lang="he">מספר</value>
 	</prop>
         <prop oor:name="Description">
 	    <value xml:lang="en">Input value.</value>
 	    <value xml:lang="hu">Az átalakítandó szám.</value>
 	    <value xml:lang="sr">Улазна вредност.</value>
 	    <value xml:lang="sh">Ulazna vrednost.</value>
+	    <value xml:lang="sh">ערך קלט.</value>
 	</prop>
       </node>
       <node oor:name="currency" oor:op="replace">
         <prop oor:name="DisplayName">
-	    <value xml:lang="en">Currency</value>
-	    <value xml:lang="hu">Pénznem</value>
+	    <value xml:lang="en">Currency/function</value>
+	    <value xml:lang="hu">Pénznem/függvény</value>
 	    <value xml:lang="sr">Валута</value>
 	    <value xml:lang="sh">Valuta</value>
+	    <value xml:lang="he">מטבע</value>
 	</prop>
         <prop oor:name="Description">
-	    <value xml:lang="en">ISO 4217 code (eg. USD).</value>
-	    <value xml:lang="hu">ISO 4217 kód (pl. HUF).</value>
+	    <value xml:lang="en">ISO 4217 code (eg. USD) or Numbertext function (eg. ord = ordinal number).</value>
+	    <value xml:lang="hu">ISO 4217 kód (pl. HUF) vagy Numbertext függvény (pl. ord = sorszám).</value>
 	    <value xml:lang="sr">ISO 4217 код (нпр. RSD).</value>
 	    <value xml:lang="sh">ISO 4217 kod (npr. RSD).</value>
+	    <value xml:lang="he">קוד ISO 4217 (כגון ILS).</value>
 	</prop>
       </node>
       <node oor:name="lang" oor:op="replace">
@@ -89,12 +99,14 @@
 	    <value xml:lang="hu">Nyelv</value>
 	    <value xml:lang="sr">Језик</value>
 	    <value xml:lang="sh">Jezik</value>
+	    <value xml:lang="he">שפה</value>
 	</prop>
         <prop oor:name="Description">
 	    <value xml:lang="en">Language code (eg. en-US).</value>
 	    <value xml:lang="hu">Nyelvkód (pl. hu-HU).</value>
 	    <value xml:lang="sr">Код језика (нпр. sr или sh).</value>
 	    <value xml:lang="sh">Kod jezika (npr. sr ili sh).</value>
+	    <value xml:lang="he">קוד שפה (כגון he-IL).</value>
 	</prop>
       </node>
     </node>

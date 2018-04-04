@@ -18,4 +18,5 @@ org/Numbertext/locales.py: $(addprefix numbertext_, $(addsuffix .py, $(basename 
 	python $(BIN)/locales.py $(basename $(notdir $(wildcard ../data/*.sor))) >org/Numbertext/locales.py
 
 clean:
-	rm -f org/Numbertext/places.py org/Numbertext/locales.py org/Numbertext/Soros.py
+	rm -f $(addprefix numbertext_, $(addsuffix .py, $(basename $(notdir $(wildcard ../data/*.sor)))))
+	rm -f org/Numbertext/places.py* org/Numbertext/locales.py* org/Numbertext/Soros.py*

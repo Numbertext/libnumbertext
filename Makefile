@@ -14,13 +14,13 @@ dist:
 
 ooo:
 	make
-	zip -r numbertext-`head -1 VERSION`.oxt META-INF rdb idl pythonpath *.xcu *py *xml README
+	zip -r numbertext-`head -1 VERSION`.oxt META-INF rdb idl pythonpath pkg-desc *.xcu *py *xml README
 
 check:
 	cd test; make
 
 clean:
-	rm -f *~ */*~
+	rm -f *.oxt description.xml
 	cd pythonpath; make clean
 	cd web; make clean
 	rm -f *~ */*~
