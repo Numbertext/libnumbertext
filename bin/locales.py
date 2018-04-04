@@ -1,5 +1,5 @@
 import sys
-print "locales = \"\"\""
+print ("locales = \"\"\"")
 for i in sys.argv[1:]:
     print i
-print "\"\"\".strip().split(\"\\n\")"
+print ("\"\"\".strip().split(\"\\n\")")

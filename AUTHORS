@@ -9,6 +9,10 @@ Mushtaque Asghar:
 	- bug report about missing XLS portability in
 	  http://extensions.services.openoffice.org/project/numbertext
 
+Asterisks at OOo Wiki:
+
+	- Latvian module
+
 Attilafdd at launchpad dot net:
 
 	- fix Italian comma in it_IT module ("virgula" instead of "komma").
@@ -48,8 +52,21 @@ Lucian Adrian Grijincu (lucian dot grijincu at gmail):
 	- reported missing gender support in Romanian MONEYTEXT implementation:
 	  https://bugs.launchpad.net/bugs/421309)
 
+Jmzambon at OOO Wiki:
+
+	- patch for French un/une handling for currencies
+
 Kent Karlsson:
+
 	- reported Swedish gender problem with currencies in sv_SE.sor.
+
+Mantas Kriaučiūnas at Launchpad.net:
+
+	- hints for Lithuanian module
+
+mike8p at launchpad.net:
+
+	- Spanish module: bug report for y dos cents -> con dos céntimos
 
 Marcin Miłkowski (milek_pl at o2 dot pl):
 
@@ -70,6 +87,10 @@ Joan Montané (jmontane at openoffice dot org):
 	- reported missing gender support for Catalan and Spanish (http://wiki.services.openoffice.org/wiki/Talk:NUMBERTEXT/MONEYTEXT_development#Some_languages_need_male.2Ffemale_option_for_number_to_text)
 	
 	- various fixes and extensions for Catalan
+
+Julien2412 (serval2412 at yahoo dot fr):
+
+	- bug report and initial patches in Python 3 port (tabulator inconsistency, terminating white spaces)
 
 Bernard Marcelly (bmarcelly at openoffice dot org):
 
@@ -103,6 +124,10 @@ Nicolas Pagni (Nicolas dot Pagni at npagni dot it):
 
 Eko Prasetiyo (ekoprasetiyo at gmail):
 	- author of Indonesian module
+
+Gwenaël Quenette (g_quenette at yahoo dot fr):
+
+	- bug report for the Portuguese module: cientos -> centos
 
 Goran Rakić (grakic at devbase dot net):
 
@@ -159,6 +184,10 @@ xhydrogene at launchpad dot net:
 		- "comma" must be translated in french "virgule" (https://bugs.launchpad.net/numbertext/+bug/421148)
 		- "y" must be translated in french "et" (https://bugs.launchpad.net/numbertext/+bug/421151)
 		- "un mille" must be writed only "mille" in french (https://bugs.launchpad.net/numbertext/+bug/421164)
+
+Laimonas Vėbra (laimis) at LaunchPad:
+
+	- hints for Lithuanian module
 
 wasow at extensions openoffice org:
 

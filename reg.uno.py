@@ -10,5 +10,5 @@ def createInstance( ctx ):
 # pythonloader looks for a static g_ImplementationHelper variable
 g_ImplementationHelper = unohelper.ImplementationHelper()
 g_ImplementationHelper.addImplementation( \
-	createInstance,"org.numbertext",
+        createInstance,"org.numbertext",
         ("com.sun.star.sheet.AddIn",),)

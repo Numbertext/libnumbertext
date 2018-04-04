@@ -49,7 +49,8 @@ public class Numbertext {
 	if (args.length == 0) {
 	    System.out.println("Usage: java soros [-l lang] [-p prefix] par1 [par2...]");
 	    System.out.println("Parameter: n: number; n-m: range; n-m~s: range with step");
-	    System.out.println("Example: java -jar numbertext -l en_US -p ord: 1-10 500 1000-10000~1000");
+	    System.out.println("Example: java -jar numbertext -l en_US -p ord 1-10 500 1000-10000~1000");
+	    System.out.println("License: GNU LGPL/BSD dual-license");
 	    return;
 	}
 	int state = 0;

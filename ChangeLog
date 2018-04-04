@@ -1,10 +1,35 @@
-2010-11-03: László Németh (nemeth openoffice org):
-        * data/vi_VN.sor: new Vietnamese module
-        * data/ru_RU.sor:
-        - fix for 2 (subunits of EUR, GBP, USD),
-        - add currency UAH, reports and patch by wasow at extensions ooo
+2012-12-06: László Németh (nemeth numbertext org):
+        * src/Soros.py, soroside.py, __init__.py, test.py:
+          Python 3 port (back compatible with Python 2)
+        * reg.uno.py, bin/*.py: initial patches for tabulator
+          inconsistency and terminating whitespaces in Python 3
+          reported by Julien2412 at libreoffice-dev.
 
-2010-08-03: László Németh (nemeth openoffice org):
+2012-10-09: László Németh (nemeth numbertext org):
+	* data/lt_LT.sor: Lithuanian module (hints by Mantas Kriaučiūnas
+	  and Laimonas Vėbra (laimis) at LaunchPad #936205)
+
+	* data/fr_*: fix un/une + currency, based on the patch by
+	  Jmzambon at OOO Wiki
+
+	* data/es_ES.sor: euro: y dos cents -> con dos céntimos, reported by
+	  mike8p at launchpad.net
+
+	* data/pt_*.sor: ciento(s) -> cento(s), reported by Gwenaël Quenette
+	  (sent by Zoltán Reizinger and Andrea Pescetti).
+
+	* java/: sources of the Java jar distribution
+
+2012-03-17: Asterisks at OOo Wiki:
+	* data/lv_LV.sor: Latvian module
+
+2010-11-03: László Németh (nemeth numbertext org):
+	* data/vi_VN.sor: new Vietnamese module
+	* data/ru_RU.sor:
+	- fix for 2 (subunits of EUR, GBP, USD),
+	- add currency UAH, reports and patch by wasow at extensions ooo
+
+2010-08-03: László Németh (nemeth numbertext org):
 	* pythonpath/org/Numbertext/__init__.py: fix rounding differences
 	  between Calc and Numbertext functions: rounding by Calc round()
 	  in Python code of Numbertext. The problem was reported by
@@ -18,11 +43,11 @@
 2010-08-03: Eko Prasetiyo (ekoprasetiyo at gmail):
 	* data/id_ID.sor: Indonesian module
 
-2010-06-07: László Németh (nemeth openoffice org):
+2010-06-07: László Németh (nemeth numbertext org):
 	* data/ru_RU.sor: fix bad back references in Russian rules. Missing
 	  conversion reported by Birioukoff at OOo Extension site.
 
-2010-05-28: László Németh (nemeth openoffice org):
+2010-05-28: László Németh (nemeth numbertext org):
 	* data/en_IN.sor: Indian numbering system. Lakh = 100.000, crore =
 	  10.000.000 (requested by Dhandip at OOo Extensions site).
 
@@ -39,7 +64,7 @@
 	  MS Office and ECMA-376, Unicode CLDR, corrections for RBNF,
 	  BSD license for example Python and Java interpreters
 
-2010-05-20: László Németh (nemeth openoffice org):
+2010-05-20: László Németh (nemeth numbertext org):
 	* data/sv_SE.sor: 
 	- fix 30 (trettio)
 	- reference implementation with grammar and year support,
@@ -58,7 +83,7 @@
 	* src/Soros.js:
 	- fix character encoding for \(, \) etc.
 
-2010-04-26: László Németh (nemeth openoffice org):
+2010-04-26: László Németh (nemeth numbertext org):
 	* data/fr_*: ordf and ordm instead of ord-fem and ord-mas
 
 	* data/ru_RU.sor: fix bugs reported by georgepyh on OOo Extension site
@@ -75,7 +100,7 @@
 	- add ordinal numbers (ord, ordf, ordm functions)
 	- restructuring currencies, etc.
 
-2010-04-22: László Németh (nemeth openoffice org):
+2010-04-22: László Németh (nemeth numbertext org):
 	* data/sv_SE.sor: fix Swedish 11000 (elvatusen instead of elvausen)
 	
 	* data/{he_IL,pl_PL,ru_RU}.sor: replace the complementer bracket
@@ -91,7 +116,7 @@
 
 	* data/th_TH.sor: add ordinal numbers (ord)
 
-2010-04-19: László Németh (nemeth openoffice org):
+2010-04-19: László Németh (nemeth numbertext org):
 	* pythonpath/org/__init__.py:
 	- remove Asian and CTL lang. detection temporarily (problems with
 	  document language detection in OOo 3.0 reported by Petr Mladek and
@@ -148,7 +173,7 @@
 
 	* Makefile(s): add better clean
 
-2009-11-13: László Németh (nemeth openoffice org):
+2009-11-13: László Németh (nemeth numbertext org):
 	* data/{af_ZA,it_IT,nl_NL}.sor: fix bad conversion of
 	  1 subunit of currencies. The bug in the Italian module reported by
 	  Nicolas Pagni (Nicolas dot Pagni at npagni dot it)
@@ -160,7 +185,7 @@
 	* data/th_TH.sor: extended Thai decimal support for 1 and
 	  more than 2 digits with currencies
 
-2009-11-10: László Németh (nemeth openoffice org):
+2009-11-10: László Németh (nemeth numbertext org):
 	* data/da_DK.sor: new Danish module
 
 	* data/ca_ES.sor, es_ES.sor, fr_*.sor: 0 euro (without plural),
@@ -202,12 +227,12 @@
 	- Added all the actives code beginning by A (I'm working in B-Z)
 	- Added some actives codes beginning by X
 
-2009-09-04: László Németh (nemeth openoffice org):
+2009-09-04: László Németh (nemeth numbertext org):
 	* data/en_US*: fix English decimal conversion by replacing bad [^0]
 	  (matched decimal separators, too) with "[1-9]", reported by
 	  Bernard Marcelly (bmarcelly at openoffice dot org).
 
-2009-09-03: László Németh (nemeth openoffice org):
+2009-09-03: László Németh (nemeth numbertext org):
 	* pythonpath/org/Numbertext/__init__.py: add short language name support:
 	  now module names works without country code or with bad or non-available
 	  country and variant codes, too. The missing support of short languages
@@ -276,7 +301,7 @@
 		- "cèntim" instead of (euro)cent
 		- "menys" for negative
 
-2009-08-20: László Németh (nemeth openoffice org):
+2009-08-20: László Németh (nemeth numbertext org):
 	* data/ko*, ja*, Hang.sor: Korean, Japanese and Old Hungarian modules.
 
 	* data/en_US.*, hu_HU.sor: optimized by separator functions.
@@ -289,14 +314,14 @@
 	* data/it_IT.sor: Using "virgola" for comma, reported by
 	  Attilafdd at launchpad.net.
 
-2009-08-10: László Németh (nemeth openoffice org):
+2009-08-10: László Németh (nemeth numbertext org):
 	* pythonpath/org/Numbertext/__init__.py: add missing Numbertext module
 	
 	* bin/locales.py: fix registration of the first language module
 
 	* data/af_ZA.py: fix helper functions (space handling)
 
-2009-08-09: László Németh (nemeth openoffice org):
+2009-08-09: László Németh (nemeth numbertext org):
 	* numbertext.py: new namespace (incompatible with previous versions):
 	  ORG.NUMBERTEXT.NUMBERTEXT() and ORG.NUMBERTEXT.MONEYTEXT(),
 	  suggested by Eike Rathke (er at OOo).
@@ -367,7 +392,7 @@
 
 	* web/*: fix for IE, etc.
 
-2009-07-25: László Németh (nemeth openoffice org):
+2009-07-25: László Németh (nemeth numbertext org):
 	* data/*.sor: 11 new languages (see README)
 	- syntax and orthography based mostly on Wikipedia articles
 	- for Greek numerals, see Harry Foundalis' excellent introduction

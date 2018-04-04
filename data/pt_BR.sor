@@ -29,11 +29,11 @@ __numbertext__
 90 noventa
 (\d)(\d) $(\10) e $2
 100 cem
-1(\d\d) ciento e $1
+1(\d\d) cento e $1
 200 duzentos
 300 trezentos
 500 quinhentos
-(\d)(00) $1cientos
+(\d)(00) $1centos
 (\d)(\d\d) $(\100) e $2
 
 :0+

@@ -82,7 +82,7 @@ COP:(\D+) $(\1: peso colombiano, pesos colombianos, centavo, centavos)
 CRC:(\D+) $(\1: colón costarricense, colones costarricenses, céntimo, céntimos)
 DOP:(\D+) $(\1: peso dominicano, pesos dominicanos, centavo, centavos)
 ESP:(\D+) $(\1: peseta, pesetas, céntimo, céntimos)
-EUR:(\D+) $(\1: euro, euros, cent, cents)
+EUR:(\D+) $(\1: euro, euros, céntimo, céntimos)
 GBP:(\D+) $(\1: libra esterlina, libras esterlinas, penique, peniques)
 GTQ:(\D+) $(\1: quetzal, quetzales, centavo, centavos)
 HLN:(\D+) $(\1: lempira, lempiras, centavo, centavos)
@@ -112,8 +112,8 @@ f:(.*),(.*) \1 \2
 "(CNY [-−]?\d+[.,]\d)1" $1 $2 fen
 "(CNY [-−]?\d+[.,]\d)(\d)" $1 $2 fen
 
-"(([A-Z]{3}) [-−]?\d+)[.,](01)" $1 y |$(1) $(\2:ss)
-"(([A-Z]{3}) [-−]?\d+)[.,](\d)" $1 y |$(\30) $(\2:sp)
-"(([A-Z]{3}) [-−]?\d+)[.,](\d\d)" $1 y |$3 $(\2:sp)
+"(([A-Z]{3}) [-−]?\d+)[.,](01)" $1 con |$(1) $(\2:ss)
+"(([A-Z]{3}) [-−]?\d+)[.,](\d)" $1 con |$(\30) $(\2:sp)
+"(([A-Z]{3}) [-−]?\d+)[.,](\d\d)" $1 con |$3 $(\2:sp)
 
 
