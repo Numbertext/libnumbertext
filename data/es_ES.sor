@@ -81,6 +81,7 @@ CNY:(\D+) $(\1: yuan renminbi, yuan renminbi, fen, fen)
 COP:(\D+) $(\1: peso colombiano, pesos colombianos, centavo, centavos)
 CRC:(\D+) $(\1: colón costarricense, colones costarricenses, céntimo, céntimos)
 DOP:(\D+) $(\1: peso dominicano, pesos dominicanos, centavo, centavos)
+ESP:(\D+) $(\1: peseta, pesetas, céntimo, céntimos)
 EUR:(\D+) $(\1: euro, euros, cent, cents)
 GBP:(\D+) $(\1: libra esterlina, libras esterlinas, penique, peniques)
 GTQ:(\D+) $(\1: quetzal, quetzales, centavo, centavos)
@@ -94,9 +95,16 @@ USD:(\D+) $(\1: dólar estadounidense, dólares estadounidenses, centavo, centav
 UYU:(\D+) $(\1: peso uruguayo, pesos uruguayos, centésimo, centésimos)
 VEF:(\D+) $(\1: bolívar fuerte, bolívares fuertes, céntimo, céntimos)
 
-"([A-Z]{3}) ([-−]?1)" $2 $(\1:us)
+# masculine to feminine conversion of "un" after millions,
+# if "as?$" matches currency name
+
+f:(.*ill)(.*),(.*) \1$(f:\2,\3)		# don't modify un in millions
+f:(.*un)([^a].*,|,)(.*as?) $(f:\1a\2\3)	# un libra -> una libra
+f:(.*),(.*) \1 \2
+
+"([A-Z]{3}) ([-−]?1)" $(f:|$2,$(\1:us))
 "([A-Z]{3}) ([-−]?\d+0{6,})" $2 de $(\1:up)
-"([A-Z]{3}) ([-−]?\d+)" $2 $(\1:up)
+"([A-Z]{3}) ([-−]?\d+)" $(f:|$2,$(\1:up))
 
 "(CNY [-−]?\d+)[.,]10?" $1 $2 jiao
 "(CNY [-−]?\d+)[.,](\d)0?" $1 $2 jiao

@@ -44,6 +44,8 @@ __numbertext__
 ([-−]?\d+)[.,](\d\d)	|$1| ja |$2 sadasosaa
 ([-−]?\d+)[.,]00([01])	|$1| ja |$2 tuhannesosa
 ([-−]?\d+)[.,](\d\d\d)	|$1| ja |$2 tuhannesosaa
+"([-−]?\d+)[.,](\d)(\d)(\d)(\d)" |$1| ja |$2| |$3| |$4| |$5|
+"([-−]?\d+[.,]\d+)(\d)" $1 |$2|
 
 # currency
 

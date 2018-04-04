@@ -1,3 +1,77 @@
+2009-09-04: László Németh (nemeth openoffice org):
+	* data/en_US*: fix English decimal conversion by replacing bad [^0]
+	  (matched decimal separators, too) with "[1-9]", reported by
+	  Bernard Marcelly (bmarcelly at openoffice dot org).
+
+2009-09-03: László Németh (nemeth openoffice org):
+	* pythonpath/org/Numbertext/__init__.py: add short language name support:
+	  now module names works without country code or with bad or non-available
+	  country and variant codes, too. The missing support of short languages
+	  was reported by Eduardo Moreno, too.
+
+	* Makefile: target "ooo" for OOo extensions, first used in ooo-build
+	  integration by Kálmán Szalai.
+	
+	* ca_ES.sor, es_ES.sor, pt_PT.sor, pt_BR.sor, ro_RO.sor: add gender
+          support,
+	- ca_ES and es_ES bug fixes, reported by Joan Montané
+	- ro_RO bug fixes, reported by Lucian Adrian Grijincu
+
+	* data/af_ZA.sor, nl_NL.sor: extended decimal support, reported by
+	  Friedel Wolff (friedel at translate dot org dot za)
+
+	* data/fr_FR.sor: bug fixes:
+
+	- extended and fixed decimal support, reported by
+	  Bernard Marcelly (bmarcelly at openoffice dot org)
+
+	- using "et" instead of "y", reported by Bernard Marcelly and xhydrogene
+	  at launchpad dot net (https://bugs.launchpad.net/numbertext/+bug/421151)
+
+	- virgule instead of comma, reported by Bernand Marcelly and xhydrogene
+	  at launchpad dot net: https://bugs.launchpad.net/numbertext/+bug/421148,
+	  also patch by Olivier Ronez
+
+	- cent and mille instead of un cent and un mille, reported by Bernand Marcelly and xhydrogene
+	  at launchpad dot net: https://bugs.launchpad.net/numbertext/+bug/421164,
+	  also patch by Olivier Ronez
+
+	* data/fr_CH.sor: decimal point instead of comma, reported by
+	  Bernard Marcelly (bmarcelly at openoffice dot org)
+
+	* data/pl_PL.sor: add affix function and portable regexes, fix
+	  regex problem reported by Marcin Miłkowski
+
+2009-08-30: Michel Weimerskirch (michel at weimerskirch dot net):
+	* data/lb_LU.sor: new Luxembourgish module
+
+2009-08-29 Marcin Miłkowski (milek_pl at o2 dot pl):
+	* data/pl_PL.sor: patch for Polish
+	  https://bugs.launchpad.net/numbertext/+bug/421031
+
+2009-08-28: Goran Rakić (grakic at devbase dot net):
+	* CalcAddIn.xcu, description.xml: add Serbian localizations
+
+	* data/sh_RS.sor, data/sr_RS: new Serbian modules
+
+2009-08-27: Olivier Ronez:
+
+	* data/fr_BE.sor, data/fr_CH: patches for new modules 
+
+	* data/fr_FR.aff: other patches:
+	- milliarde -> milliards (reported by Sophie Gautier and
+	  Bernand Marcelly, too)
+	- fix for 81
+
+2009-08-27: Joan Montané (jmontane at openoffice dot org):
+
+	- data/ca_ES.sor: fixes
+	
+	http://wiki.services.openoffice.org/wiki/Talk:NUMBERTEXT/MONEYTEXT_development#Some_fixes_on_Catalan_definition):
+		- "amb" instead of "und"
+		- "cèntim" instead of (euro)cent
+		- "menys" for negative
+
 2009-08-20: László Németh (nemeth openoffice org):
 	* data/ko*, ja*, Hang.sor: Korean, Japanese and Old Hungarian modules.
 
@@ -8,7 +82,7 @@
 
 	* web/*: new section (old number systems)
 
-	* data/it_IT.sor: Using "virgola" for comma. Bug reported by
+	* data/it_IT.sor: Using "virgola" for comma, reported by
 	  Attilafdd at launchpad.net.
 
 2009-08-10: László Németh (nemeth openoffice org):
@@ -81,7 +155,7 @@
         - Spanish: 21 (veintidós) -> 22, negativa - -> menos,
           reported by Eduardo Moreno (emoreno tokonhu com).
 
-	- Italian: unucento -> cento (reported also by Claudio Colombo.
+	- Italian: unucento -> cento, reported also by Claudio Colombo.
 
 	- Esperanto: unudek -> dek, unucent -> cent, miliono -> unu miliono.
 
@@ -120,4 +194,3 @@
 	* web/: web pages of http://numbertext.org
 	
 	* bin/shellhtml: preprocessor tool for HTML, XML data
-

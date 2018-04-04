@@ -2,7 +2,7 @@
 <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 <link rel="icon" type="image/vnd.microsoft.icon" href="favicon.ico">
 <head>
-<title>NUMBERTEXT.org</title>
+<title>NUMBERTEXT.org – universal number to text conversion for OpenDocument and OpenOffice.org</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body>
@@ -36,7 +36,7 @@ Edit your <a href="Soros.html">Soros program</a>.-->
 <noscript><center>Enable JavaScript or click <a class="menu2" href="#about">here</a>!</center></noscript>
 <div id="result"><div style="height: 100%; text-align: center; line-height: 480px;">Compiling Soros programs...</div></div>
 
-<div id="space" class="lang" style="height: 100%;"></div>
+<div id="space" class="lang" style="height: 200%;"></div>
 
 <div class='title'><a name='about'>
 <table width="100%"><tr><td><span>&bull;&bull;&bull; NUMBERTEXT.org &bull;&bull;&bull; </span>
@@ -60,7 +60,7 @@ and NUMBERTEXT/MONEYTEXT development.
 <!--Edit the <a href="http://wiki.services.openoffice.org/wiki/NUMBERTEXT/MONEYTEXT_development">Wiki page</a>.-->
 
 <li>Download the <a href="http://extensions.services.openoffice.org/project/numbertext">OpenOffice.org Calc Add-on</a>
-(it is also the source distribution) and the Soros interpreter in <a href="Soros.py">Python</a> or <a href="Soros.js">JavaScript</a>.
+or the <a href="dist/">full distribution</a> and the Soros interpreter in <a href="Soros.py">Python</a> or <a href="Soros.js">JavaScript</a>.
 
 <li>Join the development:
 
@@ -69,7 +69,7 @@ Report a bug in <a href="http://wiki.services.openoffice.org/wiki/Talk:NUMBERTEX
 Develop a new language resource in the <a href="Soros.html">IDE</a> and propose the result in <a href="http://wiki.services.openoffice.org/wiki/Talk:NUMBERTEXT/MONEYTEXT_development">OOo Wiki</a>.
 
 </ul>
-Project leader: László Németh (nemeth at OpenOffice.org).
+<a href="AUTHORS.html">Authors and contributors</a> of this free software project.
 <td valign='top'>The NUMBERTEXT/MONEYTEXT functions originally developed for the generalization of the BAHTTEXT spreadsheet function, a function of Microsoft Excel for number to Thai number name and currency conversion, standardized by the ECMA–376 and ISO/IEC 29 500:2008 Office Open XML format. This development can help the upcoming <a href="http://en.wikipedia.org/wiki/OpenFormula">OpenFormula</a> to be top-compliant with the ECMA/ISO BAHTTEXT without degrading its high requirements for an international standard.
 <p>See the <a href="numbertext.pdf">specification</a> and the related <a href="http://lingucomponent.openoffice.org/issues/show_bug.cgi?id=103746">OOo issue 103746</a>.
 
@@ -131,13 +131,16 @@ language = {
 "en_US": "English",
 "es_ES": "Español",
 "eo": "Esperanto",
+"fr_BE": "Français&nbsp;(BE)",
+"fr_CH": "Français&nbsp;(CH)",
 "fr_FR": "Français",
+"hu_HU": "Magyar",
 "it_IT": "Italiano",
 "ja_JP": "日本語",
 "ja_JP_2": "大字",
-"ko_KP": "한국어 (KP)",
-"ko_KR": "한국어 (KR)",
-"hu_HU": "Magyar",
+"ko_KP": "한국어&nbsp;(KP)",
+"ko_KR": "한국어&nbsp;(KR)",
+"lb_LU": "Luxembourgish",
 "nl_NL": "Nederlands",
 "pl_PL": "Polski",
 "pt_BR": "Português&nbsp;(BR)",
@@ -146,6 +149,8 @@ language = {
 "ru_RU": "Русский",
 "sl_SI": "Slovenščina",
 "fi_FI": "Suomi",
+"sh_RS": "Srpski",
+"sr_RS": "Српски",
 "sv_SV": "Svenska",
 "th_TH": "ไทย",
 "zh_ZH": "中文",
@@ -166,12 +171,15 @@ default_currency = {
 "en_US": "USD",
 "es_ES": "EUR",
 "eo": "-",
+"fr_BE": "EUR",
+"fr_CH": "CHF",
 "fr_FR": "EUR",
 "it_IT": "EUR",
 "ja_JP": "JPY",
 "ja_JP_2": "JPY",
 "ko_KP": "KPW",
 "ko_KR": "KRW",
+"lb_LU": "EUR",
 "hu_HU": "HUF",
 "nl_NL": "EUR",
 "pl_PL": "PLN",

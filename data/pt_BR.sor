@@ -95,9 +95,18 @@ STD:(\D+) $(\1: dobra, dobras, cêntimo, cêntimos)
 USD:(\D+) $(\1: dólar americano, dólares americanos, cêntimo, cêntimos)
 XOF:(\D+) $(\1: franco CFA, francos CFA, cêntimo, cêntimos)
 
-"([A-Z]{3}) ([-−]?1)" $2 $(\1:us)
+# masculine to feminine conversion of "un" after millions,
+# if "as?$" matches currency name
+
+f:(.*il[hi])(.*),(.*) \1$(f:\2,\3)	# don't modify millions
+f:(.*um)([^a].*,|,)(.*as?) $(f:\1a\2\3)	# um libra -> uma libra
+f:(.*d)oi(s.*),(.*as?) $(f:\1ua\2,\3)	# dois libra -> duas libra
+f:(.*ent)o(s.*),(.*as?) $(f:\1a\2,\3)	# duzentos libra -> duzentas libra
+f:(.*),(.*) \1 \2
+
+"([A-Z]{3}) ([-−]?1)" $(f:|$2,$(\1:us))
 "([A-Z]{3}) ([-−]?\d+0{6,})" $2 de $(\1:up)
-"([A-Z]{3}) ([-−]?\d+)" $2 $(\1:up)
+"([A-Z]{3}) ([-−]?\d+)" $(f:|$2,$(\1:up))
 
 "(CNY [-−]?\d+)[.,]10?" $1 $2 jiao
 "(CNY [-−]?\d+)[.,](\d)0?" $1 $2 jiao

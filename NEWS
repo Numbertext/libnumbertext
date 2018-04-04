@@ -1,3 +1,23 @@
+2009-09-04: version 0.6.1
+    - fix English decimals
+
+2009-09-03: version 0.6
+    - new modules:
+      fr-BE	Belgian French from Olivier Ronez
+      fr-CH	Swiss French from Olivier Ronez
+      lb-LU	Luxenbourgish from Michel Weimerskirch
+      sh-RS	Serbian (Latin) from Goran Rakić 
+      sr-RS	Serbian (Cyrillic) from Goran Rakić 
+
+    - short language code (language code without country code) support
+      in language code argument of NUMBERTEXT and MONEYTEXT functions
+      
+    - using short language code (and an available module in the same
+      language) for missing language modules specified by long
+      language codes (language code + country code + optional variant name)
+
+    - fixes (see ChangeLog)
+
 2009-08-20: version 0.5
     - new modules:
       ja-JP	Japanese

@@ -1,0 +1,108 @@
+Authors and contributors of NUMBERTEXT/MONEYTEXT development
+
+Developer: László Németh (nemeth at openoffice dot org)
+
+Contributors and language module developers:
+
+Mushtaque Asghar:
+
+	- bug report about missing XLS portability in
+	  http://extensions.services.openoffice.org/project/numbertext
+
+Attilafdd at launchpad dot net:
+
+	- fix Italian comma in it_IT module ("virgula" instead of "komma").
+
+Ruud Baars:
+
+	- bug reports about Dutch module
+
+Claudio Colombo (claudio underline c77 at yahoo dot it):
+
+	- it_IT bug report ("*unocento")
+
+Dániel Darabos:
+
+	- suggested __import__ for simple lazy loading in PyUNO implementation
+	  of OpenOffice.org NUMBERTEXT extension
+
+Sophie Gautier:
+
+	- bug report for French: milliard etc. instead of *milliarde
+
+Lucian Adrian Grijincu (lucian dot grijincu at gmail):
+
+	- reported missing gender support in Romanian MONEYTEXT implementation:
+	  https://bugs.launchpad.net/bugs/421309)
+
+Marcin Miłkowski (milek_pl at o2 dot pl):
+
+	- patch for Polish: https://bugs.launchpad.net/numbertext/+bug/421031:
+		- correct special affixation of number names after 2, 3 and 4
+
+Joan Montané (jmontane at openoffice dot org):
+
+	- patch for Catalan (http://wiki.services.openoffice.org/wiki/Talk:NUMBERTEXT/MONEYTEXT_development#Some_fixes_on_Catalan_definition):
+		- "amb" instead of "und"
+		- "cèntim" instead of (euro)cent
+		- "menys" for negative
+
+	- reported missing gender support for Catalan and Spanish (http://wiki.services.openoffice.org/wiki/Talk:NUMBERTEXT/MONEYTEXT_development#Some_languages_need_male.2Ffemale_option_for_number_to_text)
+
+Bernard Marcelly (bmarcelly at openoffice dot org):
+
+	- bug report for French (http://wiki.services.openoffice.org/wiki/Talk:NUMBERTEXT/MONEYTEXT_development#French_numbering_remarks):
+		- syntax of decimals
+		- cent instead of un cent
+		- milliard etc. instead of *milliarde
+		- "et" instead of "y"
+		- virgule instead of comma
+		- point instead of comma in fr-CH
+
+Eduardo Moreno (emoreno at tokonhu dot com):
+
+	- author of the first version of the Portuguese (pt-PT) module
+
+	- bug reports about Spanish module and short language code "es"
+
+Goran Rakić (grakic at devbase dot net):
+
+	- author of Serbian modules (sh-RS, sr-RS)
+
+Eike Rathke (er at OpenOffice dot org):
+
+	- suggested new namespace and compatibility name usage.
+
+Olivier Ronez:
+
+	- patches for French (fr_FR) language module:
+
+		- Spelling mistakes in the French file (https://bugs.launchpad.net/numbertext/+bug/419718)
+		- 81 in French (https://bugs.launchpad.net/numbertext/+bug/419729)
+		- milliard etc. instead of *milliarde (https://bugs.launchpad.net/numbertext/+bug/419718)
+
+	- author of fr-BE and fr-CH modules:
+
+		- French numbers in Belgium (https://bugs.launchpad.net/numbertext/+bug/419731)
+		- French numbers in Switzerland (https://bugs.launchpad.net/numbertext/+bug/419734)
+
+Kálmán Szalai (Kami):
+
+	- ooo-build integration of Numbertext OpenOffice.org extension
+
+xhydrogene at launchpad dot net:
+
+	- bug reports for French (fr_FR) module:
+
+		- "comma" must be translated in french "virgule" (https://bugs.launchpad.net/numbertext/+bug/421148)
+		- "y" must be translated in french "et" (https://bugs.launchpad.net/numbertext/+bug/421151)
+		- "un mille" must be writed only "mille" in french (https://bugs.launchpad.net/numbertext/+bug/421164)
+
+Michel Weimerskirch (michel at weimerskirch dot net):
+
+	- author of Luxembourgish (lb-LU) module
+
+Friedel Wolff (friedel at translate dot org dot za):
+
+	- bug report for Africaans module
+

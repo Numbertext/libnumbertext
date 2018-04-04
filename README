@@ -1,19 +1,27 @@
 Language-neutral NUMBERTEXT and MONEYTEXT functions for OpenOffice.org Calc
 
-version 0.5 (2009-08-20)
+version 0.6 (2009-09-03)
 
 Numbertext OOo extension,
-Soros programming language specification (draft) and IDE,
+Soros programming language specification (draft) and IDE*,
 Soros interpreter in Python: pythonpath/Soros.py,
-Soros interpreter in JavaScript: Soros.js:
+Soros interpreter in JavaScript: Soros.js*:
 
-License: LGPL/BSD dual-license, 2009 (C) László Németh
+* Not in OpenOffice.org extension, see http://NUMBERTEXT.org for
+  the full distribution.
+
+License: LGPL/BSD dual-license, 2009 (C) László Németh (nemeth at openoffice dot org)
 
 Numbertext language data (Soros programs):
 
-License: LGPL/BSD dual-license, 2009 (C) László Németh et al.
+LGPL/BSD dual-license, 2009 (C) László Németh et al. (see AUTHORS)
 
-Home: http://numbertext.org
+Serbian modules:
+
+CC/LGPL/BSD tri-license, 2009 (C) Goran Rakić (grakic at devbase dot net)
+
+* Note: for full distribution with specifications, IDE and JavaScript
+  implementation, see http://NUMBERTEXT.org
 
 = Supported languages in this version =
 
@@ -27,20 +35,25 @@ en-US-2	English variant (USD 20.25 -> twenty and 25/100 dollars)
 eo	Esperanto
 es-ES	Spanish
 fi-FI	Finnish
+fr-BE	Belgian French
+fr-CH	Swiss French
 fr-FR	French
 hu-HU	Hungarian
 it-IT	Italian
-ko-KP	North-Korean
-ko-KR	South-Korean
 ja-JP	Japanese
 ja-JP-2	Japanese (formal)
+ko-KP	North-Korean
+ko-KR	South-Korean
+lb-LU	Luxembourgish
 nl-NL	Dutch
 pl-PL	Polish
 pt-BR	Brazilian Portuguese
 pt-PT	Portuguese
 ro-RO	Romanian
 ru-RU	Russian
+sh-RS	Serbian
 sl-SI	Slovenian
+sr-RS	Serbian
 sv-SV	Swedish
 th-TH	Thai
 zh-ZH	Chinese (simplified)
@@ -94,3 +107,4 @@ make check
 test/thaicheck.ods is a simple test of the equivalence of
 the Soros implementation of Thai number to number name conversion
 and BAHTTEXT function.
+

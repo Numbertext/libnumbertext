@@ -10,11 +10,17 @@ dist:
 	make
 	cd web; make clean
 	cd test; make clean
-	zip -r numbertext-`head -1 VERSION`.oxt .
+	tar c . | gzip > ../numbertext-`head -1 VERSION`.tar.gz
+
+ooo:
+	make
+	zip -r numbertext-`head -1 VERSION`.oxt META-INF rdb idl pythonpath *.xcu *py *xml README
 
 check:
 	cd test; make
 
 clean:
+	rm -f *~ */*~
 	cd pythonpath; make clean
 	cd web; make clean
+	rm -f *~ */*~

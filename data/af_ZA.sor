@@ -58,9 +58,8 @@ b:\d+ " "	# een-en-twintig duisend
 
 # decimals
 
-"([-−]?\d+)[.,]0+" |$1|
-"([-−]?\d+)[.,](\d)" |$1| komma |$2
-"([-−]?\d+)[.,](\d)(\d)" |$1| komma |$2| |$3
+([-−]?\d+)[.,] $1| komma
+([-−]?\d+[.,]\d*)(\d) $1| |$2
 
 # currencies
 	

@@ -14,8 +14,10 @@ from string import split
 # constant
 MINUS = "[-\u2212]"  # ASCII hyphen/minus or Unicode minus sign
 
+langname = {}
 # loaded patterns
 patterns = {}
+
 
 class NUMBERTEXT( unohelper.Base, XNumberText):
 
@@ -31,6 +33,8 @@ class NUMBERTEXT( unohelper.Base, XNumberText):
 		self.aSettings = aConfigProvider.createInstanceWithArguments(sAccess,(prop,))
 		self.uilocale = self.aSettings.getByName("ooLocale")
 		self.locale = Locale("en", "US", "")
+		for i in locales:
+		    langname[i.split("_")[0]] = i
 
 	def queryLocale(self, prop, loc):
 		if loc != None:
@@ -61,9 +65,14 @@ class NUMBERTEXT( unohelper.Base, XNumberText):
 		    module = Language + "_" + Country
 		else:
 		    module = Language + "_" + Country + "_" + Variant
+		    if not module in locales:
+			module = Language + "_" + Country
 		if not module in locales:
 			module = Language
 			if not module in locales:
+			    try:
+				module = langname[Language]
+			    except:
 				module = "en_US"
 		if not module in patterns:
 			try:
