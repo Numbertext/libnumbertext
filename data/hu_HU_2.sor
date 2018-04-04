@@ -21,9 +21,9 @@ __numbertext__
 7(\d) hetven$1
 8(\d) nyolcvan$1
 9(\d) kilencven$1
-1(\d\d) száz$1
+#1(\d\d) száz$1
 (\d)(\d\d) $1száz$2
-1(\d{3}) ezer$1
+1(\d{3}) egyezer$1
 
 # separator function
 :0*	# kétezer
@@ -104,7 +104,7 @@ ZAR:(.)	$(\1: dél-afrikai rand, cent)
 
 "ord 1" első
 "ord 2" második
-"ord ([-−]?\d+)" $(ord:$1)
+"ord ([-−]?\d+)" $(_ord:$1)
 
 ord:(.*)nulla	\1nulladik
 ord:(.*)egy	\1egyedik
@@ -126,4 +126,4 @@ ord:(.*)ezer	\1ezredik
 ord:(.*)illió	\1illiomodik
 ord:(.*)illiárd	\1illiárdodik
 
-help Functions: ord \(ordinal numbers\)\nExtra language modules: hu_HU_2 \(formal numerals\)
+help functions: ord \(ordinal numbers\)\nextra language modules: hu_HU_2 \(formal numerals\)

@@ -1,0 +1,13 @@
+Help for extra functions and modules of the default language:
+
+=NUMBERTEXT("help")
+
+Examples for using extra functions:
+
+=MONEYTEXT(1; "ord"; "en")  (English ordinal numbers)
+
+-> first
+
+=MONEYTEXT(999; "ord2"; "en")  (English ordinal abbreviations)
+
+-> 1st

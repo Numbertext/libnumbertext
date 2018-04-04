@@ -1,3 +1,60 @@
+2010-04-19: László Németh (nemeth openoffice org):
+	* pythonpath/org/__init__.py:
+	- remove Asian and CTL lang. detection temporarily (problems with
+	  document language detection in OOo 3.0 reported by Petr Mladek and
+	  mrw at OOo Extension site);
+	
+	- now MONEYTEXT handles unknown currency codes/new function names.
+	
+	  Example:
+	
+	  = MONEYTEXT(num, "ord", "en") -> ordinal names
+	  = MONEYTEXT(num, "ord2", "en") -> ordinal abbreviations (1st, 2nd etc.)
+
+	Problems with unknown currency codes reported by Bernard Marcelly.
+
+	* src/Soros.{py,js}: fix broken $n|$ = $n||$ equivalence (it worked only
+	  for parenthesized form: $(...)|$... = $(...)||$...)
+
+	* src/Soros.py: fix output encoding of \$, \(, \), \|
+
+	* data/{de_DE, hu_HU, hu_HU_2}.sor:
+	- function ord for ordinal numbers
+	- function help for help
+
+	* data/{en_US, en_US_2}.sor:
+	- function ord for ordinal numbers
+	- function ord2 for ordinal abbreaviations (1st, 2nd, 3rd, 4th etc.)
+	- function help for help
+
+	* data/hu_HU_2.sor: formal Hungarian rules (eg. egyezeregyszáz)
+
+	* data/ru_RU.sor: grammatical fixes for Russian money amounts
+	  (problems reported by rogerclc on OOo extension site):
+	– for numbers ending in 1 that are not 'teens':
+	   (1, 21, 31, 41, 101, 121, etc.): roubles = рубль; kopeks = копейка
+	– for all numbers ending in 1 in the kopeks column (.01, .21, etc):
+	  one = одна, eg. 
+	  21.00 = двадцать один *рубль*
+	  21.01 = двадцать один *рубль одна* копейка
+	  21.21 = двадцать один *рубль* двадцать *одна копейка*
+
+	* data/th_TH.sor: fix number 1 in 201, 5001 etc. 
+	  1 is เอ็ด in all numbers greater than 1 (หนึ่ง).
+	  This is an old Excel bug revived in OOo, too (see OOo Issue 83490),
+	  reported by Supapong at OOo Numbertext Wiki.
+
+	* data/fr_*.sor: add XPF (franc Pacifique), missing monetary
+	  unit reported by Bernard Marcelly.
+
+	* src/places.py: add RON, problem with the new Romanian monetary unit
+	  reported by Bernard Marcelly.
+
+2010-04-13: Alex Bodnaru (alexbodn at 012 dot net dot il):
+	* data/he_IL.sor: Hebrew module
+
+	* Makefile(s): add better clean
+
 2009-11-13: László Németh (nemeth openoffice org):
 	* data/{af_ZA,it_IT,nl_NL}.sor: fix bad conversion of
 	  1 subunit of currencies. The bug in the Italian module reported by

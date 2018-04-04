@@ -2,14 +2,14 @@
 <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 <link rel="icon" type="image/vnd.microsoft.icon" href="favicon.ico">
 <head>
-<title>NUMBERTEXT.org – universal number to text conversion for OpenDocument and OpenOffice.org</title>
+<title>NUMBERTEXT.org – universal number to text conversion, Soros language</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body>
 <style type="text/css">
 @import "numbertext.css";
 </style>
-<div class='title'><a name='head'><table width="100%"><tr><td><span>&bull;&bull;&bull; NUMBERTEXT.org &bull;&bull;&bull; 	</span>
+<div class='title'><a name='head'><table width="100%"><tr><td>
 Spell out the number <input id='num' onKeyUp='usernum();'>
 <!--</input> in <select id="lang" onChange='usernum();'>
 <option value="-">all languages</option>
@@ -22,10 +22,10 @@ with currency: <select id="money" onChange='usernum();'>
 <option value="GBP">GBP</option>
 <option value="JPY">JPY</option>
 <option value="USD">USD</option>
-</select></td><td align='right'>
+</select></td><td align='right'><b>2010-04-19</b> v0.8 (<a href="http://extensions.services.openoffice.org/project/numbertext">oxt</a>, <a href="dist/numbertext.jar">jar</a>)
 <span class='nowrap'>
 <!--<a class="menu2" href="IDE.html">IDE</a>-->
-<a class="menu2" href="#about">About NUMBERTEXT.org</a>
+<a class="menu2" href="#about">Help</a>
 </span></td></tr></table></div>
 
 <!--<p>Download OpenOffice.org <a href='http://extensions.services.openoffice.org/project/numbertext'>extension.</a>
@@ -39,7 +39,7 @@ Edit your <a href="Soros.html">Soros program</a>.-->
 <div id="space" class="lang" style="height: 200%;"></div>
 
 <div class='title'><a name='about'>
-<table width="100%"><tr><td><span>&bull;&bull;&bull; NUMBERTEXT.org &bull;&bull;&bull; </span>
+<table width="100%"><tr><td><span>News: <a href="dist/numbertext.jar">Java jar</a> • ordinal numbers, check =MONEYTEXT(num;"ord";"[de/en/hu]") • <a>Hebrew module</a> </span>
 </td><td align='right'>
 <span class='nowrap'>
 <!--<a class="menu2" href="IDE.html">IDE</a>-->
@@ -96,15 +96,13 @@ iterates this task on the remaining part, and insert the result to the output.--
 <table class="logos">
 <tr valign="bottom">
 <td><a href="http://nlnet.nl"><img src="http://www.nlnet.nl/logo/banner-nf-160x60.png" title="Stiching NLnet, Nederlands" alt="Stiching NLnet, Nederlands"></a>
-<td><a href="http://www.fsf.hu/index.php/About_us_en"><img src="http://extensions.services.openoffice.org/files/providerlogo/fsfhu_logo_0.png" title="FSF.hu Alapítvány, Hungary" alt="FSF.hu Alapítvány, Hungary"></a>
+<td><a href="http://www.fsf.hu/index.php/About_us_en"><img src="http://extensions.services.openoffice.org/e-files/providerlogo/fsfhu2.png" title="FSF.hu Alapítvány, Hungary" alt="FSF.hu Alapítvány, Hungary"></a>
 <td><a href="http://en.wikipedia.org/wiki/ODF"><img src="http://opendocument.xml.org/sites/opendocument.xml.org/files/u2/odf-community.jpg" title="OpenDocument" alt="ODF logo" height="60" width="60"></a>
 <td><a href="http://www.openoffice.org"><img src="http://marketing.openoffice.org/art/galleries/logos/main/col/ooo-main-logo-col_200px.gif" title="OpenOffice.org" alt="OpenOffice.org"></a>
 <td><a href="http://www.wikipedia.org" title="Wikipedia"><img alt="Wikipedia" src="http://upload.wikimedia.org/wikipedia/commons/6/62/174px-Wikipedia-word1_7.png"></a>
 <tr valign="top">
 <td><a href="http://nlnet.nl">NLnet Foundation, Nederlands</a><br> (donor)
-<td><a href="http://www.fsf.hu/index.php/About_us_en">FSF.hu Foundation, Hungary</a><br>(sponsor of
-<a href="http://extensions.services.openoffice.org/project/lightproof">Lightproof grammar checker</a>,
-<br>the inspiration of Numbertext project)
+<td><a href="http://www.fsf.hu/index.php/About_us_en">FSF.hu Foundation, Hungary</a>
 <td><a href="http://en.wikipedia.org/wiki/ODF">OpenDocument</a><br>(target)
 <td><a href="http://www.openoffice.org">OpenOffice.org</a><br>(target)
 <td><a href="http://www.wikipedia.org">Wikipedia</a><br>(knowledge base)
@@ -126,7 +124,7 @@ language = {
 "af_ZA": "Afrikaans",
 "ca_ES": "Català",
 "cs_CZ": "Česky",
-"da_DK": "Danks",
+"da_DK": "Dansk",
 "de_DE": "Deutsch",
 "el_EL": "Ελληνικά",
 "en_US": "English",
@@ -135,6 +133,7 @@ language = {
 "fr_BE": "Français&nbsp;(BE)",
 "fr_CH": "Français&nbsp;(CH)",
 "fr_FR": "Français",
+"he_IL": "עברית",
 "hu_HU": "Magyar",
 "it_IT": "Italiano",
 "ja_JP": "日本語",
@@ -182,6 +181,7 @@ default_currency = {
 "ko_KP": "KPW",
 "ko_KR": "KRW",
 "lb_LU": "EUR",
+"he_IL": "ILS",
 "hu_HU": "HUF",
 "nl_NL": "EUR",
 "pl_PL": "PLN",
@@ -259,7 +259,7 @@ function tim( ) {
 //    target.innerHTML = "doc: " + document.body.scrollTop + " tar: " + target.offsetTop 
     if (document.body.scrollTop < target.offsetTop + target.offsetHeight) target.innerHTML = "<table id='conv'><tbody><tr class='row' id='header' style='background-color:"+rgb(window.range, 2, 60)+"'><td width='75pt'>Language<td>" + header + "</td></tr>" +
 <!-- **************************************************************************************************** -->
-<!--!cd ../data; n=3; for i in `ls *.sor | grep -v en_US_2 | grep -v ^[A-Z]` Hung.sor Roman.sor Suzhou.sor; do name=`basename $i .sor`; name2=`echo $name | tr _ -`; head=""; rtl=""; rovas=""; case $name in Hung) rovas="rovas"; rtl="align='right'";; esac; echo "\"$head<tr class='row $rovas' style='background-color:\"+rgb(window.range,$n, $n%2?65:60)+\";' title='$name2'><td width='75pt'>\" + language[\"$name\"] + \"</td><td $rtl>\" + numlang['$name'].run((window.currency == \"-\" ? \"\" : (window.currency == \"def\" ? default_currency[\"$name\"] : window.currency) + \" \") + window.num).replace(\"\\\n\",\"<br>\") + '</td></tr>' +";n=`echo $n+1 | bc`; done-->
+<!--!cd ../data; n=3; for i in `ls *.sor | grep -v en_US_2 | grep -v hu_HU_2 | grep -v ^[A-Z]` Hung.sor Roman.sor Suzhou.sor; do name=`basename $i .sor`; name2=`echo $name | tr _ -`; head=""; rtl=""; rovas=""; case $name in Hung) rovas="rovas"; rtl="align='right'";; he_IL) rtl="align='right'";; esac; echo "\"$head<tr class='row $rovas' style='background-color:\"+rgb(window.range,$n, $n%2?65:60)+\";' title='$name2'><td width='75pt'>\" + language[\"$name\"] + \"</td><td $rtl>\" + numlang['$name'].run((window.currency == \"-\" ? \"\" : (window.currency == \"def\" ? default_currency[\"$name\"] : window.currency) + \" \") + window.num).replace(\"\\\n\",\"<br>\") + '</td></tr>' +";n=`echo $n+1 | bc`; done-->
 <!-- **************************************************************************************************** -->
     "<tr><td colspan=2>*Old systems (extended for large numbers) &ndash; Old Hungarian (correct typefaces in Firefox 3.5), Roman and Suzhou numerals</td></tr></tbody></table>";
 

@@ -33,7 +33,7 @@ function Soros(program) {
 
     // private run function
     this._run = function (data, begin, end) {
-	for (i in this.lines) {
+	for (var i in this.lines) {
 	    var l = this.lines[i]
 	    if (! ((!begin && l.begin) || (!end && l.end))) {
 		var m = l.pat.exec(data)
@@ -82,7 +82,7 @@ function Soros(program) {
 	    var line = new this.linetype(
 		new RegExp("^" + s[1].replace("^\^", "").replace("\$$", "") + "$"),
 		s[2].replace(/\\n/g, "\n")
-		    .replace(/\)\|\$/g,")||$$") // $(..)|$(..) -> $(..)||$(..)
+		    .replace(/(\$\d|\))\|\$/g,"$1||$$") // $(..)|$(..) -> $(..)||$(..)
 		    .replace(/\$/g, "\uE008")
 		    .replace(/\\(\d)/g, "$$$1")
 		    .replace(/\uE008(\d)/g, "\uE008($$$1)"),

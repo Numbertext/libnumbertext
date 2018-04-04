@@ -1,3 +1,49 @@
+2010-04-19: version 0.8
+    - new modules: he_HE from Alex Bodnaru, and hu_HU_2 (formal Hungarian)
+
+    - ordinal number functions in en_US, de_DE and hu_HU modules
+
+    - module fixes: th_TH, ru_RU
+
+    - new command line tool "soros.py", features:
+
+	- convert numbers and ranges:
+	    $ python src/soros.py data/en_US.sor 1 5-7 10
+	    one
+	    five
+	    six
+	    seven
+	    ten
+	    
+	- prefix (function) support:
+	    $ python src/soros.py -p ord2 data/en_US.sor 1-4
+	    1st
+	    2nd
+	    3rd
+	    4th
+	    
+	- file output:
+	    $ python src/soros.py -o nums data/en_US.sor 100-200
+	    $ head -3 nums
+	    one hundred
+	    one hundred and one
+	    one hundred and two
+
+    - new convention: "help" item in some modules:
+	$ python src/soros.py -o nums data/en_US.sor help
+	Functions:
+	 ord (ordinal numbers, eg. "first")
+	ord2 (ordinal abbreviations, eg. "1st")
+	Extra modules:
+	en_US_2 (subunit as decimal fraction: "USD 20.25" -> twenty and 25/100 dollars)
+
+    - bug fixes:
+	- default Western language in calls without language parameter in OOo
+	- fix output conversion of \$, \(, \) and \|
+	- fix boundary recognition in $n|$() (only $()|$() was good in the
+	  last versions)
+	- etc. (see ChangeLog)
+
 2009-11-13: version 0.7.1
     - bug fixes (af_ZA, it_IT, nl_NL, th_TH), see ChangeLog
 

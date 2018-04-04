@@ -45,12 +45,12 @@ class NUMBERTEXT( unohelper.Base, XNumberText):
 				return Locale(a[0], a[1], "")
 			else:
 				return Locale(a[0], a[1], a[2])
-		locale = prop.getPropertyValue("CharLocaleAsian")
-		if locale != None and locale.Language != "zxx":
-			return locale
-		locale = prop.getPropertyValue("CharLocaleComplex")
-		if locale != None and locale.Language != "zxx":
-				return locale
+#		locale = prop.getPropertyValue("CharLocaleAsian")
+#		if locale != None and locale.Language != "zxx":
+#			return locale
+#		locale = prop.getPropertyValue("CharLocaleComplex")
+#		if locale != None and locale.Language != "zxx":
+#				return locale
 		locale = prop.getPropertyValue("CharLocale")
 		if locale != None and locale.Language != "zxx":
 			return locale
@@ -99,14 +99,14 @@ class NUMBERTEXT( unohelper.Base, XNumberText):
 		locale = self.queryLocale(prop, loc)
 		mod = self.getModule(locale.Language, locale.Country, locale.Variant)
 		decimalplaces = 2;
-		outcurr = ""
 		if curr == None:
 			currency = self.getCurrency(locale)
 			decimalplaces = currency.DecimalPlaces
 			outcurr = currency.ID + " "
-		elif curr in places:
-			decimalplaces = places[curr]
+		else:
 			outcurr = curr + " "
+			if curr in places:
+				decimalplaces = places[curr]
 		if num.rfind(".") > -1 or num.rfind(",") > -1:
 			num = float(num.replace(",","."))
 			if (type(decimalplaces) == type(0.1)):

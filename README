@@ -1,6 +1,6 @@
 Language-neutral NUMBERTEXT and MONEYTEXT functions for OpenOffice.org Calc
 
-version 0.7.1 (2009-11-13)
+version 0.8 (2010-04-19)
 
 Numbertext OOo extension,
 Soros programming language specification (draft) and IDE*,
@@ -10,11 +10,11 @@ Soros interpreter in JavaScript: Soros.js*:
 * Not in OpenOffice.org extension, see http://NUMBERTEXT.org for
   the full distribution.
 
-License: LGPL/BSD dual-license, 2009 (C) László Németh (nemeth at openoffice dot org)
+License: LGPL/BSD dual-license, 2009-2010 (C) László Németh (nemeth at openoffice dot org)
 
 Numbertext language data (Soros programs):
 
-LGPL/BSD dual-license, 2009 (C) László Németh et al. (see AUTHORS)
+LGPL/BSD dual-license, 2009-2010 (C) László Németh et al. (see AUTHORS)
 
 Serbian modules:
 
@@ -42,7 +42,9 @@ fi-FI	Finnish
 fr-BE	Belgian French
 fr-CH	Swiss French
 fr-FR	French
+he-IL	Hebrew
 hu-HU	Hungarian
+hu-HU_2	Hungarian (formal)
 it-IT	Italian
 ja-JP	Japanese
 ja-JP-2	Japanese (formal)

@@ -13,6 +13,8 @@ fi_FI
 fr_BE
 fr_CH
 fr_FR
+he_IL
+hu_HU_2
 hu_HU
 Hung_2
 Hung

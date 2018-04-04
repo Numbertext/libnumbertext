@@ -138,3 +138,27 @@ ZWL:(\D+) $(\1: Zimbabwe dollar, Zimbabwe dollars, cent, cents)
 "(([A-Z]{3}) [-−]?\d+)[.,](\d)" $1 and |$(\30) $(\2:sp)
 "(([A-Z]{3}) [-−]?\d+)[.,](\d\d)" $1 and |$3 $(\2:sp)
 
+# ordinal numbers
+
+"ord ([-−]?\d+)" $(ord:$1)
+
+ord:(.*)one	\1first
+ord:(.*)two	\1second
+ord:(.*)three	\1third
+ord:(.*)five	\1fifth
+ord:(.*)eight	\1eighth
+ord:(.*)nine	\1ninth
+ord:(.*)twelve	\1twelfth
+ord:(.*)y	\1ieth
+"ord:(.*) " 	\1th
+ord:(.*)	\1th
+
+# ordinal abbreviation
+
+"ord2 (.*1\d)"	\1th
+"ord2 (.*1)"	\1st
+"ord2 (.*2)"	\1nd
+"ord2 (.*3)"	\1rd
+"ord2 (.*)"	\1th
+
+help Functions:\n ord \(ordinal numbers, eg. "first"\)\nord2 \(ordinal abbreviations, eg. "1st"\)\nExtra modules:\nen_US_2 \(subunit as decimal fraction: "USD 20.25" -> twenty and 25/100 dollars\)

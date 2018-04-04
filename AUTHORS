@@ -17,6 +17,10 @@ Ruud Baars:
 
 	- bug reports about Dutch module
 
+Alex Bodnaru (alexbodn at 012 dot net dot il):
+
+	- author of Hebrew (he_IL) module
+
 Claudio Colombo (claudio underline c77 at yahoo dot it):
 
 	- it_IT bug report ("*unocento")
@@ -44,6 +48,10 @@ Marcin Miłkowski (milek_pl at o2 dot pl):
 
 	- patch for Polish: https://bugs.launchpad.net/numbertext/+bug/421031:
 		- correct special affixation of number names after 2, 3 and 4
+
+Petr Mladek:
+
+	- bug report about document language detection in OOo 3.2
 
 Joan Montané (jmontane at openoffice dot org):
 
@@ -75,6 +83,10 @@ Eduardo Moreno (emoreno at tokonhu dot com):
 
 	- bug reports about Spanish module and short language code "es"
 
+mrw at OOo Extension site:
+
+	- bug report about document language detection in OOo 3.2
+
 Stephan Nilsson (Stephan at Nilsson dot tf):
 	- sv_SE bug report: the Swedish 7 is "sju", not *sjo
 
@@ -93,6 +105,10 @@ Eike Rathke (er at OpenOffice dot org):
 
 	- suggested new namespace and compatibility name usage.
 
+rogerclc at OOo extesion site:
+
+	- bug report about Russian MONEYTEXT conversion (russian grammar)
+
 Olivier Ronez:
 
 	- patches for French (fr_FR) language module:
@@ -105,6 +121,14 @@ Olivier Ronez:
 
 		- French numbers in Belgium (https://bugs.launchpad.net/numbertext/+bug/419731)
 		- French numbers in Switzerland (https://bugs.launchpad.net/numbertext/+bug/419734)
+
+Johanna Sørensen:
+
+	- bug report about "Dansk" language name on Numbertext.org home page
+
+Supapong at OOo Wiki:
+
+	- bug report about Thai numbers ending with "01" (Excel BAHTTEXT bug)
 
 Kálmán Szalai (Kami):
 

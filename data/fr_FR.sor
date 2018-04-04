@@ -92,6 +92,7 @@ TND:(\D+) $(\1: dinar tunisien, dinars tunisiens, de dinars tunisiens, millime, 
 USD:(\D+) $(\1: dollar américain, dollars américains, de dollars américains, cent, cents)
 VUV:(\D+) $(\1: vatu, vatus, de vatus,,)
 X[AO]F:(\D+) $(\1: franc CFA, francs CFA, de francs CFA, centime, centimes)
+XPF:(\D+) $(\1: franc Pacifique, francs Pacifique, de francs Pacifique, centime, centimes)
 
 "(GNF|LBP|VUV) ([-−]?1(.0+)?)" $2 $(\1:us)
 "(GNF|LBP|VUV) ([-−]?\d+0{6,})" $2 $(\1:ud)
@@ -115,4 +116,3 @@ X[AO]F:(\D+) $(\1: franc CFA, francs CFA, de francs CFA, centime, centimes)
 "(([A-Z]{3}) [-−]?\d+)[.,](01)" $1 et |$(1) $(\2:ss)
 "(([A-Z]{3}) [-−]?\d+)[.,](\d)" $1 et |$(\30) $(\2:sp)
 "(([A-Z]{3}) [-−]?\d+)[.,](\d\d)" $1 et |$3 $(\2:sp)
-
