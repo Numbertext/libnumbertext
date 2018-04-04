@@ -1,3 +1,20 @@
+2010-04-26: László Németh (nemeth openoffice org):
+	* data/fr_*: ordf and ordm instead of ord-fem and ord-mas
+
+	* data/ru_RU.sor: fix bugs reported by georgepyh on OOo Extension site
+
+	* description.xml, CalcAddIn.xcu: add French translation by
+	  Bernard Marcelly.
+
+	* data/he_IL.sor: [^0] -> [1-9], modify function names for MONEYTEXT
+	
+	* src/soroside.py: rename soros.py, suggested by Alex Bodnaru
+
+2010-04-26: Alex Bodnaru (alexbodn at 012 dot net dot il):
+	* data/he_IL.sor:
+	- add ordinal numbers (ord, ordf, ordm functions)
+	- restructuring currencies, etc.
+
 2010-04-22: László Németh (nemeth openoffice org):
 	* data/sv_SE.sor: fix Swedish 11000 (elvatusen instead of elvausen)
 	

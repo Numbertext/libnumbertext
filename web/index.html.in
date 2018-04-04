@@ -22,7 +22,7 @@ with currency: <select id="money" onChange='usernum();'>
 <option value="GBP">GBP</option>
 <option value="JPY">JPY</option>
 <option value="USD">USD</option>
-</select></td><td align='right'><b>2010-04-19</b> v0.8 (<a href="http://extensions.services.openoffice.org/project/numbertext">oxt</a>, <a href="dist/numbertext.jar">jar</a>)
+</select></td><td align='right'><b>2010-04-22</b> v0.8.1 (<a href="http://extensions.services.openoffice.org/project/numbertext">oxt</a>, <a href="dist/numbertext.jar">jar</a>)
 <span class='nowrap'>
 <!--<a class="menu2" href="IDE.html">IDE</a>-->
 <a class="menu2" href="#about">Help</a>
