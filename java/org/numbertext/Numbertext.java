@@ -48,7 +48,8 @@ public class Numbertext {
 	String lang = "en_US";
 	if (args.length == 0) {
 	    System.out.println("Usage: java soros [-l lang] [-p prefix] par1 [par2...]");
-	    System.out.println("Example: java soros -l en_US -p ord: 1-10 500 1000-1010");
+	    System.out.println("Parameter: n: number; n-m: range; n-m~s: range with step");
+	    System.out.println("Example: java -jar numbertext -l en_US -p ord: 1-10 500 1000-10000~1000");
 	    return;
 	}
 	int state = 0;
@@ -66,12 +67,22 @@ public class Numbertext {
 		state = 2;
 	    } else {
 		int idx = args[i].indexOf('-', 1);
-		if (idx == -1) System.out.println(numbertext(prefix + args[i], lang));
-		else {
-		    for (int j = Integer.parseInt(args[i].substring(0, idx)); j <= Integer.parseInt(args[i].substring(idx + 1)); j++) {
+		if (idx > -1) {
+		    int b = Integer.parseInt(args[i].substring(0, idx));
+		    String e = args[i].substring(idx + 1);
+		    int step = e.indexOf('~', idx);
+		    int end;
+		    if (step > -1) {
+			end = Integer.parseInt(e.substring(0, step));
+			step = Integer.parseInt(e.substring(step + 1));
+		    } else {
+			step = 1;
+			end = Integer.parseInt(e);
+		    }
+		    for (int j = b; j <= end; j = j + step) {
 			System.out.println(numbertext(prefix + j, lang));
 		    }
-		}
+		} else System.out.println(numbertext(prefix + args[i], lang));
 	    }
 	}
   }
