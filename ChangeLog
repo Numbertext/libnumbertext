@@ -1,5 +1,9 @@
+2010-06-07: László Németh (nemeth openoffice org):
+	* data/ru_RU.sor: fix bad back references in Russian rules. Missing
+	  conversion reported by Birioukoff at OOo Extension site.
+
 2010-05-28: László Németh (nemeth openoffice org):
-	* data/en_IN.sor: Indian numbering system. Lakh = 100.000, crone =
+	* data/en_IN.sor: Indian numbering system. Lakh = 100.000, crore =
 	  10.000.000 (requested by Dhandip at OOo Extensions site).
 
 	* data/ca_ES.sor: fix Catalan MONEYTEXT in Calc Numbertext extension
