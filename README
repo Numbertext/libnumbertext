@@ -1,6 +1,6 @@
 Language-neutral NUMBERTEXT and MONEYTEXT functions for OpenOffice.org Calc
 
-version 0.7 (2009-11-10)
+version 0.7.1 (2009-11-13)
 
 Numbertext OOo extension,
 Soros programming language specification (draft) and IDE*,
@@ -22,6 +22,9 @@ CC/LGPL/BSD tri-license, 2009 (C) Goran Rakić (grakic at devbase dot net)
 
 * Note: for full distribution with specifications, IDE and JavaScript
   implementation, see http://NUMBERTEXT.org
+
+Software distributed under the License is distributed on an "AS IS" basis,
+WITHOUT WARRANTY OF ANY KIND, either express or implied.
 
 = Supported languages in this version =
 

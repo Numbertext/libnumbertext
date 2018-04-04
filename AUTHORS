@@ -75,6 +75,13 @@ Eduardo Moreno (emoreno at tokonhu dot com):
 
 	- bug reports about Spanish module and short language code "es"
 
+Stephan Nilsson (Stephan at Nilsson dot tf):
+	- sv_SE bug report: the Swedish 7 is "sju", not *sjo
+
+Nicolas Pagni (Nicolas dot Pagni at npagni dot it):
+
+	- bug report about the bad conversion of 1 eurocent in the Italian module
+
 Goran Rakić (grakic at devbase dot net):
 
 	- author of Serbian modules (sh-RS, sr-RS)
@@ -102,6 +109,10 @@ Olivier Ronez:
 Kálmán Szalai (Kami):
 
 	- ooo-build integration of Numbertext OpenOffice.org extension
+
+Tantai Thanakanok (tantai osdev co th):
+
+	- patch for extended Thai decimal support (1 and more than 2 digits with currencies)
 
 xhydrogene at launchpad dot net:
 

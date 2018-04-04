@@ -1,3 +1,15 @@
+2009-11-13: László Németh (nemeth openoffice org):
+	* data/{af_ZA,it_IT,nl_NL}.sor: fix bad conversion of
+	  1 subunit of currencies. The bug in the Italian module reported by
+	  Nicolas Pagni (Nicolas dot Pagni at npagni dot it)
+
+	* data/sv_SE.sor: the Swedish 7 is "sju", not *sjo,
+	  reported by Stephan Nilsson (Stephan at Nilsson dot tf)
+
+2009-11-11: Tantai Thanakanok (tantai osdev co th):
+	* data/th_TH.sor: extended Thai decimal support for 1 and
+	  more than 2 digits with currencies
+
 2009-11-10: László Németh (nemeth openoffice org):
 	* data/da_DK.sor: new Danish module
 

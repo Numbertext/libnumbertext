@@ -1,3 +1,6 @@
+2009-11-13: version 0.7.1
+    - bug fixes (af_ZA, it_IT, nl_NL, th_TH), see ChangeLog
+
 2009-11-10: version 0.7
     - new modules:
       da-DK	Danish from László Németh
