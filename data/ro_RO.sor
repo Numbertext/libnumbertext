@@ -1,0 +1,87 @@
+__numbertext__
+^0 zero
+1 unu
+2$ doi
+2 două
+3$ tre
+3 trei
+4 patru
+5 cinci
+6$ șase
+6 șai
+7 șapte
+8 opt
+9 nouă
+10 zece
+11 unsprezece
+12 doisprezece
+14 paisprezece
+1(\d) $1sprezece
+(\d)0 $1zeci
+(\d)(\d) $(\10) și $2
+1(\d\d) o sută $1
+(\d)(\d\d) $1 sute $2
+1(\d{3}) o mie $1
+(1?\d)(\d{3}) $1 mii $2
+(\d{1,3})(\d{3}) $1 de mii $2
+1(\d{6}) un milion $1
+(1?\d)(\d{6}) $1 milioane $2
+(\d{1,3})(\d{6}) $1 de milioane $2
+1(\d{9}) un miliard $1
+(1?\d)(\d{9}) $1 miliarde $2
+(\d{1,3})(\d{9}) $1 de miliarde $2
+1(\d{12}) un trilion $1
+(1?\d)(\d{12}) $1 trilioane $2
+(\d{1,3})(\d{12}) $1 de trilioane $2
+1(\d{15}) un cvadrilion $1
+(1?\d)(\d{15}) $1 cvadrilioane $2
+(\d{1,3})(\d{15}) $1 de cvadrilioane $2
+1(\d{18}) un cvintilion $1
+(1?\d)(\d{18}) $1 cvintilioane $2
+(\d{1,3})(\d{18}) $1 de cvintilioane $2
+1(\d{21}) un sextilion $1
+(1?\d)(\d{21}) $1 sextilioane $2
+(\d{1,3})(\d{21}) $1 de sextilioane $2
+1(\d{24}) un septilion $1
+(1?\d)(\d{24}) $1 septilioane $2
+(\d{1,3})(\d{24}) $1 de septilioane $2
+
+# negative number
+
+[-−](\d+) minus |$1
+
+# decimals
+
+"([-−]?\d+)[.,]" $1| virgulă
+"([-−]?\d+[.,])(\d{1,2})" $1| |$2
+"([-−]?\d+[.,])(\d)(\d)(\d)" $1| |$2 |$3 |$4
+"([-−]?\d+[.,]\d*)(\d)" $1| |$2
+
+# currency
+
+# unit/subunit singular/plural
+
+us:([^,]*),([^,]*),([^,]*),([^,]*) \1
+up:([^,]*),([^,]*),([^,]*),([^,]*) \2
+ss:([^,]*),([^,]*),([^,]*),([^,]*) \3
+sp:([^,]*),([^,]*),([^,]*),([^,]*) \4
+
+CHF:(\D+) $(\1: franc elvețian, franci elvețieni, cent, cenți)
+CNY:(\D+) $(\1: yuan renminbi, yuani renminbi, fen, fen)
+EUR:(\D+) $(\1: euro, euro, cent, cenți)
+GBP:(\D+) $(\1: liră sterlină, lire sterline, penny, pence)
+JPY:(\D+) $(\1: yen, yeni, sen, sen)
+RON:(\D+) $(\1: leu românesc, lei românești, ban, bani)
+USD:(\D+) $(\1: dolar american, dolari americani, cent, cenți)
+
+"([A-Z]{3}) ([-−]?1)([.,]00?)?" $2 $(\1:us)
+"([A-Z]{3}) ([-−]?\d+)([.,]00?)?" $2 $(\1:up)
+
+"(CNY [-−]?\d+)[.,]10?" $1 $2 jiao
+"(CNY [-−]?\d+)[.,](\d)0?" $1 $2 jiao
+"(CNY [-−]?\d+[.,]\d)1" $1 $2 fen
+"(CNY [-−]?\d+[.,]\d)(\d)" $1 $2 fen
+
+"(([A-Z]{3}) [-−]?\d+)[.,](01)" $1 $(1) $(\2:ss)
+"(([A-Z]{3}) [-−]?\d+)[.,](\d)" $1 $(\30) $(\2:sp)
+"(([A-Z]{3}) [-−]?\d+)[.,](\d\d)" $1 $3 $(\2:sp)

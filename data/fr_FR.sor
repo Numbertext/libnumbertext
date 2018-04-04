@@ -1,0 +1,81 @@
+__numbertext__
+^0 zéro
+1 un
+2 deux
+3 trois
+4 quatre
+5 cinq
+6 six
+7 sept
+8 huit
+9 neuf
+10 dix
+11 onze
+12 douze
+13 treize
+14 quatorze
+15 quinze
+16 seize
+20 vingt
+30 trente
+40 quarante
+50 cinquante
+60 soixante
+71 soixante et onze
+7(\d) soixante-$(1\1)
+80$ quatre-vingts
+80 quatre-vingt
+9(\d) quatre-vingt-$(1\1)
+(\d)1 $(\10) et un
+(\d)(\d) $(\10)-$2
+1(\d\d) cent $1
+(\d)00$ $1 cents
+(\d)(\d\d) $1 cent $2
+1100 onze cents
+11(\d\d) onze cent $1
+(\d{1,3})(\d{3}) $1 mille $2
+1(\d{6}) un million $1
+(\d{1,3})(\d{6}) $1| millions $2
+1(\d{9}) un milliarde $1
+(\d{1,3})(\d{9}) $1| milliardes $2
+1(\d{12}) un billion $1
+(\d{1,3})(\d{12}) $1| billions $2
+1(\d{15}) un billiarde $1
+(\d{1,3})(\d{15}) $1| billiardes $2
+1(\d{18}) un trillion $1
+(\d{1,3})(\d{18}) $1| trillions $2
+1(\d{21}) un trilliarde $1
+(\d{1,3})(\d{21}) $1| trilliardes $2
+1(\d{24}) un quadrillion $1
+(\d{1,3})(\d{24}) $1| quadrillions $2
+
+# negative number
+
+[-−](\d+) négatif de |$1
+
+# decimals
+
+"([-−]?\d+)[.,]" "$1| comma"
+"([-−]?\d+[.,]\d*)(\d)" $1| |$2
+
+# currency
+
+# unit/subunit singular/plural
+
+us:([^,]*),([^,]*),([^,]*),([^,]*),([^,]*) \1
+up:([^,]*),([^,]*),([^,]*),([^,]*),([^,]*) \2
+ud:([^,]*),([^,]*),([^,]*),([^,]*),([^,]*) \3
+ss:([^,]*),([^,]*),([^,]*),([^,]*),([^,]*) \4
+sp:([^,]*),([^,]*),([^,]*),([^,]*),([^,]*) \5
+
+CHF:(\D+) $(\1: francs suisse, francs suisses, de francs suisses, centime, centimes)
+EUR:(\D+) $(\1: euro, euros, d’euros, centime, centimes)
+GBP:(\D+) $(\1: livre sterling, livres sterling, de livres sterling, penny, pennies)
+USD:(\D+) $(\1: dollar américain, dollars américains, de dollars américains, cent, cents)
+
+"([A-Z]{3}) ([-−]?1)" $2 $(\1:us)
+"([A-Z]{3}) ([-−]?\d+0{6,})" $2 $(\1:ud)
+"([A-Z]{3}) ([-−]?\d+)" $2 $(\1:up)
+"(([A-Z]{3}) [-−]?\d+)[.,](01)" $1 y |$(1) $(\2:ss)
+"(([A-Z]{3}) [-−]?\d+)[.,](\d)" $1 y |$(\30) $(\2:sp)
+"(([A-Z]{3}) [-−]?\d+)[.,](\d\d)" $1 y |$3 $(\2:sp)

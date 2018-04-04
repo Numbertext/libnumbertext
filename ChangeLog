@@ -1,0 +1,29 @@
+2009-07-25: László Németh (nemeth openoffice org):
+	* data/*.sor: 11 new languages (see README)
+	
+	* numbertext.py: handling language variants (eg. en-US-2
+	  for USD 20.25 -> twenty and 25/100 dollars)
+
+	* doc/sorosspec.odt: improved Soros language specification.
+
+	* Soros.js, pythonpath/Soros.py: standard Soros modules
+	  in Python and JavaScript
+
+	* bin/*.py: new conversion utilities and more readable format using
+	  standard Python doc string of the numbertext language modules.
+
+	* numbertext.py: fix for language codes without country ("eo", "Roman")
+
+	* data/*.sor: add function-like currency handling for language modules
+
+	* es_ES.sor: fix for Spanish "... y uno mil" -> "... y un mil".
+	  The bug reported by Eduardo Moreno (emoreno tokonhu com).
+
+	* Roman*.sor: handle arbitrary large Roman numbers: 1000000000 -> ((M))
+
+	* test/*: testing environment and tests
+
+	* web/: web pages of http://numbertext.org
+	
+	* bin/shellhtml: preprocessor tool for HTML, XML data
+

@@ -1,0 +1,2 @@
+# reverse function
+(.*)(.) \2$1

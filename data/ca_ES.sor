@@ -1,0 +1,74 @@
+__numbertext__
+^0 zero
+1$ u
+1 un
+2 dos
+3 tres
+4 quatre
+5 cinc
+6 sis
+7 set
+8 vuit
+9 nou
+10 deu
+11 onze
+12 dotze
+13 tretze
+14 catorze
+15 quinze
+16 setze
+17 disset
+1(\d) di$1
+20 vint
+2(\d) vint-i-$1
+30 trenta
+40 quaranta
+50 cinquanta
+60 seixanta
+70 setanta
+80 vuitanta
+90 noranta
+(\d)(\d) $(\10)-$2
+1(\d\d) cent $1
+(\d)(\d\d) $1-cents $2
+(\d{1,3})(\d{3}) $1 mil $2
+1(\d{6}) un milió $1
+(\d{1,6})(\d{6}) $1 milions $2
+1(\d{9}) mil milions $1
+1(\d{12}) un bilió $1
+(\d{1,6})(\d{12}) $1 bilions $2
+1(\d{18}) un trilió $1
+(\d{1,6})(\d{18}) $1 trilions $2
+1(\d{24}) un quadrilió $1
+(\d{1,6})(\d{24}) $1 quadrilions $2
+
+# negative number?
+
+[-−](\d+) negativa |$1
+
+# decimals
+
+"([-−]?\d+)[.,]" $1| coma
+"([-−]?\d+[.,]\d*)(\d)" $1| |$2
+
+# currency
+
+# unit/subunit singular/plural
+
+us:([^,]*),([^,]*),([^,]*),([^,]*) \1
+up:([^,]*),([^,]*),([^,]*),([^,]*) \2
+ss:([^,]*),([^,]*),([^,]*),([^,]*) \3
+sp:([^,]*),([^,]*),([^,]*),([^,]*) \4
+
+CHF:(\D+) $(\1: franc suís, francs suís, cèntim, cèntims)
+EUR:(\D+) $(\1: euro, euros, cent, cents)
+GBP:(\D+) $(\1: lliura esterlina, lliures esterlina, penic, penics)
+JPY:(\D+) $(\1: ien, iens, sen, sen)
+USD:(\D+) $(\1: dòlar EUA, dòlar EUA, cent, cents)
+
+"([A-Z]{3}) ([-−]?1)([.,]00?)?" $2 $(\1:us)
+"([A-Z]{3}) ([-−]?\d+)([.,]00?)?" $2 $(\1:up)
+
+"(([A-Z]{3}) [-−]?\d+)[.,](01)" $1 und $(1) $(\2:ss)
+"(([A-Z]{3}) [-−]?\d+)[.,](\d)" $1 und $(\30) $(\2:sp)
+"(([A-Z]{3}) [-−]?\d+)[.,](\d\d)" $1 $3 $(\2:sp)

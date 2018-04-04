@@ -1,7 +1,4 @@
-# Thai number name patterns,
-# described by László Németh
-# based on Thai numerals article of Wikipedia.
-# License: LGPL and BSD dual-license
+__numbertext__
 ^0 ศูนย์
 1 หนึ่ง
 2 สอง
@@ -44,20 +41,20 @@
 
 # negative numbers
 
-[-−](\d\d*) ลบ$1
+[-−](\d+) ลบ|$1
 
 # decimals
 
-"([-−]?\d\d*)[.,](\d)(\d)" |$1จุด|$2|$3
+"([-−]?\d+)[.,](\d)(\d)" |$1จุด|$2|$3
 
 # currency
 
-"THB ([-−]?\d\d*)" $1บาทถ้วน
+"THB ([-−]?\d+)" $1บาทถ้วน
 
 # currency with decimals
 
-"(THB [-−]?\d\d*)[,.]00" $1
-"THB ([-−]?\d\d*)[,.](\d\d)" $1บาท$2สตางค์
+"(THB [-−]?\d+)[,.]00" $1
+"THB ([-−]?\d+)[,.](\d\d)" $1บาท$2สตางค์
 
 # other currencies?
 

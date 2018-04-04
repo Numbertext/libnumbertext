@@ -1,0 +1,95 @@
+<html>
+<head><title>Soros IDE 1.0 &ndash; Integrated developing environment of the Soros programming language</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<style type="text/css">
+@import "numbertext.css";
+</style>
+<div class='title'>
+<table width="100%" style='border-style: solid; border-width: 0px 0px 1px 0px;'><tr><td><span>&bull;&bull;&bull; NUMBERTEXT.org &bull;&bull;&bull; 
+IDE of Soros programming language (<a href="sorosspec.pdf">specification</a>) </span></td><td align='right'>
+<span class='nowrap'>
+<!--<a class="menu2" href="IDE.html">IDE</a>-->
+<a class="menu2" href="index.html#about">Back</a>
+</span></td></tr></table></div>
+
+<script type="text/javascript" language="javascript1.3">
+MAXLIST=1000
+<!-- **************************************************************************************************** -->
+<!--!cat ../Soros.js-->
+<!-- **************************************************************************************************** -->
+function convert() {
+  var s = document.getElementById('number').value;
+  if (s.match(/\d-/)) {
+    var nums = s.split("-")
+    var res = ""
+    var maxi = parseInt(nums[1])
+    var begin = parseInt(nums[0])
+    if (maxi - begin > MAXLIST) maxi = begin + MAXLIST
+    for (var i = begin; i <= maxi; i++) {
+	res = res + i + "\t" + mySoros.run(i + "") + "\n"
+    }
+    document.getElementById('numbers').value = res;
+    document.getElementById('result').value = "";
+  } else { document.getElementById('result').value = mySoros.run(s); }
+}
+function comp() {
+ mySoros = new Soros(document.getElementById('def').value);
+}
+function load_prg() {
+	document.getElementById('def').value = document.getElementById(document.getElementById('select').value).value;
+}
+function copy_result() {
+	document.getElementById('number').value = document.getElementById('result').value;
+}
+</script>
+<table width="100%">
+    <tr>
+	<td>
+	<div class='row'>
+	<label for="number" accesskey="i"><u>I</u>nput:</label>
+	<input type="text" title="Number (eg. 1234) or number range (1-100) or number with currency (USD 15)" id="number" onkeyup="convert();" value="1-100" />
+	&nbsp;&nbsp;
+	Output: <input type="button" id="result" onclick="copy_result();js();" />
+	</div>	
+    <tr>
+	<td>
+	<div class='row' id='header'>
+	<label for="def" accesskey="p"><u>P</u>rogram editor</label>&nbsp;&nbsp;
+	<label for="select" accesskey="l"><u>L</u>oad:</label>
+	<select id="select" onchange="load_prg(); comp(); convert();">
+	    <option value="xx">&ndash;</option>
+<!-- **************************************************************************************************** -->
+<!--!cd ../data;for i in *.sor; do name=`basename $i .sor`; echo "<option value='$name'>$name</option>"; done-->
+<!-- **************************************************************************************************** -->
+	</select>
+	</div>
+</table>
+<table>
+<td valign="top">
+<textarea title="Program" id="def" onkeyup="comp();convert();"></textarea>
+<td valign="top" align="left">
+<textarea id="numbers" title="list" readonly></textarea>
+</table>
+<!-- **************************************************************************************************** -->
+<!--!cd ../data;for i in *.sor; do echo "<textarea id='`basename $i .sor`' class='hidden'>"; cat $i; echo "</textarea>"; done-->
+<!-- **************************************************************************************************** -->
+<script type="text/javascript" language="javascript1.3">
+if (navigator.appName.indexOf("Microsoft")!=-1) {
+x = document.body.clientWidth
+y = document.body.clientHeight
+}else{
+x = window.innerWidth
+y = window.innerHeight
+}
+var area1 = document.getElementById('def')
+var area2 = document.getElementById('numbers')
+x = Math.round(x / 2 - x / 90)
+y = Math.round(y - y / 7)
+area1.style.width= x + "px"
+area1.style.height= y + "px"
+area2.style.width= x + "px"
+area2.style.height= y + "px"
+</script>
+</html>

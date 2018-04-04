@@ -1,7 +1,5 @@
 # Mandarin Chinese number names (simplified)
-# described by László Németh
-# based on Chinese numerals article
-# of Wikipedia
+__numbertext__
 ^0 零
 1 一
 2$ 二
@@ -57,4 +55,29 @@
 
 # negative numbers
 
-[-−](\d+) 负$1
+[-−](\d+) 负|$1
+
+# decimals
+
+"([-−]?\d+)[.,]" "$1|点"
+"([-−]?\d+[.,]\d*)(\d)" $1||$2
+
+# currency
+
+# unit/subunit singular/plural
+
+AUD 澳大利亚元
+CHF 瑞士法郎
+CNY 人民币
+EUR 歐元
+GBP 英镑
+HKD 港元
+JPY 日圓
+MOP 澳門幣
+USD 美元
+
+# 1/10 角
+# 1/100 分
+
+"([A-Z]{3}) ([-−]?\d+([.,]\d+)?)" $2$1
+

@@ -1,0 +1,7 @@
+# check boundary detection in nested calls
+__numbertext__
+^1$ uno
+^1 un
+(1)000000 $($($1)) million
+(1)(000001) $($($1)) million $(|$($2))
+(\D+) \1

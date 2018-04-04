@@ -1,0 +1,8 @@
+#!/bin/bash
+# HTML shell preprocessor
+# syntax: shell code in a HTML comment with leading exclamation mark 
+# (in a new line, without leading and trailing whitespaces)
+# will be executed by the shell, and the result replaced with it.
+# For example, insert calendar:
+# <!--!cal-->
+awk '/^<!--!/{system(substr($0,6,length($0)-8)); next}{print}' 

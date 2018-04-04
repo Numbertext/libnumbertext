@@ -1,5 +1,6 @@
 import uno
 import unohelper
+import Soros
 from org.openoffice.addin.sample import XNumberText
 from com.sun.star.sheet import XAddIn
 from com.sun.star.lang import XLocalizable, XServiceName, Locale
@@ -28,7 +29,7 @@ class NumberText( unohelper.Base, XNumberText, XAddIn, XServiceName ):
 		self.aSettings = aConfigProvider.createInstanceWithArguments(sAccess,(prop,))
 		self.uilocale = self.aSettings.getByName("ooLocale")
 		self.titles = __import__("numbertext_titles").titles
-		self.locales = __import__("numbertext_locales").locales
+		self.locales = __import__("numbertext_locales").__doc__.strip().split("\n")
 		self.decplaces = __import__("numbertextplaces").decplaces
 		self.locale = Locale("en", "US", "")
 
@@ -47,9 +48,11 @@ class NumberText( unohelper.Base, XNumberText, XAddIn, XServiceName ):
 		if loc != None:
 			a = split(loc, "-")
 			if len(a) == 1:
-				return Locale(a, "", "")
-			else:
+				return Locale(a[0], "", "")
+			if len(a) == 2:
 				return Locale(a[0], a[1], "")
+			else:
+				return Locale(a[0], a[1], a[2])
 		locale = prop.getPropertyValue("CharLocaleAsian")
 		if locale != None and locale.Language != "zxx":
 			return locale
@@ -62,9 +65,14 @@ class NumberText( unohelper.Base, XNumberText, XAddIn, XServiceName ):
 		return Locale("en", "US", "")
 
 	# set module name for importing locale data
-	def getModule(self, Language, Country):
+	def getModule(self, Language, Country, Variant):
 		global patterns
-		module = Language + "_" + Country
+		if Country == "":
+		    module = Language
+		if Variant == "":
+		    module = Language + "_" + Country
+		else:
+		    module = Language + "_" + Country + "_" + Variant
 		if not module in self.locales:
 			module = Language
 			if not module in self.locales:
@@ -74,16 +82,7 @@ class NumberText( unohelper.Base, XNumberText, XAddIn, XServiceName ):
 				d = __import__("numbertext_" + module)
 			except:
 				return "Error: missing language data"
-			for i in d.dic:
-				i += [ i[0][0] ==  "^", i[0][-1] == "$" ]
-				if i[0][-1] != "$":
-					i[0] += "$"
-				i[0] = re.compile(i[0])
-				if len(i) == 4:
-					print "BE", i[1]
-					i[1] = re.sub("\$([0-9])", r"$(\\\1)", i[1])
-					print i[1]
-			patterns[module] = d.dic
+			patterns[module] = Soros.compile(d.__doc__)
 		return module
 
 	def getCurrency(self, locale):
@@ -102,7 +101,7 @@ class NumberText( unohelper.Base, XNumberText, XAddIn, XServiceName ):
 		if not re.compile(MINUS + "?[0-9][0-9]*([.,][0-9][0-9]*)?$").match(num):
 			return num
 		locale = self.queryLocale(prop, loc)
-		mod = self.getModule(locale.Language, locale.Country)
+		mod = self.getModule(locale.Language, locale.Country, locale.Variant)
 		decimalplaces = 2;
 		outcurr = ""
 		if curr == None:
@@ -134,7 +133,7 @@ class NumberText( unohelper.Base, XNumberText, XAddIn, XServiceName ):
 			num = num + "".zfill(2 - len(dig))
 		# query document language
 		loc = self.queryLocale(prop, loc)
-		mod = self.getModule(loc.Language, loc.Country)
+		mod = self.getModule(loc.Language, loc.Country, loc.Variant)
 		return get_numbertext(num, patterns[mod])
 
 	def getTitle(self, par, loc):
@@ -173,51 +172,9 @@ class NumberText( unohelper.Base, XNumberText, XAddIn, XServiceName ):
 
 def get_numbertext(num, conv):
 	try:
-		n = convert_numbertext(num, True, True, conv)
+		n = conv.run(num)
 	except:
 		return "Conversion error"	
 	if n == "":
 		return num
 	return n
-
-def convert_numbertext(num, begin, end, conv):
-	# strip leading zeros
-	num = num.lstrip("0")
-	if num == "":
-		num = "0"
-	# search the first matching pattern
-	for i in conv:
-		if len(i) == 4:
-			if (begin == False and i[2]) or (end == False and i[3]):
-				continue
-		m = i[0].match(num)
-		if (not m):
-			continue
-		# missing replacement
-		if len(i) != 4:
-			return m.group(0)
-		sp = split(m.expand(i[1]), "$(")
-		res = ""
-		cut = 0
-		lbegin = begin
-		lend = False
-		for j in range(0, len(sp)):
-			if j == 0 and len(sp[j]) == 0:
-				continue
-			if j>0:
-				parpos = sp[j].find(")")
-				cut = parpos + 1
-				if j == len(sp) - 1 and len(sp[j]) == cut:
-					lend = end
-				if sp[j][parpos+1:parpos+2] == "|":
-					lend = True
-					cut = cut + 1
-				res = res + convert_numbertext(sp[j][0:parpos], lbegin, lend, conv)
-			if j < len(sp) - 1 and sp[j][-1:] == "|":
-				res = res + sp[j][cut:-1]
-				lbegin = True
-			else:
-				res = res + sp[j][cut:]
-				lbegin = False
-		return res.strip()
-	return ""

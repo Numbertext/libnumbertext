@@ -1,0 +1,23 @@
+2009-07-25: version 0.2
+
+    - 11 new languages: Catalan, Czech, Finnish, French, Greek, 
+      Polish, Romanian, Russian, Slovenian, Spanish, Swedish.
+
+    - improved currency handling for all language modules
+
+    - new home page: http://NUMBERTEXT.org
+
+    - improved Soros language specification:
+	  - left zero deletion, trimming and removing double spaces
+	    switched on only by the new  __numbertext__ directive 
+	  - nested recursive calls
+	  - escaped metacharacters
+	  - optional semicolon, as command separator
+	  - in-line comments
+    
+    - new Python and JavaScript Soros interpreters, testing environment
+
+    - NOTE: the syntax of the NUMBERTEXT and MONEYTEXT will be changed
+      in the next version, according to the new NUMBERTEXT/MONEYTEXT
+      specification (a new second argument, the number of the decimal places
+      will be added). See in OpenOffice.org Issue 103746.

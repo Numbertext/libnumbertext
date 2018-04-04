@@ -1,0 +1,11 @@
+__numbertext__
+^0 noll
+1 ett
+2 två
+3 tre
+(\d)000 $($1tusen)  # postprocessing
+
+# convert triple consonant "ttt" to "tt"
+
+(\D+t)t(t\D+) \1\2
+(\D+) \1

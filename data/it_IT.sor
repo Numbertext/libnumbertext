@@ -1,7 +1,4 @@
-# Italian number names,
-# described by László Németh
-# based on Wikipedia.
-# License: LGPL and BSD dual-license
+__numbertext__
 ^0 zero
 1 uno
 2 due
@@ -59,25 +56,55 @@
 
 # negative numbers
 
-[-−](\d\d*) meno $1
+[-−](\d+) meno |$1
 
 # decimals
 
-"(\d\d*)[.](\d)(\d)" |$1| punto |$2| \3
+"([-−]?\d+)[.,]00" |$1|
+"([-−]?\d+)[.,](\d)(\d)" |$1| komma |$2| |$3
 
 # currency
 
 "EUR 1" un euro
-"EUR (\d\d*0{6,})" $1 di euro
-"EUR (\d\d*)" $1 euro
+"EUR (\d+0{6,})" $1 di euro
+"EUR (\d+)" $1 euro
 
 # currency with decimals
 
-"(EUR \d\d*)[.]00" $1
-"(EUR \d\d*)[.]01" $1 un centesimo
-"(EUR \d\d*)[.](\d\d)" $1 $2 centesimi
+"(EUR \d+)[.]00" $1
+"(EUR \d+)[.]01" $1 e un centesimo
+"(EUR \d+)[.](\d\d)" $1 e $2 centesimi
 
 # other currencies
 
 [A-Z]{3}
 "([A-Z]{3}) (\d[\d.]*)" $2| $1
+
+
+# currencies
+	
+# unit/subunit
+
+u:([^,]*),([^,]*),([^,]*)	\1
+s:([^,]*),([^,]*),([^,]*)	\2
+p:([^,]*),([^,]*),([^,]*)	\3
+
+CHF:(.)	$(\1: franco svizzero, centesimo, centesimi)
+CNY:(.)	$(\1: yuan renminbi, fen, fen)
+EUR:(.)	$(\1: euro, centesimo, centesimi)
+GBP:(.)	$(\1: lira sterlina, penny, pence)
+JPY:(.)	$(\1: yen, sen, sen)
+USD:(.)	$(\1: dollaro USA, cent, cent)
+
+"(JPY [-−]?\d+)[.,](\d\d)0" $1
+"(JPY [-−]?\d+[.,]\d\d)(\d)" $1 $2 rin
+
+"([A-Z]{3}) ([-−]?\d+)([.,]00?)?" $2 $(\1:u)
+
+"(CNY [-−]?\d+)[.,](\d)0?" $1 $2 jiao
+"(CNY [-−]?\d+[.,]\d)(\d)" $1 $2 fen
+
+"(([A-Z]{3}) [-−]?\d+)[.,](01)" $1 $(\30) $(\2:s)
+"(([A-Z]{3}) [-−]?\d+)[.,](\d)" $1 $(\30) $(\2:p)
+"(([A-Z]{3}) [-−]?\d+)[.,](\d\d)" $1 $3 $(\2:p)
+

@@ -1,7 +1,5 @@
-# Chinese Suzhou numbers
-# Described by László Németh
-# based on Suzhou numerals article of Wikipedia.
-# License: LGPL and BSD dual-license
+# Chinese Suzhou numbers, see Wikipedia
+__numbertext__
 (\d+)[.,](\d+) $(\1\2::)\n$(:\1:)
 (\d+) $(\1::)\n$(:\1:)
 (\d+)0:: $(\1::)

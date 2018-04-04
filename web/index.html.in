@@ -1,0 +1,227 @@
+<html>
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/vnd.microsoft.icon" href="favicon.ico">
+<head>
+<title>NUMBERTEXT.org</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<style type="text/css">
+@import "numbertext.css";
+</style>
+<div class='title'><a name='head'><table width="100%"><tr><td><span>&bull;&bull;&bull; NUMBERTEXT.org &bull;&bull;&bull; 	</span>
+Spell out the number <input id='num' onKeyUp='usernum();'>
+<!--</input> in <select id="lang" onChange='usernum();'>
+<option value="-">all languages</option>
+</select>-->
+with currency: <select id="money" onChange='usernum();'>
+<option value="-">&ndash;</option>
+<option value="def">Default</option>
+<option value="CHF">CHF</option>
+<option value="EUR">EUR</option>
+<option value="GBP">GBP</option>
+<option value="JPY">JPY</option>
+<option value="USD">USD</option>
+</select></td><td align='right'>
+<span class='nowrap'>
+<!--<a class="menu2" href="IDE.html">IDE</a>-->
+<a class="menu2" href="#about">About NUMBERTEXT.org</a>
+</span></td></tr></table></div>
+
+<!--<p>Download OpenOffice.org <a href='http://extensions.services.openoffice.org/project/numbertext'>extension.</a>
+Edit your <a href="Soros.html">Soros program</a>.-->
+
+<!--<div class="input">
+</div>-->
+<noscript><center>Enable JavaScript or click <a class="menu2" href="#about">here</a>!</center></noscript>
+<div id="result"><div style="height: 100%; text-align: center; line-height: 480px;">Compiling Soros programs...</div></div>
+
+<div style="height: 100%;"></div>
+
+<a name='about'>
+<div class='title'>
+<table width="100%"><tr><td><span>&bull;&bull;&bull; NUMBERTEXT.org &bull;&bull;&bull; </span>
+</td><td align='right'>
+<span class='nowrap'>
+<!--<a class="menu2" href="IDE.html">IDE</a>-->
+<a class="menu2" href="#head">Back</a>
+</span></td></tr></table></div>
+<table width='100%' class='header'>
+<tr>
+<td width='32%' valign='top'><div class='row' id='header'>About NUMBERTEXT.org</div>
+<td width='32%' valign='top'><div class='row' id='header'>About NUMBERTEXT/MONEYTEXT</div>
+<td width='32%' valign='top'><div class='row' id='header'>About Soros language</div>
+<tr class='text'>
+<td valign='top'>
+
+Home of Soros language, the universal number to text conversion language
+and NUMBERTEXT/MONEYTEXT development.
+
+<ul>
+<!--Edit the <a href="http://wiki.services.openoffice.org/wiki/NUMBERTEXT/MONEYTEXT_development">Wiki page</a>.-->
+
+<li>Download the <a href="http://extensions.services.openoffice.org/project/numbertext">OpenOffice.org Calc Add-on</a>
+(it is also the source distribution) and the Soros interpreter in <a href="Soros.py">Python</a> or <a href="Soros.js">JavaScript</a>.
+
+<li>Join the development:
+
+Report a bug in <a href="http://wiki.services.openoffice.org/wiki/Talk:NUMBERTEXT/MONEYTEXT_development">OOo Wiki</a> or <a href="https://launchpad.net/numbertext/+filebug">Launchpad</a>.
+
+Develop a new language resource in the <a href="Soros.html">IDE</a> and propose the result in <a href="http://wiki.services.openoffice.org/wiki/Talk:NUMBERTEXT/MONEYTEXT_development">OOo Wiki</a>.
+
+</ul>
+Project leader: László Németh (nemeth at OpenOffice.org).
+<td valign='top'>The NUMBERTEXT/MONEYTEXT functions originally developed for the generalization of the BAHTTEXT spreadsheet function, a function of Microsoft Excel for number to Thai number name and currency conversion, standardized by the ECMA–376 and ISO/IEC 29 500:2008 Office Open XML format. This development can help the upcoming <a href="http://en.wikipedia.org/wiki/OpenFormula">OpenFormula</a> to be top-compliant with the ECMA/ISO BAHTTEXT without degrading its high requirements for an international standard.
+<p>See the <a href="numbertext.pdf">specification</a> and the related <a href="http://lingucomponent.openoffice.org/issues/show_bug.cgi?id=103746">OOo issue 103746</a>.
+
+<td valign='top'>The Soros programming language is a <a href="http://www.wikipedia.org/wiki/regex">regex</a> based programming language for number to text conversion and for other conversions beetween self-similar character sequences.
+<p>The language has simple syntax and implementation (the interpreter in Python is only ~75 lines), and good performance also in
+script language implementations, thanks to the compiled regexes.
+
+<p>See <a href="sorosspec.pdf">Soros language specification</a>.
+<!--Soros language is also the intended replacement of the spellout function of the rule based number formatter (RBNF) of the IBM ICU library.
+
+<p>For example, the following Soros program reverses its input string:
+<pre>
+(.*)(.) \2$1
+</pre>
+The main of this program represents a regex replace <code>s/(.*)(.)/\2$1/</code>, the <code>$1</code> is the abbreviation of
+the recursive call <code>$(\1)</code>. The program removes the last character of the input to the first position of the output, and
+iterates this task on the remaining part, and insert the result to the output.-->
+
+</table>
+
+<div class='row' id='header'>Links</div>
+<center>
+<table class="logos">
+<tr valign="bottom">
+<td><a href="http://nlnet.nl"><img src="http://www.nlnet.nl/logo/banner-nf-160x60.png" title="Stiching NLnet, Nederlands" alt="Stiching NLnet, Nederlands"></a>
+<td><a href="http://www.fsf.hu/index.php/About_us_en"><img src="http://extensions.services.openoffice.org/files/providerlogo/fsfhu_logo_0.png" title="FSF.hu Alapítvány, Hungary" alt="FSF.hu Alapítvány, Hungary"></a>
+<td><a href="http://en.wikipedia.org/wiki/ODF"><img src="odf-logo-by-andy-fitzsimon.png" title="OpenDocument" alt="ODF logo by Andy Fitzsimon"></a>
+<td><a href="http://www.openoffice.org"><img src="http://marketing.openoffice.org/art/galleries/logos/main/col/ooo-main-logo-col_200px.gif" title="OpenOffice.org" alt="OpenOffice.org"></a>
+<td><a href="http://www.wikipedia.org" title="Wikipedia" alt="Wikipedia"><img src="http://upload.wikimedia.org/wikipedia/commons/6/62/174px-Wikipedia-word1_7.png"></a>
+<tr valign="top">
+<td>Stiching NLnet, Nederlands (donor)
+<td>FSF.hu Alapítvány, Hungary<br>(sponsor of
+<a href="http://extensions.services.openoffice.org/project/lightproof">Lightproof grammar checker</a>,
+<br>the inspiration of Numbertext project)
+<td colspan="2">OpenDocument Formula standard and OpenOffice.org (targets)
+<td>Wikipedia (knowledge base)
+</table>
+</center>
+
+<table height="500px"><tr><td>&nbsp;</table>
+<!-- **************************************************************************************************** -->
+<!--!cd ../data;for i in *.sor; do echo "<textarea rows='0' cols='0' id='`basename $i .sor`' class='hidden'>"; cat $i; echo "</textarea>"; done-->
+<!-- **************************************************************************************************** -->
+<script language="javascript1.3">
+<!-- **************************************************************************************************** -->
+<!--!cat ../Soros.js-->
+<!-- **************************************************************************************************** -->
+
+var keep = this
+
+language = {
+"ca_ES": "Català",
+"cs_CZ": "Česky",
+"de_DE": "Deutsch",
+"el_EL": "Ελληνικά",
+"en_US": "English",
+"es_ES": "Español",
+"eo": "Esperanto",
+"fr_FR": "Français",
+"it_IT": "Italiano",
+"hu_HU": "Magyar",
+"nl_NL": "Nederlands",
+"pl_PL": "Polski",
+"ro_RO": "Română",
+"ru_RU": "Русский",
+"sl_SI": "Slovenščina",
+"fi_FI": "Suomi",
+"sv_SV": "Svenska",
+"th_TH": "ไทย",
+"zh_ZH": "中文",
+"Roman": "Roman"
+}
+
+default_currency = {
+"ca_ES": "EUR",
+"cs_CZ": "CZK",
+"de_DE": "EUR",
+"dk_DK": "DKK",
+"el_EL": "EUR",
+"en_GB": "GBP",
+"en_US": "USD",
+"es_ES": "EUR",
+"eo": "-",
+"fr_FR": "EUR",
+"it_IT": "EUR",
+"hu_HU": "HUF",
+"nl_NL": "EUR",
+"pl_PL": "PLN",
+"ro_RO": "RON",
+"ru_RU": "RUB",
+"sl_SI": "EUR",
+"fi_FI": "EUR",
+"sv_SV": "SEK",
+"th_TH": "THB",
+"zh_ZH": "CNY",
+"Roman": "-"
+}
+
+numlang=[]
+
+<!-- **************************************************************************************************** -->
+<!--!cd ../data;for i in *.sor; do name=`basename $i .sor`; echo "numlang['$name']=new Soros(document.getElementById('$name').value)"; done-->
+<!-- **************************************************************************************************** -->
+ 
+window.header = ""
+window.num = ""
+window.time = setTimeout("tim()", 1000);
+
+function rgb(range, item, light) {
+var unit = (2*Math.PI)/range;
+var dark = 50-(light/2);
+var r = Math.floor((Math.cos((item*unit-2.5*Math.PI))*dark+dark))+light;
+var g = Math.floor((Math.cos((item*unit-Math.PI))*dark+dark))+light;
+var b = item < (range/2) ? light : Math.floor(Math.cos((item*unit-2*Math.PI))*dark+dark)+light;
+return "rgb("+r+"%,"+g+"%,"+b+"%)"
+}
+
+window.currency = document.getElementById('money').value
+
+function usernum() {
+    clearTimeout(window.time)
+    window.num = document.getElementById('num').value
+    window.currency = document.getElementById('money').value
+    if (window.num != undefined && window.num != "") {
+	window.header = window.num
+    } else {
+	window.header = ""
+    }
+    tim()
+}
+
+//alert(rgb(100,1,65) + rgb(100,2,60))
+
+function tim( ) {
+    var b = new Date()
+    var header = ""
+    if (window.header == "") {
+	window.num = Math.round(b.getTime()/1000) + ""
+	header = "Unix time in sec (" + num + ")"
+	window.time = setTimeout("tim()", 1000);
+    } else header = window.num
+    window.range=100
+    target = document.getElementById('result')
+//    target.innerHTML = "doc: " + document.body.scrollTop + " tar: " + target.offsetTop 
+    if (document.body.scrollTop < target.offsetTop + target.offsetHeight) target.innerHTML = "<div class='row' id='header' style='background-color:"+rgb(window.range, 2, 60)+"'><div class='lang'>Language</div>" + header + "</div>" +
+<!-- **************************************************************************************************** -->
+<!--!cd ../data; n=3; for i in `ls *.sor | grep -v 2 | grep -v suzhou | grep -v romanII`; do name=`basename $i .sor`; echo "\"<div class='row' style='background-color:\"+rgb(window.range,$n, $n%2?65:60)+\";' title='\" + \"$name\".replace(\"_\",\"-\") + \"'><div class='lang'>\" + language[\"$name\"] + \"</div>\" + numlang['$name'].run((window.currency == \"-\" ? \"\" : (window.currency == \"def\" ? default_currency[\"$name\"] : window.currency) + \" \") + window.num) + '</div>' +";n=`echo $n+1 | bc`; done-->
+<!-- **************************************************************************************************** -->
+    "";
+}
+tim()
+</script>
+</body>
+</html>

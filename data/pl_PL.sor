@@ -1,0 +1,88 @@
+__numbertext__
+^0 zero
+1 jeden
+2 dwa
+3 trzy
+4 cztery 
+5 pięć
+6 sześć
+7 siedem
+8 osiem
+9 dziewięć
+10 dziesięć
+11 jedenaście
+14 czternaście
+15 piętnaście
+16 szesnaście
+19 dziewiętnaście
+1(\d) $1naście
+2(\d) dwadzieścia $1
+3(\d) trzydzieści $1
+4(\d) czterdzieści $1
+(\d)(\d) $1dziesiąt $2
+1(\d\d) sto $1
+2(\d\d) dwieście $1
+([34])(\d\d) $1sta $2
+(\d)(\d\d) $1set $2
+1(\d{3}) tysiąc $1
+([234])(\d{3}) $1 tysiące $2
+(\d{1,3})(\d{3}) $1 tysięcy $2
+1(\d{6}) milion $1
+(\d{1,3})(\d{6}) $1 miliony $2
+1(\d{9}) miliard $1
+(\d{1,3})(\d{9}) $1 miliardy $2
+1(\d{12}) bilion $1
+(\d{1,3})(\d{12}) $1 biliony $2
+1(\d{15}) biliard $1
+(\d{1,3})(\d{15}) $1 biliardy $2
+1(\d{18}) trylion $1
+(\d{1,3})(\d{18}) $1 tryliony $2
+1(\d{21}) tryliard $1
+(\d{1,3})(\d{21}) $1 tryliardy $2
+1(\d{24}) kwadrylion $1
+(\d{1,3})(\d{24}) $1 kwadryliony $2
+
+# negative number
+
+[-−](\d+) minus |$1
+
+# decimals
+
+"([-−]?\d+)[.,]" $1| przecinek
+"([-−]?\d+[.,])(\d{1,2})" $1| |$2
+"([-−]?\d+[.,])(\d)(\d)(\d)" $1| |$2 |$3 |$4
+"([-−]?\d+[.,]\d*)(\d)" $1| |$2
+
+# currency
+
+# unit/subunit singular / nominative plural / genitive plural
+
+us:([^,]*),([^,]*),([^,]*),([^,]*),([^,]*),([^,]*) \1
+up:([^,]*),([^,]*),([^,]*),([^,]*),([^,]*),([^,]*) \2
+ug:([^,]*),([^,]*),([^,]*),([^,]*),([^,]*),([^,]*) \3
+ss:([^,]*),([^,]*),([^,]*),([^,]*),([^,]*),([^,]*) \4
+sp:([^,]*),([^,]*),([^,]*),([^,]*),([^,]*),([^,]*) \5
+sg:([^,]*),([^,]*),([^,]*),([^,]*),([^,]*),([^,]*) \6
+
+CHF:(\D+) $(\1: frank szwajcarski, frank szwajcarski, frank szwajcarski, centym, centym, centym)
+CNY:(\D+) $(\1: yuan renminbi, yuan renminbi, yuan renminbi, fen, fenów, fenów)
+EUR:(\D+) $(\1: euro, euro, euro, cent, cent, cent)
+GBP:(\D+) $(\1: funt szterling, funt szterling, funt szterling, pens, pensów, pensów)
+JPY:(\D+) $(\1: jen, jen, jen, sen, sen, sen)
+PLN:(\D+) $(\1: złoty, złote, złotych, grosz, grosze, groszy)
+USD:(\D+) $(\1: dolar amerykański, dolar amerykański, dolar amerykański, cent, cent, cent)
+
+"([A-Z]{3}) ([-−]?1)([.,]00?)?" $2 $(\1:us)
+"([A-Z]{3}) ([-−]?[234])([.,]00?)?" $2 $(\1:up)
+"([A-Z]{3}) ([-−]?\d*[^1][234])([.,]00?)?" $2 $(\1:up)
+"([A-Z]{3}) ([-−]?\d+)([.,]00?)?" $2 $(\1:ug)
+
+"(CNY [-−]?\d+)[.,]10?" $1 $2 jiao
+"(CNY [-−]?\d+)[.,](\d)0?" $1 $2 jiao
+"(CNY [-−]?\d+[.,]\d)1" $1 $2 fen
+"(CNY [-−]?\d+[.,]\d)(\d)" $1 $2 fenów
+
+"(([A-Z]{3}) [-−]?\d+)[.,](01)" $1 |$(1) $(\2:ss)
+"(([A-Z]{3}) [-−]?\d+)[.,]([^1][234])" $1 |$3 $(\2:sp)
+"(([A-Z]{3}) [-−]?\d+)[.,](\d)" $1 |$(\30) $(\2:sg)
+"(([A-Z]{3}) [-−]?\d+)[.,](\d\d)" $1 |$3 $(\2:sg)

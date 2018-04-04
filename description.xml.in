@@ -9,10 +9,10 @@ xmlns:xlink="http://www.w3.org/1999/xlink">
         <name lang="hu">NUMBERTEXT() és MONEYTEXT() Calc függvények</name>
         <name lang="it">NUMBERTEXT() e MONEYTEXT() Calc funzione</name>
     </display-name>
-    <version value="0.1" />
+<!--!echo "<version value=\"`head -1 VERSION`\" />"-->
     <identifier value="org.openoffice.comp.addin.sample.python.numbertext-calc-addin" />
     <publisher>
-        <name lang="en" xlink:href="http://launchpad.net/numbertext/">http://launchpad.net/numbertext</name>
+        <name lang="en" xlink:href="http://NUMBERTEXT.org">NUMBERTEXT.org</name>
     </publisher>
     <platform value="all" />
 

@@ -1,0 +1,77 @@
+body {
+    margin: 0pt;
+    background-color: white;
+    font-family: "Verdana", "Tahoma", "Helvetica";
+}
+div#result {
+	border-style: solid;
+	border-width: 1px;
+	border-color: black;
+}
+div#header {
+	border-style: solid;
+	border-width: 0px 0px 1px 0px;
+	background-color: rgb(80%,60%,60%);
+}
+.hidden {
+    visibility:hidden;
+}
+.nowrap {
+    white-space: nowrap;
+    padding: 0;
+    border: 0;
+}
+.baseline {
+    vertical-align: baseline;
+}
+.title {
+	padding: 1pt;
+	padding-left: 5pt;
+	padding-right: 5pt;
+	background-color: white;
+}
+.big {
+    font-size: 24pt;
+    font-weight: bold;
+    padding-right: 5pt;
+}
+.menu {
+	padding-right: 5pt;
+}
+.menu2 {
+	padding-left: 5pt;
+}
+.row {
+	padding: 1pt;
+	padding-left: 5pt;
+	white-space: nowrap;
+}
+.lang {
+	width: 75pt;
+	display: inline-block;
+}
+.input {
+	padding: 1pt;
+	padding-left: 5pt;
+	background-color: rgb(83%,65%,65%);
+}
+img {
+	border-width: 2px 2px 2px 2px;
+/*	border-style: solid; */
+	border-color: red;
+}
+a:hover img {
+	border-color: black;
+}
+a:visited img {
+	border-color: white;
+}
+table.logos td {
+	padding-left: 5px;
+	padding-right: 5px;
+	text-align: center;
+}
+tr.text td {	
+	padding: 5pt;
+}
+
