@@ -21,12 +21,9 @@ __numbertext__
 40 quarante
 50 cinquante
 60 soixante
-71 soixante et onze
-7(\d) soixante-$(1\1)
-80$ quatre-vingts
-80 quatre-vingt
-81 quatre-vingt-un
-9(\d) quatre-vingt-$(1\1)
+70 septante
+80 huitante
+90 nonante
 (\d)1 $(\10) et un
 (\d)(\d) $(\10)-$2
 1(\d\d) cent $1
@@ -57,7 +54,7 @@ __numbertext__
 
 # decimals
 
-"([-−]?\d+)[.,]" "$1| virgule"
+"([-−]?\d+)[.,]" "$1| point"
 "([-−]?\d+[.,]0*)(\d+)" $1 |$2
 
 # currency
