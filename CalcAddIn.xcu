@@ -7,6 +7,7 @@
     <prop oor:name="DisplayName"><value xml:lang="en">NUMBERTEXT</value></prop>
     <prop oor:name="Description">
 	<value xml:lang="en">Converts number to number name.</value>
+	<value xml:lang="fr">Convertit un nombre en texte.</value>
 	<value xml:lang="hu">Számot számnévvé alakít.</value>
 	<value xml:lang="sr">Исписује број словима.</value>
 	<value xml:lang="sh">Ispisuje broj slovima.</value>
@@ -18,6 +19,7 @@
       <node oor:name="num" oor:op="replace">
         <prop oor:name="DisplayName">
 	    <value xml:lang="en">Number</value>
+	    <value xml:lang="fr">Nombre</value>
 	    <value xml:lang="hu">Szám</value>
 	    <value xml:lang="sr">Број</value>
 	    <value xml:lang="sh">Broj</value>
@@ -25,6 +27,7 @@
 	</prop>
         <prop oor:name="Description">
 	    <value xml:lang="en">Value.</value>
+	    <value xml:lang="fr">Valeur.</value>
 	    <value xml:lang="hu">Az átalakítandó szám.</value>
 	    <value xml:lang="sr">Вредност.</value>
 	    <value xml:lang="sh">Vrednost.</value>
@@ -34,6 +37,7 @@
       <node oor:name="lang" oor:op="replace">
         <prop oor:name="DisplayName">
 	    <value xml:lang="en">Language</value>
+	    <value xml:lang="fr">Langue</value>
 	    <value xml:lang="hu">Nyelv</value>
 	    <value xml:lang="sr">Језик</value>
 	    <value xml:lang="sh">Jezik</value>
@@ -41,6 +45,7 @@
 	</prop>
         <prop oor:name="Description">
 	    <value xml:lang="en">Language code (eg. en-US).</value>
+	    <value xml:lang="fr">Code langue (exemple fr-BE).</value>
 	    <value xml:lang="hu">Nyelvkód (pl. hu-HU).</value>
 	    <value xml:lang="sr">Код језика (нпр. sr или sh).</value>
 	    <value xml:lang="sh">Kod jezika (npr. sr ili sh).</value>
@@ -53,6 +58,7 @@
     <prop oor:name="DisplayName"><value xml:lang="en">MONEYTEXT</value></prop>
     <prop oor:name="Description">
 	<value xml:lang="en">Converts a number to text with the given currency.</value>
+	<value xml:lang="fr">Convertit un nombre en texte avec la devise indiquée.</value>
 	<value xml:lang="hu">Számot számnévvé alakít a megadott pénznemmel.</value>
 	<value xml:lang="sr">Исписује број словима уз истицање ознаке валуте.</value>
 	<value xml:lang="sh">Ispisuje broj slovima uz isticanje oznake valute.</value>
@@ -64,6 +70,7 @@
       <node oor:name="num" oor:op="replace">
         <prop oor:name="DisplayName">
 	    <value xml:lang="en">Number</value>
+	    <value xml:lang="fr">Nombre</value>
 	    <value xml:lang="hu">Szám</value>
 	    <value xml:lang="sr">Број</value>
 	    <value xml:lang="sh">Broj</value>
@@ -71,6 +78,7 @@
 	</prop>
         <prop oor:name="Description">
 	    <value xml:lang="en">Input value.</value>
+	    <value xml:lang="fr">Valeur.</value>
 	    <value xml:lang="hu">Az átalakítandó szám.</value>
 	    <value xml:lang="sr">Улазна вредност.</value>
 	    <value xml:lang="sh">Ulazna vrednost.</value>
@@ -80,6 +88,7 @@
       <node oor:name="currency" oor:op="replace">
         <prop oor:name="DisplayName">
 	    <value xml:lang="en">Currency/function</value>
+	    <value xml:lang="fr">Devise</value>
 	    <value xml:lang="hu">Pénznem/függvény</value>
 	    <value xml:lang="sr">Валута</value>
 	    <value xml:lang="sh">Valuta</value>
@@ -87,6 +96,7 @@
 	</prop>
         <prop oor:name="Description">
 	    <value xml:lang="en">ISO 4217 code (eg. USD) or Numbertext function (eg. ord = ordinal number).</value>
+	    <value xml:lang="fr">Code ISO 4217 (exemple EUR).</value>
 	    <value xml:lang="hu">ISO 4217 kód (pl. HUF) vagy Numbertext függvény (pl. ord = sorszám).</value>
 	    <value xml:lang="sr">ISO 4217 код (нпр. RSD).</value>
 	    <value xml:lang="sh">ISO 4217 kod (npr. RSD).</value>
@@ -96,6 +106,7 @@
       <node oor:name="lang" oor:op="replace">
         <prop oor:name="DisplayName">
 	    <value xml:lang="en">Language</value>
+	    <value xml:lang="fr">Langue</value>
 	    <value xml:lang="hu">Nyelv</value>
 	    <value xml:lang="sr">Језик</value>
 	    <value xml:lang="sh">Jezik</value>
@@ -103,6 +114,7 @@
 	</prop>
         <prop oor:name="Description">
 	    <value xml:lang="en">Language code (eg. en-US).</value>
+	    <value xml:lang="fr">Code langue (exemple fr-BE).</value>
 	    <value xml:lang="hu">Nyelvkód (pl. hu-HU).</value>
 	    <value xml:lang="sr">Код језика (нпр. sr или sh).</value>
 	    <value xml:lang="sh">Kod jezika (npr. sr ili sh).</value>
