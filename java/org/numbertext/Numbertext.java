@@ -16,19 +16,19 @@ public class Numbertext {
 
   private static Soros load(String lang) {
     try {
-	URL url = Numbertext.class.getResource("data/" + lang + ".sor");
-	BufferedReader f = new BufferedReader(new InputStreamReader(url.openStream(), "UTF-8"));
-	StringBuffer st = new StringBuffer();
-	String line = null;
-	while (( line = f.readLine()) != null) {
-	    st.append(line);
-	    st.append(System.getProperty("line.separator"));
-	}
-	Soros s = new Soros(new String(st));
-	if (modules != null && lang != null) modules.put(lang, s);
-	return s;
+        URL url = Numbertext.class.getResource("data/" + lang + ".sor");
+        BufferedReader f = new BufferedReader(new InputStreamReader(url.openStream(), "UTF-8"));
+        StringBuffer st = new StringBuffer();
+        String line = null;
+        while (( line = f.readLine()) != null) {
+            st.append(line);
+            st.append(System.getProperty("line.separator"));
+        }
+        Soros s = new Soros(new String(st));
+        if (modules != null && lang != null) modules.put(lang, s);
+        return s;
     } catch(Exception e) {
-	System.out.println("Problem: " + e);
+        System.out.println("Problem: " + e);
     }
     return null;
   }
@@ -45,46 +45,46 @@ public class Numbertext {
   }
 
   public static void main (String[] args) {
-	String lang = "en_US";
-	if (args.length == 0) {
-	    System.out.println("Usage: java soros [-l lang] [-p prefix] par1 [par2...]");
-	    System.out.println("Parameter: n: number; n-m: range; n-m~s: range with step");
-	    System.out.println("Example: java -jar numbertext -l en_US -p ord 1-10 500 1000-10000~1000");
-	    System.out.println("License: GNU LGPL/BSD dual-license");
-	    return;
-	}
-	int state = 0;
-	String prefix = "";
-	for (int i = 0; i < args.length; i++) {
-	    if (state != 0) {
-		if (state == 1) lang = args[i];
-		else prefix = args[i] + " ";
-		state = 0;
-		continue;
-	    }
-	    if (args[i].equals("-l")) {
-		state = 1;
-	    } else if (args[i].equals("-p")) {
-		state = 2;
-	    } else {
-		int idx = args[i].indexOf('-', 1);
-		if (idx > -1) {
-		    int b = Integer.parseInt(args[i].substring(0, idx));
-		    String e = args[i].substring(idx + 1);
-		    int step = e.indexOf('~', idx);
-		    int end;
-		    if (step > -1) {
-			end = Integer.parseInt(e.substring(0, step));
-			step = Integer.parseInt(e.substring(step + 1));
-		    } else {
-			step = 1;
-			end = Integer.parseInt(e);
-		    }
-		    for (int j = b; j <= end; j = j + step) {
-			System.out.println(numbertext(prefix + j, lang));
-		    }
-		} else System.out.println(numbertext(prefix + args[i], lang));
-	    }
-	}
+        String lang = "en_US";
+        if (args.length == 0) {
+            System.out.println("Usage: java soros [-l lang] [-p prefix] par1 [par2...]");
+            System.out.println("Parameter: n: number; n-m: range; n-m~s: range with step");
+            System.out.println("Example: java -jar numbertext -l en_US -p ord 1-10 500 1000-10000~1000");
+            System.out.println("License: GNU LGPL/BSD dual-license");
+            return;
+        }
+        int state = 0;
+        String prefix = "";
+        for (int i = 0; i < args.length; i++) {
+            if (state != 0) {
+                if (state == 1) lang = args[i];
+                else prefix = args[i] + " ";
+                state = 0;
+                continue;
+            }
+            if (args[i].equals("-l")) {
+                state = 1;
+            } else if (args[i].equals("-p")) {
+                state = 2;
+            } else {
+                int idx = args[i].indexOf('-', 1);
+                if (idx > -1) {
+                    int b = Integer.parseInt(args[i].substring(0, idx));
+                    String e = args[i].substring(idx + 1);
+                    int step = e.indexOf('~', idx);
+                    int end;
+                    if (step > -1) {
+                        end = Integer.parseInt(e.substring(0, step));
+                        step = Integer.parseInt(e.substring(step + 1));
+                    } else {
+                        step = 1;
+                        end = Integer.parseInt(e);
+                    }
+                    for (int j = b; j <= end; j = j + step) {
+                        System.out.println(numbertext(prefix + j, lang));
+                    }
+                } else System.out.println(numbertext(prefix + args[i], lang));
+            }
+        }
   }
 }

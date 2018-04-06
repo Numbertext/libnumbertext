@@ -24,44 +24,44 @@ public class Soros {
   // pattern to recognize function calls in the replacement string
 
   private static Pattern func = Pattern.compile(translate(
-	"(?:\\|?(?:\\$\\()+)?" +		// optional nested calls
-	"(\\|?\\$\\(([^\\(\\)]*)\\)\\|?)" +	// inner call (2 subgroups)
-	"(?:\\)+\\|?)?",			// optional nested calls
-	m2, c, "\\"));				// \$, \(, \), \| -> \uE000..\uE003
+        "(?:\\|?(?:\\$\\()+)?" +                // optional nested calls
+        "(\\|?\\$\\(([^\\(\\)]*)\\)\\|?)" +     // inner call (2 subgroups)
+        "(?:\\)+\\|?)?",                        // optional nested calls
+        m2, c, "\\"));                          // \$, \(, \), \| -> \uE000..\uE003
 
   private boolean numbertext = false;
 
   public Soros(String source) {
-    source = translate(source, m, c, "\\") 	// \\, \", \;, \# -> \uE000..\uE003
-	.replaceAll("(#[^\n]*)?(\n|$)", ";");	// remove comments
+    source = translate(source, m, c, "\\")      // \\, \", \;, \# -> \uE000..\uE003
+        .replaceAll("(#[^\n]*)?(\n|$)", ";");   // remove comments
     if (source.indexOf("__numbertext__") > -1) {
-	numbertext = true;
-	source = source.replace("__numbertext__", "0+(0|[1-9]\\d*) $1\n");
+        numbertext = true;
+        source = source.replace("__numbertext__", "0+(0|[1-9]\\d*) $1\n");
     }
     Pattern p = Pattern.compile("^\\s*(\"[^\"]*\"|[^\\s]*)\\s*(.*[^\\s])?\\s*$");
     for (String s : source.split(";")) {
-	Matcher sp = p.matcher(s);
-	if (!s.equals("") && sp.matches()) {
-	    s = translate(sp.group(1).replaceFirst("^\"", "").replaceFirst("\"$",""),
-		c.substring(1), m.substring(1), "");
-	    s = s.replace(slash, "\\\\"); // -> \\, ", ;, #
-	    String s2 = "";
-	    if (sp.group(2) != null) s2 = sp.group(2).replaceFirst("^\"", "").replaceFirst("\"$","");
-	    s2 = translate(s2, m2, c2, "\\"); 	// \$, \(, \), \| -> \uE004..\uE007
-	    s2 = s2.replaceAll("(\\$\\d|\\))\\|\\$", "$1||\\$"); // $()|$() -> $()||$()
-	    s2 = translate(s2, c, m, ""); 	// \uE000..\uE003-> \, ", ;, #
-	    s2 = translate(s2, m2, c, ""); 	// $, (, ), | -> \uE000..\uE003
-	    s2 = translate(s2, c2, m2, ""); 	// \uE004..\uE007 -> $, (, ), |
-	    s2 = s2.replaceAll("[$]", "\\$")	// $ -> \$
-		.replaceAll("\uE000(\\d)", "\uE000\uE001\\$$1\uE002") // $n -> $(\n)
-		.replaceAll("\\\\(\\d)", "\\$$1") // \[n] -> $[n]
-		.replace("\\n", "\n");		  // \n -> [new line]
-	    patterns.add(Pattern.compile("^" + s.replaceFirst("^\\^", "")
-		.replaceFirst("\\$$", "") + "$"));
-	    begins.add(s.startsWith("^"));
-	    ends.add(s.endsWith("$"));
-	    values.add(s2);
-	}
+        Matcher sp = p.matcher(s);
+        if (!s.equals("") && sp.matches()) {
+            s = translate(sp.group(1).replaceFirst("^\"", "").replaceFirst("\"$",""),
+                c.substring(1), m.substring(1), "");
+            s = s.replace(slash, "\\\\"); // -> \\, ", ;, #
+            String s2 = "";
+            if (sp.group(2) != null) s2 = sp.group(2).replaceFirst("^\"", "").replaceFirst("\"$","");
+            s2 = translate(s2, m2, c2, "\\");   // \$, \(, \), \| -> \uE004..\uE007
+            s2 = s2.replaceAll("(\\$\\d|\\))\\|\\$", "$1||\\$"); // $()|$() -> $()||$()
+            s2 = translate(s2, c, m, "");       // \uE000..\uE003-> \, ", ;, #
+            s2 = translate(s2, m2, c, "");      // $, (, ), | -> \uE000..\uE003
+            s2 = translate(s2, c2, m2, "");     // \uE004..\uE007 -> $, (, ), |
+            s2 = s2.replaceAll("[$]", "\\$")    // $ -> \$
+                .replaceAll("\uE000(\\d)", "\uE000\uE001\\$$1\uE002") // $n -> $(\n)
+                .replaceAll("\\\\(\\d)", "\\$$1") // \[n] -> $[n]
+                .replace("\\n", "\n");            // \n -> [new line]
+            patterns.add(Pattern.compile("^" + s.replaceFirst("^\\^", "")
+                .replaceFirst("\\$$", "") + "$"));
+            begins.add(s.startsWith("^"));
+            ends.add(s.endsWith("$"));
+            values.add(s2);
+        }
     }
   }
 
@@ -72,21 +72,21 @@ public class Soros {
 
   private String run(String input, boolean begin, boolean end) {
     for (int i = 0; i < patterns.size(); i++) {
-	if ((!begin && begins.get(i)) || (!end && ends.get(i))) continue;
-	Matcher m = patterns.get(i).matcher(input);
-	if (!m.matches()) continue;
-	String s = m.replaceAll(values.get(i));
-	Matcher n = func.matcher(s);
-	while (n.find()) {
-	    boolean b = false;
-	    boolean e = false;
-	    if (n.group(1).startsWith(pipe) || n.group().startsWith(pipe)) b = true;
-	    else if (n.start() == 0) b = begin;
-	    if (n.group(1).endsWith(pipe) || n.group().endsWith(pipe)) e = true;
-	    else if (n.end() == s.length()) e = end;
-	    s = s.substring(0, n.start(1)) + run(n.group(2), b, e) + s.substring(n.end(1));
-	    n = func.matcher(s);
-	}
+        if ((!begin && begins.get(i)) || (!end && ends.get(i))) continue;
+        Matcher m = patterns.get(i).matcher(input);
+        if (!m.matches()) continue;
+        String s = m.replaceAll(values.get(i));
+        Matcher n = func.matcher(s);
+        while (n.find()) {
+            boolean b = false;
+            boolean e = false;
+            if (n.group(1).startsWith(pipe) || n.group().startsWith(pipe)) b = true;
+            else if (n.start() == 0) b = begin;
+            if (n.group(1).endsWith(pipe) || n.group().endsWith(pipe)) e = true;
+            else if (n.end() == s.length()) e = end;
+            s = s.substring(0, n.start(1)) + run(n.group(2), b, e) + s.substring(n.end(1));
+            n = func.matcher(s);
+        }
         return s;
     }
     return "";
@@ -94,7 +94,7 @@ public class Soros {
 
   private static String translate(String s, String chars, String chars2, String delim) {
     for (int i = 0; i < chars.length(); i++) {
-	s = s.replace(delim + chars.charAt(i), "" + chars2.charAt(i));
+        s = s.replace(delim + chars.charAt(i), "" + chars2.charAt(i));
     }
     return s;
   }
