@@ -15,9 +15,9 @@ public class Soros {
   private ArrayList<Boolean> ends = new ArrayList<Boolean>();
 
   private static String m = "\\\";#";
-  private static String m2 = "$()|";
+  private static String m2 = "$()|[]";
   private static String c = "\uE000\uE001\uE002\uE003";
-  private static String c2 = "\uE004\uE005\uE006\uE007";
+  private static String c2 = "\uE004\uE005\uE006\uE007\uE008\uE009";
   private static String slash = "\uE000";
   private static String pipe = "\uE003";
 
@@ -27,7 +27,7 @@ public class Soros {
         "(?:\\|?(?:\\$\\()+)?" +                // optional nested calls
         "(\\|?\\$\\(([^\\(\\)]*)\\)\\|?)" +     // inner call (2 subgroups)
         "(?:\\)+\\|?)?",                        // optional nested calls
-        m2, c, "\\"));                          // \$, \(, \), \| -> \uE000..\uE003
+        m2.substring(0, c.length()), c, "\\")); // \$, \(, \), \| -> \uE000..\uE003
 
   private boolean numbertext = false;
 
@@ -36,7 +36,14 @@ public class Soros {
         .replaceAll("(#[^\n]*)?(\n|$)", ";");   // remove comments
     if (source.indexOf("__numbertext__") == -1)
         source = "__numbertext__;" + source;
-    source = source.replace("__numbertext__", "\"([a-z][-a-z]* )?0+(0|[1-9]\\d*)\" $(\\1\\2);");
+    source = source.replace("__numbertext__",
+        // default left zero deletion
+        "\"([a-z][-a-z]* )?0+(0|[1-9]\\d*)\" $(\\1\\2);" +
+        // separator function
+        "\"\uE00A(.*)\uE00A(.+)\uE00A(.*)\" \\1\\2\\3;" +
+        // no separation, if subcall returns with empty string
+        "\"\uE00A.*\uE00A\uE00A.*\"");
+
     Pattern p = Pattern.compile("^\\s*(\"[^\"]*\"|[^\\s]*)\\s*(.*[^\\s])?\\s*$");
     Pattern macro = Pattern.compile("== *(.*[^ ]?) ==");
     String prefix = "";
@@ -59,11 +66,16 @@ public class Soros {
             s = s.replace(slash, "\\\\"); // -> \\, ", ;, #
             String s2 = "";
             if (sp.group(2) != null) s2 = sp.group(2).replaceFirst("^\"", "").replaceFirst("\"$","");
-            s2 = translate(s2, m2, c2, "\\");   // \$, \(, \), \| -> \uE004..\uE007
-            s2 = s2.replaceAll("(\\$\\d|\\))\\|\\$", "$1||\\$"); // $()|$() -> $()||$()
+            s2 = translate(s2, m2, c2, "\\");   // \$, \(, \), \|, \[, \] -> \uE004..\uE009
+            // call inner separator: [ ... $1 ... ] -> $(\uE00A ... \uE00A$1\uE00A ... )
+            s2 = s2.replaceAll("\\[[$](\\d\\d?|\\([^\\)]+\\))","\\$(\uE00A\uE00A|\\$$1\uE00A")
+                .replaceAll("\\[([^$\\[\\\\]*)[$](\\d\\d?|\\([^\\)]+\\))","\\$(\uE00A$1\uE00A\\$$2\uE00A")
+                .replaceAll("\uE00A\\]$","|\uE00A)") // add "|" in terminating position
+                .replaceAll("\\]", ")")
+                .replaceAll("(\\$\\d|\\))\\|\\$", "$1||\\$"); // $()|$() -> $()||$()
             s2 = translate(s2, c, m, "");       // \uE000..\uE003-> \, ", ;, #
-            s2 = translate(s2, m2, c, "");      // $, (, ), | -> \uE000..\uE003
-            s2 = translate(s2, c2, m2, "");     // \uE004..\uE007 -> $, (, ), |
+            s2 = translate(s2, m2.substring(0, c.length()), c, "");      // $, (, ), | -> \uE000..\uE003
+            s2 = translate(s2, c2, m2, "");     // \uE004..\uE009 -> $, (, ), |, [, ]
             s2 = s2.replaceAll("[$]", "\\$")    // $ -> \$
                 .replaceAll("\uE000(\\d)", "\uE000\uE001\\$$1\uE002") // $n -> $(\n)
                 .replaceAll("\\\\(\\d)", "\\$$1") // \[n] -> $[n]
@@ -78,7 +90,7 @@ public class Soros {
   }
 
   public String run(String input) {
-    return run(input, true, true).trim().replaceAll("  +", " ");
+    return run(input, true, true);
   }
 
   private String run(String input, boolean begin, boolean end) {

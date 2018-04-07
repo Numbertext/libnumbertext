@@ -1,11 +1,18 @@
 function Soros(program) {
     this.funcpat = /(\|?(\uE008\()+)?(\|?\uE008\(([^\(\)]*)\)\|?)(\)+\|?)?/
-    this.meta = "\\\"$()|#;"
-    this.enc = "\uE000\uE001\uE002\uE003\uE004\uE005\uE006\uE007"
+    this.meta = "\\\"$()|#;[]"
+    this.enc = "\uE000\uE001\uE002\uE003\uE004\uE005\uE006\uE007\uE008\uE009"
     this.lines = []
     if (!/__numbertext__/.test(program))
         program = "__numbertext__;" + program
-    program = program.replace("__numbertext__", "\"([a-z][-a-z]* )?0+(0|[1-9]\\d*)\" $(\\1\\2);")
+
+    program = program.replace("__numbertext__",
+        // default left zero deletion
+        "\"([a-z][-a-z]* )?0+(0|[1-9]\\d*)\" $(\\1\\2);" +
+        // separator function
+        "\"\uE00A(.*)\uE00A(.+)\uE00A(.*)\" \\1\\2\\3;" +
+        // no separation, if subcall returns with empty string
+        "\"\uE00A.*\uE00A\uE00A.*\"")
 
     // subclass for line data
     this.linetype = function (regex, repl, begin, end) {
@@ -69,7 +76,7 @@ function Soros(program) {
     // run with the string input parameter
     this.run = function (data) {
         data = this._run(this.tr(data, this.meta, this.enc, ""), true, true)
-        return this.tr(this.strip(data, " ").replace(/  +/g, " "), this.enc, this.meta, "")
+        return this.tr(data, this.enc, this.meta, "")
     };
 
     // constructor
@@ -103,6 +110,11 @@ function Soros(program) {
             var line = new this.linetype(
                 new RegExp("^" + s[1].replace("^\^", "").replace("\$$", "") + "$"),
                 s[2].replace(/\\n/g, "\n")
+                    // call inner separator: [ ... $1 ... ] -> $(\uE00A ... \uE00A$1\uE00A ... )
+                    .replace(/[[]\$(\d\d?|\([^\)]+\))/g,"$(\uE00A\uE00A|$$$1\uE00A")
+                    .replace(/[[]([^\$[\\]*)\$(\d\d?|\([^\)]+\))/g,"$(\uE00A$1\uE00A$$$2\uE00A")
+                    .replace(/\uE00A]$/, "|\uE00A)") // add "|" in terminating position
+                    .replace(/]/g, ")")
                     .replace(/(\$\d|\))\|\$/g,"$1||$$") // $(..)|$(..) -> $(..)||$(..)
                     .replace(/\$/g, "\uE008")
                     .replace(/\\(\d)/g, "$$$1")
