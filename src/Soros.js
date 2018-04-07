@@ -3,10 +3,9 @@ function Soros(program) {
     this.meta = "\\\"$()|#;"
     this.enc = "\uE000\uE001\uE002\uE003\uE004\uE005\uE006\uE007"
     this.lines = []
-    if (/__numbertext__/.test(program)) {
-        this.numbertext = true
-        program = "0+(0|[1-9]\\d*) $1\n" + program.replace("__numbertext__", "")
-    } else this.numbertext = false
+    if (!/__numbertext__/.test(program))
+        program = "__numbertext__;" + program
+    program = program.replace("__numbertext__", "\"([a-z][-a-z]* )?0+(0|[1-9]\\d*)\" $(\\1\\2);")
 
     // subclass for line data
     this.linetype = function (regex, repl, begin, end) {
@@ -70,19 +69,34 @@ function Soros(program) {
     // run with the string input parameter
     this.run = function (data) {
         data = this._run(this.tr(data, this.meta, this.enc, ""), true, true)
-        if (this.numbertext) data = this.strip(data, " ").replace(/  +/g, " ")
-        return this.tr(data, this.enc, this.meta, "")
+        return this.tr(this.strip(data, " ").replace(/  +/g, " "), this.enc, this.meta, "")
     };
 
     // constructor
 //    program = program.replace(/\\\\/g, "\uE000")
 //    program = program.replace(/\\[(]/g, "\uE003")
-//   program = program.replace(/\\[)]/g, "\uE004")
+//    program = program.replace(/\\[)]/g, "\uE004")
 //    program = program.replace(/\\[|]/g, "\uE005")
     program = this.tr(program, this.meta, this.enc, "\\")
     var l = program.replace(/(#[^\n]*)?(\n|$)/g, ";").split(";")
+    var matchline = new RegExp(/^\s*(\"[^\"]*\"|[^\s]*)\s*(.*[^\s])?\s*$/)
+    var prefix = ""
     for (var i in l) {
-        var s = /^\s*(\"[^\"]*\"|[^\s]*)\s*(.*[^\s])?\s*$/.exec(l[i])
+        var macro = /== *(.*[^ ]?) ==/.exec(l[i])
+        if (macro != null) {
+            prefix = macro[1]
+            continue
+        }
+        var s = matchline.exec(l[i])
+        if (prefix != "" && l[i] != "" && s != null) {
+            s1 = this.strip(s[1], "\"")
+            var empty = (s1 == "")
+            var start = (!empty && s1[0] == '^')
+            if (s[2] == undefined) s[2] = ""
+            l2 = "\"" + (start ? "^" : "") + prefix + (empty ? "" : " ") +
+                          s1.replace("^\^", "") + "\" " + s[2]
+            s = matchline.exec(l2)
+        }
         if (s != null) {
             s[1] = this.strip(s[1], "\"")
             if (s[2] == undefined) s[2] = ""; else s[2] = this.strip(s[2], "\"")

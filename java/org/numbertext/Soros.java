@@ -34,13 +34,25 @@ public class Soros {
   public Soros(String source) {
     source = translate(source, m, c, "\\")      // \\, \", \;, \# -> \uE000..\uE003
         .replaceAll("(#[^\n]*)?(\n|$)", ";");   // remove comments
-    if (source.indexOf("__numbertext__") > -1) {
-        numbertext = true;
-        source = source.replace("__numbertext__", "0+(0|[1-9]\\d*) $1\n");
-    }
+    if (source.indexOf("__numbertext__") == -1)
+        source = "__numbertext__;" + source;
+    source = source.replace("__numbertext__", "\"([a-z][-a-z]* )?0+(0|[1-9]\\d*)\" $(\\1\\2);");
     Pattern p = Pattern.compile("^\\s*(\"[^\"]*\"|[^\\s]*)\\s*(.*[^\\s])?\\s*$");
+    Pattern macro = Pattern.compile("== *(.*[^ ]?) ==");
+    String prefix = "";
     for (String s : source.split(";")) {
+        Matcher matchmacro = macro.matcher(s);
+        if (matchmacro.matches()) {
+            prefix = matchmacro.group(1);
+            continue;
+        }
         Matcher sp = p.matcher(s);
+        if (!prefix.equals("") && !s.equals("") && sp.matches()) {
+            s = sp.group(1).replaceFirst("^\"", "").replaceFirst("\"$","");
+            s = "\"" + (s.startsWith("^") ? "^" : "") + prefix + (s.equals("") ? "" : " ") +
+                 s.replaceFirst("^\\^", "") + "\" " + sp.group(2);
+            sp = p.matcher(s);
+        }
         if (!s.equals("") && sp.matches()) {
             s = translate(sp.group(1).replaceFirst("^\"", "").replaceFirst("\"$",""),
                 c.substring(1), m.substring(1), "");
@@ -66,7 +78,6 @@ public class Soros {
   }
 
   public String run(String input) {
-    if (!numbertext) return run(input, true, true);
     return run(input, true, true).trim().replaceAll("  +", " ");
   }
 

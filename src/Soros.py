@@ -28,13 +28,28 @@ _func = re.compile(_tr(r"""(?:\|?(?:\$\()+)?  # optional nested calls
 class _Soros:
     def __init__(self, prg):
         self.lines = []
-        self.numbertext = False
-        if prg.find("__numbertext__") > -1:
-            self.numbertext = True
-            prg = "0+(0|[1-9]\\d*) $1\n" + prg.replace("__numbertext__", "")
+        if prg.find("__numbertext__") == -1:
+            prg = "__numbertext__;" + prg
+        prg = prg.replace("__numbertext__", "0+(0|[1-9]\\d*) $1;\"([a-z][-a-z]* )0+(0|[1-9]\\d*)\" $(\\1\\2);")
         prg = _tr(prg, _m[:4], _c[:4], "\\") # \\, \", \;, \# -> \uE000..\uE003
+        matchline = re.compile("^\s*(\"[^\"]*\"|[^\s]*)\s*(.*[^\s])?\s*$")
+        prefix = ""
         for s in re.sub("(#[^\n]*)?(\n|$)", ";", prg).split(";"):
-            m = re.match("^\s*(\"[^\"]*\"|[^\s]*)\s*(.*[^\s])?\s*$", s)
+            macro = re.match("== *(.*[^ ]?) ==", s)
+            if macro != None:
+                prefix = macro.group(1)
+                continue
+            m = matchline.match(s)
+            if prefix != "" and s != "" and m != None:
+                s = m.group(1).strip("\"")
+                space = " " if s != "" else ""
+                caret = ""
+                if s[0:1] == "^":
+                    s = s[1:]
+                    caret = "^"
+                s2 = m.group(2) if m.group(2) != None else ""
+                s = "\"" + caret + prefix + space + s + "\" " + s2
+                m = matchline.match(s)
             if m != None:
                 s = _tr(m.group(1).strip("\""), _c[1:4], _m[1:4], "") \
                     .replace(_c[_m.find("\\")], "\\\\") # -> \\, ", ;, #
@@ -54,9 +69,7 @@ class _Soros:
                     s2, s[:1] == "^", s[-1:] == "$"]]
 
     def run(self, data):
-        if self.numbertext:
-            return re.sub("  +", " ", self._run(data, True, True).strip())
-        return self._run(data, True, True)
+        return re.sub("  +", " ", self._run(data, True, True).strip())
 
     def _run(self, data, begin, end):
         for i in self.lines:
