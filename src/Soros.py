@@ -62,8 +62,8 @@ class _Soros:
                 s2 = _tr(s2, _c[:4], _m[:4], "")   # \uE000..\uE003-> \, ", ;, #
                 s2 = _tr(s2, _m[4:], _c[:4], "")   # $, (, ), | -> \uE000..\uE003
                 s2 = _tr(s2, _c[4:], _m[4:], "") # \uE004..\uE007 -> $, (, ), |
-                s2 = re.sub(r"\\(\d)", r"\\g<\1>",
-                    re.sub(r"\uE000(\d)", "\uE000\uE001\\\\g<\\1>\uE002", s2))
+                s2 = re.sub(r"\\(\d?\d)", r"\\g<\1>",
+                    re.sub(r"\uE000(\d?\d)", "\uE000\uE001\\\\g<\\1>\uE002", s2))
                 self.lines = self.lines + [[
                     re.compile("^" + s.lstrip("^").rstrip("$") + "$"),
                     s2, s[:1] == "^", s[-1:] == "$"]]
