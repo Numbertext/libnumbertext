@@ -1,6 +1,7 @@
 "Soros interpreter (see http://numbertext.org)"
 from __future__ import unicode_literals
-import re
+from __future__ import print_function
+import re, sys
 
 def run(program, data):
     return compile(program).run(data)
@@ -76,9 +77,13 @@ class _Soros:
                 s2 = _tr(s2, _c[4:], _m[4:], "") # \uE004..\uE009 -> $, (, ), |, [, ]
                 s2 = re.sub(r"\\(\d?\d)", r"\\g<\1>",
                     re.sub(r"\uE000(\d?\d)", "\uE000\uE001\\\\g<\\1>\uE002", s2))
-                self.lines = self.lines + [[
-                    re.compile("^" + s.lstrip("^").rstrip("$") + "$"),
-                    s2, s[:1] == "^", s[-1:] == "$"]]
+                try:
+                    self.lines = self.lines + [[
+                        re.compile("^" + s.lstrip("^").rstrip("$") + "$"),
+                        s2, s[:1] == "^", s[-1:] == "$"]]
+                except:
+                    print("Error in following regex line: " + s, file=sys.stderr)
+                    raise
 
     def run(self, data):
         return self._run(data, True, True)
@@ -88,7 +93,11 @@ class _Soros:
             if not ((begin == False and i[2]) or (end == False and i[3])):
                 m = i[0].match(data)
                 if m:
-                    s = m.expand(i[1])
+                    try:
+                        s = m.expand(i[1])
+                    except:
+                        print("Error for the following input: " + data, file=sys.stderr)
+                        raise
                     n = _func.search(s)
                     while n:
                         b = False
