@@ -1,5 +1,4 @@
 # Chinese Suzhou numbers, see Wikipedia
-__numbertext__
 (\d+)[.,](\d+) $(\1\2::)\n$(:\1:)
 (\d+) $(\1::)\n$(:\1:)
 (\d+)0:: $(\1::)

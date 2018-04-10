@@ -1,4 +1,3 @@
-__numbertext__
 ^0 אפס
 1 אחת
 2 שתיים
@@ -19,7 +18,7 @@ __numbertext__
 80 שמונים
 (\d)0 $1ים
 
-(\d)(\d) $(\10) ו$2
+(\d)(\d) $(\010) ו$2
 
 # separator after 1-2 hundred(s)
 hs1:20 " ו"    # מאה ועשרים
@@ -172,14 +171,14 @@ USD:(.+),(.+) $(\1mm:דולר ארה"ב,דולרים ארה"ב,סנט,סנטים
 "(CNY [-−]?\d+[.,]\d)(\d)" $1| $2| פן
 
 "(([A-Z]{3}) [-−]?\d+)[.,](01)" $1| ו$(\2:ss,$(1))
-"(([A-Z]{3}) [-−]?\d+)[.,](\d)" $1| ו$(\2:sp,$(\30))
+"(([A-Z]{3}) [-−]?\d+)[.,](\d)" $1| ו$(\2:sp,$(\030))
 "(([A-Z]{3}) [-−]?\d+)[.,](\d\d)" $1| ו$(\2:sp,$3)
 
 # ordinal numbers: in hebrew, they depend on gender
 
 # transform a number to a feminine ordinal
 
-"ordm (\d+)" $(ordm:\1)
+"ordinal-masculine (\d+)" $(ordm:\1)
 
 ordm:1 ראשון
 ordm:2 שני
@@ -194,7 +193,7 @@ ordm:10 עשירי
 
 # transform a number to a masculine ordinal
 
-"ordf (\d+)" $(ordf:\1)
+"ordinal-feminine (\d+)" $(ordf:\1)
 
 ordf:1 ראשונה
 ordf:2 שניה
@@ -204,12 +203,12 @@ ordf:([3-9]|10) $(ordm:\1)ת
 ord([fm]):(\d+) $(\1:$2)
 
 # from the end ;)
-"ord([fm]) [-−](\d+)" $(ord\1:\2) מהסוף
+"ordinal-(f|m)(eminine|asculine) [-−]?(\d+)" $(ord\1:\2) מהסוף
 
 # ordinal abbreviation: no such thing
-"ord2([fm]) ([-−]\d+)" $(ord\1 \2)
+"ordinal-number(-feminine|-masculine)? ([-−]?\d+)" $(ordinal\1 \2)
 
 # masculine assumption
-"ord ([-−]?\d+)" $(ordm \1)
+"ordinal ([-−]?\d+)" $(ordinal-masculine \1)
 
 help פונקציות נוספות:\nord, ordm \(מספר סידורי זכר, כגון "ראשון"\)\nordf \(מספר סידורי נקבה, כגון "ראשונה"\)

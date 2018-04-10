@@ -1,4 +1,4 @@
-^0 nol
+^0 kosong
 1 satu
 2 dua
 3 tiga
@@ -6,7 +6,7 @@
 5 lima
 6 enam
 7 tujuh
-8 delapan
+8 lapan
 9 sembilan
 10 sepuluh
 11 sebelas
@@ -18,12 +18,12 @@
 (\d{1,3})(\d{3}) $1 ribu[ $2]
 # sejuta or setu juta etc.
 (\d{1,3})(\d{6}) $1 juta[ $2]
-(\d{1,3})(\d{9}) $1 miliar[ $2]
-(\d{1,3})(\d{12}) $1 triliun[ $2]
-(\d{1,3})(\d{15}) $1 kuadriliun[ $2]
-(\d{1,3})(\d{18}) $1 kuantiliun[ $2]
-(\d{1,3})(\d{21}) $1 sextiliun[ $2]
-(\d{1,3})(\d{24}) $1 septiliun[ $2]
+(\d{1,3})(\d{9}) $1 bilion[ $2]
+(\d{1,3})(\d{12}) $1 trilion[ $2]
+(\d{1,3})(\d{15}) $1 kuadrilion[ $2]
+(\d{1,3})(\d{18}) $1 kuantilion[ $2]
+(\d{1,3})(\d{21}) $1 sextilion[ $2]
+(\d{1,3})(\d{24}) $1 septilion[ $2]
 
 # negative numbers
 

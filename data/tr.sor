@@ -1,4 +1,3 @@
-__numbertext__
 ^0 sıfır
 1 bir
 2 iki
@@ -9,37 +8,28 @@ __numbertext__
 7 yedi
 8 sekiz
 9 dokuz
-10 on
-1(\d) on $1
-20 yirmi
-2(\d) yirmi $1
-30 otuz
-3(\d) otuz $1
-40 kırk
-4(\d) kırk $1
-50 elli
-5(\d) elli $1
-60 altmış
-6(\d) altmış $1
-70 yetmiş
-7(\d) yetmiş $1
-80 seksen
-8(\d) seksen $1
-90 doksan
-9(\d) doksan $1
+1(\d) on[ $1]
+2(\d) yirmi[ $1]
+3(\d) otuz[ $1]
+4(\d) kırk[ $1]
+5(\d) elli[ $1]
+6(\d) altmış[ $1]
+7(\d) yetmiş[ $1]
+8(\d) seksen[ $1]
+9(\d) doksan[ $1]
 
-(1)(\d\d)  yüz $2		# yüz ..
-([2-9])(\d\d) $1 yüz $2		# üç yüz ...
-(1)(\d\d\d)  bin $2		# bin
-(\d{1,2})([1-9]\d\d) $1 bin $2	# on bin iki yüz
-(\d{1,3})(\d{3}) $1 bin $2	# yüz bin iki yüz
-(\d{1,3})(\d{6}) $1 milyon $2
-(\d{1,3})(\d{9}) $1 milyar $2
-(\d{1,3})(\d{12}) $1 trilyon $2
-(\d{1,3})(\d{15}) $1 katrilyon $2
-(\d{1,3})(\d{18}) $1 kentilyon $2
-(\d{1,3})(\d{21}) $1 sekstilyon $2
-(\d{1,3})(\d{24}) $1 septilyon $2
+(1)(\d\d)  yüz[ $2]			# yüz ..
+([2-9])(\d\d) $1 yüz[ $2]		# üç yüz ...
+(1)(\d\d\d)  bin[ $2]			# bin
+(\d{1,2})([1-9]\d\d) $1 bin[ $2]	# on bin iki yüz
+(\d{1,3})(\d{3}) $1 bin[ $2]		# yüz bin iki yüz
+(\d{1,3})(\d{6}) $1 milyon[ $2]
+(\d{1,3})(\d{9}) $1 milyar[ $2]
+(\d{1,3})(\d{12}) $1 trilyon[ $2]
+(\d{1,3})(\d{15}) $1 katrilyon[ $2]
+(\d{1,3})(\d{18}) $1 kentilyon[ $2]
+(\d{1,3})(\d{21}) $1 sekstilyon[ $2]
+(\d{1,3})(\d{24}) $1 septilyon[ $2]
 
 # negative number
 
@@ -122,19 +112,27 @@ ZWD:(\D+) $(\1: Zimbabve doları, Zimbabve doları, sent, sent)
 "space:([^ ]+) +([^ ].*)" \1$(space:\2)
 space:(.*) \1
 
-"([A-Z]{3}) ([-−]?1)([.,]00?)?" $2 $(\1:us)
-"([A-Z]{3}) ([-−]?\d+)([.,]00?)?" $(space:|$2) $(\1:up)
+"([A-Z]{3}) ([-−]?1)([.,]00?)?" $2$(\1:us)
+"([A-Z]{3}) ([-−]?\d+)([.,]00?)?" $(space:|$2)$(\1:up)
 
 "(CNY [-−]?\d+)[.,](\d)0?" $1 $2 jiao
 "(CNY [-−]?\d+[.,]\d)(\d)" $1 $2 fen
 
 "((MGA|MRO) [-−]?\d+)[.,]0" $1
-"((MGA|MRO) [-−]?\d+)[.,]2" $1 |$(1) $(\2:ss)
-"((MGA|MRO) [-−]?\d+)[.,]4" $1 |$(2) $(\2:sp)
-"((MGA|MRO) [-−]?\d+)[.,]6" $1 |$(3) $(\2:sp)
-"((MGA|MRO) [-−]?\d+)[.,]8" $1 |$(4) $(\2:sp)
+"((MGA|MRO) [-−]?\d+)[.,]2" $1 |$(1)$(\2:ss)
+"((MGA|MRO) [-−]?\d+)[.,]4" $1 |$(2)$(\2:sp)
+"((MGA|MRO) [-−]?\d+)[.,]6" $1 |$(3)$(\2:sp)
+"((MGA|MRO) [-−]?\d+)[.,]8" $1 |$(4)$(\2:sp)
 
-"(([A-Z]{3}) [-−]?\d+)[.,](01)" $1 |$(1) $(\2:ss)
-"(([A-Z]{3}) [-−]?\d+)[.,](\d)" $1 |$(\30) $(\2:sp)
-"(([A-Z]{3}) [-−]?\d+)[.,](\d\d)" $1 $(space:|$3) $(\2:sp)
+"(([A-Z]{3}) [-−]?\d+)[.,](01)" $1 |$(1)$(\2:ss)
+"(([A-Z]{3}) [-−]?\d+)[.,](\d)" $1 |$(\030)$(\2:sp)
+"(([A-Z]{3}) [-−]?\d+)[.,](\d\d)" $1 $(space:|$3)$(\2:sp)
 
+== ordinal-number ==
+
+(\d+)	\1.
+
+== help ==
+
+"" |$(1)|, |$(2)|, |$(3)|\n$(help cardinal-neuter)$(help cardinal-feminine)$(help cardinal-masculine)$(help ordinal)$(help ordinal-number)
+(.*) \1: |$(\1 1)|, |$(\1 2)|, |$(\1 3)|\n

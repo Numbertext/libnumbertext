@@ -1,4 +1,3 @@
-__numbertext__
 ^0 zero
 1$ u
 1 un
@@ -28,20 +27,20 @@ __numbertext__
 70 setanta
 80 vuitanta
 90 noranta
-(\d)(\d) $(\10)-$2
-1(\d\d) cent $1
-(\d)(\d\d) $1-cents $2
-1(\d{3}) mil $1
-(\d{1,3})(\d{3}) $1 mil $2
-1(\d{6}) un milió $1
-(\d{1,6})(\d{6}) $1 milions $2
-1(\d{9}) mil milions $1
-1(\d{12}) un bilió $1
-(\d{1,6})(\d{12}) $1 bilions $2
-1(\d{18}) un trilió $1
-(\d{1,6})(\d{18}) $1 trilions $2
-1(\d{24}) un quadrilió $1
-(\d{1,6})(\d{24}) $1 quadrilions $2
+(\d)(\d) $(\010)-$2
+1(\d\d) cent[ $1]
+(\d)(\d\d) $1-cents[ $2]
+1(\d{3}) mil[ $1]
+(\d{1,3})(\d{3}) $1 mil[ $2]
+1(\d{6}) un milió[ $1]
+(\d{1,6})(\d{6}) $1 milions[ $2]
+1(\d{9}) mil milions[ $1]
+1(\d{12}) un bilió[ $1]
+(\d{1,6})(\d{12}) $1 bilions[ $2]
+1(\d{18}) un trilió[ $1]
+(\d{1,6})(\d{18}) $1 trilions[ $2]
+1(\d{24}) un quadrilió[ $1]
+(\d{1,6})(\d{24}) $1 quadrilions[ $2]
 
 # negative number
 
@@ -136,10 +135,55 @@ SML:(.+),(.+) $(\2fm: lira de San Marino, lires de San Marino, de lires de San M
 VAL:(.+),(.+) $(\2fm: lira vaticana, lires vaticanes, de lires vaticanes, cèntim, cèntims, \1)
 XEU:(.+),(.+) $(\2mm: ecu, ecus, d'ecus, cèntim, cèntims, \1)
 
-"([A-Z]{3}) ([-−]?[01])([.,]00?)?" $(\1:|$2,us)
-"([A-Z]{3}) ([-−]?\d+0{6,})([.,]00?)?" $(\1:|$2,ud)
-"([A-Z]{3}) ([-−]?\d+)([.,]00?)?" $(\1:|$2,up)
+"([A-Z]{3}) ([-−]?[01])([.,]00?)?"$(\1:|$2,us)
+"([A-Z]{3}) ([-−]?\d+0{6,})([.,]00?)?"$(\1:|$2,ud)
+"([A-Z]{3}) ([-−]?\d+)([.,]00?)?"$(\1:|$2,up)
 
-"(([A-Z]{3}) [-−]?\d+)[.,](01)" $1 amb $(\2:un,ss)
-"(([A-Z]{3}) [-−]?\d+)[.,](\d)" $1 amb $(\2:|$(\30),sp)
-"(([A-Z]{3}) [-−]?\d+)[.,](\d\d)" $1 amb $(\2:|$3,sp)
+"(([A-Z]{3}) [-−]?\d+)[.,](01)" $1 amb$(\2:un,ss)
+"(([A-Z]{3}) [-−]?\d+)[.,](\d)" $1 amb$(\2:|$(\030),sp)
+"(([A-Z]{3}) [-−]?\d+)[.,](\d\d)" $1 amb$(\2:|$3,sp)
+
+== feminine ==
+
+1 una
+(.*)	$(f:|$1)
+
+== masculine ==
+
+1 un
+(.*)	$1
+
+== ordinal(-masculine)? ==
+
+1 primer
+2 segon
+([-−]?\d+) $(ordinal |$2)
+
+(.*)nou		\2novè
+(.*)deu		\2desè
+(.*-)u(na?)?	\2unè
+"(.* )u(na?)?"	\2 primer
+"(.* )dos"	\2segon
+"(.* t|t)res"	\2ercer
+"(.* q|q)uatre"	\2uart
+(.*)cinc	\2cinquè
+(.*)[ae]	\2è
+(.*(cent|mil|ion))s?	\2è
+(.*li)ó		\2onè
+(.*)		\2è
+
+== ordinal-feminine ==
+
+([-−]?\d+) $(ordinal-feminine $(ordinal-masculine \1))
+(.*)è  \1ena
+(.*)   \1a
+
+== (ordinal)-number-(feminine|masculine) ==
+
+([-−]?\d+)	\3$(ordinal-number $(\1-\2 \3))
+.*(.) \1
+
+== help ==
+
+"" $(1)|, $(2), $(3)\n$(help feminine)$(help masculine)$(help ordinal-number-masculine)$(help ordinal-number-feminine)$(help ordinal-feminine)$(help ordinal-masculine)
+(feminine|masculine|ordinal(-number)?(-feminine|-masculine)?) \1: $(\1 1), $(\1 2), $(\1 3)\n

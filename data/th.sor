@@ -1,4 +1,3 @@
-__numbertext__
 ^0 ศูนย์
 ^1 หนึ่ง
 1 เอ็ด
@@ -60,10 +59,15 @@ __numbertext__
 [A-Z]{3}
 "([A-Z]{3}) ([-−]?\d[\d.,]*)" $2$1
 
-# ordinal numbers
+== ordinal ==
 
-"ord ([-−]?\d+([.,]\d+)?)" ที่$1
+([-−]?\d+([.,]\d+)?) ที่$1
 
-# help
+== ordinal-number ==
 
-help Functions: ord (ordinal numbers)
+(\d+)	\1.
+
+== help ==
+
+"" |$(1)|, |$(2)|, |$(3)|\n$(help ordinal)$(help ordinal-number)
+(.*) \1: |$(\1 1)|, |$(\1 2)|, |$(\1 3)|\n

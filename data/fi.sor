@@ -1,4 +1,3 @@
-__numbertext__
 ^0 nolla
 1 yksi
 2 kaksi
@@ -16,21 +15,21 @@ __numbertext__
 (\d)(\d\d) $1sataa$2
 1(\d{3}) tuhat$1
 (\d)(\d{3}) $1tuhatta$2
-(\d{2,3})(\d{3}) $1tuhatta $2
-1(\d{6}) miljoona $1
-(\d{1,3})(\d{6}) $1 miljoonaa $2
-1(\d{9}) miljardi $1
-(\d{1,3})(\d{9}) $1 miljardia $2
-1(\d{12}) biljoona $1
-(\d{1,3})(\d{12}) $1 biljoonaa $2
-1(\d{15}) tuhat biljoona $1
-(\d{1,3})(\d{15}) $1 tuhat biljoonaa $2
-1(\d{18}) triljoona $1
-(\d{1,3})(\d{18}) $1 triljoonaa $2
-1(\d{21}) tuhat triljoona $1
-(\d{1,3})(\d{21}) $1 tuhat triljoonaa $2
-1(\d{24}) kvadriljoona $1
-(\d{1,3})(\d{24}) $1 kvadriljoonaa $2
+(\d{2,3})(\d{3}) $1tuhatta[ $2]
+1(\d{6}) miljoona[ $1]
+(\d{1,3})(\d{6}) $1 miljoonaa[ $2]
+1(\d{9}) miljardi[ $1]
+(\d{1,3})(\d{9}) $1 miljardia[ $2]
+1(\d{12}) biljoona[ $1]
+(\d{1,3})(\d{12}) $1 biljoonaa[ $2]
+1(\d{15}) tuhat biljoona[ $1]
+(\d{1,3})(\d{15}) $1 tuhat biljoonaa[ $2]
+1(\d{18}) triljoona[ $1]
+(\d{1,3})(\d{18}) $1 triljoonaa[ $2]
+1(\d{21}) tuhat triljoona[ $1]
+(\d{1,3})(\d{21}) $1 tuhat triljoonaa[ $2]
+1(\d{24}) kvadriljoona[ $1]
+(\d{1,3})(\d{24}) $1 kvadriljoonaa[ $2]
 
 # negative numbers
 
@@ -84,7 +83,7 @@ RON:(\D+) $(\1: Romanian leu, Romanian leu, bani, bania)
 RUB:(\D+) $(\1: Venäjän rupla, Venäjän ruplaa, kopeekka, kopeekkaa)
 SEK:(\D+) $(\1: Ruotsin kruunu, Norjan kruunua, äyri, äyriä)
 SGD:(\D+) $(\1: Singaporen dollari, Singaporen dollaria, sentti, senttiä)
-THB:(\D+) $(\1: Thaimaan baht, Thaimaan bahtia, satang, satangia) 
+THB:(\D+) $(\1: Thaimaan baht, Thaimaan bahtia, satang, satangia)
 TRY:(\D+) $(\1: Turkin liira, Turkin liiraa, kuruşi, kuruşia)
 USD:(\D+) $(\1: USA:n dollari, USA:n dollaria, sentti, senttiä)
 
@@ -92,8 +91,8 @@ USD:(\D+) $(\1: USA:n dollari, USA:n dollaria, sentti, senttiä)
 "(JPY [-−]?\d+[.,]\d\d)1" $1 $2 rini
 "(JPY [-−]?\d+[.,]\d\d)(\d)" $1 $2 riniä
 
-"([A-Z]{3}) ([-−]?1)([.,]00?)?" $2 $(\1:us)
-"([A-Z]{3}) ([-−]?\d+)([.,]00?)?" $2 $(\1:up)
+"([A-Z]{3}) ([-−]?1)([.,]00?)?" $2$(\1:us)
+"([A-Z]{3}) ([-−]?\d+)([.,]00?)?" $2$(\1:up)
 
 # chiao?
 "(CNY [-−]?\d+)[.,]10?" $1 $2 chiao
@@ -101,6 +100,47 @@ USD:(\D+) $(\1: USA:n dollari, USA:n dollaria, sentti, senttiä)
 "(CNY [-−]?\d+[.,]\d)1" $1 $2 feni
 "(CNY [-−]?\d+[.,]\d)(\d)" $1 $2 feniä
 
-"(([A-Z]{3}) [-−]?\d+)[.,](01)" $1 $(1) $(\2:ss)
-"(([A-Z]{3}) [-−]?\d+)[.,](\d)" $1 $(\30) $(\2:sp)
-"(([A-Z]{3}) [-−]?\d+)[.,](\d\d)" $1 $3 $(\2:sp)
+"(([A-Z]{3}) [-−]?\d+)[.,](01)" $1 $(1)$(\2:ss)
+"(([A-Z]{3}) [-−]?\d+)[.,](\d)" $1 $(\030)$(\2:sp)
+"(([A-Z]{3}) [-−]?\d+)[.,](\d\d)" $1 $3$(\2:sp)
+
+== ordinal ==
+
+^0 nolla
+1 ensimmäinen
+2$ toinen
+2 kahdes
+3 kolmas
+4 neljäs
+5 viides
+6 kuudes
+7 seitsemäs
+8 kahdeksas
+9 yhdeksäs
+10 kymmenes
+11 yhdestoista
+12 kahdestoista
+1(\d) $(ordinal \1)toista
+(\d)(\d) $(ordinal \1)kymmenes$(ordinal \2)
+1(\d\d) sadas$(ordinal \1)
+(\d)(\d\d) $(ordinal \1)sadas$(ordinal \2)
+1(\d{3}) tuhannes$(ordinal \1)
+(\d)(\d{3}) $(ordinal \1)tuhannes$(ordinal \2)
+(\d{2,3})(\d{3}) $(ordinal \1)|tuhannes[ $(ordinal \2)]
+(\d)(\d{6}) $(ordinal \1)miljoonas[ $(ordinal \2)]
+(\d{2,3})(\d{6}) $(ordinal \1)| miljoonas[ $(ordinal \2)]
+(\d)(\d{6}) $(ordinal \1)miljoonas[ $(ordinal \2)]
+(\d{2,3})(\d{6}) $(ordinal \1)| miljoonas[ $(ordinal \2)]
+(\d)(\d{9}) $(ordinal \1)miljardis[ $(ordinal \2)]
+(\d{2,3})(\d{9}) $(ordinal \1)| miljardis[ $(ordinal \2)]
+(\d)(\d{12}) $(ordinal \1)biljoonas[ $(ordinal \2)]
+(\d{2,3})(\d{12}) $(ordinal \1)| biljoonas[ $(ordinal \2)]
+
+== ordinal-number ==
+
+(\d+)	\1.
+
+== help ==
+
+"" $(1), $(2), $(3)\n$(help ordinal)$(help ordinal-number)
+(ordinal(-number)?) \1: $(\1 1), $(\1 2), $(\1 3)\n

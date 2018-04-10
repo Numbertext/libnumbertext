@@ -1,4 +1,3 @@
-__numbertext__
 ^0 zero
 1 uno
 2 due
@@ -41,19 +40,19 @@ __numbertext__
 (\d)(\d\d) $1cento$2
 1(\d{3}) mille$1
 (\d{1,2})(\d{3}) $1mila$2
-(\d{3})(\d{3}) $1mila $2
-1(\d{6}) un milione $1
-(\d{1,3})(\d{6}) $1 milioni $2
-1(\d{9}) un miliardo $1
-(\d{1,3})(\d{9}) $1 miliardi $2
-1(\d{12}) un bilione $1
-(\d{1,3})(\d{12}) $1 bilioni $2
-1(\d{15}) un biliardo $1
-(\d{1,3})(\d{15}) $1 biliardi $2
-1(\d{18}) un trilione $1
-(\d{1,3})(\d{18}) $1 trilioni $2
-1(\d{21}) un triliardo $1
-(\d{1,3})(\d{21}) $1 triliardi $2
+(\d{3})(\d{3}) $1mila[ $2]
+1(\d{6}) un milione[ $1]
+(\d{1,3})(\d{6}) $1 milioni[ $2]
+1(\d{9}) un miliardo[ $1]
+(\d{1,3})(\d{9}) $1 miliardi[ $2]
+1(\d{12}) un bilione[ $1]
+(\d{1,3})(\d{12}) $1 bilioni[ $2]
+1(\d{15}) un biliardo[ $1]
+(\d{1,3})(\d{15}) $1 biliardi[ $2]
+1(\d{18}) un trilione[ $1]
+(\d{1,3})(\d{18}) $1 trilioni[ $2]
+1(\d{21}) un triliardo[ $1]
+(\d{1,3})(\d{21}) $1 triliardi[ $2]
 
 # negative numbers
 
@@ -84,12 +83,66 @@ USD:(.)	$(\1: dollaro USA, cent, cent)
 "(JPY [-−]?\d+)[.,](\d\d)0" $1
 "(JPY [-−]?\d+[.,]\d\d)(\d)" $1 $2 rin
 
-"([A-Z]{3}) ([-−]?\d+)([.,]00?)?" $2 $(\1:u)
+"([A-Z]{3}) ([-−]?\d+)([.,]00?)?" $2$(\1:u)
 
 "(CNY [-−]?\d+)[.,](\d)0?" $1 $2 jiao
 "(CNY [-−]?\d+[.,]\d)(\d)" $1 $2 fen
 
-"(([A-Z]{3}) [-−]?\d+)[.,](01)" $1 uno $(\2:s)
-"(([A-Z]{3}) [-−]?\d+)[.,](\d)" $1 $(\30) $(\2:p)
-"(([A-Z]{3}) [-−]?\d+)[.,](\d\d)" $1 $3 $(\2:p)
+"(([A-Z]{3}) [-−]?\d+)[.,](01)" $1 uno$(\2:s)
+"(([A-Z]{3}) [-−]?\d+)[.,](\d)" $1 $(\030)$(\2:p)
+"(([A-Z]{3}) [-−]?\d+)[.,](\d\d)" $1 $3$(\2:p)
 
+== cardinal-feminine ==
+
+1 una
+
+== cardinal-masculine ==
+
+1 un
+
+== cardinal-(feminine|masculine) ==
+
+(.*) $(\1 $2)
+
+== feminine ==
+
+(.*)uno \1una
+
+== masculine ==
+
+(.*)uno \1un
+
+== (feminine|masculine) ==
+
+(.*) \2
+
+== ordinal-feminine ==
+
+([-−]?\d+) $(ordinal-feminine |$1)
+un[ao]	\1prima
+due	\1seconda
+tre	\1terza
+quattro	\1quarta
+cinque	\1quinta
+sei	\1sesta
+sette	\1settima
+otto	\1ottava
+nove	\1nona
+dieci	\1decima
+(.*tr)é \1eesima
+(.*sei) \1esima
+"(.*)[^ ][ ]*" \1esima
+
+== ordinal(-masculine)? ==
+([-−]?\d+) $(ordinal-masculine $(ordinal-feminine \2))
+(.*)a \2o
+
+== (ordinal)-number(-feminine|-masculine)? ==
+([-−]?\d+) \3$(ordinal-number $(\1\2 \3))
+.*a ª
+.*o º
+
+== help ==
+
+"" $(1), $(2), |$(3)|\n$(help cardinal-feminine)$(help cardinal-masculine)$(help ordinal-feminine)$(help ordinal-masculine)$(help ordinal-number-feminine)$(help ordinal-number-masculine)
+(.*) \1: $(\1 1), $(\1 2), |$(\1 3)|\n

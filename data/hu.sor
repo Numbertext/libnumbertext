@@ -1,4 +1,3 @@
-__numbertext__
 ^0 nulla
 1 egy
 2$ kettő
@@ -23,19 +22,16 @@ __numbertext__
 9(\d) kilencven$1
 1(\d\d) száz$1
 (\d)(\d\d) $1száz$2
+11(\d{2}) ezeregy$(1\1)
 1(\d{3}) ezer$1
 
-# separator function
-:0*	# kétezer
-:\d* -	# kétezer-egy
-
-(\d{1,3})(\d{3}) $1ezer$(:\2)$2
-(\d{1,3})(\d{6}) $1millió$(:\2)$2
-(\d{1,3})(\d{9}) $1milliárd$(:\2)$2
-(\d{1,3})(\d{12}) $1billió$(:\2)$2
-(\d{1,3})(\d{15}) $1billiárd$(:\2)$2
-(\d{1,3})(\d{18}) $1trillió$(:\2)$2
-(\d{1,3})(\d{21}) $1trilliárd$(:\2)$2
+(\d{1,3})(\d{3}) $1ezer[-$2]
+(\d{1,3})(\d{6}) $1millió[-$2]
+(\d{1,3})(\d{9}) $1milliárd[-$2]
+(\d{1,3})(\d{12}) $1billió[-$2]
+(\d{1,3})(\d{15}) $1billiárd[-$2]
+(\d{1,3})(\d{18}) $1trillió[-$2]
+(\d{1,3})(\d{21}) $1trilliárd[-$2]
 
 # negative numbers
 
@@ -92,38 +88,88 @@ ZAR:(.)	$(\1: dél-afrikai rand, cent)
 "(JPY [-−]?\d+)[.,](\d\d)0" $1
 "(JPY [-−]?\d+[.,]\d\d)(\d)" $1 $2 rin
 
-"([A-Z]{3}) ([-−]?\d+)([.,]00?)?" $2 $(\1:u)
+"([A-Z]{3}) ([-−]?\d+)([.,]00?)?" $2$(\1:u)
 
 "(CNY [-−]?\d+)[.,](\d)0?" $1 $2 jiao
 "(CNY [-−]?\d+[.,]\d)(\d)" $1 $2 fen
 
-"(([A-Z]{3}) [-−]?\d+)[.,](\d)" $1 $(\30) $(\2:s)
-"(([A-Z]{3}) [-−]?\d+)[.,](\d\d)" $1 $3 $(\2:s)
+"(([A-Z]{3}) [-−]?\d+)[.,](\d)" $1 $(\030)$(\2:s)
+"(([A-Z]{3}) [-−]?\d+)[.,](\d\d)" $1 $3$(\2:s)
 
-# ordinal numbers
+# Article a/az
 
-"ord 1" első
-"ord 2" második
-"ord ([-−]?\d+)" $(ord:|$1)
+"(article |cardinal |formal ){3}(([a-zA-Z]+ )*1\d{2}([.,]\d*)?)" az $(formal \2)
+"(article |cardinal ){2}(([a-zA-Z]+ )*1(\d{3})*([.,]\d*)?)" az $2
+"(article |cardinal ){2}(([a-zA-Z]+ )*5.*)" az $2
+"(article |cardinal ){2}(.*)" a $2
 
-ord:(.*)nulla	\1nulladik
-ord:(.*)egy	\1egyedik
-ord:(.*)kettő	\1kettedik
-ord:(.*)három	\1harmadik
-ord:(.*)négy	\1negyedik
-ord:(.*)öt	\1ötödik
-ord:(.*)hat	\1hatodik
-ord:(.*)hét	\1hetedik
-ord:(.*)nyolc	\1nyolcadik
-ord:(.*)kilenc	\1kilencedik
-ord:(.*)tíz	\1tizedik
-ord:(.*)húsz	\1huszadik
-ord:(.*)harminc	\1harmincadik
-ord:(.*)(negy|öt|het|kilenc)ven	\1\2venedik
-ord:(.*)(hat|nyolc)van	\1\2vanadik
-ord:(.*)száz	\1századik
-ord:(.*)ezer	\1ezredik
-ord:(.*)illió	\1illiomodik
-ord:(.*)illiárd	\1illiárdodik
+== article ==
 
-help Functions: ord \(ordinal numbers\)\nExtra language modules: hu_HU_2 \(formal numerals\)
+(1(\d{3}|\d{6})*) az \1
+(5.*) az \1
+(.*) a \1
+
+== ordinal ==
+
+1 első
+2 második
+"(([a-zA-Z]+ )*[-−]?\d+)" $(ordinal $1)
+
+(.*)nulla	\1nulladik
+(.*)egy	\1egyedik
+(.*)kettő	\1kettedik
+(.*)három	\1harmadik
+(.*)négy	\1negyedik
+(.*)öt	\1ötödik
+(.*)hat	\1hatodik
+(.*)hét	\1hetedik
+(.*)nyolc	\1nyolcadik
+(.*)kilenc	\1kilencedik
+(.*)tíz	\1tizedik
+(.*)húsz	\1huszadik
+(.*)harminc	\1harmincadik
+(.*)(negy|öt|het|kilenc)ven	\1\2venedik
+(.*)(hat|nyolc)van	\1\2vanadik
+(.*)száz	\1századik
+(.*)ezer	\1ezredik
+(.*)illió	\1illiomodik
+(.*)illiárd	\1illiárdodik
+
+== formal ==
+
+"(([a-zA-Z]+ )*[-−]?\d+([.,]\d*)?)" $(formal |$1)
+(|.*-)((száz|ezer).*) $(formal \1egy\2)
+(.*)két(.*) $(formal \1kettő\2)
+(.*) \1
+
+== year ==
+
+# no hyphen in numbers
+
+"(([a-zA-Z]+ )*[-−]?\d+)" $(year |$1)
+(.*)-(.*) $(year \1\2)
+(.*) \1
+
+== cardinal ==
+
+(.*) $1
+
+== ordinal-number ==
+
+(.*) \1.
+
+== text ==
+
+(\d|10) $1
+(\d{2,4}) \1
+(\d{2,3})(\d{3}) \1 ezer[ $(text \2)]
+(\d{1,3})(\d{6}) \1 millió[ $(text \2)]
+(\d{1,4})(\d{9}) \1 milliárd[ $(text \2)]
+(\d{1,4})(\d{12}) \1 billió[ $(text \2)]
+(\d{1,4})(\d{15}) \1 billiárd[ $(text \2)]
+
+== help ==
+
+"" $(1)|, $(2)|, $(3)\n$(\0 ordinal)$(\0 ordinal-number)year: $(year 2001), $(year 2002)|, $(year 2003)\nformal: $(formal 100), $(formal 200), $(formal 1000)\ntext: $(text 1), $(text 12000), $(text 10000000000)\ncurrency \(for example, HUF\): $(HUF 2,5)\nformal HUF: $(formal HUF 102,5)
+"(ordinal(-number)?|USD)" \1: $(\1 1), $(\1 2), $(\1 3)\n
+

@@ -1,5 +1,4 @@
 # Mandarin Chinese number names (simplified)
-__numbertext__
 ^0 零
 1 一
 2$ 二
@@ -81,3 +80,92 @@ USD 美元
 
 "([A-Z]{3}) ([-−]?\d+([.,]\d+)?)" $2$1
 
+# Mandarin Chinese number names, formal numbers (大写) for legal and financial documents, simplified
+
+== formal ==
+
+^0 零
+1 壹
+2$ 贰
+2 贰
+3 叁
+4 贰
+5 伍
+6 陆
+7 柒
+8 捌
+9 玖
+^1(\d) 拾$(formal 1)
+(\d)(\d) $(formal 1)|拾$(formal 2)
+(\d)0{2} $(formal 1)佰
+(\d)0(\d) $(formal 1)佰零$(formal 2)
+(\d)(\d\d) $(formal 1)佰$(formal 2)
+(\d)0{3} $(formal 1)仟
+(\d)0(\d\d) $(formal 1)仟零$(formal 2)
+(\d)(\d\d\d) $(formal 1)仟$(formal 2)
+(\d{1,4})0{4} $(formal 1)|萬
+(\d{1,4})0(\d{3}) $(formal 1)|萬零$(formal 2)
+(\d{1,4})(\d{4}) $(formal 1)|萬$(formal 2)
+(\d{1,4})0{8} $(formal 1)|億
+(\d{1,4})0(\d{7}) $(formal 1)|亿零$(formal 2)
+(\d{1,4})(\d{8}) $(formal 1)|亿$(formal 2)
+(\d{1,4})0{12} $(formal 1)|兆
+(\d{1,4})0(\d{11}) $(formal 1)|兆零$(formal 2)
+(\d{1,4})(\d{12}) $(formal 1)|兆$(formal 2)
+(\d{1,4})0{16} $(formal 1)|京
+(\d{1,4})0(\d{15}) $(formal 1)|京零$(formal 2)
+(\d{1,4})(\d{16}) $(formal 1)|京$(formal 2)
+(\d{1,4})0{20} $(formal 1)|垓
+(\d{1,4})0(\d{19}) $(formal 1)|垓零$(formal 2)
+(\d{1,4})(\d{20}) $(formal 1)|垓$(formal 2)
+(\d{1,4})0{24} $(formal 1)|秭
+(\d{1,4})0(\d{23}) $(formal 1)|秭零$(formal 2)
+(\d{1,4})(\d{24}) $(formal 1)|秭$(formal 2)
+(\d{1,4})0{28} $(formal 1)|穰
+(\d{1,4})0(\d{27}) $(formal 1)|穰零$(formal 2)
+(\d{1,4})(\d{28}) $(formal 1)|穰$(formal 2)
+(\d{1,4})0{32} $(formal 1)|沟
+(\d{1,4})0(\d{31}) $(formal 1)|沟零$(formal 2)
+(\d{1,4})(\d{32}) $(formal 1)|沟$(formal 2)
+(\d{1,4})0{36} $(formal 1)|涧
+(\d{1,4})0(\d{35}) $(formal 1)|涧零$(formal 2)
+(\d{1,4})(\d{36}) $(formal 1)|涧$(formal 2)
+(\d{1,4})0{40} $(formal 1)|正
+(\d{1,4})0(\d{39}) $(formal 1)|正零$(formal 2)
+(\d{1,4})(\d{40}) $(formal 1)|正$(formal 2)
+(\d{1,4})0{44} $(formal 1)|载
+(\d{1,4})0(\d{43}) $(formal 1)|载零$(formal 2)
+(\d{1,4})(\d{44}) $(formal 1)|载$(formal 2)
+
+# negative numbers
+
+[-−](\d+) 负|$(formal 1)
+
+# decimals
+
+"([-−]?\d+)[.,]" "$(formal 1)|点"
+"([-−]?\d+[.,]\d*)(\d)" $(formal 1)||$(formal 2)
+
+# currency
+
+# unit/subunit singular/plural
+
+AUD 澳大利亚元
+CHF 瑞士法郎
+CNY 人民币
+EUR 歐元
+GBP 英镑
+HKD 港元
+JPY 日圓
+MOP 澳門幣
+USD 美元
+
+# 1/10 角
+# 1/100 分
+
+"([A-Z]{3}) ([-−]?\d+([.,]\d+)?)" $(formal 2)$(formal 1)
+
+== help ==
+
+"" |$(1)|, |$(2)|, |$(3)|\n$(help formal)
+(formal) \1: |$(\1 1)|, |$(\1 2)|, |$(\1 3)|\n
