@@ -1,0 +1,16 @@
+# check prefix macro
+
+1 one
+
+== ordinal ==
+
+1 first
+^2 secondA
+2 secondB
+3 third
+(\d)(\d{3}) $1 thousand $(ordinal \2)
+"" Ordinal example...
+
+== ==
+
+2 two

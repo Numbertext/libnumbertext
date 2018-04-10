@@ -1,4 +1,37 @@
+# line separators
+
 1 one; 2 two
-3 three # 4 five (comment)
-5 five
-2(\d) twenty-$1
+3 three
+
+# comments
+4 four # ;5 foo
+
+# boundary
+
+^5$ five
+^5 fif
+1(5) $1teen # fifteen
+
+^0$ zero
+1(0) ten$1 # ten
+
+8$ eight
+8 eigh
+1(8) $1teen # eighteen
+
+# back-references
+
+6 six
+7 seven
+9 nine
+
+1(4) $1teen
+1(6) $01teen
+1(7) $(\1)teen
+1(9) $(\01)teen
+
+# conditional text
+
+2(\d) twenty[-$1] # twenty, twenty-one
+3([08]) thirty[-$(\1)] # thirty, thirty-eight
+4([05]) [$1und]fierzig # fierzig, fifundfierzig
