@@ -1,8 +1,13 @@
 #!/bin/bash
-
-for i in ../data/*.sor
+export LC_COLLATE=C # case-sensitive file glob
+for i in ../data/[a-zHR]*.sor # skip Suzhou.sor (multiline regex support needs for conditional text, yet)
 do
-    echo $i
-    PYTHONPATH=../src python test.py $i <(seq 0 1000)  /dev/stdout |
-    awk -v fil="$i" '/^$/{print "Missing output: " fil " (input number: " (NR - 1) ")"}'
+    echo === $i ===
+    # check first 1000 numbers in all languages, checking also the conditional lines
+    PYTHONPATH=../src python test.py $i <(seq 0 2000)  /dev/stdout $(grep -Eo '\[:.....:]' $i | tr -d '[]:' | sort | uniq) |
+    awk -v fil="$i" '
+        /Language:/{delete a; lang=$2}
+        /^$/{print "Missing output: " fil " (input number: " NR%2000", language: " lang ")";next}
+        a[$0]==1{print "Duplicate: $0 (input number: " NR%2000 ", language: " lang ")"}
+        {a[$0]=1}'
 done 
