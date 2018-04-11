@@ -68,8 +68,8 @@ public class Soros {
             if (sp.group(2) != null) s2 = sp.group(2).replaceFirst("^\"", "").replaceFirst("\"$","");
             s2 = translate(s2, m2, c2, "\\");   // \$, \(, \), \|, \[, \] -> \uE004..\uE009
             // call inner separator: [ ... $1 ... ] -> $(\uE00A ... \uE00A$1\uE00A ... )
-            s2 = s2.replaceAll("\\[[$](\\d\\d?|\\([^\\)]+\\))","\\$(\uE00A\uE00A|\\$$1\uE00A")
-                .replaceAll("\\[([^$\\[\\\\]*)[$](\\d\\d?|\\([^\\)]+\\))","\\$(\uE00A$1\uE00A\\$$2\uE00A")
+            s2 = s2.replaceAll("^\\[[$](\\d\\d?|\\([^\\)]+\\))", "\\$(\uE00A\uE00A|\\$$1\uE00A") // add "|"
+                .replaceAll("\\[([^$\\[\\\\]*)[$](\\d\\d?|\\([^\\)]+\\))", "\\$(\uE00A$1\uE00A\\$$2\uE00A")
                 .replaceAll("\uE00A\\]$","|\uE00A)") // add "|" in terminating position
                 .replaceAll("\\]", ")")
                 .replaceAll("(\\$\\d|\\))\\|\\$", "$1||\\$"); // $()|$() -> $()||$()
