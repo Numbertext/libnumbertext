@@ -1,4 +1,4 @@
-function Soros(program) {
+function Soros(program, lang) {
     this.funcpat = /(\|?(\uE008\()+)?(\|?\uE008\(([^\(\)]*)\)\|?)(\)+\|?)?/
     this.meta = "\\\"$()|#;[]"
     this.enc = "\uE000\uE001\uE002\uE003\uE004\uE005\uE006\uE007\uE008\uE009"
@@ -85,6 +85,9 @@ function Soros(program) {
 //    program = program.replace(/\\[)]/g, "\uE004")
 //    program = program.replace(/\\[|]/g, "\uE005")
     program = this.tr(program, this.meta, this.enc, "\\")
+    // switch off all country-dependent lines, and switch on the requested ones
+    program = program.replace(/(^|[\n;])([^\n;#]*#[^\n]*[[]:[^\n:\]]*:][^\n]*)/g, "$1#$2")
+        .replace(new RegExp("(^|[\n;])#([^\n;#]*#[^\n]*[[]:" + lang.replace("_", "-") + ":][^\n]*)", "g"), "$1$2")
     var l = program.replace(/(#[^\n]*)?(\n|$)/g, ";").split(";")
     var matchline = new RegExp(/^\s*(\"[^\"]*\"|[^\s]*)\s*(.*[^\s])?\s*$/)
     var prefix = ""
@@ -111,12 +114,13 @@ function Soros(program) {
                 new RegExp("^" + s[1].replace("^\^", "").replace("\$$", "") + "$"),
                 s[2].replace(/\\n/g, "\n")
                     // call inner separator: [ ... $1 ... ] -> $(\uE00A ... \uE00A$1\uE00A ... )
-                    .replace(/[[]\$(\d\d?|\([^\)]+\))/g,"$(\uE00A\uE00A|$$$1\uE00A")
+                    .replace(/^[[]\$(\d\d?|\([^\)]+\))/g,"$(\uE00A\uE00A|$$$1\uE00A")
                     .replace(/[[]([^\$[\\]*)\$(\d\d?|\([^\)]+\))/g,"$(\uE00A$1\uE00A$$$2\uE00A")
                     .replace(/\uE00A]$/, "|\uE00A)") // add "|" in terminating position
                     .replace(/]/g, ")")
                     .replace(/(\$\d|\))\|\$/g,"$1||$$") // $(..)|$(..) -> $(..)||$(..)
                     .replace(/\$/g, "\uE008")
+                    .replace(/\\0/g, "$$&")
                     .replace(/\\(\d)/g, "$$$1")
                     .replace(/\uE008(\d)/g, "\uE008($$$1)"),
                 /^\^/.test(s[1]), /\$$/.test(s[1])
