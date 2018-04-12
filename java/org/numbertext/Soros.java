@@ -31,8 +31,11 @@ public class Soros {
 
   private boolean numbertext = false;
 
-  public Soros(String source) {
-    source = translate(source, m, c, "\\")      // \\, \", \;, \# -> \uE000..\uE003
+  public Soros(String source, String lang) {
+    source = translate(source, m, c, "\\");      // \\, \", \;, \# -> \uE000..\uE003
+    // switch off all country-dependent lines, and switch on the requested ones
+    source = source.replaceAll("(^|[\n;])([^\n;#]*#[^\n]*\\[:[^\n:\\]]*:][^\n]*)", "$1#$2")
+        .replaceAll("(^|[\n;])#([^\n;#]*#[^\n]*\\[:" + lang.replace('_', '-') + ":][^\n]*)", "$1$2")
         .replaceAll("(#[^\n]*)?(\n|$)", ";");   // remove comments
     if (source.indexOf("__numbertext__") == -1)
         source = "__numbertext__;" + source;

@@ -14,10 +14,10 @@ import java.util.HashMap;
 public class Numbertext {
   static HashMap<String, Soros> modules = new HashMap<String, Soros>();
 
-  private static Soros load(String lang, String code) {
+  private static Soros load(String langfile, String langcode) {
     Soros s;
     try {
-        URL url = Numbertext.class.getResource("data/" + lang + ".sor");
+        URL url = Numbertext.class.getResource("data/" + langfile + ".sor");
         BufferedReader f = new BufferedReader(new InputStreamReader(url.openStream(), "UTF-8"));
         StringBuffer st = new StringBuffer();
         String line = null;
@@ -25,8 +25,8 @@ public class Numbertext {
             st.append(line);
             st.append(System.getProperty("line.separator"));
         }
-        s = new Soros(new String(st));
-        if (modules != null && lang != null) modules.put(code, s);
+        s = new Soros(new String(st), langcode);
+        if (modules != null && langfile != null) modules.put(langcode, s);
     } catch(Exception e) {
         return null;
     }
@@ -35,7 +35,7 @@ public class Numbertext {
 
   public static String numbertext(String input, String lang) {
     Soros s = (Soros) modules.get(lang);
-    if (s == null) s = load(lang.replaceFirst("-", "_"), lang);
+    if (s == null) s = load(lang.replace('-', '_'), lang);
     if (s == null) s = load(lang.replaceFirst("[-_].*", ""), lang);
     if (s == null) {
         System.out.println("Missing language module: " + lang);
