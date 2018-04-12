@@ -25,10 +25,12 @@
 7 seven
 9 nine
 
-1(4) $1teen
-1(6) $01teen
-1(7) $(\1)teen
-1(9) $(\01)teen
+1(4) $(4)teen	# recall with fix argument
+1(6) $(006)teen	# left-zero deletion
+1(7) $(\1)teen	# reference
+1(9) $1teen	# abbreviated form: $1 = $(\1)
+50   fifty
+(5)(\d)	$(\10)-$2	# $(\10) expanded to $(50)
 
 # conditional text
 
