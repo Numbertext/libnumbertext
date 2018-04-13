@@ -72,7 +72,7 @@ class NUMBERTEXT( unohelper.Base, XNumberText):
                                 d = __import__("numbertext_" + module)
                         except:
                                 return "Error: missing language data (" + module + ")"
-                        patterns[module] = Soros.compile(d.__doc__)
+                        patterns[module] = Soros.compile(d.__doc__, module)
                 return module
 
         def getCurrency(self, locale):
