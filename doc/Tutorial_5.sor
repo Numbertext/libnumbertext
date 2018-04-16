@@ -1,0 +1,378 @@
+# Soros Tutorial – Part Five 🚀 ... Go!
+#
+# We will complete the following number to English
+# number name conversion program, learning special
+# features of Soros programming language.
+
+0 zero
+1 one
+2 two
+3 three
+4 four
+5 five
+6 six
+7 seven
+8 eight
+9 nine
+10 ten
+11 eleven
+12 twelve
+13 thirteen
+
+# TASK 1 – Call me again!
+#
+# A Soros program is a single function, named $(). It’s
+# possible to call this function in the regex replacement
+# part with arbitrary text as an argument, and its return value
+# will be inserted in the regex replacement at the place of
+# the function call.
+#
+# In the following program line, the argument is “4”,
+# and function call “$(4)” is replaced with “four”, the
+# result of the call of function $ with the argument “4”:
+
+14 $(4)teen
+
+# Extend the line 16 this way!
+
+15 fifteen
+16
+
+
+
+# TASK 2 – Reference and call...
+#
+# We can use regex references in function arguments.
+# For example, we can describe 18 -> eighteen conversion
+# this way, too:
+
+1(8) $(\1)een
+
+# Using the regex pattern \d (matching arbitrary digits),
+# give a *single* program line for 17 -> seventeen and
+# 19 -> nineteen conversion! (With this, line 14 and 16
+# will be unnecessary, too.)
+
+
+
+# TASK 3 – Abbreviation of $(\n) is $n
+#
+# According to the title of this task, $1 means $(\1),
+# $2 means $(\2) etc. Rewrite the following program part to
+# use this abbreviated form!
+
+20 twenty
+2(\d) twenty-$(\1)
+
+
+
+# TASK 4 – Boundaries
+#
+# Soros programs have default automatic zero deletion in
+# its arguments, ie. $(1) or $(01) are equivalents. But
+# the following program line have a different problem for
+# the input number 100: after left zero deletion it still
+# remains a zero, resulting “one hundred zero” instead of
+# “one hundred”:
+
+1(\d\d) one hundred $1
+
+# The solution is using boundary dependent patterns.
+# These patterns can always match at the first run of the
+# Soros program, but at the next recursive calls,
+# matching depends from the position of the function call:
+#
+# ^pattern  only matches, if the function call is there at
+#           the beginning of the replacement. Example:
+#           1(\d) $1teen
+#
+# pattern$  only matches, if the function call is there at
+#           the end of the replacement. Example:
+#           2(\d) twenty-$(\1)
+#
+# ^pattern$ only matches, if the function call is there at
+#           the beginning and the end of the replacement.
+#           Example:
+#           1(\d) $(ordinal |$1)
+#
+# NOTE: “|” before or after function calls sets explicite
+# boundary position.
+#
+# Correct the bug “one hundred zero” by using the
+# correct boundary sign on the program line “0 zero”, also
+# create a rule for negative numbers, to handle
+# “-0” -> “minus zero” conversion correctly!
+
+
+
+# TASK 5 – Optional text, depending from the return value
+#
+# Previously, we had a different program line for 20 and one
+# for 21–29 , because English uses a hyphen between the
+# number names. Using brackets around the recursive calls,
+# we can skip the first program line. The hyphen is only
+# added to “thirty”, if the return value of the recursive
+# function calls is not empty.
+
+3(\d) thirty[-$(\1)]
+
+# Write a *single* program line to handle “sixty”,
+# “seventy” (60–79), and “ninety” (90–99)!
+
+
+
+# TASK 6 – Language-dependent program lines
+#
+# Using [:lang-code:] in a comment sets a
+# language-dependent program line. For example,
+# German number to number name rules
+#
+# 3(\d) [$1und]dreissig # [:de-CH:]
+# 3(\d) [$1und]dreißig
+#
+# result “dreissig” for the input “30”, if the language
+# of the conversion is de-CH (Swiss Standard German),
+# otherwise “dreißig”.
+#
+# It’s possible to use arbitrary number language codes
+# in the same program line.
+#
+# In Australia, Great Britain, Ireland and New Zealand,
+# 101 is “one hundred and one”, in other English speaking
+# countries, like USA and Canada, 101 is “one hundred one”.
+# Using the language codes en-AU, en-GB, en-IE and en-NZ
+# and the previous conditional text, describe number 100–999
+# in both variants!
+
+
+
+# TASK 7 – More Functions
+#
+# In Soros language, there is only one real function, the $(),
+# but it’s possible to create function-like structures by using
+# prefixes.
+#
+# Numbertext.org language modules contain functions for
+# number to money conversion (“USD 2” -> “two U.S. dollars”),
+# number to ordinal name conversion (“2” -> “second”) and
+# ordinal-number conversion (“2” -> “2nd”). For example,
+# we can define ordinal numbers as follows:
+#
+# "ordinal 1"	first
+# "ordinal 2"	second
+# "ordinal 3"	third
+#
+# According to the quotation marks, the regex patterns can
+# contain spaces, too.
+#
+# For the space separated prefixes, there is a default left
+# zero deletion, i.e. $(ordinal 1) is equivalent of
+# $(ordinal 001), so program line
+#
+# "ordinal 1(\d\d)" one hundred $(ordinal \1)
+#
+# works also for the input 101, 102 etc. correctly using
+# only the previous program lines.
+#
+# Other method of ordinal number conversion is to convert the
+# input to the default cardinal number names, and modifying
+# their text:
+#
+# "ordinal (\d+)"	$(ordinal |$1)
+# "ordinal (.*)one"	\1first
+# "ordinal (.*)two"	\1second
+#
+# NOTE: As can be seen, it’s possible to embed function
+# calls within function calls, too.
+#
+# What can be the last program line of this function?
+
+
+
+# TASK 8 – Prefix “macros”
+#
+# Prefix macros simplify prefix handling. We can define
+# the previous ordinal function as follows, too
+# (see “ordinal” between double equal signs):
+#
+# == ordinal ==
+#
+# ^0	zeroth
+# 1	first
+# 2	second
+# 3	third
+#
+# because this will be expanded in the following form:
+#
+# "^ordinal 0"	zeroth
+# "ordinal 1"	first
+# "ordinal 2"	second
+# "ordinal 3"	third
+#
+# With the other method, converting cardinal number names,
+# and later to ordinal ones:
+#
+# == ordinal ==
+#
+# (\d+)		$(ordinal |$1)
+# (.*)one	\1first
+# (.*)two	\1second
+# ...
+# (.*)		\1th
+#
+# How is this expanded?
+
+
+
+# TASK 9 – Join Numbertext development!
+#
+# Your contribution will help LibreOffice and other free
+# softwares to support chapter numbering with number names,
+# converting money amounts to text (MONEYTEXT), creating
+# plural forms of money amounts and support better
+# title casing.
+#
+# Check and fix Soros code of your language on
+# http://NUMBERTEXT.org, or if there is no such module yet,
+# create it, based on the currency code of the
+# English or the more flexible Swedish (sv.sor)
+# modules!
+
+
+
+SCROLL DOWN FOR SOLUTIONS
+⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩
+
+
+
+
+
+
+
+
+# SOLUTION – TASK 1–7
+#
+# Solutions marked as TASK 1–7 in comments:
+#
+# ^0 zero		# TASK 4
+# 1 one
+# 2 two
+# 3 three
+# 4 four
+# 5 five
+# 6 six
+# 7 seven
+# 8 eight
+# 9 nine
+# 10 ten
+# 11 eleven
+# 12 twelve
+# 13 thirteen
+# # 14 $(4)teen
+# 15 fifteen
+# # 16 $(6)teen		# TASK 1
+# 18 eighteen
+# 1(\d) $1teen		# TASK 2
+# 20 twenty
+# 2(\d) twenty-$1	# TASK 3
+# 3(\d) thirty[-$1]
+# 4(\d) forty[-$1]
+# 5(\d) fifty[-$1]
+# 8(\d) eighty[-$1]
+# (\d)(\d) $1ty[-$2]	# TASK 5
+#
+# # separator function
+# :0+			# one million
+# :0*\d?\d " and "	# one million and twenty-two
+# :\d+ ", "		# one million, one thousand
+#
+# (\d)(\d\d) $1 hundred[ and $2]	# one hundred and one [:en-AU:] [:en-GB:] [:en-IE:] [:en-NZ:] # TASK 6
+# (\d)(\d\d) $1 hundred[ $2]		# default: one hundred one # TASK 6
+# (\d{1,2})([1-9]\d\d) $1 thousand[ $2]	# ten thousand two hundred
+# (\d{1,3})(\d{3}) $1 thousand$(:\2)$2	# one hundred thousand, two hundred
+# (\d{1,3})(\d{6}) $1 million$(:\2)$2
+# (\d{1,3})(\d{9}) $1 billion$(:\2)$2
+#
+# # negative number
+#
+# [-−](\d+) negative |$1 # TASK 4
+#
+# # decimals
+#
+# 0[.,] point
+# ([-−]?\d+)[.,] $1| point
+# ([-−]?\d+[.,]\d*)(\d) $1| |$2
+#
+# # currency
+#
+# # unit/subunit singular/plural
+#
+# us:([^,]*),([^,]*),([^,]*),([^,]*) \1
+# up:([^,]*),([^,]*),([^,]*),([^,]*) \2
+# ss:([^,]*),([^,]*),([^,]*),([^,]*) \3
+# sp:([^,]*),([^,]*),([^,]*),([^,]*) \4
+#
+# AUD:(\D+) $(\1: Australian dollar, Australian dollars, cent, cents)
+# CAD:(\D+) $(\1: Canadian dollar, Canadian dollars, cent, cents)
+# CHF:(\D+) $(\1: Swiss franc, Swiss francs, centime, centimes)
+# CNY:(\D+) $(\1: Chinese yuan, Chinese yuan, fen, fen)
+# EUR:(\D+) $(\1: euro, euro, cent, cents)
+# GBP:(\D+) $(\1: pound sterling, pounds sterling, penny, pence)
+# JPY:(\D+) $(\1: Japanese yen, Japanese yen, sen, sen)
+# USD:(\D+) $(\1: U.S. dollar, U.S. dollars, cent, cents)
+#
+# "(JPY [-−]?\d+)[.,](\d\d)0" $1
+# "(JPY [-−]?\d+[.,]\d\d)(\d)" $1 $2 rin
+#
+# "([A-Z]{3}) ([-−]?1)([.,]00?)?" $2$(\1:us)
+# "([A-Z]{3}) ([-−]?\d+)([.,]00?)?" $2$(\1:up)
+#
+# "(CNY [-−]?\d+)[.,](\d)0?" $1 $2 jiao
+# "(CNY [-−]?\d+[.,]\d)(\d)" $1 $2 fen
+#
+# "(([A-Z]{3}) [-−]?\d+)[.,](01)" $1 and |$(1)$(\2:ss)
+# "(([A-Z]{3}) [-−]?\d+)[.,](\d)" $1 and |$(\030)$(\2:sp)
+# "(([A-Z]{3}) [-−]?\d+)[.,](\d\d)" $1 and |$3$(\2:sp)
+#
+# == ordinal ==
+#
+# # convert to text, and recall to convert
+# # cardinal names to ordinal ones
+#
+# ([-−]?\d+) $(ordinal |$1)
+#
+# (.*)one	\1first
+# (.*)two	\1second
+# (.*)three	\1third
+# (.*)five	\1fifth
+# (.*)eight	\1eighth
+# (.*)nine	\1ninth
+# (.*)twelve	\1twelfth
+# (.*)y	\1ieth
+# (.*)	\1th # TASK 7
+#
+# == ordinal-number ==
+#
+# (.*1\d)	\1th
+# (.*1)		\1st
+# (.*2)		\1nd
+# (.*3)		\1rd
+# (.*)		\1th
+
+
+
+# SOLUTION – TASK 8
+#
+# As before in TASK 7:
+#
+# "ordinal (\d+)"	$(ordinal |$1)
+# "ordinal (.*)one"	\1first
+# "ordinal (.*)two"	\1second
+# ...
+# "ordinal (.*)"	\1th
+
+
+
+#######################################################
+# CONGRATULATIONS – You have finished Tutorial Five! 🙂
+#######################################################

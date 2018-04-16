@@ -1,0 +1,116 @@
+# Soros Tutorial – Part One 🔢  Three, Two, One...
+#
+# INTRODUCTION
+#
+# Soros programming language is for number to
+# number name conversion. It’s based on regular
+# expressions, the popular text processing
+# tool of modern programming languages. So if you
+# don’t want to convert numbers to number names,
+# it’s still worth to check this tutorial, because
+# most parts are about regular expressions,
+# giving useful information for modern C++, Java,
+# JavaScript, Python etc. programming, too.
+# If you know regular expressions well, you can
+# jump to the last part of the tutorial!
+#
+# In this part, we will learn the base syntax of
+# Soros, writing small programs to convert
+# input numbers to numbers and colorful (at least
+# in Mozilla Firefox) emojis!
+#
+#
+#
+# TASK 1 – HELLO, WORLD!
+#
+# A Soros program consists of program lines.
+#
+# A program line is an input text and an output text
+# separated by (the first) space:
+#
+# input_text output text
+#
+# Following program line replaces the input text “0”
+# with the output text “Hello, 🌍!”, as you can see
+# in the right output list window, which shows the
+# output of the first 120 integer numbers, including
+# this one:
+
+0 Hello, 🌍!
+
+# Replace “Hello, 🌍!” with “zero” in the previous line,
+# and check the same change in the right output window
+# list!
+#
+# Write here a new program line to convert the input
+# text “1” to “one”!
+
+
+
+# TASK 2 – The early bird catches the worm.
+#
+# First matching program line gives result.
+#
+# Remove the line with the bird COMPLETELY, and
+# then the line with the worm! During these, check
+# the results in the right output list window!
+
+2 🐦
+2 🐛
+2 two
+
+
+
+# TASK 3 – Three blind mice
+#
+# Input text without matching program line, or a
+# matching program line without output text
+# results empty output text.
+#
+# Remove the character # (sign of comment line)
+# before 3 in the following line to hide the mice!
+
+#3
+3 🐁🐁🐁
+
+
+
+# TASK 4 – Five little speckled frogs
+#
+# Modify the following program lines to get correct
+# number of frogs for the input number 5 and 4!
+
+5 🐸🐸🐸🐸🐸🐸
+4 🐸🐸🐸🐸🐸🐸
+
+SCROLL DOWN FOR SOLUTION
+⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Solution – TASK 4
+#
+# 5 🐸🐸🐸🐸🐸
+# 4 🐸🐸🐸🐸
+
+
+######################################################
+# CONGRATULATIONS – You have finished Tutorial One! 🙂
+######################################################

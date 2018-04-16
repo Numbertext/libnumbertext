@@ -1,21 +1,22 @@
-Language-neutral NUMBERTEXT and MONEYTEXT functions for OpenOffice.org/LibreOffice Calc
+Soros interpreters for C++, Java, JavaScript and Python
 
-version 0.9.5 release 2 (2012-12-06)
+Language-neutral NUMBERTEXT and MONEYTEXT functions for LibreOffice Calc
 
-Numbertext OOo/LibO extension,
+version 1.0 beta (2018-04-17)
+
+Numbertext LibreOffice extension,
 Soros programming language specification (draft) and IDE*,
 Soros interpreter in Python: pythonpath/Soros.py,
-Soros interpreter in JavaScript: Soros.js*:
+Soros interpreter in JavaScript: Soros.js*
 Soros interpreter in Java: see NUMBERTEXT.org
 
-* Not in OpenOffice.org extension, see http://NUMBERTEXT.org for
-  the full distribution.
+* Not in LibreOffice Numbertext extension, see http://NUMBERTEXT.org.
 
-License: LGPL/BSD dual-license, 2009-2012 (C) László Németh (nemeth at numbertext dot org)
+License: LGPL/BSD dual-license, 2009-2018 (C) László Németh (nemeth at numbertext dot org)
 
 Numbertext language data (Soros programs):
 
-LGPL/BSD dual-license, 2009-2012 (C) László Németh et al. (see AUTHORS)
+LGPL/BSD dual-license, 2009-2018 (C) László Németh et al. (see AUTHORS)
 
 Serbian modules:
 
@@ -29,54 +30,55 @@ WITHOUT WARRANTY OF ANY KIND, either express or implied.
 
 = Supported languages in this version =
 
-af-ZA	Africaans
-ca-ES	Catalan
-cs-CZ	Czech
-da-DK	Danish
-de-DE	German
-el-EL	Greek
+af	Africaans
+ca	Catalan
+cs	Czech
+da	Danish
+de	German
+de-CH	Swiss Standard German orthography (dreissig instead of dreißig)
+el	Greek
+en	English (one hundred one)
+en-AU	English (one hundred and one)
+en-GB	English (one hundred and one)
+en-IE	English (one hundred and one)
 en-IN	English with Indian numbering system (lakh = 100.000, crore = 10^7)
-en-US	English (USD 20.25 -> twenty dollars and twenty-five cents)
-en-US-2	English variant (USD 20.25 -> twenty and 25/100 dollars)
+en-NZ	English (one hundred and one)
 eo	Esperanto
-es-ES	Spanish
-fi-FI	Finnish
+es	Spanish
+fi	Finnish
+fr	French
 fr-BE	Belgian French
 fr-CH	Swiss French
-fr-FR	French
-he-IL	Hebrew
-hu-HU	Hungarian
-hu-HU_2	Hungarian (formal)
-id-ID	Indonesian
-it-IT	Italian
-ja-JP	Japanese
-ja-JP-2	Japanese (formal)
+he	Hebrew
+hu	Hungarian
+id	Indonesian
+it	Italian
+ja	Japanese
+ko	South-Korean
 ko-KP	North-Korean
-ko-KR	South-Korean
-lb-LU	Luxembourgish
-lt-LT	Lithuanian
-lv-LV	Latvian
-nl-NL	Dutch
-pl-PL	Polish
-pt-BR	Brazilian Portuguese
+lb	Luxembourgish
+lt	Lithuanian
+lv	Latvian
+ms	Malaysian
+nl	Dutch
+pl	Polish
+pt	Brazilian Portuguese
 pt-PT	Portuguese
-ro-RO	Romanian
-ru-RU	Russian
-sh-RS	Serbian
-sl-SI	Slovenian
-sr-RS	Serbian
-sv-SV	Swedish
-th-TH	Thai
-tr-TR	Turkish
-vi-VN	Vietnamese
-zh-ZH	Chinese (simplified)
-zh-ZH-2	Chinese (simplified, formal)
+ro	Romanian
+ru	Russian
+sh	Serbian (Latin)
+sl	Slovenian
+sr	Serbian (Cyrillic)
+sv	Swedish
+th	Thai
+tr	Turkish
+vi	Vietnamese
+zh	Chinese (simplified)
 
 Old number systems:
 
 Hung	Old Hungarian Script
-Roman	Roman numbers (parenthesized variant)
-Roman_2	Roman numbers (with overline, bars, and optionally special characters)
+Roman	Roman numbers
 Suzhou	Chinese Suzhou numerals
 
 = Installation in OpenOffice.org/LibreOffice =
@@ -112,7 +114,7 @@ There is a JavaScript/HTML IDE in this distribution:
 
 Open web/webroot/Soros.html in a JavaScript capable browser,
 
-or use the on-line version of the IDE (http://numbertext.org).
+or use the online version: http://numbertext.org/Soros.html.
 
 = Test =
 
@@ -122,10 +124,7 @@ test/thaicheck.ods is a simple test of the equivalence of
 the Soros implementation of Thai number to number name conversion
 and BAHTTEXT function.
 
-= Java jar =
-
-Copy /data files to the /java/org/numbertext/data dictionary, and
+= Build Java jar =
 
 cd java
-CLASSPATH=. javac org/numbertext/Numbertext.java
-jar cfm numbertext.jar Manifest.txt org
+make

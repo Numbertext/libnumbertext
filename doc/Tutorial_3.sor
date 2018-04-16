@@ -1,0 +1,94 @@
+# Soros Tutorial Three 🛠️ Hello, Real World!
+#
+# Using the simplest regex reference
+# we solve a typical Soros problem, converting
+# numbers to ordinal abbreviations.
+#
+#
+# INTRODUCTION
+#
+# Syntax of a Soros program line:
+#
+# regex_pattern regex replacement
+#
+# The \0 (backslash zero) in the regex replacement
+# is a reference for the input number.
+#
+# For example, the following program line match every
+# input number and replace it by ownself, i.e. we get
+# back the input number without any changes, as you can
+# see in the right output list window after removing
+# the # at the beginning of the line:
+
+#.* \0
+
+# TASK 1
+#
+# It’s possible to refer the input number multiple times
+# in the same regex_replacement, combined with arbitrary
+# text.
+#
+# Modify the *previous program line* to greet the input
+# number double, as follows!
+#
+# 1 -> Hello, 1! Hi, 1!
+# 2 -> Hello, 2! Hi, 2!
+
+
+
+# TASK 2
+#
+# Complete the program of Tutorial 1 to handle all
+# English ordinal abbreviations!
+#
+# Rules:
+#
+# I  Every word ending with 1, 2, 3 has got an
+#    abbreviation ending with 1st, 2nd, 3rd,
+#    for example, 1 -> 1st (first), 22 -> 22nd
+#    (twenty-second), 103 -> 103rd (one hundred third).
+#
+# Ib Exception: numbers ending with 11, 12 or 13.
+#    Example: 11 -> 11th (eleventh), 112 -> 112th
+#    (one hundred twelfth), 1013 -> 1013th
+#    (one thousand and thirteenth).
+#
+# II Other numbers get “th”. Example: 4 -> 4th (fourth).
+
+
+
+
+SCROLL DOWN FOR SOLUTIONS
+⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩
+
+
+
+
+
+
+
+
+# SOLUTION – TASK 1
+#
+# .* HELLO, \0! HI, \0!
+
+
+
+# SOLUTION – TASK 2
+#
+# The trick is there in the first line,
+# a pattern to match all input
+# ending with 1., for example, 10, 11, .. 19,
+# 110, 111 etc.:
+#
+# .*1.  \0th
+# .*1   \0st
+# .*2   \0nd
+# .*3   \0rd
+# .*    \0th
+
+
+
+########################################################
+# CONGRATULATIONS – You have finished Tutorial Three! 🙂
+########################################################

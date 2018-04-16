@@ -7,7 +7,7 @@
 @import "numbertext.css";
 </style>
 <div class='title'>
-<table width="100%" style='border-style: solid; border-width: 0px 0px 1px 0px;'><tr><td><span>&bull;&bull;&bull; NUMBERTEXT.org &bull;&bull;&bull; 
+<table width="100%" style='border-style: solid; border-width: 0px 0px 1px 0px;'><tr><td><span>&bull;&bull;&bull; NUMBERTEXT.org &bull;&bull;&bull;
 IDE of Soros programming language (<a href="sorosspec.pdf">specification</a>) </span></td><td align='right'>
 <span class='nowrap'>
 <!--<a class="menu2" href="IDE.html">IDE</a>-->
@@ -21,27 +21,48 @@ MAXLIST=1000
 <!-- **************************************************************************************************** -->
 function convert() {
   var s = document.getElementById('number').value;
-  if (s.match(/\d-/)) {
-    var nums = s.split("-")
-    var res = ""
-    var maxi = parseInt(nums[1])
-    var begin = parseInt(nums[0])
-    if (maxi - begin > MAXLIST) maxi = begin + MAXLIST
-    for (var i = begin; i <= maxi; i++) {
-	res = res + i + "\t" + mySoros.run(i + "") + "\n"
+  var prefix = document.getElementById('prefix').value;
+  if (prefix != "")
+	prefix = prefix + " ";
+  var ranges = s.split(";")
+  var res = ""
+  if ( ranges.length > 1 || s.match(/\d[-]/) ) {
+    for (var j = 0; j < ranges.length; j++) {
+      if (ranges[j].match(/\d-/)) {
+	var nums = ranges[j].split("-")
+	var nums2 = nums[1].split("~")
+	var maxi = parseInt(nums2[0])
+	var begin = parseInt(nums[0])
+	if (maxi < begin) maxi = begin + 111;
+	var steps = nums2.length == 1 ? 1 : parseInt(nums2[1])
+	if (maxi - begin > MAXLIST) maxi = begin + MAXLIST
+	for (var i = begin; i <= maxi; i=i+steps)
+	    res = res + i + "\t" + mySoros.run(prefix + i + "") + "\n";
+      } else {
+	res = res + ranges[j] + "\t" + mySoros.run(prefix + ranges[j]) + "\n";
+      }
     }
     document.getElementById('numbers').value = res;
     document.getElementById('result').value = "";
-  } else { 
-    document.getElementById('result').value = mySoros.run(s); 
-    document.getElementById('numbers').value = "";
-}
+  } else {
+      document.getElementById('result').value = mySoros.run(prefix + s);
+      document.getElementById('numbers').value = "";
+  }
 }
 function comp() {
- mySoros = new Soros(document.getElementById('def').value);
+ var lang = document.getElementById('select').value + "-" + document.getElementById('country').value;
+ mySoros = new Soros(document.getElementById('def').value, lang);
 }
 function load_prg() {
-	document.getElementById('def').value = document.getElementById(document.getElementById('select').value).value;
+	var modulename = document.getElementById('select').value;
+	var workspace = document.getElementById('def');
+	var tutorial =  (modulename.indexOf("Tutorial") > -1);
+	workspace.spellcheck =  tutorial ? false : true;
+	workspace.style.fontSize = tutorial ? "120%" : "100%";
+	var tutorial4 =  tutorial && (modulename.indexOf("4") > -1);
+	var tutorial5 =  tutorial && (modulename.indexOf("5") > -1);
+	document.getElementById('number').value = tutorial5 ? "-1;-0;0-19;20-29~2;30-40~3;60-79~5;90-120~5;ordinal 0;ordinal 1;ordinal 2;ordinal 3;ordinal 100;ordinal 101" : (tutorial4 ? "1;10;100;1000;10000;1000000;1234567;10000000;12345678;100000000;123456789;1000000000;1234567890" : "0-120");
+	workspace.value = document.getElementById(modulename).value;
 }
 function copy_result() {
 	document.getElementById('number').value = document.getElementById('result').value;
@@ -51,20 +72,25 @@ function copy_result() {
     <tr>
 	<td>
 	<div class='row'>
+	<label for="country" accesskey="c"><u>C</u>ountry:</label>
+	<input type="text" title="Country (for example, “GB” for “en”)" style="width: 3em;"  id="country" onkeyup="comp();convert()" value="" />
+	<label for="prefix" accesskey="p"><u>P</u>refix:</label>
+	<input type="text" title="Prefix (for example, “ordinal”)" style="width: 10em;" id="prefix" onkeyup="convert();" value="" />
 	<label for="number" accesskey="i"><u>I</u>nput:</label>
-	<input type="text" title="Number (eg. 1234) or number range (1-100) or number with currency (USD 15)" id="number" onkeyup="convert();" value="1-100" />
+	<input type="text" title="Number (eg. 1234) or number range (1-100) or number with currency (USD 15)" id="number" onkeyup="convert();" style="width: 10em;" value="0-120" />
 	&nbsp;&nbsp;
 	Output: <input type="button" id="result" onclick="copy_result();js();" />
 	</div>	
     <tr>
 	<td>
 	<div class='row' id='header'>
-	<label for="def" accesskey="p"><u>P</u>rogram editor</label>&nbsp;&nbsp;
+	<label for="def" accesskey="e">Program <u>e</u>ditor</label>&nbsp;&nbsp;
 	<label for="select" accesskey="l"><u>L</u>oad:</label>
 	<select id="select" onchange="load_prg(); comp(); convert();">
 	    <option value="xx">&ndash;</option>
 <!-- **************************************************************************************************** -->
-<!--!cd ../data;for i in *.sor; do name=`basename $i .sor`; echo "<option value='$name'>$name</option>"; done-->
+<!--!cd ../doc;for i in *.sor; do name=`basename $i .sor | sed "s/_/ – Part /"`; echo "<option value='$name'>$name</option>"; done-->
+<!--!cd ../data;for i in ??.sor ???*.sor; do name=`basename $i .sor | tr "_" " "`; echo "<option value='$name'>$name</option>"; done-->
 <!-- **************************************************************************************************** -->
 	</select>
 	</div>
@@ -76,7 +102,8 @@ function copy_result() {
 <textarea id="numbers" title="list" readonly></textarea>
 </table>
 <!-- **************************************************************************************************** -->
-<!--!cd ../data;for i in *.sor; do echo "<textarea id='`basename $i .sor`' class='hidden'>"; cat $i; echo "</textarea>"; done-->
+<!--!cd ../doc;for i in *.sor; do echo "<textarea id='`basename $i .sor | sed "s/_/ – Part /"`' class='hidden'>"; cat $i; echo "</textarea>"; done-->
+<!--!cd ../data;for i in ??.sor ???*.sor; do echo "<textarea id='`basename $i .sor | tr "_" " "`' class='hidden'>"; cat $i; echo "</textarea>"; done-->
 <!-- **************************************************************************************************** -->
 <script type="text/javascript" language="javascript1.3">
 if (navigator.appName.indexOf("Microsoft")!=-1) {

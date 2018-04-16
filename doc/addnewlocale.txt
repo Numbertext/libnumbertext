@@ -4,7 +4,7 @@ Adding a new locale to the Numbertext distribution
 name of your locale (the format and the numbertext algorithm
 are described in format.txt).
 
-2. Translate the function description for your localized OpenOffice.org
+2. Translate the function description for your localized LibreOffice
 in the data/titles.txt
 
 3. Type make in the root directory or without a Unix or Cygwin

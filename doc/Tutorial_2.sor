@@ -1,0 +1,193 @@
+# Soros Tutorial Two 🍒 Fruitful Expressions
+#
+# We learn the basics of regular expressions,
+# writing a program to convert even input
+# numbers to apples, and odd numbers to pears.
+#
+# INTRODUCTION
+#
+# Regular expression (regexp or regex or RE) is
+# a standard for pattern matching and replacement,
+# supported by every modern programming languages.
+#
+# Why? Because it’s the easiest way to handle
+# input texts.
+#
+# A Soros program line can be a regular
+# expression pattern and replacement:
+#
+# regex_pattern regex replacement
+
+
+
+# TASK 1
+#
+# The character . (dot) matches arbitrary
+# characters in a regex pattern.
+#
+# Remove the # in the following program to add
+# bananas to all 1-digit numbers (except one),
+# and tangerines to all 2-digit numbers, and extend
+# the third program line to convert all 3-digit
+# numbers to pineapples (scroll the output
+# window to the end to see 3-digit numbers)!
+
+1 one
+#. 🍌	(1-DIGIT)
+#.. 🍊	(2-DIGIT)
+🍍
+
+# NOTE: Solutions are there in the end of this tutorial.
+
+# TASK 2
+#
+# Dots can be combined with arbitrary other
+# characters.
+#
+# Extend the previous program with a single
+# program line to replace 10, 20, 30 ... 90
+# with lemons instead of bananas!
+# (Copy this lemon emoji: 🍋).
+#
+
+
+
+# TASK 3
+#
+# We can limit the previous pattern only for
+# given characters, putting them between brackets.
+#
+# For example, [abcd] matches only the letter a, b, c and d.
+#
+# Add a *single* program line to the previous program to
+# to replace every 2-digit *even* number with an apple, ie.
+# compressing the following 45-line long program:
+#
+# 10 🍎	(EVEN)
+# 12 🍎	(EVEN)
+# ...
+# 98 🍎	(EVEN)
+
+
+
+# TASK 4
+#
+# The .+ (dot plus) matches 1 or more arbitrary characters.
+#
+# What will be the effect of the following program line, if
+# you change the first line “1 one” with it, and remove the
+# sign of comment? Guess it, and check it!
+
+#.+ 🍎🍎🍎
+
+
+
+# TASK 5
+#
+# We can combine the different regex patterns, for example, the
+# dot plus pattern with the bracket one.
+#
+# Write a program from scratch (removing the old program lines)
+# to show apples and pears for every 2-digit or more input
+# number, using .+ and bracket expressions!
+#
+# 10 🍎	(EVEN)
+# 11 🍐	(ODD)
+# 12 🍎	(EVEN)
+# ...
+# 100 🍎	(EVEN)
+# 101 🍐	(ODD)
+# etc.
+
+
+
+# TASK 6
+#
+# The .* (dot asterisk) matches 0 or more arbitrary characters.
+#
+# Replace the first program line “1 one” with a program line to
+# convert all even input numbers (including the 1-letter ones)
+# to apples, and insert a new program line to convert all
+# odd numbers to pears.
+
+SCROLL DOWN FOR SOLUTIONS
+⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩
+
+
+
+
+
+
+
+
+
+
+
+# SOLUTION – TASK 1
+#
+# 1 one
+# . 🍌	(1-DIGIT)
+# .. 🍊	(2-DIGIT)
+# ... 🍍	(3-DIGIT)
+
+
+
+# SOLUTION – TASK 2
+#
+# 1 one
+# . 🍌	(1-DIGIT)
+# .0 🍋	(10×n)
+# .. 🍊	(2-DIGIT)
+# ... 🍍	(3-DIGIT)
+
+
+
+# SOLUTION – TASK 3
+#
+# 1 one
+# . 🍌		(1-DIGIT)
+# .[02468] 🍎	(EVEN 2-DIGIT)
+# .0 🍋		(10×n)
+# .. 🍊		(2-DIGIT)
+# ... 🍍		(3-DIGIT)
+
+
+
+# SOLUTION – TASK 4
+#
+# All numbers converted to "🍎🍎🍎", because .+ matches
+# every input text, so the following program lines
+# will never be executed, so we can remove them:
+#
+# .+ 🍎🍎🍎
+
+
+
+# SOLUTION – TASK 5
+#
+# 2-digit or bigger numbers are converted to
+# apples and pears by the following two lines:
+#
+# .+[02468] 🍎	(EVEN 2-OR-MORE-DIGIT)
+# .+[13579] 🍐	(ODD 2-OR-MORE-DIGIT)
+#
+# or simply
+#
+# .+[02468] 🍎	(EVEN 2-OR-MORE-DIGIT)
+# .+. 🍐		(ODD 2-OR-MORE-DIGIT)
+
+
+
+# SOLUTION – TASK 6
+#
+# Change + with * in the previous program to convert
+# every (1-digit or larger) number to apples and pears:
+#
+# .*[02468] 🍎	(EVEN NUMBER)
+# .* 🍐		(ODD NUMBER)
+
+
+
+######################################################
+# CONGRATULATIONS – You have finished Tutorial Two! 🙂
+######################################################
