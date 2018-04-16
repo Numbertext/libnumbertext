@@ -13,9 +13,11 @@ s = {}
 langs = ["default"] + sys.argv[4:]
 for l in langs:
     s[l] = Soros.compile(prg, l)
+ll = len(langs)
 for l in langs:
     print("Language: " + l, file=sys.stderr)
-    print("Language: " + l, file=out)
+    if ll > 1:
+        print("Language: " + l, file=out)
     for i in inp:
         print(s[l].run(i.strip()), file=out)
 
