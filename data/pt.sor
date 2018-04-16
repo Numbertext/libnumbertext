@@ -29,7 +29,7 @@
 70 setenta
 80 oitenta
 90 noventa
-(\d)(\d) $(\010) e $2
+(\d)(\d) $(\10) e $2
 100 cem
 1(\d\d) cento e $1
 2(\d\d) duzentos[ e $1]
@@ -121,7 +121,7 @@ f:(.*),(.*) \1\2
 "(CNY [-−]?\d+[.,]\d)(\d)" $1 $2 fen
 
 "(([A-Z]{3}) [-−]?\d+)[.,](01)" $1 e |$(1)$(\2:ss)
-"(([A-Z]{3}) [-−]?\d+)[.,](\d)" $1 e |$(\030)$(\2:sp)
+"(([A-Z]{3}) [-−]?\d+)[.,](\d)" $1 e |$(\30)$(\2:sp)
 "(([A-Z]{3}) [-−]?\d+)[.,](\d\d)" $1 e |$3$(\2:sp)
 
 == feminine ==
@@ -156,7 +156,7 @@ f:(.*),(.*) \1\2
 70 septuagésimo
 80 octogésimo
 90 nonagésimo
-(\d)(\d) $(ordinal \020) $(ordinal \3)
+(\d)(\d) $(ordinal \20) $(ordinal \3)
 100 centésimo
 200 ducentésimo
 300 trecentésimo
@@ -166,7 +166,7 @@ f:(.*),(.*) \1\2
 700 septicentésimo
 800 octigentésimo
 900 nongentésimo
-(\d)(\d\d) $(ordinal \0200) $(ordinal \3)
+(\d)(\d\d) $(ordinal \200) $(ordinal \3)
 1(\d{3}) milésimo[ $(ordinal \2)]
 (\d)(\d{3}) $2 milésimo[ $(ordinal \3)]
 1(\d{6}) milionésimo[ $(ordinal \2)]

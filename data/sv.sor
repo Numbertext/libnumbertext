@@ -82,7 +82,7 @@ USD:(\D+,.*) $(\1: cardinal, US-dollar, US-dollar, cardinal-neuter, cent, cent)
 "(CNY [-−]?\d+[.,]\d)(\d)" $1 $2 fen
 
 "(([A-Z]{3}) [-−]?\d+)[.,](01)" $1$(\2:ss, 1)
-"(([A-Z]{3}) [-−]?\d+)[.,](\d)" $1$(\2:sp, \030)
+"(([A-Z]{3}) [-−]?\d+)[.,](\d)" $1$(\2:sp, \30)
 "(([A-Z]{3}) [-−]?\d+)[.,](\d\d)" $1$(\2:sp, \3)
 
 == cardinal-neuter ==
