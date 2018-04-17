@@ -11,7 +11,7 @@ distx:
 	cd test; make clean
 	tar c . | gzip > ../numbertext-`head -1 VERSION`.tar.gz
 
-ooo:
+lo:
 	make
 	zip -r numbertext-`head -1 VERSION`.oxt META-INF rdb idl pythonpath pkg-desc *.xcu *py *xml README
 

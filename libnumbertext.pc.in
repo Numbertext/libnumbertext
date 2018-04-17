@@ -1,0 +1,15 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+datarootdir=@datarootdir@
+datadir=@datadir@
+pkgdatadir=${datarootdir}/libnumbertext
+
+Name: libnumbertext
+Description: Library implementing Soros based Number to Number Name conversion
+Version: @VERSION@
+Requires:
+Libs: -L${libdir} -lnumbertext-1.0
+Cflags: -I${includedir}/libnumbertext/
+

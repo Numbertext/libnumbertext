@@ -1,4 +1,4 @@
-Soros interpreters for C++, Java, JavaScript and Python
+Soros interpreters for C++11, Java, JavaScript and Python
 
 Language-neutral NUMBERTEXT and MONEYTEXT functions for LibreOffice Calc
 
@@ -81,13 +81,30 @@ Hung	Old Hungarian Script
 Roman	Roman numbers
 Suzhou	Chinese Suzhou numerals
 
-= Installation in OpenOffice.org/LibreOffice =
+= Build C++11 =
 
-Tools->Extension Manager->Add
+autoreconf -i
+./configure
+make
 
-= Usage =
+# test it
 
-After restarting OpenOffice.org/LibreOffice, there are two new Calc functions,
+src/numbertext -l en 123
+
+= Build Java jar =
+
+cd java
+make
+
+= Build and using LibreOffice Extension =
+
+make -f Makefile lo
+
+and install the *.oxt package by
+Tools->Extension Manager->Add of LibreOffice.
+
+After restarting OpenOffice.org/LibreOffice, there are
+two new Calc functions,
 NUMBERTEXT() and MONEYTEXT().
 
 Examples:
@@ -103,28 +120,25 @@ Examples:
 See doc/addnewlocale.txt and doc/sorosspec.odt
 
 For general Calc and (portable Excel) Add-In developments, see
-
 Jan Holst Jensen's excellent Add-in example and documentation:
 
 http://biochemfusion.com/doc/Calc_addin_howto.html
 
 == Integrated development environment ==
 
-There is a JavaScript/HTML IDE in this distribution:
+There is a JavaScript/HTML IDE in this distribution. 
 
-Open web/webroot/Soros.html in a JavaScript capable browser,
+Use the online version: http://numbertext.org/Soros.html or
+build it with
 
-or use the online version: http://numbertext.org/Soros.html.
+make -f Makefile.orig
+
+and open web/webroot/Soros.html in a JavaScript capable browser,
 
 = Test =
 
-make check
+make -f Makefile.orig check
 
 test/thaicheck.ods is a simple test of the equivalence of
 the Soros implementation of Thai number to number name conversion
 and BAHTTEXT function.
-
-= Build Java jar =
-
-cd java
-make
