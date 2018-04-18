@@ -15,12 +15,12 @@
 14 quatorze
 15 quinze
 16 dezesseis	# [:pt-BR:]
-16 dezasseis	# [:pt-PT:]
+16 dezasseis
 17 dezessete	# [:pt-BR:]
-17 dezassete	# [:pt-PT:]
+17 dezassete
 18 dezoito
 19 dezenove	# [:pt-BR:]
-19 dezanove	# [:pt-PT:]
+19 dezanove
 20 vinte
 30 trinta
 40 quarenta
@@ -58,10 +58,10 @@ pl:.*	ões			# milhões
 (\d{1,3})(\d{18}) $1 sextilh$(pl:\1)$(:\2)$2	# [:pt-BR:]
 (\d{1,3})(\d{24}) $1 septilh$(pl:\1)$(:\2)$2	# [:pt-BR:]
 
-(\d{1,6})(\d{6}) $1 milh$(pl:\1)$(:\2)$2	# [:pt-PT:]
-(\d{1,6})(\d{12}) $1 bili$(pl:\1)$(:\2)$2	# [:pt-PT:]
-(\d{1,6})(\d{18}) $1 trili$(pl:\1)$(:\2)$2	# [:pt-PT:]
-(\d{1,6})(\d{24}) $1 quatrili$(pl:\1)$(:\2)$2	# [:pt-PT:]
+(\d{1,6})(\d{6}) $1 milh$(pl:\1)$(:\2)$2
+(\d{1,6})(\d{12}) $1 bili$(pl:\1)$(:\2)$2
+(\d{1,6})(\d{18}) $1 trili$(pl:\1)$(:\2)$2
+(\d{1,6})(\d{24}) $1 quatrili$(pl:\1)$(:\2)$2
 
 # negative number
 
@@ -88,7 +88,7 @@ AOA:(\D+) $(\1: kwanza, kwanzas, cêntimo, cêntimos)
 ARG:(\D+) $(\1: peso argentino, pesos argentinos, centavo, centavos)
 BOB:(\D+) $(\1: boliviano, bolivianos, centavo, centavos)
 BRL:(\D+) $(\1: real, reais, centavo, centavos)				# [:pt-BR:]
-BRL:(\D+) $(\1: real, réis, centavo, centavos)				# [:pt-PT:]
+BRL:(\D+) $(\1: real, réis, centavo, centavos)
 CHF:(\D+) $(\1: franco suíço, francos suíços, cêntimo, cêntimos)
 CNY:(\D+) $(\1: yuan renminbi, yuan renminbi, fen, fen)
 CVE:(\D+) $(\1: escudos cabo-verdianos, escudos cabo-verdianos, centavo, centavos)
