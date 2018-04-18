@@ -12,7 +12,7 @@ distx:
 	tar c . | gzip > ../numbertext-`head -1 VERSION`.tar.gz
 
 lo:
-	make
+	make -f Makefile.orig
 	zip -r numbertext-`head -1 VERSION`.oxt META-INF rdb idl pythonpath pkg-desc *.xcu *py *xml README
 
 check:

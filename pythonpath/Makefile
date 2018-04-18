@@ -15,7 +15,7 @@ numbertext_%.py: ../data/%.sor $(BIN)/Convert.py
 	python $(BIN)/Convert.py $< >$@
 
 org/Numbertext/locales.py: $(addprefix numbertext_, $(addsuffix .py, $(basename $(notdir $(wildcard ../data/*.sor)))))
-	python $(BIN)/locales.py $(basename $(notdir $(wildcard ../data/*.sor))) >org/Numbertext/locales.py
+	python $(BIN)/locales.py $(basename $(notdir $(wildcard ../data/*.sor))) $(shell cat ../data/*.sor | grep -Eo '\[:.....:]' | tr '-' '_' | tr -d '[]:' | sort | uniq) >org/Numbertext/locales.py
 
 clean:
 	rm -f $(addprefix numbertext_, $(addsuffix .py, $(basename $(notdir $(wildcard ../data/*.sor)))))
