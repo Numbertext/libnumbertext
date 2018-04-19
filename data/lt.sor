@@ -23,10 +23,10 @@
 3(\d) trisdešimt[ $1]
 ([4-9])(\d) $1|asdešimt[ $2]
 
-1(\d\d) šimtas[ $1]
-(\d)(\d\d) $1 šimtai[ $2]
+1(\d\d) vienas šimtas[ $1]
+([2-9])(\d\d) $1 šimtai[ $2]
 
-1(\d{3}) tūkstantis[ $1]
+1(\d{3}) vienas tūkstantis[ $1]
 (\d?1\d|\d?\d?0)(\d{3}) $1 tūkstančių[ $2]
 (\d?\d1)(\d{3}) $1 tūkstantis[ $2]
 (\d{1,3})(\d{3}) $1 tūkstančiai[ $2]
@@ -56,32 +56,69 @@
 [-−](\d+) minus |$1
 
 # decimals
+# before delimiter
+([-−]?(1|\d*[02-9]1))[.,] $1| sveikas
+([-−]?\d*[2-9])[.,] $1| sveiki
+(0|[-−]?\d*(1[1-9]|[1-9]0))[.,] $1| sveikų
 
-# decimals
-([-−]?\d+)[.,] $1| taškas
-([-−]?\d+[.,]\d*)(\d) $1| |$2
+# atfer delimiter
+"([-−]?\d+[.,])(1)" $1| ir |$(f:$2) dešimtoji
+"([-−]?\d+[.,])([2-9])" $1| ir |$(f:$2) dešimtosios
+"([-−]?\d+[.,])([02-9]1)" $1| ir |$(f:$2) šimtoji
+"([-−]?\d+[.,])(1[1-9]|[1-9]0)" $1| ir |$(f:$2) šimtųjų
+"([-−]?\d+[.,])([02-9][2-9])" $1| ir |$(f:$2) šimtosios
+"([-−]?\d+[.,])(\d[02-9]1)" $1| ir |$(f:$2) tūkstantoji
+"([-−]?\d+[.,])(\d1[1-9]|[1-9]0)" $1| ir |$(f:$2) tūkstantųjų
+"([-−]?\d+[.,])(\d[02-9][2-9])" $1| ir |$(f:$2) tūkstantosios
+
+# female conversion
+f:(.*)as \1a
+f:(.*)du \1dvi
+f:(.*)i \1ios
+f:(.*) \1
 
 # currency
-
-# unit/subunit
-
+# unit/subunit singular/plural_a/plural_b
 us:([^,]*),([^,]*),([^,]*),([^,]*),([^,]*),([^,]*) \1
-up:([^,]*),([^,]*),([^,]*),([^,]*),([^,]*),([^,]*) \2
-ug:([^,]*),([^,]*),([^,]*),([^,]*),([^,]*),([^,]*) \3
+upa:([^,]*),([^,]*),([^,]*),([^,]*),([^,]*),([^,]*) \2
+upb:([^,]*),([^,]*),([^,]*),([^,]*),([^,]*),([^,]*) \3
 ss:([^,]*),([^,]*),([^,]*),([^,]*),([^,]*),([^,]*) \4
-sp:([^,]*),([^,]*),([^,]*),([^,]*),([^,]*),([^,]*) \5
-sg:([^,]*),([^,]*),([^,]*),([^,]*),([^,]*),([^,]*) \6
+spa:([^,]*),([^,]*),([^,]*),([^,]*),([^,]*),([^,]*) \5
+spb:([^,]*),([^,]*),([^,]*),([^,]*),([^,]*),([^,]*) \6
 
 LTL:(\D+) $(\1: litas, litų, litai, centas, centų, centai)
-EUR:(\D+) $(\1: euras, eurų, eurai, centas, centų, centai)
+EUR:(\D+) $(\1: euras, eurų, eurai, euro centas, euro centų, euro centai)
+USD:(\D+) $(\1: doleris, dolerių, doleriai, centas, centų, centai)
+NOK:(\D+) $(\1: Norvegijos krona, Norvegijos kronų, Norvegijos kronos, erė, erių, erės)
+SEK:(\D+) $(\1: Švedijos krona, Švedijos kronų, Švedijos kronos, erė, erių, erės)
+GBP:(\D+) $(\1: svaras sterlingų, svarų sterlingų, svarai sterlingų, pensas, pensų, pensai)
+RUB:(\D+) $(\1: rublis, rublių, rubliai, kapeika, kapeikų, kapeikos)
 
-"([A-Z]{3}) ([-−]?\d*(1\d|0))([.,]00?)?" $2|$(\1:up)
-"([A-Z]{3}) ([-−]?\d*1)([.,]00?)?" $2|$(\1:us)
-"([A-Z]{3}) ([-−]?\d+)([.,]00?)?" $2|$(\1:ug)
+# female gender
+# before delimiter
+"(NOK|SEK) ([-−]?(1|\d*[02-9]1))([.,]00?)?" $(f:$2)|$(\1:us) 				# 1| *01| *21 ...
+"(NOK|SEK) ([-−]?(0|\d*(1[1-9]|[01-9]0)))([.,]00?)?" $2|$(\1:upa)			# 0 | *11| *19| *10| *30 ...
+"(NOK|SEK) ([-−]?\d*[2-9])([.,]00?)?" $(f:$2)|$(\1:upb)					# *2| *8 ...
 
-"(([A-Z]{3}) [-−]?\d+)[.,](01)" $1 |$(1)$(\2:ss)
-"((LTL|EUR) [-−]?\d+)[.,](1\d|\d0)" $1 $3|$(\2:sp)
-"(([A-Z]{3}) [-−]?\d+)[.,](\d\d)" $1 |$3$(\2:sg)
+# atfer delimiter
+"((NOK|SEK|RUB) [-−]?\d+)[.,](01)" $1| ir |$(f:$(1))$(\2:ss) 				# *,01 convertion to *,1
+"((NOK|SEK|RUB) [-−]?\d+)[.,]([2-9]1)" $1| ir |$(f:$3)|$(\2:ss)				# 21, 51, 91 ...
+"((NOK|SEK|RUB) [-−]?\d+)[.,](\d)" $1| ir |$(\30)$(\2:spa)				# *,2 | *,3 ... convertion to *,20 | *,30 ...
+"((NOK|SEK|RUB) [-−]?\d+)[.,](1[1-9])" $1| ir |$3|$(\2:spa)				# 11-19
+"((NOK|SEK|RUB) [-−]?\d+)[.,](\d\d)" $1| ir |$(f:$3)$(\2:spb)				# all the rest
+
+# male gender (all except female gender filter matches)
+# before delimiter
+"([A-Z]{3}) ([-−]?(1|\d*[02-9]1))([.,]00?)?" $2|$(\1:us)
+"([A-Z]{3}) ([-−]?0|\d*(1[1-9]|[01-9]0))([.,]00?)?" $2|$(\1:upa)
+"([A-Z]{3}) ([-−]?\d*[2-9])([.,]00?)?" $2|$(\1:upb)
+
+# atfer delimiter
+"(([A-Z]{3}) [-−]?\d+)[.,](01)" $1| ir |$(1)$(\2:ss)
+"(([A-Z]{3}) [-−]?\d+)[.,]([2-9]1)" $1| ir |$3|$(\2:ss)
+"(([A-Z]{3}) [-−]?\d+)[.,](\d)" $1| ir |$(\30)$(\2:spa)
+"(([A-Z]{3}) [-−]?\d+)[.,](1[1-9])" $1| ir |$3|$(\2:spa)
+"(([A-Z]{3}) [-−]?\d+)[.,](\d\d)" $1| ir |$3$(\2:spb)
 
 == feminine ==
 
