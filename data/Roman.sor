@@ -13,8 +13,8 @@
 (\d)(\d) $(\1:XLC)$2
 (\d)(\d\d) $(\1:CDM)$2
 
-# ([123])(\d\d\d) $(\1:Mxx)$2
-# (\d+)(\d\d\d) \($1\)$2
+([123])(\d\d\d) $(\1:Mxx)$2	# [Roman-large]
+(\d+)(\d\d\d) \($1\)$2		# [Roman-large]
 
 ([123])(\d\d\d) $(\1:M--)$2
 ([123]\d{3})(\d\d\d) $(overline $1)$2		# overline: ×1000
@@ -35,4 +35,4 @@
 
 == help ==
 
-help Modules\nRoman: multiple parenthesized form\nRoman_2: overline (×1000) with bar (×100)\nFunctions: historical (in Roman_2) with special Unicode characters for 1000, 5000 and 10000
+help Modules\nRoman-large (language code): multiple parenthesized form\nRoman: overline (×1000) with bar (×100)\nFunctions: historical – with special Unicode characters for 1000, 5000 and 10000
