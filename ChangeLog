@@ -1,3 +1,24 @@
+2018-04-19: László Németh (nemeth numbertext org):
+	* Soros programming language: revised draft:
+	- conditional text, prefix macros, language
+	  variant program lines
+	* improved interpreters
+	* C++11 port
+	* language data:
+	- new Malaysian and Swiss Standard German
+	- compressed language modules
+	- instead of hu_HU_2, ja_JP_2, zh_ZH_2,
+	  "formal" prefix allows formal number names here.
+	  For example, MONEYTEXT(1200;"money HUF";"hu")
+	  results "egyezerkettőszáz forint" instead of
+	  "ezerkétszáz forint",
+	  MONEYTEXT(123;"formal";"ja") results "参百弐拾壱"
+	  instead of "三百二十一"
+	- instead of en_US_2, use "money" prefix combined
+	  with currencies, eg. MONEYTEXT(1.01;"money USD")
+	  results "one and 1/100 U.S. dollar" in LibreOffice
+	  instead of "one U.S. dollar and one cent".
+
 2012-12-06: László Németh (nemeth numbertext org):
         * src/Soros.py, soroside.py, __init__.py, test.py:
           Python 3 port (back compatible with Python 2)

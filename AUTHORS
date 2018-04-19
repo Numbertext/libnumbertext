@@ -1,8 +1,56 @@
 Authors and contributors of NUMBERTEXT/MONEYTEXT development
 
-Developer: László Németh (nemeth at numbertext dot org)
+= Developer =
 
-Contributors and language module developers:
+László Németh (nemeth at numbertext dot org):
+
+	- Soros programming language and its interpreters
+
+	- several language modules
+
+= Language module developers =
+
+Alex Bodnaru (alexbodn at 012 dot net dot il):
+
+	- author of Hebrew module (he_IL)
+
+Eduardo Moreno (emoreno at tokonhu dot com):
+
+	- author of the first version of the Portuguese module (pt-PT)
+
+	- bug reports about Spanish module and short language code "es"
+
+Eko Prasetiyo (ekoprasetiyo at gmail):
+	- author of Indonesian module
+
+Goran Rakić (grakic at devbase dot net):
+
+	- author of Serbian modules (sh-RS, sr-RS)
+
+Randem:
+	- author of Turkish module (tr)
+
+Olivier Ronez:
+
+	- patches for French language module (fr-FR):
+
+		- Spelling mistakes in the French file (https://bugs.launchpad.net/numbertext/+bug/419718)
+		- 81 in French (https://bugs.launchpad.net/numbertext/+bug/419729)
+		- milliard etc. instead of *milliarde (https://bugs.launchpad.net/numbertext/+bug/419718)
+
+	- author of Belgian and Swiss French modules (fr-BE and fr-CH):
+
+		- French numbers in Belgium (https://bugs.launchpad.net/numbertext/+bug/419731)
+		- French numbers in Switzerland (https://bugs.launchpad.net/numbertext/+bug/419734)
+
+Michel Weimerskirch (michel at weimerskirch dot net):
+
+	- author of Luxembourgish module (lb-LU) 
+
+= Contributors =
+
+Liudas Alisauskas (liudas dot alisauskas at gmail dot com):
+	- fix Lithuanian money handling
 
 Mushtaque Asghar:
 
@@ -20,10 +68,6 @@ Attilafdd at launchpad dot net:
 Ruud Baars:
 
 	- bug reports about Dutch module
-
-Alex Bodnaru (alexbodn at 012 dot net dot il):
-
-	- author of Hebrew (he_IL) module
 
 Claudio Colombo (claudio underline c77 at yahoo dot it):
 
@@ -105,11 +149,9 @@ Bernard Marcelly (bmarcelly at openoffice dot org):
 
 	- bug report about missing conversion beetween 0 and 1
 
-Eduardo Moreno (emoreno at tokonhu dot com):
+Jerzy Moruś (morchat at o2 dot pl):
 
-	- author of the first version of the Portuguese (pt-PT) module
-
-	- bug reports about Spanish module and short language code "es"
+	- Polish translation of NUMBERTEXT/MONEYTEXT
 
 mrw at OOo Extension site:
 
@@ -122,19 +164,9 @@ Nicolas Pagni (Nicolas dot Pagni at npagni dot it):
 
 	- bug report about the bad conversion of 1 eurocent in the Italian module
 
-Eko Prasetiyo (ekoprasetiyo at gmail):
-	- author of Indonesian module
-
 Gwenaël Quenette (g_quenette at yahoo dot fr):
 
 	- bug report for the Portuguese module: cientos -> centos
-
-Goran Rakić (grakic at devbase dot net):
-
-	- author of Serbian modules (sh-RS, sr-RS)
-
-Randem:
-	- author of Turkish module
 
 Eike Rathke (er at OpenOffice dot org):
 
@@ -143,19 +175,6 @@ Eike Rathke (er at OpenOffice dot org):
 rogerclc at OOo extesion site:
 
 	- bug report about Russian MONEYTEXT conversion (russian grammar)
-
-Olivier Ronez:
-
-	- patches for French (fr_FR) language module:
-
-		- Spelling mistakes in the French file (https://bugs.launchpad.net/numbertext/+bug/419718)
-		- 81 in French (https://bugs.launchpad.net/numbertext/+bug/419729)
-		- milliard etc. instead of *milliarde (https://bugs.launchpad.net/numbertext/+bug/419718)
-
-	- author of fr-BE and fr-CH modules:
-
-		- French numbers in Belgium (https://bugs.launchpad.net/numbertext/+bug/419731)
-		- French numbers in Switzerland (https://bugs.launchpad.net/numbertext/+bug/419734)
 
 Johanna Sørensen:
 
@@ -192,10 +211,6 @@ Laimonas Vėbra (laimis) at LaunchPad:
 wasow at extensions openoffice org:
 
         - bug report and patch (+UAH) to the Russian module
-
-Michel Weimerskirch (michel at weimerskirch dot net):
-
-	- author of Luxembourgish (lb-LU) module
 
 Friedel Wolff (friedel at translate dot org dot za):
 
