@@ -5,8 +5,16 @@
 	* improved interpreters
 	* C++11 port
 	* language data:
+	- More functions:
+	  ordinal numbers (prefix: ordinal)
+	  ordinal indicator (prefix: ordinal-number)
+	  year (prefix: year)
+	  gender variants and other functions
+	- list all functions of a module with the input "help"
+	  (in Calc: =NUMBERTEXT("help"), but enlarge the
+	   row height to see every line of the help text)
 	- new Malaysian and Swiss Standard German
-	- compressed language modules
+	- compressed language modules:
 	- instead of hu_HU_2, ja_JP_2, zh_ZH_2,
 	  "formal" prefix allows formal number names here.
 	  For example, MONEYTEXT(1200;"money HUF";"hu")

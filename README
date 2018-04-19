@@ -115,6 +115,12 @@ Examples:
 =MONEYTEXT(25;"USD")
 =MONEYTEXT(25;"CNY";"zh-ZH")
 
+Module Help (enlarge the row to see all lines), containing
+available prefix functions of the module:
+
+= NUMBERTEXT("help")
+= NUMBERTEXT("help";"de")
+
 = Development =
 
 See doc/addnewlocale.txt and doc/sorosspec.odt
