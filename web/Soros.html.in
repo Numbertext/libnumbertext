@@ -4,7 +4,7 @@
 </head>
 <body>
 <style type="text/css">
-@import "numbertext.css";
+@import "css/numbertext.css";
 </style>
 <div class='title'>
 <table width="100%" style='border-style: solid; border-width: 0px 0px 1px 0px;'><tr><td><span>&bull;&bull;&bull; NUMBERTEXT.org &bull;&bull;&bull;

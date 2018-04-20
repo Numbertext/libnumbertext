@@ -76,7 +76,7 @@ tr.text td {
 }
 @font-face {
    font-family: Hung;
-   src: url("Hung.ttf") format("truetype"); 
+   src: url("../fonts/fonts/Hung.ttf") format("truetype");
 }
 .rovas {
 	font-family: Hung;
