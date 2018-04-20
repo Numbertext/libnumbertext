@@ -1,121 +1,320 @@
-<html>
-<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-<link rel="icon" type="image/vnd.microsoft.icon" href="favicon.ico">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<title>NUMBERTEXT.org – universal number to text conversion, Soros language</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Numbertext.org</title>
+<meta name="description" content="">
+<meta name="author" content="">
+
+<!-- Bootstrap -->
+<link rel="stylesheet" type="text/css"  href="css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="fonts/font-awesome/css/font-awesome.css">
+
+<!-- Stylesheet
+    ================================================== -->
+<link rel="stylesheet" type="text/css"  href="css/style.css">
+<link rel="stylesheet" type="text/css" href="css/prettyPhoto.css">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800,600,300' rel='stylesheet' type='text/css'>
+<script type="text/javascript" src="js/modernizr.custom.js"></script>
+
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
-<body>
-<style type="text/css">
-@import "numbertext.css";
-</style>
-<div class='title'><a name='head'><table width="100%"><tr><td>
-Spell out the number <input id='num' onKeyUp='usernum();'>
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+<div id="preloader">
+  <div id="status"> <img src="img/preloader.gif" height="64" width="64" alt=""> </div>
+</div>
+<!-- Navigation -->
+<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse"> <i class="fa fa-bars"></i> </button>
+      <a class="navbar-brand page-scroll" href="#page-top"> <i class="fa fa-list-ol"></i> NUMBERTEXT.ORG</a> </div>
+    
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+      <ul class="nav navbar-nav">
+        <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+        <li class="hidden"> <a href="#page-top"></a> </li>
+        <li> <a class="page-scroll" href="#about">About</a> </li>
+        <li> <a class="page-scroll" href="#services">Download</a> </li>
+        <li> <a class="page-scroll" href="#team">Contributors</a> </li>
+        <li> <a class="page-scroll" href="#testimonials">Spell out numbers</a> </li>
+	<!--        <li> <a class="page-scroll" href="#contact">Contact</a> </li>-->
+      </ul>
+    </div>
+    <!-- /.navbar-collapse --> 
+  </div>
+  <!-- /.container --> 
+</nav>
+
+<!-- Header -->
+<div id="intro">
+  <div class="intro-body">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+          <h1><span class="brand-heading"></span>Numbertext.org</h1>
+          <p class="intro-text">Home of Soros Programming Language</p>
+          <a href="#about" class="btn btn-default page-scroll">Learn More</a>
+          <a href="#testimonials" class="btn btn-default2 page-scroll">Spell Out Numbers</a> </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- About Section -->
+<div id="about">
+  <div class="container">
+    <div class="section-title text-center center">
+      <h2>About Us</h2>
+      <hr>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="about-text">
+	      <!--<iframe width="560" height="315" src="https://www.youtube.com/embed/N9BZ1tCsasw" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>-->
+	 <iframe width="350" height="280" src="https://www.youtube.com/embed/N9BZ1tCsasw" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+		Spelling out numbers and money amounts in LibreOffice Calc
+	 </div>
+      </div>
+      <div class="col-md-4">
+        <div class="about-text">
+
+          <h4>From Numbers to Number Names</h4>
+	  <p>We provide easy to configure, lightweight open source C++11, Java, JavaScript,  Python libraries
+	  and a LibreOffice Spreadsheet extension for number to number name conversion, including cardinal and
+	  ordinal numbers, ordinal indicators and money amounts with currencies in more than 30 languages
+	  and numeral systems.</p>
+	  <p>Join the Numbertext/LibreOffice development: please, check the Soros language tutorial in the integrated language module development environment, fix bugs or missing parts of the language modules, or create new modules based on the existing ones!</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="about-text">
+
+          <h4>Background</h4>
+
+	  <p>NUMBERTEXT/MONEYTEXT functions and Soros programming language was developed in 2009 for generalization of BAHTTEXT spreadsheet function, a function of Microsoft Excel for number to Thai number name and currency conversion, standardized by ECMA–376 and ISO/IEC 29 500:2008 Office Open XML format.</p>
+	  <p>Soros programming language is based on regular expressions, just like its small interpreters (in Python: less, than 120 lines). Despite its simplicity, it can handle language variants, complex spelling functions and rules in a concise manner.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Services Section -->
+<div id="services" class="text-center">
+  <div class="container">
+    <div class="section-title center">
+      <h2>Download</h2>
+      <hr>
+    </div>
+    <div class="space"></div>
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <div class="service"> <i class="fa fa-table"></i>
+          <h3>LibreOffice Extension</h3>
+	  <p>with NUMBERTEXT and MONEYTEXT spreadsheet functions: <a href="https://extensions.libreoffice.org/extensions/numbertext-1/1-0-beta/@@download/file/numbertext-1.0b.oxt">numbertext-1.0b.oxt</a>
+	  (<a href="https://extensions.libreoffice.org/extensions/numbertext-1">Extension page</a>)</p>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="service"> <i class="fa fa-cogs"></i>
+          <h3>C++11</h3>
+          <p>Library: libnumbertext-1.0b.tar.xz </p>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="service"> <i class="fa fa-coffee"></i>
+          <h3>Java</h3>
+          <p>Library: numbertext-1.0b.jar</p>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="service"><i class="fa fa-pencil"></i>
+          <h3>JavaScript and Python</h3>
+          <p>Soros interpreters: Soros.js and Soros.py</p>
+        </div>
+      </div>
+    </div>
+    <div class="space"></div>
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <div class="service"><i class="fa fa-github"></i>
+          <h3>Repository</h3>
+          <p>on GitHub: numbertext.github.io</p>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="service"><i class="fa fa-wrench"></i>
+          <h3>Language development</h3>
+          <p>in Soros IDE.</p>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="service"><i class="fa fa-book"></i>
+          <h3>Soros language specification</h3>
+          <p>Soros 1.0b</p>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="service"><i class="fa fa-bug"></i>
+          <h3>Feedback</h3>
+	  <p>Please, use <a href="https://github.com/Numbertext/libnumbertext/issues">GitHub Issues</a> to report problems in code and language data.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Team Section -->
+<div id="team" class="text-center">
+  <div class="container">
+    <div class="section-title center">
+<!--!cat ../AUTHORS | awk '/^[^ 	].*:/{if(z!=1)print"•";else{print "<p>";z=0};print toupper(gensub("(\\(| at |:).*", "", "g", $0))}/author/{print gensub("^\\s*-.*author of[^A-Z]*(.*) module.*", "(\\1)", "g", $0)}/^=/{print gensub("= (.*) =", "</p><div id='row'><p></p><p></p></div><h2></h2><h2>\\1</h2>", "g");z=1}{next}'-->
+<h2></h2>
+<h2>Donors</h2>
+<p><a href="http://fsf.hu">FSF.hu Foundation</a>, Hungary • <a href="https://nlnet.nl">NLNet Foundation</a>, Netherlands</p>
+   
+  </div>
+</div>
+<!-- Testimonials Section -->
+<div id="testimonials" class="text-center" onmouseover="getInputFocus();">
+  <div class="container">
+    <div class="section-title center">
+	    <h2 class="input"><span>Spell out number&nbsp;&nbsp;</span><input id='num' onKeyUp='usernum();'>
 <!--</input> in <select id="lang" onChange='usernum();'>
 <option value="-">all languages</option>
 </select>-->
-with currency: <select id="money" onChange='usernum();'>
-<option value="-">&ndash;</option>
-<option value="def">Default</option>
+<span>&nbsp;&nbsp;as&nbsp;&nbsp;</span><select id="money" onChange='usernum();'>
+<option value="-">Cardinal number</option>
+<option value="ordinal">Ordinal number</option>
+<option value="ordinal-number">Ordinal indicator</option>
+<option value="year">Year</option>
+<option value="formal">Formal number</option>
+<option value="def">Default currency</option>
 <option value="CHF">CHF</option>
 <option value="EUR">EUR</option>
 <option value="GBP">GBP</option>
 <option value="JPY">JPY</option>
 <option value="USD">USD</option>
-</select></td><td align='right'><b>2012-12-06</b> v0.9.5-2 (<a href="http://extensions.libreoffice.org/extension-center/numbertext-1">oxt</a>, <a href="dist/numbertext.jar">jar</a>, 
-<a href="http://www.numbertext.org/linux/">TTF</a>)
-<span class='nowrap'>
-<!--<a class="menu2" href="IDE.html">IDE</a>-->
-<a class="menu2" href="#about">More…</a>
-</span></td></tr></table></div>
+</select>
+ </h2>
+    </div>
+    <div class="row">
+   </div>
+    <div class="row" id="result">
+    </div>
+  </div>
+</div>
+<!-- Contact Section -->
 
-<!--<p>Download OpenOffice.org <a href='http://extensions.services.openoffice.org/project/numbertext'>extension.</a>
-Edit your <a href="Soros.html">Soros program</a>.-->
+<!--
+<div id="contact" class="text-center">
+  <div class="container">
+    <div class="section-title center">
+      <h2>Contact us</h2>
+      <hr>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diamcommodo nibh ante facilisis.</p>
+    </div>
+    <div class="col-md-8 col-md-offset-2">
+      <div class="col-md-4">
+        <div class="contact-item"> <i class="fa fa-map-marker fa-2x"></i>
+          <p>4321 California St,<br>
+            San Francisco, CA 12345</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="contact-item"> <i class="fa fa-envelope-o fa-2x"></i>
+          <p>info@company.com</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="contact-item"> <i class="fa fa-phone fa-2x"></i>
+          <p> +1 123 456 1234<br>
+            +1 321 456 1234</p>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+    <div class="col-md-8 col-md-offset-2">
+      <h3>Leave us a message</h3>
+      <form name="sentMessage" id="contactForm" novalidate>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <input type="text" id="name" class="form-control" placeholder="Name" required="required">
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <input type="email" id="email" class="form-control" placeholder="Email" required="required">
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <textarea name="message" id="message" class="form-control" rows="4" placeholder="Message" required></textarea>
+          <p class="help-block text-danger"></p>
+        </div>
+        <div id="success"></div>
+        <button type="submit" class="btn btn-default">Send Message</button>
+      </form>
+      <div class="social">
+        <h3>Follow us</h3>
+        <ul>
+          <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+          <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+          <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+          <li><a href="#"><i class="fa fa-github"></i></a></li>
+          <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+          <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+-->
+<div id="footer">
+  <div class="container">
+    <p>Copyright &copy; Numbertext.org. Designed by <a href="http://www.templatewire.com" rel="nofollow">TemplateWire</a>.
+    Cover Photo: <a href="https://commons.wikimedia.org/wiki/File:Tablet_with_Cuneiform_Inscription_LACMA_M.79.106.2_(2_of_4).jpg">Wikipedia Commons</a></p>
+  </div>
+</div>
 
-<!--<div class="input">
-</div>-->
-<noscript><center>Enable JavaScript or click <a class="menu2" href="#about">here</a>!</center></noscript>
-<div id="result"><div style="height: 100%; text-align: center; line-height: 480px;">Compiling Soros programs...</div></div>
+<!-- Numbertext data -->
+<!-- **************************************************************************************************** -->
+<!--!cd ../data;for i in ??.sor ???*.sor; do echo "<textarea id='`basename $i .sor | tr "_" " "`' class='hidden'>"; cat $i; echo "</textarea>"; done-->
+<!-- **************************************************************************************************** -->
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
+<script type="text/javascript" src="js/jquery.1.11.1.js"></script> 
+<!-- Include all compiled plugins (below), or include individual files as needed --> 
+<script type="text/javascript" src="js/bootstrap.js"></script> 
+<script type="text/javascript" src="js/SmoothScroll.js"></script> 
+<script type="text/javascript" src="js/jquery.prettyPhoto.js"></script> 
+<script type="text/javascript" src="js/jquery.isotope.js"></script> 
+<script type="text/javascript" src="js/jquery.parallax.js"></script> 
+<script type="text/javascript" src="js/jqBootstrapValidation.js"></script> 
+<script type="text/javascript" src="js/contact_me.js"></script> 
 
-<div id="space" class="lang" style="height: 200%;"></div>
-
-<div class='title'><a name='about'>
-<table width="100%"><tr><td><span>News: Python 3/LibreOffice 4.0, Latvian and Lithuanian support; French, Portuguese and Spanish fixes</span>
-</td><td align='right'>
-<span class='nowrap'>
-<!--<a class="menu2" href="IDE.html">IDE</a>-->
-<a class="menu2" href="#head">Back</a>
-</span></td></tr></table></div>
-<table width='100%' class='header'>
-<tr>
-<td width='32%' valign='top'><div class='row' id='header'>About NUMBERTEXT.org</div>
-<td width='32%' valign='top'><div class='row' id='header'>About NUMBERTEXT/MONEYTEXT</div>
-<td width='32%' valign='top'><div class='row' id='header'>About Soros language</div>
-<tr class='text'>
-<td valign='top'>
-
-Home of Soros language, the universal number to text conversion language
-and NUMBERTEXT/MONEYTEXT development.
-
-<ul>
-<!--Edit the <a href="http://wiki.services.openoffice.org/wiki/NUMBERTEXT/MONEYTEXT_development">Wiki page</a>.-->
-
-<li>Download the <a href="http://extensions.libreoffice.org/extension-center/numbertext-1">LibreOffice/OpenOffice.org Calc Add-on</a>
-or the <a href="dist/">full distribution</a> and the Soros interpreter in <a href="Soros.py">Python</a> or <a href="Soros.js">JavaScript</a>.
-
-<li>Join the development:
-
-Report a bug in <a href="http://wiki.services.openoffice.org/wiki/Talk:NUMBERTEXT/MONEYTEXT_development">OOo Wiki</a> or <a href="https://launchpad.net/numbertext/+filebug">Launchpad</a>.
-
-Develop a new language resource in the <a href="Soros.html">IDE</a> and propose the result in <a href="http://wiki.services.openoffice.org/wiki/Talk:NUMBERTEXT/MONEYTEXT_development">OOo Wiki</a>.
-
-</ul>
-<a href="AUTHORS.html">Authors and contributors</a> of this free software project.
-<td valign='top'>The NUMBERTEXT/MONEYTEXT functions originally developed for the generalization of the BAHTTEXT spreadsheet function, a function of Microsoft Excel for number to Thai number name and currency conversion, standardized by the ECMA–376 and ISO/IEC 29 500:2008 Office Open XML format. This development can help the upcoming <a href="http://en.wikipedia.org/wiki/OpenFormula">OpenFormula</a> to be top-compliant with the ECMA/ISO BAHTTEXT without degrading its high requirements for an international standard.
-<p>See the <a href="numbertext.pdf">specification</a> and the related <a href="http://lingucomponent.openoffice.org/issues/show_bug.cgi?id=103746">OOo issue 103746</a>.
-
-<td valign='top'>The Soros programming language is a <a href="http://www.wikipedia.org/wiki/regex">regex</a> based programming language for number to text conversion and for other
-recursive conversions between self-similar character sequences.
-<p>The language has simple syntax and implementation (the interpreter in Python is only ~75 lines), and good performance also in
-script language implementations, thanks to the compiled regexes.
-
-<p>See <a href="sorosspec.pdf">Soros language specification</a>.
-<!--Soros language is also the intended replacement of the spellout function of the rule based number formatter (RBNF) of the IBM ICU library.
-
-<p>For example, the following Soros program reverses its input string:
-<pre>
-(.*)(.) \2$1
-</pre>
-The main of this program represents a regex replace <code>s/(.*)(.)/\2$1/</code>, the <code>$1</code> is the abbreviation of
-the recursive call <code>$(\1)</code>. The program removes the last character of the input to the first position of the output, and
-iterates this task on the remaining part, and insert the result to the output.-->
-
-</table>
-
-<div class='row' id='header'>Links</div>
-<center>
-<table class="logos">
-<tr valign="bottom">
-<td><a href="http://nlnet.nl"><img src="http://www.nlnet.nl/logo/banner-nf-160x60.png" title="Stiching NLnet, Nederlands" alt="Stiching NLnet, Nederlands"></a>
-<td><a href="http://www.fsf.hu/index.php/About_us_en"><img src="http://sphotos-f.ak.fbcdn.net/hphotos-ak-ash3/166191_131764983552456_3012245_n.jpg" width="240" height="149" title="FSF.hu Alapítvány, Hungary" alt="FSF.hu Alapítvány, Hungary"></a>
-<td><a href="http://en.wikipedia.org/wiki/ODF"><img src="http://opendocument.xml.org/sites/opendocument.xml.org/files/u2/odf-community.jpg" title="OpenDocument" alt="ODF logo" height="60" width="60"></a>
-<!--<td><a href="http://www.openoffice.org"><img src="http://marketing.openoffice.org/art/galleries/logos/main/col/ooo-main-logo-col_200px.gif" title="OpenOffice.org" alt="OpenOffice.org"></a>-->
-<td><a href="http://www.libreoffice.org"><img src="http://wiki.documentfoundation.org/images/2/29/LibreOffice_external_logo_200px.png" title="LibreOffice" alt="LibreOffice"></a>
-<td><a href="http://www.wikipedia.org" title="Wikipedia"><img alt="Wikipedia" src="http://upload.wikimedia.org/wikipedia/en/thumb/8/80/Wikipedia-logo-v2.svg/200px-Wikipedia-logo-v2.svg.png"></a>
-<tr valign="top">
-<td><a href="http://nlnet.nl">NLnet Foundation, Nederlands</a><br> (donor)
-<td><a href="http://www.fsf.hu/index.php/About_us_en">FSF.hu Foundation, Hungary</a>
-<td><a href="http://en.wikipedia.org/wiki/ODF">OpenDocument</a><br>(target)
-<td><a href="http://www.libreoffice.org">LibreOffice</a><br>(target)
-<td><a href="http://www.wikipedia.org">Wikipedia</a><br>(knowledge base)
-</table>
-</center>
-
-<table height="500px"><tr><td>&nbsp;</table>
+<!-- Javascripts
+    ================================================== --> 
+    <script type="text/javascript" src="js/main.js"></script>
 <!-- **************************************************************************************************** -->
 <!--!cd ../data;for i in *.sor; do echo "<textarea rows='0' cols='0' id='`basename $i .sor`' class='hidden'>"; cat $i; echo "</textarea>"; done-->
 <!-- **************************************************************************************************** -->
 <script language="javascript1.3">
+
+function getInputFocus() {
+	if (!window.inputFocused) {
+	    window.inputFocused = true;
+	    document.getElementById('num').focus();
+	}
+}
+
 <!-- **************************************************************************************************** -->
 <!--!cat ../src/Soros.js-->
 <!-- **************************************************************************************************** -->
@@ -123,91 +322,94 @@ iterates this task on the remaining part, and insert the result to the output.--
 var keep = this
 
 language = {
-"af_ZA": "Afrikaans",
-"ca_ES": "Català",
-"cs_CZ": "Česky",
-"da_DK": "Dansk",
-"de_DE": "Deutsch",
-"el_EL": "Ελληνικά",
-"en_IN": "English&nbsp;(IN)",
-"en_US": "English",
-"es_ES": "Español",
+"af": "Afrikaans",
+"ca": "Català",
+"cs": "Česky",
+"da": "Dansk",
+"de": "Deutsch",
+"de-CH": "Deutsch&nbsp;(CH)",
+"el": "Ελληνικά",
+"en": "English",
+"en-GB": "English&nbsp;(GB)",
+"en-IN": "English&nbsp;(IN)",
+"es": "Español",
 "eo": "Esperanto",
-"fr_BE": "Français&nbsp;(BE)",
-"fr_CH": "Français&nbsp;(CH)",
-"fr_FR": "Français",
-"he_IL": "עברית",
-"hu_HU": "Magyar",
-"id_ID": "Bahasa Indonesia",
-"it_IT": "Italiano",
-"ja_JP": "日本語",
+"fr": "Français",
+"fr-BE": "Français&nbsp;(BE)",
+"fr-CH": "Français&nbsp;(CH)",
+"he": "עברית",
+"hu": "Magyar",
+"id": "Bahasa Indonesia",
+"it": "Italiano",
+"ja": "日本語",
 "ja_JP_2": "大字",
-"ko_KP": "한국어&nbsp;(KP)",
-"ko_KR": "한국어&nbsp;(KR)",
-"lb_LU": "Luxembourgish",
-"lt_LT": "Lietuvių",
-"lv_LV": "Latviešu",
-"nl_NL": "Nederlands",
-"pl_PL": "Polski",
-"pt_BR": "Português&nbsp;(BR)",
-"pt_PT": "Português",
-"ro_RO": "Română",
-"ru_RU": "Русский",
-"sl_SI": "Slovenščina",
-"fi_FI": "Suomi",
-"sh_RS": "Srpski",
-"sr_RS": "Српски",
-"sv_SE": "Svenska",
-"th_TH": "ไทย",
-"tr_TR": "Türkçe",
-"zh_ZH": "中文",
-"vi_VN": "Tiếng Việt",
-"zh_ZH_2": "大写",
+"ko": "한국어&nbsp;(KR)",
+"ko-KP": "한국어&nbsp;(KP)",
+"lb": "Luxembourgish",
+"lt": "Lietuvių",
+"lv": "Latviešu",
+"ms": "Bahasa Melayu",
+"nl": "Nederlands",
+"pl": "Polski",
+"pt": "Português",
+"pt-BR": "Português&nbsp;(BR)",
+"ro": "Română",
+"ru": "Русский",
+"sl": "Slovenščina",
+"fi": "Suomi",
+"sh": "Srpski",
+"sr": "Српски",
+"sv": "Svenska",
+"th": "ไทย",
+"tr": "Türkçe",
+"zh": "中文",
+"vi": "Tiếng Việt",
+"zh": "大写",
 "Hung": "𐲭𐲨𐲹𐲽𐲯𐲿𐲭𐲽𐲯*",
-"Roman": "Roman*",
+"Roman-large": "Roman*",
 "Suzhou": "花碼*"
 }
 
 default_currency = {
-"af_ZA": "ZAR",
-"ca_ES": "EUR",
-"cs_CZ": "CZK",
-"de_DE": "EUR",
-"da_DK": "DKK",
-"el_EL": "EUR",
-"en_GB": "GBP",
-"en_IN": "INR",
-"en_US": "USD",
-"es_ES": "EUR",
+"af": "ZAR",
+"ca": "EUR",
+"cs": "CZK",
+"de": "EUR",
+"de-CH": "CHF",
+"da": "DKK",
+"el": "EUR",
+"en-GB": "GBP",
+"en-IN": "INR",
+"en": "USD",
+"es": "EUR",
 "eo": "-",
-"fr_BE": "EUR",
-"fr_CH": "CHF",
-"fr_FR": "EUR",
-"id_ID": "IDR",
-"it_IT": "EUR",
-"ja_JP": "JPY",
-"ja_JP_2": "JPY",
-"ko_KP": "KPW",
-"ko_KR": "KRW",
-"lb_LU": "EUR",
-"lt_LT": "LTL",
-"lv_LV": "LVL",
-"he_IL": "ILS",
-"hu_HU": "HUF",
-"nl_NL": "EUR",
-"pl_PL": "PLN",
-"pt_BR": "BRL",
-"pt_PT": "EUR",
-"ro_RO": "RON",
-"ru_RU": "RUB",
-"sl_SI": "EUR",
-"fi_FI": "EUR",
-"sv_SE": "SEK",
-"th_TH": "THB",
-"tr_TR": "TRY",
-"vi_VN": "VND",
-"zh_ZH": "CNY",
-"zh_ZH_2": "CNY",
+"fr": "EUR",
+"fr-BE": "EUR",
+"fr-CH": "CHF",
+"id": "IDR",
+"it": "EUR",
+"ja": "JPY",
+"ko-KP": "KPW",
+"ko": "KRW",
+"lb": "EUR",
+"lt": "LTL",
+"lv": "LVL",
+"ms": "MYR",
+"he": "ILS",
+"hu": "HUF",
+"nl": "EUR",
+"pl": "PLN",
+"pt": "EUR",
+"pt-BR": "BRL",
+"ro": "RON",
+"ru": "RUB",
+"sl": "EUR",
+"fi": "EUR",
+"sv": "SEK",
+"th": "THB",
+"tr": "TRY",
+"vi": "VND",
+"zh": "CNY",
 "Roman": "-",
 "Rovas": "-",
 "Suzhou": "CNY"
@@ -216,33 +418,32 @@ default_currency = {
 numlang=[]
 
 <!-- **************************************************************************************************** -->
-<!--!cd ../data;for i in *.sor; do name=`basename $i .sor`; echo "numlang['$name']=new Soros(document.getElementById('$name').value)"; done-->
+<!--!cd ../data;for i in *.sor; do name=`basename $i .sor`; echo "numlang['$name']=new Soros(document.getElementById('$name').value, '$name')"; done-->
 <!-- **************************************************************************************************** -->
- 
+numlang['de-CH']=new Soros(document.getElementById('de').value, 'de-CH');
+numlang['en-GB']=new Soros(document.getElementById('en').value, 'en-GB');
+numlang['en-IN']=new Soros(document.getElementById('en').value, 'en-IN');
+numlang['fr-BE']=new Soros(document.getElementById('fr').value, 'fr-BE');
+numlang['fr-CH']=new Soros(document.getElementById('fr').value, 'fr-CH');
+numlang['ko-KP']=new Soros(document.getElementById('ko').value, 'ko-KP');
+numlang['pt-BR']=new Soros(document.getElementById('pt').value, 'pt-BR');
+numlang['Roman-large']=new Soros(document.getElementById('Roman').value, 'Roman-large');
+
 window.header = ""
 window.num = ""
 window.time = setTimeout("tim()", 1000);
-
-function rgb(range, item, light) {
-var unit = (2*Math.PI)/range;
-var dark = 50-(light/2);
-var r = Math.floor((Math.cos((item*unit-2.5*Math.PI))*dark+dark))+light;
-var g = Math.floor((Math.cos((item*unit-Math.PI))*dark+dark))+light;
-var b = item < (range/2) ? light : Math.floor(Math.cos((item*unit-2*Math.PI))*dark+dark)+light;
-return "rgb("+r+"%,"+g+"%,"+b+"%)"
-}
+window.startDemo = true;
 
 window.currency = document.getElementById('money').value
 
+/*
 if (navigator.appName.indexOf("Microsoft")!=-1) {
 window.width = document.body.clientWidth
 window.height = document.body.clientHeight
 }else{
 window.width = window.innerWidth
 window.height = window.innerHeight
-}
-
-window.langlen = document.getElementById('space').offsetWidth
+}*/
 
 function usernum() {
     clearTimeout(window.time)
@@ -256,8 +457,6 @@ function usernum() {
     tim()
 }
 
-//alert(rgb(100,1,65) + rgb(100,2,60))
-
 function tim( ) {
     var b = new Date()
     var header = ""
@@ -266,16 +465,12 @@ function tim( ) {
 	header = "Unix time in sec (" + num + ")"
 	window.time = setTimeout("tim()", 1000);
     } else header = "Number (" + window.num + ")"
-    window.range=100
-    target = document.getElementById('result')
-//    target.innerHTML = "doc: " + document.body.scrollTop + " tar: " + target.offsetTop 
-    if (document.body.scrollTop < target.offsetTop + target.offsetHeight) target.innerHTML = "<table id='conv'><tbody><tr class='row' id='header' style='background-color:"+rgb(window.range, 2, 60)+"'><td width='75pt'>Language<td>" + header + "</td></tr>" +
+    	target = document.getElementById('result')
+    	if (document.body.scrollTop < target.offsetTop + target.offsetHeight) target.innerHTML = "<table id='conv' width='100%'><tbody><tr id='header' style='text-align:left;background-color:rgba(100%, 100%, 100%, 0)'><td width='150px'>Language<td>" + header + "</td></tr>" +
 <!-- **************************************************************************************************** -->
-<!--!cd ../data; n=3; for i in `ls *.sor | grep -v en_US_2 | grep -v hu_HU_2 | grep -v ^[A-Z]` Hung.sor Roman.sor Suzhou.sor; do name=`basename $i .sor`; name2=`echo $name | tr _ -`; head=""; rtl=""; rovas=""; case $name in Hung) rovas="rovas"; rtl="align='right'";; he_IL) rtl="align='right'";; esac; echo "\"$head<tr class='row $rovas' style='background-color:\"+rgb(window.range,$n, $n%2?65:60)+\";' title='$name2'><td width='75pt'>\" + language[\"$name\"] + \"</td><td $rtl>\" + numlang['$name'].run((window.currency == \"-\" ? \"\" : (window.currency == \"def\" ? default_currency[\"$name\"] : window.currency) + \" \") + window.num).replace(\"\\\n\",\"<br>\") + '</td></tr>' +";n=`echo $n+1 | bc`; done-->
+<!--!cd ../data; n=3; for i in `ls *.sor | awk '{print}/de/{print"de-CH.sor"}/en/{print"en-GB.sor\nen-IN.sor"}/pt/{print"pt-BR.sor"}/ko/{print"ko-KP.sor"}/fr/{print"fr-BE.sor\nfr-CH.sor"}' | grep -v ^[A-Z]` Hung.sor Roman-large.sor Suzhou.sor; do name=`basename $i .sor`; name2=`echo $name | tr _ -`; head=""; rtl=""; rovas=""; case $name in Hung) rovas="rovas"; rtl="align='right'";; he) rtl="align='right'";; esac; echo "\"$head<tr class='$rovas \"+ ($n%2?\"second\":\"\")+\"' style='text-align:left;' title='$name2'><td valign='top'>\" + language[\"$name\"] + \"</td><td $rtl>\" + numlang['$name'].run((window.currency == \"-\" ? \"\" : (window.currency == \"def\" ? default_currency[\"$name\"] : window.currency) + \" \") + window.num).replace(\"\\\n\",\"<br>\") + '</td></tr>' +";n=`echo $n+1 | bc`; done-->
 <!-- **************************************************************************************************** -->
-    "<tr><td colspan=2>*Old systems (extended for large numbers) &ndash; Old Hungarian (correct typefaces in Firefox 3.5), Roman and Suzhou numerals</td></tr></tbody></table>";
-
-
+    "<tr><td colspan=2>*Old numeral systems (extended for large numbers) &ndash; Old Hungarian, Roman and Suzhou numerals</td></tr></tbody></table>";
 }
 tim()
 </script>

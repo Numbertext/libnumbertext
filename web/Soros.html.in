@@ -8,7 +8,7 @@
 </style>
 <div class='title'>
 <table width="100%" style='border-style: solid; border-width: 0px 0px 1px 0px;'><tr><td><span>&bull;&bull;&bull; NUMBERTEXT.org &bull;&bull;&bull;
-IDE of Soros programming language (<a href="sorosspec.pdf">specification</a>) </span></td><td align='right'>
+IDE of Soros programming language (<a href="https://github.com/Numbertext/libnumbertext/blob/master/doc/sorosspec.pdf">specification</a>) </span></td><td align='right'>
 <span class='nowrap'>
 <!--<a class="menu2" href="IDE.html">IDE</a>-->
 <a class="menu2" href="index.html#about">Back</a>
@@ -87,7 +87,7 @@ function copy_result() {
 	<label for="def" accesskey="e">Program <u>e</u>ditor</label>&nbsp;&nbsp;
 	<label for="select" accesskey="l"><u>L</u>oad:</label>
 	<select id="select" onchange="load_prg(); comp(); convert();">
-	    <option value="xx">&ndash;</option>
+	    <option value="xx">New module</option>
 <!-- **************************************************************************************************** -->
 <!--!cd ../doc;for i in *.sor; do name=`basename $i .sor | sed "s/_/ – Part /"`; echo "<option value='$name'>$name</option>"; done-->
 <!--!cd ../data;for i in ??.sor ???*.sor; do name=`basename $i .sor | tr "_" " "`; echo "<option value='$name'>$name</option>"; done-->
@@ -105,6 +105,7 @@ function copy_result() {
 <!--!cd ../doc;for i in *.sor; do echo "<textarea id='`basename $i .sor | sed "s/_/ – Part /"`' class='hidden'>"; cat $i; echo "</textarea>"; done-->
 <!--!cd ../data;for i in ??.sor ???*.sor; do echo "<textarea id='`basename $i .sor | tr "_" " "`' class='hidden'>"; cat $i; echo "</textarea>"; done-->
 <!-- **************************************************************************************************** -->
+<textarea id="xx" class="hidden"></textarea>
 <script type="text/javascript" language="javascript1.3">
 if (navigator.appName.indexOf("Microsoft")!=-1) {
 x = document.body.clientWidth
@@ -121,5 +122,8 @@ area1.style.width= x + "px"
 area1.style.height= y + "px"
 area2.style.width= x + "px"
 area2.style.height= y + "px"
+
+document.getElementById('select').value = "Tutorial – Part 1";
+load_prg(); comp(); convert();
 </script>
 </html>
