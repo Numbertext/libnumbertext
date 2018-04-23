@@ -13,8 +13,8 @@
 (\d)(\d) $(\1:XLC)$2
 (\d)(\d\d) $(\1:CDM)$2
 
-([123])(\d\d\d) $(\1:Mxx)$2	# [Roman-large]
-(\d+)(\d\d\d) \($1\)$2		# [Roman-large]
+([123])(\d\d\d) $(\1:Mxx)$2	# [:Roman-large:]
+(\d+)(\d\d\d) \($1\)$2		# [:Roman-large:]
 
 ([123])(\d\d\d) $(\1:M--)$2
 ([123]\d{3})(\d\d\d) $(overline $1)$2		# overline: ×1000

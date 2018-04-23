@@ -77,9 +77,11 @@ zh	Chinese (simplified)
 
 Old number systems:
 
-Hung	Old Hungarian Script
-Roman	Roman numbers
-Suzhou	Chinese Suzhou numerals
+Hung		Old Hungarian Script
+Roman		Roman numbers
+Roman-large	Roman numbers for very large numbers
+		using parenthesized syntax
+Suzhou		Chinese Suzhou numerals
 
 = Build C++11 =
 
