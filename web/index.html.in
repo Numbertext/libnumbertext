@@ -86,7 +86,7 @@
         <div class="about-text">
 
           <h4>From Numbers to Number Names</h4>
-	  <p>We provide easy to configure, lightweight open source C++11, Java, JavaScript,  Python libraries
+	  <p>We provide easy to configure, lightweight open source C++, Java, JavaScript,  Python libraries
 	  and a LibreOffice Spreadsheet extension for number to number name conversion, including cardinal and
 	  ordinal numbers, ordinal indicators and money amounts with currencies in more than 30 languages
 	  and numeral systems.</p>
@@ -116,14 +116,14 @@
     <div class="row">
       <div class="col-md-3 col-sm-6">
         <div class="service"> <i class="fa fa-table"></i>
-          <h3>LibreOffice Extension</h3>
-	  <p>with NUMBERTEXT and MONEYTEXT spreadsheet functions: <a href="https://extensions.libreoffice.org/extensions/numbertext-1/1-0-beta/@@download/file/numbertext-1.0b.oxt">numbertext-1.0b.oxt</a>
+          <h3>LibreOffice</h3>
+	  <p>Extension with NUMBERTEXT and MONEYTEXT spreadsheet functions: <a href="https://extensions.libreoffice.org/extensions/numbertext-1/1-0-beta/@@download/file/numbertext-1.0b.oxt">numbertext-1.0b.oxt</a>
 	  (<a href="https://extensions.libreoffice.org/extensions/numbertext-1/1-0-beta">description</a>)</p>
         </div>
       </div>
       <div class="col-md-3 col-sm-6">
         <div class="service"> <i class="fa fa-cogs"></i>
-          <h3>C++11</h3>
+          <h3>C++</h3>
 	  <p>Source distribution (1.0 beta): <a href="https://github.com/Numbertext/libnumbertext/releases/download/1.0.beta1/libnumbertext-1.0.0.tar.xz">libnumbertext-1.0.0.tar.xz</a> (<a href="https://github.com/Numbertext/libnumbertext/releases/tag/1.0.beta1">installation</a>)</p>
         </div>
       </div>
@@ -136,8 +136,8 @@
       </div>
       <div class="col-md-3 col-sm-6">
         <div class="service"><i class="fa fa-pencil"></i>
-          <h3>Python and JavaScript</h3>
-	  <p><a href="https://github.com/Numbertext/libnumbertext/blob/master/src/Soros.py">Soros.py</a> and <a href="https://github.com/Numbertext/libnumbertext/blob/master/src/Soros.js">Soros.js</a>. For usage, see source distribution (<a href="https://github.com/Numbertext/libnumbertext/archive/1.0.beta1.zip">zip</a> or <a href="https://github.com/Numbertext/libnumbertext/archive/1.0.beta1.tar.gz">tar.gz</a>).</p>
+          <h3>Python & JavaScript</h3>
+	  <p>Interpreters: <a href="https://github.com/Numbertext/libnumbertext/blob/master/src/Soros.py">Soros.py</a> and <a href="https://github.com/Numbertext/libnumbertext/blob/master/src/Soros.js">Soros.js</a>. For usage, see source distribution (<a href="https://github.com/Numbertext/libnumbertext/archive/1.0.beta1.zip">zip</a> or <a href="https://github.com/Numbertext/libnumbertext/archive/1.0.beta1.tar.gz">tar.gz</a>).</p>
         </div>
       </div>
     </div>
@@ -145,8 +145,8 @@
     <div class="row">
       <div class="col-md-3 col-sm-6">
         <div class="service"><i class="fa fa-github"></i>
-          <h3>Repository</h3>
-	  <p>on GitHub: <a href="https://github.com/Numbertext/libnumbertext">Numbertext/libnumbertext</a></p>
+          <h3>Sources</h3>
+	  <p>Repository on GitHub: <a href="https://github.com/Numbertext/libnumbertext">Numbertext/libnumbertext</a></p>
         </div>
       </div>
       <div class="col-md-3 col-sm-6">
