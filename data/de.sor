@@ -16,7 +16,7 @@
 17 siebzehn
 1(\d) $1zehn
 2(\d) [$1und]zwanzig
-3(\d) [$1und]dreissig	# [:de-CH:]
+3(\d) [$1und]dreissig	# [:de-CH:] [:de-LI:]
 3(\d) [$1und]dreißig
 6(\d) [$1und]sechzig
 7(\d) [$1und]siebzig
