@@ -11,7 +11,6 @@
 # Visit http://numbertext.org for more info on Soros language and syntax
 #
 
-__numbertext__
 (\d{1,3})\.([\d.,]+) $(\1\2)
 
 ^0 nula
@@ -31,66 +30,65 @@ __numbertext__
 16 šesnaest
 1(\d) $1naest
 
-4(\d) četrdeset $1
-5(\d) pedeset $1
-6(\d) šezdeset $1
-9(\d) devedeset $1
-(\d)0 $1deset
-(\d)(\d) $1deset $2
+4(\d) četrdeset[ $1]
+5(\d) pedeset[ $1]
+6(\d) šezdeset[ $1]
+9(\d) devedeset[ $1]
+(\d)(\d) $1deset[ $2]
 
-1(\d\d) sto $1
-2(\d\d) dvjesto $1
-3(\d\d) tristo $1
-(\d)(\d\d) $1sto $2
+1(\d\d) sto[ $1]
+2(\d\d) dvjesto[ $1]
+3(\d\d) tristo[ $1]
+(\d)(\d\d) $1sto[ $2]
 
-1(\d\d\d) tisuću $1
-2(\d\d\d) dvije tisuće $1
-([34])(\d\d\d) $1 tisuće $2
-(\d{0,1})1(\d)(\d\d\d) $(\11\2) tisuća $3
-(\d{1,2})1(\d\d\d) $(\10) jedna tisuća $2
-(\d{1,2})2(\d\d\d) $(\10) dvije tisuće $2
-(\d{1,2})([34])(\d\d\d) $(\10) $2 tisuće $3
-(\d{1,3})(\d\d\d) $1 tisuća $2
+1(\d\d\d) tisuću[ $1]
+2(\d\d\d) dvije tisuće[ $1]
+([34])(\d\d\d) $1 tisuće[ $2]
+(\d{0,1})1(\d)(\d\d\d) $(\11\2) tisuća[ $3]
+(\d{1,2})1(\d\d\d) $(\10) jedna tisuća[ $2]
+(\d{1,2})2(\d\d\d) $(\10) dvije tisuće[ $2]
+(\d{1,2})([34])(\d\d\d) $(\10) $2 tisuće[ $3]
+(\d{1,3})(\d\d\d) $1 tisuća[ $2]
 
-1(\d{6}) milion $1
-(\d{0,4})1(\d)(\d{6}) $(\11\2) miliona $3
-(\d{1,5})1(\d{6}) $(\10) jedan milion $2
-(\d{1,3})(\d{6}) $1 miliona $2
+1(\d{6}) milion[ $1]
+(\d{0,4})1(\d)(\d{6}) $(\11\2) miliona[ $3]
+(\d{1,5})1(\d{6}) $(\10) jedan milion[ $2]
+(\d{1,3})(\d{6}) $1 miliona[ $2]
 
-1(\d{9}) milijarda $1
-2(\d{9}) dvije milijarde $1
-([34])(\d{9}) $1 milijarde $2
-(\d{1,2})0(\d{9}) $(\10) milijardi $2
-(\d{0,1})1(\d)(\d{9}) $(\11\2) milijardi $3
-(\d{1,2})1(\d{9}) $(\10) jedna milijarda $2
-(\d{1,2})2(\d{9}) $(\10) dvije milijarde $2
-(\d{1,2})([34])(\d{9}) $(\10) $2 milijarde $3
-(\d{1,3})(\d{9}) $1 milijarde $2
+1(\d{9}) milijarda[ $1]
+2(\d{9}) dvije milijarde[ $1]
+([34])(\d{9}) $1 milijarde[ $2]
+(\d{1,2})0(\d{9}) $(\10) milijardi[ $2]
+(\d{0,1})1(\d)(\d{9}) $(\11\2) milijardi[ $3]
+(\d{1,2})1(\d{9}) $(\10) jedna milijarda[ $2]
+(\d{1,2})2(\d{9}) $(\10) dvije milijarde[ $2]
+(\d{1,2})([34])(\d{9}) $(\10) $2 milijarde[ $3]
+(\d{1,3})(\d{9}) $1 milijarde[ $2]
 
-1(\d{12}) bilijun $1
-(\d{0,4})1(\d)(\d{12}) $(\11\2) bilijuna $3
-(\d{1,5})1(\d{12}) $(\10) jedan bilijun $2
-(\d{1,6})(\d{12}) $1 bilijuna $2
+1(\d{12}) bilijun[ $1]
+(\d{0,4})1(\d)(\d{12}) $(\11\2) bilijuna[ $3]
+(\d{1,5})1(\d{12}) $(\10) jedan bilijun[ $2]
+(\d{1,6})(\d{12}) $1 bilijuna[ $2]
 
-1(\d{18}) trilijun $1
-(\d{0,4})1(\d)(\d{18}) $(\11\2) trilijuna $3
-(\d{1,5})1(\d{18}) $(\10) jedan trilijun $2
-(\d{1,6})(\d{18}) $1 trilijuna $2
+1(\d{18}) trilijun[ $1]
+(\d{0,4})1(\d)(\d{18}) $(\11\2) trilijuna[ $3]
+(\d{1,5})1(\d{18}) $(\10) jedan trilijun[ $2]
+(\d{1,6})(\d{18}) $1 trilijuna[ $2]
 
-1(\d{24}) kvadrilijun $1
-(\d{0,4})1(\d)(\d{24}) $(\11\2) kvadrilijuna $3
-(\d{1,5})1(\d{24}) $(\10) jedan kvadrilijun $2
-(\d{1,6})(\d{24}) $1 kvadrilijuna $2
+1(\d{24}) kvadrilijun[ $1]
+(\d{0,4})1(\d)(\d{24}) $(\11\2) kvadrilijuna[ $3]
+(\d{1,5})1(\d{24}) $(\10) jedan kvadrilijun[ $2]
+(\d{1,6})(\d{24}) $1 kvadrilijuna[ $2]
 
-1(\d{30}) kvintilijun $1
-(\d{0,4})1(\d)(\d{30}) $(\11\2) kvintilijuna $3
-(\d{1,5})1(\d{30}) $(\10) jedan kvintilijun $2
-(\d{1,6})(\d{30}) $1 kvintilijuna $2
+1(\d{30}) kvintilijun[ $1]
+(\d{0,4})1(\d)(\d{30}) $(\11\2) kvintilijuna[ $3]
+(\d{1,5})1(\d{30}) $(\10) jedan kvintilijun[ $2]
+(\d{1,6})(\d{30}) $1 kvintilijuna[ $2]
 
-1(\d{36}) sekstilijun $1
-(\d{0,4})1(\d)(\d{36}) $(\11\2) sekstilijuna $3
-(\d{1,5})1(\d{36}) $(\10) jedan sekstilijun $2
-(\d{1,6})(\d{36}) $1 sekstilijuna $2
+1(\d{36}) sekstilijun[ $1]
+(\d{0,4})1(\d)(\d{36}) $(\11\2) sekstilijuna[ $3]
+(\d{1,5})1(\d{36}) $(\10) jedan sekstilijun[ $2]
+(\d{1,6})(\d{36}) $1 sekstilijuna[ $2]
 
 # negative number
 
@@ -158,22 +156,31 @@ PLN:(\D+) $(\1: zlot, zlota, zlota, groš, groša, groša) #mm
 "(.*) USD" $(USD \1)
 "(.*) PLN" $(PLN \1)
 
-"(HRK|DKK|SEK|CZK|HUF|GBP|BAM) ([-−]?1)([.,]00?)?" jedna $(\1:us) #female, for 1
-"(HRK|DKK|SEK|CZK|HUF|GBP|BAM) ([-−]?2)([.,]00?)?" dvije $(\1:up) #female, for 2
-"(HRK|DKK|SEK|CZK|HUF|GBP|BAM) ([02-9])1([.,]00?)?" $(\20) jedna $(\1:us) #female, for numbers from 21-91 ending with 1
-"(HRK|DKK|SEK|CZK|HUF|GBP|BAM) ([02-9])2([.,]00?)?" $(\20) dvije $(\1:up) #female, for numbers from 22-92 ending with 2
-"(HRK|DKK|SEK|CZK|HUF|GBP|BAM) ([-−]?\d*)([02-9])1([.,]00?)?" $(\200) $(\30) jedna $(\1:us) #female, for numbers >100 ending with 1 but not 11
-"(HRK|DKK|SEK|CZK|HUF|GBP|BAM) ([-−]?\d*)([02-9])2([.,]00?)?" $(\200) $(\30) dvije $(\1:up) #female, for numbers >100 ending with 2 but not 12
-"([A-Z]{3}) ([-−]?1)([.,]00?)?" $2| $(\1:us)
-"([A-Z]{3}) ([-−]?\d*[02-9]1)([.,]00?)?" $2| $(\1:us)
-"([A-Z]{3}) ([-−]?[234])([.,]00?)?" $2| $(\1:up)
-"([A-Z]{3}) ([-−]?\d*[02-9][234])([.,]00?)?" $2| $(\1:up)
-"([A-Z]{3}) ([-−]?\d+)([.,]00?)?" $2| $(\1:ug)
+"(HRK|DKK|SEK|CZK|HUF|GBP|BAM) ([-−]?1)([.,]00?)?" jedna$(\1:us) #female, for 1
+"(HRK|DKK|SEK|CZK|HUF|GBP|BAM) ([-−]?2)([.,]00?)?" dvije$(\1:up) #female, for 2
+"(HRK|DKK|SEK|CZK|HUF|GBP|BAM) ([02-9])1([.,]00?)?" $(\20) jedna$(\1:us) #female, for numbers from 21-91 ending with 1
+"(HRK|DKK|SEK|CZK|HUF|GBP|BAM) ([02-9])2([.,]00?)?" $(\20) dvije$(\1:up) #female, for numbers from 22-92 ending with 2
+"(HRK|DKK|SEK|CZK|HUF|GBP|BAM) ([-−]?\d*)([02-9])1([.,]00?)?" $(\200) $(\30) jedna$(\1:us) #female, for numbers >100 ending with 1 but not 11
+"(HRK|DKK|SEK|CZK|HUF|GBP|BAM) ([-−]?\d*)([02-9])2([.,]00?)?" $(\200) $(\30) dvije$(\1:up) #female, for numbers >100 ending with 2 but not 12
+"([A-Z]{3}) ([-−]?1)([.,]00?)?" $2|$(\1:us)
+"([A-Z]{3}) ([-−]?\d*[02-9]1)([.,]00?)?" $2|$(\1:us)
+"([A-Z]{3}) ([-−]?[234])([.,]00?)?" $2|$(\1:up)
+"([A-Z]{3}) ([-−]?\d*[02-9][234])([.,]00?)?" $2|$(\1:up)
+"([A-Z]{3}) ([-−]?\d+)([.,]00?)?" $2|$(\1:ug)
 
 "((HRK|DKK|SEK|BGN|RSD) [-−]?\d+)[.,]([02-9])1" $1 $(\30) jedna $(\2:ss) #decimal, female, ending with 1 but not 11
 "((HRK|DKK|SEK|BGN|RSD) [-−]?\d+)[.,]([02-9])2" $1 $(\30) dvije $(\2:sp) #decimal, female, ending with 2 but not 12
-"(([A-Z]{3}) [-−]?\d+)[.,](01)" $1 |$(1) $(\2:ss)
-"(([A-Z]{3}) [-−]?\d+)[.,]([02-9]1)" $1 |$3 $(\2:ss)
-"(([A-Z]{3}) [-−]?\d+)[.,]([02-9][234])" $1 |$3 $(\2:sp)
-"(([A-Z]{3}) [-−]?\d+)[.,](\d)" $1 |$(\30) $(\2:sg)
-"(([A-Z]{3}) [-−]?\d+)[.,](\d\d)" $1 |$3 $(\2:sg)
+"(([A-Z]{3}) [-−]?\d+)[.,](01)" $1 |$(1)$(\2:ss)
+"(([A-Z]{3}) [-−]?\d+)[.,]([02-9]1)" $1 |$3$(\2:ss)
+"(([A-Z]{3}) [-−]?\d+)[.,]([02-9][234])" $1 |$3$(\2:sp)
+"(([A-Z]{3}) [-−]?\d+)[.,](\d)" $1 |$(\30)$(\2:sg)
+"(([A-Z]{3}) [-−]?\d+)[.,](\d\d)" $1 |$3$(\2:sg)
+
+== ordinal-number ==
+
+(\d+)	\1.
+
+== help ==
+
+"" |$(1)|, |$(2)|, |$(3)|\n$(help ordinal-number)
+(.*) \1: |$(\1 1)|, |$(\1 2)|, |$(\1 3)|\n
