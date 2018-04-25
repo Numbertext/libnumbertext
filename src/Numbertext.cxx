@@ -1,6 +1,12 @@
 #include <sstream>
 #include <fstream>
-#include <config.h>
+
+#ifdef _MSC_VER
+#define HAVE_CODECVT
+#else
+#include "config.h"
+#endif
+
 #ifdef HAVE_CODECVT
 #include <codecvt>
 #else
@@ -18,7 +24,11 @@ bool readfile(std::string filename, std::wstring& result)
     std::wifstream wif(filename);
     if (wif.fail())
         return false;
+#ifdef _MSC_VER
+    wif.imbue(std::locale(std::locale(), new std::codecvt_utf8<wchar_t>));
+#else
     wif.imbue(std::locale("en_US.UTF-8"));
+#endif
     std::wstringstream wss;
     wss << wif.rdbuf();
     result = wss.str();

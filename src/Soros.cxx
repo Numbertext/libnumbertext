@@ -30,9 +30,9 @@ Soros::Soros(std::wstring source, std::wstring filtered_lang):
 {
     source = translate(source, m, c, L"\\");     // \\, \", \;, \# -> \uE000..\uE003
     // switch off all country-dependent lines, and switch on the requested ones
-    source = std::regex_replace(source, std::wregex(L"(^|[\n;])([^\n;#]*#[^\n]*\\[:[^\n:\\]]*:][^\n]*)"), L"$1#$2");
+    source = std::regex_replace(source, std::wregex(L"(^|[\n;])([^\n;#]*#[^\n]*\\[:[^\n:\\]]*:\\][^\n]*)"), L"$1#$2");
     replace(filtered_lang, L"_", L"-");
-    source = std::regex_replace(source, std::wregex(L"(^|[\n;])#([^\n;#]*#[^\n]*\\[:" + filtered_lang + L":][^\n]*)"), L"$1$2");
+    source = std::regex_replace(source, std::wregex(L"(^|[\n;])#([^\n;#]*#[^\n]*\\[:" + filtered_lang + L":\\][^\n]*)"), L"$1$2");
     source = std::regex_replace(source, std::wregex(L"(#[^\n]*)?(\n|$)"), L";"); // remove comments
     // __numbertext__ sets the place of left zero deletion rule
     if (source.find(L"__numbertext__") == std::wstring::npos)
@@ -105,7 +105,7 @@ Soros::Soros(std::wstring source, std::wstring filtered_lang):
                             L"$$(\uE00A\uE00A|$$$1\uE00A"); // add "|" in terminating position
             s2 = std::regex_replace(s2, std::wregex(L"\\[([^$\\[\\\\]*)[$](\\d\\d?|\\([^\\)]+\\))"),
                             L"$$(\uE00A$1\uE00A$$$2\uE00A");
-            s2 = std::regex_replace(s2, std::wregex(L"\uE00A]$"), L"|\uE00A)"); // add "|" in terminating position
+            s2 = std::regex_replace(s2, std::wregex(L"\uE00A\\]$"), L"|\uE00A)"); // add "|" in terminating position
             s2 = translate(s2, L"]", L")", L"");
             s2 = std::regex_replace(s2, std::wregex(L"([$]\\d|\\))\\|[$]"), L"$1||$$"); // $()|$() -> $()||$()
             s2 = translate(s2, c, m, L"");   // \uE000..\uE003-> \, ", ;, #
