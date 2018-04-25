@@ -1,3 +1,7 @@
+2018-04-25: László Németh (nemeth numbertext org):
+	* fix platform incompabilities
+	* Greek cardinal and ordinal genders
+
 2018-04-19: László Németh (nemeth numbertext org):
 	* Soros programming language: revised draft:
 	- conditional text, prefix macros, language
@@ -26,6 +30,15 @@
 	  with currencies, eg. MONEYTEXT(1.01;"money USD")
 	  results "one and 1/100 U.S. dollar" in LibreOffice
 	  instead of "one U.S. dollar and one cent".
+
+2016-05-24: Liudas Ališauskas
+	* Fix Lithuanian module
+
+2014-05-10: Mihovil Stanić (mihovil.stanic gmail com):
+	* new Croatian module
+
+2013-03-16: Jerzy Moruś
+	* Polish translation of LibO extension resource data
 
 2012-12-06: László Németh (nemeth numbertext org):
         * src/Soros.py, soroside.py, __init__.py, test.py:
