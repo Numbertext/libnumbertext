@@ -93,7 +93,7 @@ make
 
 # test it
 
-src/numbertext -l en 123
+src/spellout -l en 123
 
 = Build Java jar =
 

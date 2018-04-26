@@ -1,24 +1,53 @@
 #include "Numbertext.hxx"
+#include "numbertext-version.h"
+
+#define LANG "LANG"
+#define PATH "NUMBERTEXTPATH"
+#define DEFPATH "/usr/share/numbertext/"
+#define DEFPATH2 "data/"
 
 void error()
 {
-    std::cerr << "numbertext: missing language module" << std::endl;
+    std::cerr << "spellout: missing language module" << std::endl;
     std::exit(EXIT_FAILURE);
 }
 
 int main(int argc, char* argv[])
 {
-    std::string lang = "en_US";
     if (argc == 1) {
-        std::cout << "Usage: numbertext [-l lang] [-p prefix] par1 [par2...]" << std::endl;
+        std::cout << "spellout " NUMBERTEXT_VERSION ": convert numbers to number names and money amounts" << std::endl;
+        std::cout << "Usage: spellout [-l lang] [-p prefix] par1 [par2...]" << std::endl;
         std::cout << "Parameter: n: number; n-m: range; n-m~s: range with step" << std::endl;
-        std::cout << "Example: numbertext -l en_US -p ord 1-10 500 1000-10000~1000" << std::endl;
-        std::cout << "Help of language module: numbertext -l es_ES help" << std::endl;
+        std::cout << "Examples: spellout 1-10 500 1000-10000~1000" << std::endl;
+        std::cout << "          spellout -l en-GB -p ordinal 1-100" << std::endl;
+        std::cout << "          spellout -l en -p ordinal-number 1-100" << std::endl;
+        std::cout << "          spellout -l en -p USD 100.45" << std::endl;
+        std::cout << "          spellout -l en -p \"money USD\" 100.45" << std::endl;
+        std::cout << "Help of language module: spellout -l es help" << std::endl;
         std::cout << "License: GNU LGPL/BSD dual-license\n";
         return 0;
     }
-    int state = 0;
+    std::vector <std::string> paths;
+    paths.push_back("");
+    paths.push_back(DEFPATH);
+    paths.push_back(DEFPATH2);
+
+    if (getenv(PATH))
+        paths.insert(paths.begin() + 1, std::string(getenv(PATH)) + "/");
+    std::string lang;
+    if (getenv(LANG)) {
+        lang = std::string(getenv(LANG));
+        lang = lang.substr(0, lang.find("."));
+    } else
+        lang = "en";
+
     Numbertext nt;
+    for(auto const& path: paths) {
+	nt.set_prefix(path);
+	if (nt.load(lang))
+	    break;
+    }
+    int state = 0;
     std::string prefix = "";
     for (int i = 1; i < argc; i++)
     {

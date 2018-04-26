@@ -71,10 +71,10 @@ AS_IF([test x"$GCC" = xyes], [
 	CXXFLAGS="$CXXFLAGS -Wall -pedantic"
 ])
 
-AC_SUBST([EXTTEXTCAT_MAJOR_VERSION],[numbertext_version_major])
-AC_SUBST([EXTTEXTCAT_MINOR_VERSION],[numbertext_version_minor])
-AC_SUBST([EXTTEXTCAT_MICRO_VERSION],[numbertext_version_micro])
-AC_SUBST([EXTTEXTCAT_VERSION],[numbertext_version])
+AC_SUBST([NUMBERTEXT_MAJOR_VERSION],[numbertext_version_major])
+AC_SUBST([NUMBERTEXT_MINOR_VERSION],[numbertext_version_minor])
+AC_SUBST([NUMBERTEXT_MICRO_VERSION],[numbertext_version_micro])
+AC_SUBST([NUMBERTEXT_VERSION],[numbertext_version])
 
 AC_CONFIG_FILES([
 libnumbertext.pc

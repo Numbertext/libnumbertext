@@ -1,4 +1,7 @@
-2018-04-25: László Németh (nemeth numbertext org):
+2018-04-26: László Németh (nemeth numbertext org):
+	* rename numbertext executable to spellout,
+	  add default data path: /usr/share/numbertext
+	  and support environmental variable NUMBERTEXTPATH
 	* fix platform incompabilities
 	* Greek cardinal and ordinal genders
 

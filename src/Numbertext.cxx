@@ -16,7 +16,7 @@ using boost::locale::conv::utf_to_utf;
 #include <locale>
 #include "Numbertext.hxx"
 
-#define MODULE_DIR "data/"
+#define MODULE_DIR ""
 #define SOROS_EXT ".sor"
 
 bool readfile(std::string filename, std::wstring& result)
