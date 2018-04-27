@@ -1,10 +1,23 @@
+/* Soros interpreter (see numbertext.org)
+ * 2018 (c) László Németh
+ * License: LGPL/BSD dual license */
+
 #ifndef SOROS_HXX_
 #define SOROS_HXX_
 
 #include <iostream>
 #include <iterator>
 #include <string>
-#include <regex>
+
+#include "config.h"
+
+#ifdef HAVE_BOOST_REGEX_HPP
+  #include <boost/regex.hpp>
+  using namespace boost;
+#else
+  #include <regex>
+  using namespace std;
+#endif
 
 class Soros {
 
@@ -18,13 +31,13 @@ private:
     static void replace(std::wstring& s, const std::wstring& search,
                 const std::wstring& replace);
 
-    std::vector<std::wregex> patterns;
+    std::vector<wregex> patterns;
     std::vector<std::wstring> values;
     std::vector<bool> begins;
     std::vector<bool> ends;
 
     static const std::wstring m, m2, c, c2, slash, pipe;
-    static const std::wregex func;
+    static const wregex func;
 };
 
 #endif

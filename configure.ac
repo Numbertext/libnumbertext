@@ -25,33 +25,28 @@ dnl Checks for headers
 AC_HEADER_STDC
 AC_CHECK_HEADERS([inttypes.h stdint.h string.h])
 
-AC_DEFINE([BOOST_ALL_NO_LIB], [], [Disable boost autolink.])
 
 dnl Checks for typedefs, structures, and compiler characteristics.
 AC_LANG([C++])
 CXXFLAGS='-Wall -std=c++11'
 
-AC_CHECK_HEADER([codecvt])
+AC_CHECK_HEADERS([codecvt regex])
 
-AS_IF([test "x$ac_cv_header_codecvt" == xyes], [
-     AS_IF([test "x$with_boost" != x], [
-          BOOST_REQUIRE
-          BOOST_LOCALE
-     ])
-     AS_IF([test "x$with_boost" == x], [
-          AC_DEFINE([HAVE_CODECVT], [1], [Define if codecvt is enabled, but not --with-boost.])
-     ])
+AS_IF([test "x$with_boost" != x], [
+        AC_DEFINE([BOOST_ALL_NO_LIB], [], [Disable boost autolink.])
+	BOOST_REQUIRE
+	BOOST_LOCALE
+	BOOST_REGEX
 ])
 
-AS_IF([test "x$ac_cv_header_codecvt" != "xyes"],
+AS_IF([test "x$ac_cv_header_codecvt" != xyes -o "x$ac_cv_header_regex" != xyes],
      [
-	 BOOST_REQUIRE
-         BOOST_LOCALE
+     AS_IF([test "x$with_boost" == x], [
+           AC_MSG_ERROR([Missing std::codecvt or std::regex support, use GCC 4.9 (or greater) or --with-boost.])
+     ])
 ])
 
 dnl Checks for functions
-AC_FUNC_VPRINTF
-AC_CHECK_FUNCS([strdup strpbrk])
 
 # ================
 # Check for cflags

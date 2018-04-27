@@ -1,3 +1,7 @@
+/* Soros interpreter (see numbertext.org)
+ * 2018 (c) László Németh
+ * License: LGPL/BSD dual license */
+
 #ifndef NUMBERTEXT_HXX
 #define NUMBERTEXT_HXX
 
@@ -16,6 +20,7 @@ public:
     std::string numbertext(int number, std::string lang);
     static std::wstring string2wstring(const std::string& s);
     static std::string wstring2string(const std::wstring& s);
+
 private:
     std::string prefix;
     std::unordered_map<std::string, Soros> modules;

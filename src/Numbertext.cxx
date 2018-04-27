@@ -1,18 +1,21 @@
+/* Soros interpreter (see numbertext.org)
+ * 2018 (c) László Németh
+ * License: LGPL/BSD dual license */
+
 #include <sstream>
 #include <fstream>
-
-#ifdef _MSC_VER
-#define HAVE_CODECVT
-#else
 #include "config.h"
+
+#ifdef HAVE_BOOST_REGEX_HPP
+  #include <boost/locale/encoding_utf.hpp>
+  #include <boost/regex.hpp>
+  using namespace boost;
+#else
+  #include <codecvt>
+  #include <regex>
+  using namespace std;
 #endif
 
-#ifdef HAVE_CODECVT
-#include <codecvt>
-#else
-#include <boost/locale/encoding_utf.hpp>
-using boost::locale::conv::utf_to_utf;
-#endif
 #include <locale>
 #include "Numbertext.hxx"
 
@@ -45,13 +48,13 @@ bool Numbertext::load(std::string lang, std::string filename)
 {
     std::wstring module;
     if (filename.length() == 0)
-        filename = prefix + std::regex_replace(lang,
-                std::regex("-"), "_") + SOROS_EXT;
+        filename = prefix + regex_replace(lang,
+                regex("-"), "_") + SOROS_EXT;
     if (!readfile(filename, module))
     {
         // try to load without the country code
-        filename = std::regex_replace(filename,
-                std::regex("[-_].." SOROS_EXT "$"), SOROS_EXT);
+        filename = regex_replace(filename,
+                regex("[-_].." SOROS_EXT "$"), SOROS_EXT);
         if (!readfile(filename, module))
             return false;
     }
@@ -89,23 +92,22 @@ std::string Numbertext::numbertext(int number, std::string lang)
 
 std::wstring Numbertext::string2wstring(const std::string& st)
 {
-#ifdef HAVE_CODECVT
+#ifndef HAVE_BOOST_REGEX_HPP
     typedef std::codecvt_utf8<wchar_t> convert_type;
     std::wstring_convert<convert_type, wchar_t> converter;
     return converter.from_bytes( st );
 #else
-    return utf_to_utf<wchar_t>(st.c_str(), st.c_str() + st.size());
+    return ::locale::conv::utf_to_utf<wchar_t>(st.c_str(), st.c_str() + st.size());
 #endif
 }
 
 std::string Numbertext::wstring2string(const std::wstring& st)
 {
-#ifdef HAVE_CODECVT
+#ifndef HAVE_BOOST_REGEX_HPP
     typedef std::codecvt_utf8<wchar_t> convert_type;
     std::wstring_convert<convert_type, wchar_t> converter;
     return converter.to_bytes( st );
 #else
-    return utf_to_utf<char>(st.c_str(), st.c_str() + st.size());
+    return ::locale::conv::utf_to_utf<char>(st.c_str(), st.c_str() + st.size());
 #endif
 }
-

@@ -1,10 +1,28 @@
 #include "Numbertext.hxx"
 #include "numbertext-version.h"
+#include <cstring>
+
+#ifdef _MSC_VER
+#define HAVE_CODECVT
+
+#else
+#include "config.h"
+#endif
+
+#ifdef HAVE_BOOST_REGEX_HPP
+#include <boost/regex.hpp>
+using namespace boost;
+#else
+#include <regex>
+using namespace std;
+#endif
 
 #define LANG "LANG"
 #define PATH "NUMBERTEXTPATH"
 #define DEFPATH "/usr/share/numbertext/"
 #define DEFPATH2 "data/"
+
+enum State { base, loaded, flag_lang, flag_prefix};
 
 void error()
 {
@@ -35,25 +53,15 @@ int main(int argc, char* argv[])
     if (getenv(PATH))
         paths.insert(paths.begin() + 1, std::string(getenv(PATH)) + "/");
     std::string lang;
-    if (getenv(LANG)) {
-        lang = std::string(getenv(LANG));
-        lang = lang.substr(0, lang.find("."));
-    } else
-        lang = "en";
 
     Numbertext nt;
-    for(auto const& path: paths) {
-	nt.set_prefix(path);
-	if (nt.load(lang))
-	    break;
-    }
-    int state = 0;
+    State state = State::base;
     std::string prefix = "";
     for (int i = 1; i < argc; i++)
     {
-        if (state != 0)
+        if (state == State::flag_lang || state == State::flag_prefix)
         {
-            if (state == 1)
+            if (state == State::flag_lang)
             {
                 lang = argv[i];
             }
@@ -62,22 +70,40 @@ int main(int argc, char* argv[])
                 prefix = argv[i];
                 prefix += " ";
             }
-            state = 0;
+            state = State::base;
             continue;
         }
         if (strcmp(argv[i], "-l") == 0)
         {
-            state = 1;
+            state = State::flag_lang;
         }
         else if (strcmp(argv[i], "-p") == 0)
         {
-            state = 2;
+            state = State::flag_prefix;
         }
         else
         {
+            if (lang.empty()) {
+                if (getenv(LANG)) {
+                    lang = std::string(getenv(LANG));
+                    lang = lang.substr(0, lang.find("."));
+                }
+                if (lang.empty())
+                    lang = "en";
+            }
+
+            if (state != State::loaded) {
+                for(auto const& path: paths) {
+                    nt.set_prefix(path);
+                    if (nt.load(lang))
+                        break;
+                }
+                state = State::loaded;
+            }
+
             std::string arg = argv[i];
-            std::smatch n;
-            if (std::regex_match(arg, n, std::regex("([0-9]+)-([0-9]+)~?([0-9]+)?")))
+            smatch n;
+            if (regex_match(arg, n, regex("([0-9]+)-([0-9]+)~?([0-9]+)?")))
             {
                 long long b = std::stoll(n[1].str());
                 long long end = std::stoll(n[2].str());
