@@ -4,20 +4,17 @@
 
 #include <sstream>
 #include <fstream>
-#include "config.h"
+
+#include "Numbertext.hxx"
 
 #ifdef HAVE_BOOST_REGEX_HPP
   #include <boost/locale/encoding_utf.hpp>
-  #include <boost/regex.hpp>
   using namespace boost;
 #else
   #include <codecvt>
-  #include <regex>
+  #include <locale>
   using namespace std;
 #endif
-
-#include <locale>
-#include "Numbertext.hxx"
 
 #define MODULE_DIR ""
 #define SOROS_EXT ".sor"

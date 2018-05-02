@@ -4,6 +4,12 @@
 
 #include "Soros.hxx"
 
+#ifdef HAVE_BOOST_REGEX_HPP
+  using namespace boost;
+#else
+  using namespace std;
+#endif
+
 #define ITERATION_LIMIT 250
 #define SEP L"\uE00A"
 

@@ -1,13 +1,12 @@
 m4_define([numbertext_version_major],[1])
 m4_define([numbertext_version_minor],[0])
 m4_define([numbertext_version_micro],[1])
-m4_define([numbertext_version],[numbertext_version_major.numbertext_version_minor.numbertext_version_micro])
+m4_define([numbertext_version],[numbertext_version_major.numbertext_version_minor.numbertext_version_micro-3])
 
 AC_PREREQ([2.68])
 
 AC_INIT([libnumbertext],[numbertext_version])
 AC_CONFIG_MACRO_DIR([m4])
-AC_LANG([C])
 
 AM_INIT_AUTOMAKE([1.11 foreign dist-xz dist-bzip2])
 AM_MAINTAINER_MODE
@@ -21,29 +20,24 @@ AC_PROG_INSTALL
 AC_PROG_LN_S
 AC_PROG_LIBTOOL
 
-dnl Checks for headers
-AC_HEADER_STDC
-AC_CHECK_HEADERS([inttypes.h stdint.h string.h])
-
-
 dnl Checks for typedefs, structures, and compiler characteristics.
 AC_LANG([C++])
 CXXFLAGS='-Wall -std=c++11'
 
 AC_CHECK_HEADERS([codecvt regex])
 
-AS_IF([test "x$with_boost" != x], [
-        AC_DEFINE([BOOST_ALL_NO_LIB], [], [Disable boost autolink.])
-	BOOST_REQUIRE
-	BOOST_LOCALE
-	BOOST_REGEX
-])
+#AS_IF([test "x$with_boost" != x], [
+#	AC_DEFINE([BOOST_ALL_NO_LIB], [], [Disable boost autolink.])
+#	BOOST_REQUIRE
+#	BOOST_LOCALE
+#	BOOST_REGEX
+#])
 
 AS_IF([test "x$ac_cv_header_codecvt" != xyes -o "x$ac_cv_header_regex" != xyes],
      [
-     AS_IF([test "x$with_boost" == x], [
+#     AS_IF([test "x$with_boost" == x], [
            AC_MSG_ERROR([Missing std::codecvt or std::regex support, use GCC 4.9 (or greater) or --with-boost.])
-     ])
+#     ])
 ])
 
 dnl Checks for functions

@@ -2,19 +2,10 @@
 #include "numbertext-version.h"
 #include <cstring>
 
-#ifdef _MSC_VER
-#define HAVE_CODECVT
-
-#else
-#include "config.h"
-#endif
-
 #ifdef HAVE_BOOST_REGEX_HPP
-#include <boost/regex.hpp>
-using namespace boost;
+  using namespace boost;
 #else
-#include <regex>
-using namespace std;
+  using namespace std;
 #endif
 
 #define LANG "LANG"
