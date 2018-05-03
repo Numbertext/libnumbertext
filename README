@@ -102,7 +102,7 @@ make
 
 = Build and using LibreOffice Extension =
 
-make -f Makefile lo
+make -f Makefile.orig lo
 
 and install the *.oxt package by
 Tools->Extension Manager->Add of LibreOffice.
