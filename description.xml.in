@@ -11,7 +11,7 @@ xmlns:xlink="http://www.w3.org/1999/xlink">
         <name lang="pl">Funkcje NUMBERTEXT () i MONEYTEXT () dla programu Calc</name>
         <name lang="sr">NUMBERTEXT() и MONEYTEXT() функције за Рачун</name>
         <name lang="sh">NUMBERTEXT() i MONEYTEXT() funkcije za Račun</name>
-        <name lang="sh">NUMBERTEXT() וMONEYTEXT() פונקציות גליון Calc</name>
+        <name lang="he">NUMBERTEXT() וMONEYTEXT() פונקציות גליון Calc</name>
     </display-name>
 <!--!echo "<version value=\"`head -1 VERSION`\" />"-->
     <identifier value="org.numbertext-calc-addin" />
