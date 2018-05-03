@@ -105,7 +105,26 @@
 
 
 
-# TASK 5 – Optional text, depending from the return value
+# TASK 5 – Deeper in recursion
+#
+# A recursive call can result further recursive calls,
+# allowing to break a complex problem into smaller parts,
+# or iterate a repeating task, as in the following
+# example.
+#
+# The first line of the following program uses the
+# boundary indicator $ to handle the originally 4-digit
+# or less numbers differently. What is the full program
+# doing with the other numbers? Try to answer, and
+# check it in a different IDE window!
+#
+# ^(\d{1,4})$ \1
+# (\d+)(\d{3}) $1,\2
+# .* \0
+
+
+
+# TASK 6 – Optional text, depending from the return value
 #
 # Previously, we had a different program line for 20 and one
 # for 21–29 , because English uses a hyphen between the
@@ -121,7 +140,7 @@
 
 
 
-# TASK 6 – Language-dependent program lines
+# TASK 7 – Language-dependent program lines
 #
 # Using [:lang-code:] in a comment sets a
 # language-dependent program line. For example,
@@ -146,7 +165,7 @@
 
 
 
-# TASK 7 – More Functions
+# TASK 8 – More Functions
 #
 # In Soros language, there is only one real function, the $(),
 # but it’s possible to create function-like structures by using
@@ -189,7 +208,7 @@
 
 
 
-# TASK 8 – Prefix “macros”
+# TASK 9 – Prefix “macros”
 #
 # Prefix macros simplify prefix handling. We can define
 # the previous ordinal function as follows, too
@@ -224,7 +243,7 @@
 
 
 
-# TASK 9 – Join Numbertext development!
+# TASK 10 – Join Numbertext development!
 #
 # Your contribution will help LibreOffice and other free
 # softwares to support chapter numbering with number names,
@@ -250,7 +269,7 @@ SCROLL DOWN FOR SOLUTIONS
 
 
 
-# SOLUTION – TASK 1–7
+# SOLUTION – TASK 1–7 (for TASK 5, see next SOLUTION)
 #
 # Solutions marked as TASK 1–7 in comments:
 #
@@ -361,9 +380,35 @@ SCROLL DOWN FOR SOLUTIONS
 
 
 
-# SOLUTION – TASK 8
+# SOLUTION – TASK 5
 #
-# As before in TASK 7:
+# This is a thousand separator
+# program extended for all numbers.
+# The middle line put a comma before
+# the last three digits, and do the
+# same for the remaining digits using
+# a recursive call, and in that a
+# next recursive call etc.
+#
+# ^(\d{1,4})$ \1
+# (\d+)(\d{3}) $1,\2
+# .* \0
+#
+# For example, for the input “10000000”
+# the inner states of the calls:
+#
+# First call:	$(10000),000
+# Second call:	$(10),000
+# Third call:	10
+#
+# resulting “10,000,000” in the end of
+# all returns.
+
+
+
+# SOLUTION – TASK 9
+#
+# As before in TASK 8:
 #
 # "ordinal (\d+)"	$(ordinal |$1)
 # "ordinal (.*)one"	\1first
