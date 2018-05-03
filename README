@@ -12,15 +12,25 @@ Soros interpreter in Java: see NUMBERTEXT.org
 
 * Not in LibreOffice Numbertext extension, see http://NUMBERTEXT.org.
 
-License: LGPL/BSD dual-license, 2009-2018 (C) László Németh (nemeth at numbertext dot org)
+Copyright: 2009-2018 (C) László Németh (nemeth at numbertext dot org)
+License: LGPL-3+/Modified BSD dual-license
 
 Numbertext language data (Soros programs):
+License: LGPL-3+/Modified BSD dual-license (except Serbian)
 
-LGPL/BSD dual-license, 2009-2018 (C) László Németh et al. (see AUTHORS)
+Copyright: 2009-2018 (C) László Németh et al. (see AUTHORS)
+Croatian: 2014 (C) Mihovil Stanić (mihovil dot stanic at gmail dot com)
+Hebrew module: 2010 (C) Alex Bodnaru (alexbodn at 012 dot net dot il):
+French (Belgian and Swiss): 2009 (C) Olivier Ronez
+Indonesian: 2010 (C) Eko Prasetiyo (ekoprasetiyo at gmail)
+Latvian: 2012 (C) Asterisks at OOo Wiki
+Luxembourgish: 2009 (C) Michel Weimerskirch (michel at weimerskirch dot net)
+Portuguese: 2009 (C) Eduardo Moreno (emoreno at tokonhu dot com)
+Turkish: 2009 (C) Randem
 
-Serbian modules:
+Serbian: 2009 (C) Goran Rakić (grakic at devbase dot net)
+License: CC BY-SA/LGPL-3+/Modified BSD tri-license
 
-CC/LGPL/BSD tri-license, 2009 (C) Goran Rakić (grakic at devbase dot net)
 
 * Note: for full distribution with specifications, IDE and JavaScript
   implementation, see http://NUMBERTEXT.org
