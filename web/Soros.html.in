@@ -64,6 +64,20 @@ function load_prg() {
 	document.getElementById('number').value = tutorial5 ? "-1;-0;0-19;20-29~2;30-40~3;60-79~5;90-120~5;ordinal 0;ordinal 1;ordinal 2;ordinal 3;ordinal 100;ordinal 101" : (tutorial4 ? "1;10;100;1000;10000;1000000;1234567;10000000;12345678;100000000;123456789;1000000000;1234567890" : "0-120");
 	workspace.value = document.getElementById(modulename).value;
 }
+function set_cursor() {
+	var input = document.getElementById('def');
+	if (input.setSelectionRange) {
+		input.focus();
+		input.setSelectionRange(0, 0);
+	}
+	else if (input.createTextRange) {
+		var range = input.createTextRange();
+		range.collapse(true);
+		range.moveEnd('character', 0);
+		range.moveStart('character', 0);
+		range.select();
+	}
+}
 function copy_result() {
 	document.getElementById('number').value = document.getElementById('result').value;
 }
@@ -86,7 +100,7 @@ function copy_result() {
 	<div class='row' id='header'>
 	<label for="def" accesskey="e">Program <u>e</u>ditor</label>&nbsp;&nbsp;
 	<label for="select" accesskey="l"><u>L</u>oad:</label>
-	<select id="select" onchange="load_prg(); comp(); convert();">
+	<select id="select" onchange="load_prg(); comp(); convert(); set_cursor();">
 	    <option value="xx">New module</option>
 <!-- **************************************************************************************************** -->
 <!--!cd ../doc;for i in *.sor; do name=`basename $i .sor | sed "s/_/ – Part /"`; echo "<option value='$name'>$name</option>"; done-->

@@ -124,7 +124,7 @@
       <div class="col-md-3 col-sm-6">
         <div class="service"> <i class="fa fa-cogs"></i>
           <h3>C++</h3>
-	  <p>Source distribution (1.0 beta 2): <a href="https://github.com/Numbertext/libnumbertext/releases/download/1.0.beta2/libnumbertext-1.0.1.tar.xz">libnumbertext-1.0.1.tar.xz</a> (<a href="https://github.com/Numbertext/libnumbertext/releases/tag/1.0.beta2">installation</a>)</p>
+	  <p>Source distribution (1.0 beta 2): <a href="https://github.com/Numbertext/libnumbertext/releases/download/1.0.beta2/libnumbertext-1.0.1-3.tar.xz">libnumbertext-1.0.1-3.tar.xz</a> (<a href="https://github.com/Numbertext/libnumbertext/releases/tag/1.0.beta2">installation</a>)</p>
         </div>
       </div>
       <div class="col-md-3 col-sm-6">
