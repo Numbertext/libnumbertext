@@ -65,14 +65,14 @@
 
 # unit/subunit singular/plural
 
-AUD 澳大利亚元
+AUD 澳元
 CHF 瑞士法郎
 CNY 人民币
-EUR 歐元
+EUR 欧元
 GBP 英镑
-HKD 港元
-JPY 日圓
-MOP 澳門幣
+HKD 港币
+JPY 日圆
+MOP 澳门元
 USD 美元
 
 # 1/10 角
@@ -89,7 +89,7 @@ USD 美元
 2$ 贰
 2 贰
 3 叁
-4 贰
+4 肆
 5 伍
 6 陆
 7 柒
@@ -103,10 +103,10 @@ USD 美元
 (\d)0{3} $(formal \1)仟
 (\d)0(\d\d) $(formal \1)仟零$(formal \2)
 (\d)(\d\d\d) $(formal \1)仟$(formal \2)
-(\d{1,4})0{4} $(formal \1)|萬
-(\d{1,4})0(\d{3}) $(formal \1)|萬零$(formal \2)
-(\d{1,4})(\d{4}) $(formal \1)|萬$(formal \2)
-(\d{1,4})0{8} $(formal \1)|億
+(\d{1,4})0{4} $(formal \1)|万
+(\d{1,4})0(\d{3}) $(formal \1)|万零$(formal \2)
+(\d{1,4})(\d{4}) $(formal \1)|万$(formal \2)
+(\d{1,4})0{8} $(formal \1)|亿
 (\d{1,4})0(\d{7}) $(formal \1)|亿零$(formal \2)
 (\d{1,4})(\d{8}) $(formal \1)|亿$(formal \2)
 (\d{1,4})0{12} $(formal \1)|兆
@@ -150,14 +150,14 @@ USD 美元
 
 # unit/subunit singular/plural
 
-AUD 澳大利亚元
+AUD 澳元
 CHF 瑞士法郎
 CNY 人民币
-EUR 歐元
+EUR 欧元
 GBP 英镑
-HKD 港元
-JPY 日圓
-MOP 澳門幣
+HKD 港币
+JPY 日圆
+MOP 澳门元
 USD 美元
 
 # 1/10 角
