@@ -118,20 +118,20 @@ USD:(.)	$(\1: dollaro USA, cent, cent)
 
 == ordinal-feminine ==
 
-([-−]?\d+) $(ordinal-feminine |$1)
-un[ao]	\1prima
-due	\1seconda
-tre	\1terza
-quattro	\1quarta
-cinque	\1quinta
-sei	\1sesta
-sette	\1settima
-otto	\1ottava
-nove	\1nona
-dieci	\1decima
-(.*tr)é \1eesima
-(.*sei) \1esima
-"(.*)[^ ][ ]*" \1esima
+([-−]?\d+)	$(ordinal-feminine |$1)
+(.*)un[ao]	\1prima
+(.*)udue	\1seconda
+(.*)tre		\1terza
+(.*)quattro	\1quarta
+(.*)cinque	\1quinta
+(.*)sei		\1sesta
+(.*)sette	\1settima
+(.*)otto	\1ottava
+(.*)nove	\1nona
+(.*)dieci	\1decima
+(.*tr)é		\1eesima
+(.*sei)		\1esima
+"(.*)[^ ][ ]*"	\1esima
 
 == ordinal(-masculine)? ==
 ([-−]?\d+) $(ordinal-masculine $(ordinal-feminine \2))
