@@ -25,6 +25,7 @@ Eduardo Moreno (emoreno at tokonhu dot com):
 	- bug reports about Spanish module and short language code "es"
 
 Eko Prasetiyo (ekoprasetiyo at gmail):
+
 	- author of Indonesian module
 
 Goran Rakić (grakic at devbase dot net):
@@ -50,6 +51,10 @@ Olivier Ronez:
 Mihovil Stanić (mihovil dot stanic at gmail dot com):
 
 	- author of Croation module (hr)
+
+Suokunlong: (suokunlong at 126 dot com):
+
+	- author of real native Simplified Chinese module (zh)
 
 Michel Weimerskirch (michel at weimerskirch dot net):
 
@@ -77,6 +82,10 @@ Adolfo Jayme Barrientos (fitojb at ubuntu dot com):
 
 	- fix typo on web page
 
+Stephan Bergmann:
+
+	- libnumbertext configure patch
+
 Claudio Colombo (claudio underline c77 at yahoo dot it):
 
 	- it_IT bug report ("*unocento")
@@ -90,6 +99,11 @@ Susana Sotelo Docío:
 
 	- fix for numbers containing the string "ientos" (doscientos/as,
 	  quinientos/as, novecientos/as, etc) in Spanish module
+
+
+Rene Engelhard:
+
+	- Debian packaging, libnumbertext bug reports
 
 Sophie Gautier:
 
@@ -115,6 +129,10 @@ Kent Karlsson:
 Mantas Kriaučiūnas at Launchpad.net:
 
 	- hints for Lithuanian module
+
+Rimas Kudelis:
+
+	- bug report for default Lithuanian currency
 
 mike8p at launchpad.net:
 
@@ -165,6 +183,10 @@ mrw at OOo Extension site:
 
 	- bug report about document language detection in OOo 3.2
 
+Valter Mura:
+
+	- bug report for Italian
+
 Stephan Nilsson (Stephan at Nilsson dot tf):
 	- sv_SE bug report: the Swedish 7 is "sju", not *sjo
 
@@ -179,6 +201,11 @@ Gwenaël Quenette (g_quenette at yahoo dot fr):
 Eike Rathke (er at OpenOffice dot org):
 
 	- suggested new namespace and compatibility name usage.
+
+
+Modestas Rimkus:
+
+	- Lithuanian typo, correct ordinal indicator
 
 rogerclc at OOo extesion site:
 
