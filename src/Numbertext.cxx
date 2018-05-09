@@ -72,7 +72,7 @@ bool Numbertext::numbertext(std::wstring& number, std::string lang)
     return true;
 }
 
-bool Numbertext::numbertext(std::string& number, std::string lang)
+bool Numbertext::numbertext(std::string& number, const std::string& lang)
 {
     std::wstring wnumber = string2wstring(number);
     bool result = numbertext(wnumber, lang);
@@ -80,7 +80,7 @@ bool Numbertext::numbertext(std::string& number, std::string lang)
     return result;
 }
 
-std::string Numbertext::numbertext(int number, std::string lang)
+std::string Numbertext::numbertext(int number, const std::string& lang)
 {
     std::wstring wnumber = std::to_wstring(number);
     numbertext(wnumber, lang);
