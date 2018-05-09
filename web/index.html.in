@@ -325,6 +325,7 @@ var keep = this
 
 language = {
 "af": "Afrikaans",
+"bg": "Български",
 "ca": "Català",
 "cs": "Česky",
 "da": "Dansk",
@@ -375,6 +376,7 @@ language = {
 
 default_currency = {
 "af": "ZAR",
+"bg": "BGN",
 "ca": "EUR",
 "cs": "CZK",
 "de": "EUR",
