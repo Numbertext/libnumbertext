@@ -1,6 +1,6 @@
 all:
 	cp ../data/*.sor org/numbertext/data
-	CLASSPATH=. javac org/numbertext/Numbertext.java
+	CLASSPATH=. javac -encoding utf8 org/numbertext/Numbertext.java
 	jar cfm numbertext.jar Manifest.txt org
 	java -jar numbertext.jar
 
