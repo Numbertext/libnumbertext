@@ -22,6 +22,14 @@ Asterisks at OOo Wiki:
 
 	- author of Latvian module
 
+Mike Kaganski (mikekaganski at hotmail dot com:
+
+	- author of ordinal numbers of Russian module (ru)
+
+	- various fixes
+
+	- tdf#115007: add LibreOffice NatNum codes for cardinal/ordinal number names/indicators
+
 Eduardo Moreno (emoreno at tokonhu dot com):
 
 	- author of the first version of the Portuguese module (pt-PT)
@@ -190,6 +198,12 @@ mrw at OOo Extension site:
 Valter Mura:
 
 	- bug report for Italian
+
+Julien Nabet (serval2412 at yahoo dot fr):
+
+	- fix cppcheck warnings
+
+	- report locale compiling problem
 
 Stephan Nilsson (Stephan at Nilsson dot tf):
 	- sv_SE bug report: the Swedish 7 is "sju", not *sjo
