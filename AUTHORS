@@ -112,7 +112,6 @@ Susana Sotelo Docío:
 	- fix for numbers containing the string "ientos" (doscientos/as,
 	  quinientos/as, novecientos/as, etc) in Spanish module
 
-
 Rene Engelhard:
 
 	- Debian packaging, libnumbertext bug reports
@@ -129,6 +128,10 @@ Lucian Adrian Grijincu (lucian dot grijincu at gmail):
 
 	- reported missing gender support in Romanian MONEYTEXT implementation:
 	  https://bugs.launchpad.net/bugs/421309)
+
+Stanislav Horáček:
+
+       - bug report for Czech module
 
 Jmzambon at OOO Wiki:
 
@@ -232,6 +235,10 @@ rogerclc at OOo extesion site:
 Johanna Sørensen:
 
 	- bug report about "Dansk" language name on Numbertext.org home page
+
+Martin Srebotnjak:
+
+       - testing Slovenian module, information about ordinal and ordinal adverbial numbers
 
 Marcin Stępniak:
 

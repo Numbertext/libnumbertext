@@ -98,7 +98,7 @@
 
           <h4>Background</h4>
 
-	  <p>NUMBERTEXT/MONEYTEXT functions and Soros programming language was developed in 2009 for generalization of BAHTTEXT spreadsheet function, a function of Microsoft Excel for number to Thai number name and currency conversion, standardized by ECMA–376 and ISO/IEC 29 500:2008 Office Open XML format.</p>
+	  <p>NUMBERTEXT/MONEYTEXT functions and Soros programming language was developed in 2009 for generalization of BAHTTEXT spreadsheet function, a function of Microsoft Excel for number to Thai number name and currency conversion, standardized by ECMA–376 and ISO/IEC 29&nbsp;500:2008 Office Open XML format.</p>
 	  <p>Soros programming language is based on regular expressions, just like its small interpreters (in Python: less, than 120 lines). Despite its simplicity, it can handle language variants, complex spelling functions and rules in a concise manner.</p>
         </div>
       </div>
@@ -283,7 +283,7 @@
 <div id="footer">
   <div class="container">
     <p>Copyright &copy; Numbertext.org. Designed by <a href="http://www.templatewire.com" rel="nofollow">TemplateWire</a>.
-    Cover Photo: <a href="https://commons.wikimedia.org/wiki/File:Tablet_with_Cuneiform_Inscription_LACMA_M.79.106.2_(2_of_4).jpg">Wikimedia Commons</a></p>
+    Cover Photo: <a href="https://commons.wikimedia.org/wiki/File:Tablet_with_Cuneiform_Inscription_LACMA_M.79.106.2_(2_of_4).jpg">Wikimedia&nbsp;Commons</a></p>
   </div>
 </div>
 
@@ -344,6 +344,7 @@ language = {
 "hr": "Hrvatski",
 "hu": "Magyar",
 "id": "Bahasa Indonesia",
+"is": "Íslenska",
 "it": "Italiano",
 "ja": "日本語",
 "ja_JP_2": "大字",
@@ -392,6 +393,7 @@ default_currency = {
 "fr-BE": "EUR",
 "fr-CH": "CHF",
 "id": "IDR",
+"is": "ISK",
 "it": "EUR",
 "ja": "JPY",
 "ko-KP": "KPW",
