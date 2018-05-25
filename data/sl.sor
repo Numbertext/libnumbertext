@@ -88,6 +88,47 @@ USD:(.+) $(\1: ameriški dolar, ameriška dolarja, ameriški dolarji, ameriške 
 "(([A-Z]{3}) [-−]?\d+)[.,](\d)" $1 $(\30)$(\2:s5)
 "(([A-Z]{3}) [-−]?\d+)[.,](\d\d)" $1 $3$(\2:s5)
 
+== cardinal(-feminine|-neuter)? ==
+
+(\d+) $2
+
+== cardinal-masculine ==
+
+(\d+) $(cardinal-masculine |$1)
+(.*)dve \1dva
+(.*) \1
+
+== cardinal-adverbial ==
+
+(\d+) $(cardinal-adverbial |$1)
+(.*)ena \1enkrat
+(.*)dve \1dvakrat
+(.*) \1krat
+
+== ordinal(-masculine)? ==
+
+(\d+) $(ordinal |$2)
+"(.*) (.*)" $(ordinal \2\3) # remove spaces
+(.*)ena \2prvi
+(.*)dva \2drugi
+(.*)tri \2tretji
+(.*)štiri \2četrti
+(.*) \2i
+
+== ordinal-feminine ==
+
+(\d+) $(ordinal-feminine $(ordinal |$2))
+(.*)i \1a
+
+== ordinal-neuter ==
+
+(\d+) $(ordinal-feminine $(ordinal |$2))
+(.*)i \1o
+
+== ordinal-adverbial ==
+
+(\d+) $(ordinal |$1)č
+
 == ordinal-number ==
 
 (\d+)	\1.
@@ -96,3 +137,4 @@ USD:(.+) $(\1: ameriški dolar, ameriška dolarja, ameriški dolarji, ameriške 
 
 "" |$(1)|, |$(2)|, |$(3)|\n$(help ordinal-number)
 (.*) \1: |$(\1 1)|, |$(\1 2)|, |$(\1 3)|\n
+
