@@ -110,19 +110,19 @@ USD:(.+) $(\1: ameriški dolar, ameriška dolarja, ameriški dolarji, ameriške 
 (\d+) $(ordinal |$2)
 "(.*) (.*)" $(ordinal \2\3) # remove spaces
 (.*)ena \2prvi
-(.*)dva \2drugi
+(.*)dve \2drugi
 (.*)tri \2tretji
 (.*)štiri \2četrti
 (.*) \2i
 
 == ordinal-feminine ==
 
-(\d+) $(ordinal-feminine $(ordinal |$2))
+(\d+) $(ordinal-feminine $(ordinal \1))
 (.*)i \1a
 
 == ordinal-neuter ==
 
-(\d+) $(ordinal-feminine $(ordinal |$2))
+(\d+) $(ordinal-neuter $(ordinal \1))
 (.*)i \1o
 
 == ordinal-adverbial ==
@@ -134,7 +134,6 @@ USD:(.+) $(\1: ameriški dolar, ameriška dolarja, ameriški dolarji, ameriške 
 (\d+)	\1.
 
 == help ==
-
-"" |$(1)|, |$(2)|, |$(3)|\n$(help ordinal-number)
+"" |$(1)|, |$(2)|, |$(3)|\n$(help cardinal-feminine)$(help cardinal-masculine)$(help cardinal-neuter)$(help ordinal-feminine)$(help ordinal-masculine)$(help ordinal-neuter)$(help ordinal-number)
 (.*) \1: |$(\1 1)|, |$(\1 2)|, |$(\1 3)|\n
 
