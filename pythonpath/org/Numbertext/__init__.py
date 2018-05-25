@@ -122,6 +122,7 @@ class NUMBERTEXT( unohelper.Base, XNumberText):
 def get_numbertext(num, conv):
         try:
                 n = conv.run(num)
+                n = n[0].upper() + n[1:]
         except:
                 return "Conversion error"
         if n == "":
