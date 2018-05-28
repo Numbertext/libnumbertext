@@ -1,3 +1,3 @@
 Main-Class: org.numbertext.Numbertext
-Implementation-Version: 1.0b2
-Implementation-Date: 2018-04-26
+Implementation-Version: 1.0b3
+Implementation-Date: 2018-05-28

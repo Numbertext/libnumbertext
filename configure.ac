@@ -1,7 +1,7 @@
 m4_define([numbertext_version_major],[1])
 m4_define([numbertext_version_minor],[0])
-m4_define([numbertext_version_micro],[1])
-m4_define([numbertext_version],[numbertext_version_major.numbertext_version_minor.numbertext_version_micro-3])
+m4_define([numbertext_version_micro],[2])
+m4_define([numbertext_version],[numbertext_version_major.numbertext_version_minor.numbertext_version_micro])
 
 AC_PREREQ([2.68])
 

@@ -1,3 +1,31 @@
+2018-05-28: beta 3 release:
+	* src: numbertext renamed to spellout
+	* libnumbertext: fix cppcheck warnings by Julien Nabet
+	* java: add -encoding utf8 to javac call by Rene Engelhard
+	* LO extension: default capitalization, missing capitalization
+	          was reported by TileStonePro
+	* bg.sor: new Bulgarian module by Mihail Balabanov
+	* cs.sor: fix for ordinal numbers, bug report by Stanislav Horáček
+	* hu.sor: add number, letter, day and month affixation
+	          for extended number, cross reference and date formats
+	* is.sor: new Icelandic module by László Németh
+	* it.sor: add missing groups in ordinal numbers,
+	          the problem was reported by Valter Mura
+	* lt.sor: fix typo, correct ordinal-number,
+	          problem was reported by Modestas Rimkus
+	* ru.sor: ordinal numbers and fixes by Mike Kaganski
+	* sl.sor: ordinals, also genders and adverbials,
+	          using also information by Martin Srebotnjak
+	* sv.sor: fix typos
+	* zh.sor: real native Simplified Chinese expressions by Suokunlong
+	* *.xcu:
+	  - Bulgarian translation by Mihail Balabanov
+	  - Spanish translation by Adolfo Jayme Barrientos
+	  - fix typo by Rene Engelhard
+	* web:
+	  - fix typo by Adolfo Jayme Barrientos
+	  - add Bulgarian and Icelandic modules
+
 2018-04-26: László Németh (nemeth numbertext org):
 	* rename numbertext executable to spellout,
 	  add default data path: /usr/share/numbertext

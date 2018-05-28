@@ -2,7 +2,7 @@ Soros interpreters for C++11, Java, JavaScript and Python
 
 Language-neutral NUMBERTEXT and MONEYTEXT functions for LibreOffice Calc
 
-version 1.0 beta 2 (2018-05-03)
+version 1.0 beta 3 (2018-05-28)
 
 Numbertext LibreOffice extension,
 Soros programming language specification (draft) and IDE*,
@@ -19,6 +19,7 @@ Numbertext language data (Soros programs):
 License: LGPL-3+/Modified BSD dual-license (except Serbian)
 
 Copyright: 2009-2018 (C) László Németh et al. (see AUTHORS)
+Bulgarian: 2018 (C) Mihail Balabanov (m dot balabanov at gmail dot com)
 Croatian: 2014 (C) Mihovil Stanić (mihovil dot stanic at gmail dot com)
 Hebrew module: 2010 (C) Alex Bodnaru (alexbodn at 012 dot net dot il):
 French (Belgian and Swiss): 2009 (C) Olivier Ronez
@@ -41,6 +42,7 @@ WITHOUT WARRANTY OF ANY KIND, either express or implied.
 = Supported languages in this version =
 
 af	Africaans
+bg	Bulgarian
 ca	Catalan
 cs	Czech
 da	Danish
@@ -64,6 +66,7 @@ he	Hebrew
 hr	Croatian
 hu	Hungarian
 id	Indonesian
+is	Icelandic
 it	Italian
 ja	Japanese
 ko	South-Korean
