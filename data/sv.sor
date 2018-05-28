@@ -67,7 +67,7 @@ pl:.* er
 
 CHF:(\D+,.*) $(\1: cardinal, schweizisk franc, schweizisk franc, cardinal, centime, centime)
 CNY:(\D+,.*) $(\1: cardinal, yuan renminbi, yuan renminbi, cardinal, fen, fen)
-EUR:(\D+,.*) $(\1: cardinal, euro, euro, cardn, cent, cent)
+EUR:(\D+,.*) $(\1: cardinal, euro, euro, cardinal-neuter, cent, cent)
 GBP:(\D+,.*) $(\1: cardinal-neuter, brittiskt pund, brittiskt pund, cardinal, penny, pence)
 JPY:(\D+,.*) $(\1: cardinal, yen, yen, cardinal, sen, sen)
 SEK:(\D+,.*) $(\1: cardinal, svensk krona, svenska kronor, cardinal-neuter, öre, öre)
@@ -81,9 +81,9 @@ USD:(\D+,.*) $(\1: cardinal, US-dollar, US-dollar, cardinal-neuter, cent, cent)
 "(CNY [-−]?\d+[.,]\d)1" $1 $2 fen
 "(CNY [-−]?\d+[.,]\d)(\d)" $1 $2 fen
 
-"(([A-Z]{3}) [-−]?\d+)[.,](01)" $1$(\2:ss, 1)
-"(([A-Z]{3}) [-−]?\d+)[.,](\d)" $1$(\2:sp, \30)
-"(([A-Z]{3}) [-−]?\d+)[.,](\d\d)" $1$(\2:sp, \3)
+"(([A-Z]{3}) [-−]?\d+)[.,](01)" $1 $(\2:ss, 1)
+"(([A-Z]{3}) [-−]?\d+)[.,](\d)" $1 $(\2:sp, \30)
+"(([A-Z]{3}) [-−]?\d+)[.,](\d\d)" $1 $(\2:sp, \3)
 
 == cardinal-neuter ==
 
