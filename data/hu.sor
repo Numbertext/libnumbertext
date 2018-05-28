@@ -271,11 +271,11 @@ szerda	szerdától
 == -n ==
 
 hétfő		hétfőn
-kedd		kedden
+(kedd|péntek)	\1en
 szerda		szerdán
 csütörtök	csütörtökön
-péntek		pénteken
-(szombat|vasárnap)	\1on
+szombat		szombaton
+vasárnap	vasárnap
 
 (.*5[}\)\]]?)		\1-ön
 ([{\(\[]?(0|.*2|.*[^0]0{6,8}|.*[^0]0{12,14}|[abcdeghijkopqtuvwzABCDEGHIJKOPQTUVWZ][.]?)[}\)\]]?)	\1-n
