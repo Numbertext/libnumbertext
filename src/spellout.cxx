@@ -37,9 +37,9 @@ int main(int argc, char* argv[])
         return 0;
     }
     std::vector <std::string> paths;
-    paths.push_back("");
-    paths.push_back(DEFPATH);
-    paths.push_back(DEFPATH2);
+    paths.emplace_back("");
+    paths.emplace_back(DEFPATH);
+    paths.emplace_back(DEFPATH2);
 
     if (getenv(PATH))
         paths.insert(paths.begin() + 1, std::string(getenv(PATH)) + "/");

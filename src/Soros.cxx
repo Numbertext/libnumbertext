@@ -104,7 +104,7 @@ Soros::Soros(std::wstring source, std::wstring filtered_lang):
             s = regex_replace(s, wregex(L"\\$$"), L"") + L"$";
             try
             {
-                patterns.push_back(wregex(s));
+                patterns.emplace_back(s);
             } catch (...)
             {
                 std::wcout << L"Soros: bad regex in \"" << sp[1].str() << "\"" << std::endl;
