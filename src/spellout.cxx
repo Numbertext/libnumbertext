@@ -2,7 +2,7 @@
 #include "numbertext-version.h"
 #include <cstring>
 
-#ifdef HAVE_BOOST_REGEX_HPP
+#ifdef HAVE_BOOST_REGEX
   using namespace boost;
 #else
   using namespace std;

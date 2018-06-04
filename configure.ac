@@ -26,18 +26,19 @@ CXXFLAGS='-Wall -std=c++11'
 
 AC_CHECK_HEADERS([codecvt regex])
 
-#AS_IF([test "x$with_boost" != x], [
-#	AC_DEFINE([BOOST_ALL_NO_LIB], [], [Disable boost autolink.])
-#	BOOST_REQUIRE
-#	BOOST_LOCALE
-#	BOOST_REGEX
-#])
+AC_ARG_ENABLE([boost],
+	[AS_HELP_STRING([--enable-boost], [Use boost for regex operations instead of std, usefull for old gcc])],
+	[enable_boost="$enableval"],
+	[enable_boost=no]
+)
 
-AS_IF([test "x$ac_cv_header_codecvt" != xyes -o "x$ac_cv_header_regex" != xyes],
-     [
-#     AS_IF([test "x$with_boost" == x], [
-           AC_MSG_ERROR([Missing std::codecvt or std::regex support, use GCC 4.9 (or greater) or --with-boost.])
-#     ])
+AS_IF([test "x$ac_cv_header_codecvt" != xyes -o "x$ac_cv_header_regex" != xyes], [
+	AS_IF([test "x$enable_boost" != "xyes"], [
+		AC_MSG_ERROR([Missing std::codecvt or std::regex support, use GCC 4.9 (or greater) or --enable-boost.])
+	], [
+		AX_BOOST_BASE([1.47.0])
+		AX_BOOST_REGEX
+	])
 ])
 
 dnl Checks for functions
@@ -81,5 +82,6 @@ AC_MSG_NOTICE([
 ==============================================================================
 Build configuration:
 	werror:          ${enable_werror}
+	boost:           ${enable_boost}
 ==============================================================================
 ])

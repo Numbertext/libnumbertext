@@ -13,7 +13,7 @@
 #include "config.h"
 #endif
 
-#ifdef HAVE_BOOST_REGEX_HPP
+#ifdef HAVE_BOOST_REGEX
   #include <boost/regex.hpp>
 #else
   #include <regex>
@@ -31,7 +31,7 @@ private:
     static void replace(std::wstring& s, const std::wstring& search,
                 const std::wstring& replace);
 
-#ifdef HAVE_BOOST_REGEX_HPP
+#ifdef HAVE_BOOST_REGEX
     std::vector<boost::wregex> patterns;
     static const boost::wregex func;
 #else

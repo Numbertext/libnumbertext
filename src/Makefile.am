@@ -1,6 +1,6 @@
 AM_CXXFLAGS =	-D_THREAD_SAFE -D_GNU_SOURCE -DVERBOSE
 
-LIBS += $(BOOST_REGEX_LIBS)
+LIBS += $(BOOST_REGEX_LIB)
 
 libnumbertext_1_0_includedir = $(includedir)/libnumbertext
 libnumbertext_1_0_include_HEADERS = \
