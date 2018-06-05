@@ -4,7 +4,7 @@
 
 #include "Soros.hxx"
 
-#ifdef HAVE_BOOST_REGEX_HPP
+#ifdef HAVE_BOOST_REGEX
   using namespace boost;
 #else
   using namespace std;
@@ -13,7 +13,7 @@
 #define ITERATION_LIMIT 250
 #define SEP L"\uE00A"
 
-#ifdef HAVE_BOOST_REGEX_HPP
+#ifdef HAVE_BOOST_REGEX
 #define FIX L"\\"
 #else
 #define FIX L""
