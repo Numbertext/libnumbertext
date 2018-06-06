@@ -9,11 +9,9 @@
 #include <iterator>
 #include <string>
 
-#ifndef _MSC_VER
-#include "config.h"
-#endif
+#include "numbertext-version.h"
 
-#ifdef HAVE_BOOST_REGEX
+#ifdef NUMBERTEXT_BOOST
   #include <boost/regex.hpp>
 #else
   #include <regex>
@@ -31,7 +29,7 @@ private:
     static void replace(std::wstring& s, const std::wstring& search,
                 const std::wstring& replace);
 
-#ifdef HAVE_BOOST_REGEX
+#ifdef NUMBERTEXT_BOOST
     std::vector<boost::wregex> patterns;
     static const boost::wregex func;
 #else

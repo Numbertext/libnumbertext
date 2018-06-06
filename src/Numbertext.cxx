@@ -7,7 +7,7 @@
 
 #include "Numbertext.hxx"
 
-#ifdef HAVE_BOOST_REGEX
+#ifdef NUMBERTEXT_BOOST
   #include <boost/locale/encoding_utf.hpp>
   using namespace boost;
 #else
@@ -89,7 +89,7 @@ std::string Numbertext::numbertext(int number, const std::string& lang)
 
 std::wstring Numbertext::string2wstring(const std::string& st)
 {
-#ifndef HAVE_BOOST_REGEX
+#ifndef NUMBERTEXT_BOOST
     typedef std::codecvt_utf8<wchar_t> convert_type;
     std::wstring_convert<convert_type, wchar_t> converter;
     return converter.from_bytes( st );
@@ -100,7 +100,7 @@ std::wstring Numbertext::string2wstring(const std::string& st)
 
 std::string Numbertext::wstring2string(const std::wstring& st)
 {
-#ifndef HAVE_BOOST_REGEX
+#ifndef NUMBERTEXT_BOOST
     typedef std::codecvt_utf8<wchar_t> convert_type;
     std::wstring_convert<convert_type, wchar_t> converter;
     return converter.to_bytes( st );

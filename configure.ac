@@ -27,17 +27,19 @@ CXXFLAGS='-Wall -std=c++11'
 AC_CHECK_HEADERS([codecvt regex])
 
 AC_ARG_ENABLE([boost],
-	[AS_HELP_STRING([--enable-boost], [Use boost for regex operations instead of std, usefull for old gcc])],
+	[AS_HELP_STRING([--enable-boost], [Use boost for regex operations instead of std, useful for old gcc])],
 	[enable_boost="$enableval"],
 	[enable_boost=no]
 )
 
+numbertext_boost=""
 AS_IF([test "x$ac_cv_header_codecvt" != xyes -o "x$ac_cv_header_regex" != xyes], [
 	AS_IF([test "x$enable_boost" != "xyes"], [
 		AC_MSG_ERROR([Missing std::codecvt or std::regex support, use GCC 4.9 (or greater) or --enable-boost.])
 	], [
 		AX_BOOST_BASE([1.47.0])
 		AX_BOOST_REGEX
+		numbertext_boost="#define NUMBERTEXT_BOOST 1"
 	])
 ])
 
@@ -65,6 +67,7 @@ AC_SUBST([NUMBERTEXT_MAJOR_VERSION],[numbertext_version_major])
 AC_SUBST([NUMBERTEXT_MINOR_VERSION],[numbertext_version_minor])
 AC_SUBST([NUMBERTEXT_MICRO_VERSION],[numbertext_version_micro])
 AC_SUBST([NUMBERTEXT_VERSION],[numbertext_version])
+AC_SUBST([NUMBERTEXT_BOOST],[${numbertext_boost}])
 
 AC_CONFIG_FILES([
 libnumbertext.pc
