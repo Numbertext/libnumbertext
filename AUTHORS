@@ -22,6 +22,12 @@ Asterisks at OOo Wiki:
 
 	- author of Latvian module
 
+Adrián Chaves (adrian at chaves dot io):
+
+	- author of Galician module (ga)
+
+	- fix for Spanish: use plural for 0 (in currency)
+
 Mike Kaganski (mikekaganski at hotmail dot com:
 
 	- author of ordinal numbers of Russian module (ru)
@@ -96,7 +102,13 @@ Adolfo Jayme Barrientos (fitojb at ubuntu dot com):
 
 Stephan Bergmann:
 
-	- libnumbertext configure patch
+	- bug report about CXXFLAGS configuration problem
+
+	- fixes in LibreOffice for external/libnumbertext
+
+Tomáš Chvátal (tchvatal at suse dot com):
+
+	- add enable-boost option to work with older gcc-4.8 and like using boost, default off
 
 Claudio Colombo (claudio underline c77 at yahoo dot it):
 
@@ -131,7 +143,7 @@ Lucian Adrian Grijincu (lucian dot grijincu at gmail):
 
 Stanislav Horáček:
 
-       - bug report for Czech module
+	- bug report for Czech module
 
 Jmzambon at OOO Wiki:
 
@@ -238,11 +250,11 @@ Johanna Sørensen:
 
 Martin Srebotnjak:
 
-       - testing Slovenian module, information about ordinal and ordinal adverbial numbers
+	- testing Slovenian module, information about ordinal and ordinal adverbial numbers
 
 Marcin Stępniak:
 
-        - patch to set default UTF-8 encoding in numbertext.jar
+	- patch to set default UTF-8 encoding in numbertext.jar
 
 Supapong at OOo Wiki:
 
@@ -251,6 +263,10 @@ Supapong at OOo Wiki:
 Kálmán Szalai (Kami):
 
 	- ooo-build integration of Numbertext OpenOffice.org extension
+
+András Tímár (timar74 at gmail dot com):
+
+	- official reviewer, as activist of FSF.hu Foundation, Hungary
 
 Tantai Thanakanok (tantai osdev co th):
 
@@ -264,13 +280,17 @@ xhydrogene at launchpad dot net:
 		- "y" must be translated in french "et" (https://bugs.launchpad.net/numbertext/+bug/421151)
 		- "un mille" must be writed only "mille" in french (https://bugs.launchpad.net/numbertext/+bug/421164)
 
+Miklós Vajna (vmiklos at collabora dot co dot uk):
+
+	- small performance improvement during Soros compiling
+
 Laimonas Vėbra (laimis) at LaunchPad:
 
 	- hints for Lithuanian module
 
 wasow at extensions openoffice org:
 
-        - bug report and patch (+UAH) to the Russian module
+	- bug report and patch (+UAH) to the Russian module
 
 Friedel Wolff (friedel at translate dot org dot za):
 

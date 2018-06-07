@@ -21,8 +21,9 @@ License: LGPL-3+/Modified BSD dual-license (except Serbian)
 Copyright: 2009-2018 (C) László Németh et al. (see AUTHORS)
 Bulgarian: 2018 (C) Mihail Balabanov (m dot balabanov at gmail dot com)
 Croatian: 2014 (C) Mihovil Stanić (mihovil dot stanic at gmail dot com)
-Hebrew module: 2010 (C) Alex Bodnaru (alexbodn at 012 dot net dot il):
+Hebrew module: 2010 (C) Alex Bodnaru (alexbodn at 012 dot net dot il)
 French (Belgian and Swiss): 2009 (C) Olivier Ronez
+Galician: 2018 (C) Adrián Chaves (adrian at chaves dot io)
 Indonesian: 2010 (C) Eko Prasetiyo (ekoprasetiyo at gmail)
 Latvian: 2012 (C) Asterisks at OOo Wiki
 Luxembourgish: 2009 (C) Michel Weimerskirch (michel at weimerskirch dot net)
@@ -62,6 +63,7 @@ fi	Finnish
 fr	French
 fr-BE	Belgian French
 fr-CH	Swiss French
+gl	Galician
 he	Hebrew
 hr	Croatian
 hu	Hungarian
