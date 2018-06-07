@@ -22,7 +22,7 @@ AC_PROG_LIBTOOL
 
 dnl Checks for typedefs, structures, and compiler characteristics.
 AC_LANG([C++])
-CXXFLAGS='-Wall -std=c++11'
+CXXFLAGS="-Wall -std=c++11 $CXXFLAGS"
 
 AC_CHECK_HEADERS([codecvt regex])
 
