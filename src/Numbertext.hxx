@@ -14,7 +14,7 @@ public:
     Numbertext();
     void set_prefix(const std::string& st) { prefix = st; };
     bool load(std::string lang, std::string filename = "");
-    bool numbertext(std::wstring& number, std::string lang);
+    bool numbertext(std::wstring& number, const std::string& lang);
     // UTF-8 encoded input
     bool numbertext(std::string& number, const std::string& lang);
     std::string numbertext(int number, const std::string& lang);

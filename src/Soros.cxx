@@ -200,8 +200,8 @@ void Soros::run(std::wstring& input, int& level, bool begin, bool end)
 std::wstring Soros::translate(
         std::wstring s,
         const std::wstring chars,
-        const std::wstring chars2,
-        const std::wstring delim)
+        const std::wstring& chars2,
+        const std::wstring& delim)
 {
     int i = 0;
     for(const wchar_t& ch : chars)
