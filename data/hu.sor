@@ -251,6 +251,29 @@ ZAR:(.)	$(\1: dél-afrikai rand, cent)
 ([{\(\[]?(\d+|[a-zA-Z])[}\]\)]?)	$(-szor $(-szoros \1))
 (.*-sz.r).s		\1
 
+
+# MONTHS
+
+== -(a|á)(ban|tól|ig)? ==
+
+((jan|febr)uár)		\3j\1\2
+
+== -(á)?(a|ban|tól|ig) ==
+
+((jan|febr)uár|március|április|május|jú(n|l)ius|augusztus)	\3\1\2
+
+# convert optional "á" and vowels of "ban", "tól", "ig" to
+# "-ben", "-től", "-ig" using prefix "-on", and remove dash
+
+((szeptem|októ|novem|decem)ber)	\3$(remove-dash $(-on -\1))$(remove-dash $(-on -\2))
+
+== remove-dash ==
+
+-(.*)	\1
+
+
+# DAYS
+
 == -ig ==
 
 szerda	szerdáig
@@ -260,13 +283,8 @@ szerda	szerdáig
 == -tól ==
 
 szerda	szerdától
-(hétfő|kedd|csütörtök|péntek|(szeptem|októ|novem|decem)ber)	\1től
-(szombat|vasárnap|(jan|febr)uár|március|április|május|jú(n|l)ius|augusztus)	\1tól
-
-== -ban ==
-
-((szeptem|októ|novem|decem)ber)	\1ben
-((jan|febr)uár|március|április|május|jú(n|l)ius|augusztus)	\1ban
+(hétfő|kedd|csütörtök|péntek)	\1től
+(szombat|vasárnap)	\1tól
 
 == -n ==
 
@@ -275,7 +293,7 @@ hétfő		hétfőn
 szerda		szerdán
 csütörtök	csütörtökön
 szombat		szombaton
-vasárnap	vasárnap
+vasárnap	vasárnap	# no suffix in dates
 
 (.*5[}\)\]]?)		\1-ön
 ([{\(\[]?(0|.*2|.*[^0]0{6,8}|.*[^0]0{12,14}|[abcdeghijkopqtuvwzABCDEGHIJKOPQTUVWZ][.]?)[}\)\]]?)	\1-n
@@ -312,7 +330,7 @@ vasárnap	vasárnap
 # 1-be, 2-nek, 4-et etc., b)-ben, c)-ből, d)-hez, n-et etc.
 # add affix after conversion to the alternative form
 
-([{\(\[]?(.*[124579]|.*[14579]0|.*[^0]0{3,5}|[bcdefgijlmnprstvwxzBCDEFGIJLMNPRSTVWXZ][.]?)[}\)\]]?) \2$(\1 \1)
+([{\(\[]?(.*[124579]|.*[14579]0|.*[^0]0{3,5}|[bcdefgijlmnprstvwxzBCDEFGIJLMNPRSTVWXZ][.]?)[}\)\]]?) \2$(-on \1)
 
 # otherwise: 0-ba, 3-at, 6-nál etc., a)-ban, h)-ból, k-hoz, y-ról etc.
 
@@ -326,10 +344,11 @@ vasárnap	vasárnap
 -ától		-étől
 -(.*)[á](.*)	-\2é\3
 -ul		-ül
+-ig		-ig
 
 == help ==
 
-"" $(1)|, $(2)|, $(3)\n$(\0 ordinal)$(\0 ordinal-number)year: $(year 2001), $(year 2002)|, $(year 2003)\nformal: $(formal 100), $(formal 200), $(formal 1000)\ntext: $(text 1), $(text 12000), $(text 10000000000)\ncurrency \(for example, HUF\): $(HUF 2,5)\nformal HUF: $(formal HUF 102,5)\nSuffixation of numbers and letters: -a, -án, -áig, -ától, -ba, -ban, -ból, -d, -dik, -hoz,\n    -nak, -nál, -n, -ra, -ról, -s, -szor, -szoros, -t, -tól, -ul, -vá, -val,\n    for example: -szor 15 -> $(-szor 15)\narticle: $(article 5)\narticle cardinal: $(article cardinal 100)\narticle cardinal formal: $(article cardinal formal 100)\narticle -ban: $(article -ban a\))
+"" $(1)|, $(2)|, $(3)\n$(\0 ordinal)$(\0 ordinal-number)year: $(year 2001), $(year 2002)|, $(year 2003)\nformal: $(formal 100), $(formal 200), $(formal 1000)\ntext: $(text 1), $(text 12000), $(text 10000000000)\ncurrency \(for example, HUF\): $(HUF 2,5)\nformal HUF: $(formal HUF 102,5)\nSuffixation of numbers and letters: -a, -ában, -án, -áig, -ától, -ba, -ban, -ból, -d, -dik, -hoz,\n    -nak, -nál, -n, -ra, -ról, -s, -szor, -szoros, -t, -tól, -ul, -vá, -val,\n    for example: -szor 15 -> $(-szor 15)\narticle: $(article 5)\narticle cardinal: $(article cardinal 100)\narticle cardinal formal: $(article cardinal formal 100)\narticle -ban: $(article -ban a\))
 
 "(ordinal(-number)?|USD)" \1: $(\1 1), $(\1 2), $(\1 3)\n
 
