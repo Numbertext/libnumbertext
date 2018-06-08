@@ -190,9 +190,9 @@ feminine:(.*) \1
 
 # ordinal abbreviation
 
-== (ordinal)-number-(feminine|masculine|masculine-adjective) ==
+== (ordinal)-number(-feminine|-masculine|-masculine-adjective)? ==
 
-([-−]?\d+) \3$(ordinal-number-feminine $(\1-\2 \3))
+([-−]?\d+) \3$(ordinal-number $(\1\2 \3))
 .*er .ᵉʳ
 .*a .ª
 .*o .º

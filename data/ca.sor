@@ -178,10 +178,10 @@ XEU:(.+),(.+) $(\2mm: ecu, ecus, d'ecus, cèntim, cèntims, \1)
 (.*)è  \1ena
 (.*)   \1a
 
-== (ordinal)-number-(feminine|masculine) ==
+== (ordinal)-number(-feminine|-masculine)? ==
 
-([-−]?\d+)	\3$(ordinal-number $(\1-\2 \3))
-.*(.) \1
+([-−]?\d+)	\3$(ordinal-number $(\1\2 \3))
+.*(.) \3
 
 == help ==
 

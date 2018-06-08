@@ -180,9 +180,9 @@ f:(.*),(.*) \1\2
 (.*)o\b(.*)  $(ordinal-feminine \1a\2)
 (.*)   \1
 
-== (ordinal)-number-(feminine|masculine)? ==
+== (ordinal)-number(-feminine|-masculine)? ==
 
-([-−]?\d+) \3$(ordinal-number-feminine $(\1-\2 \3))
+([-−]?\d+) \3$(ordinal-number $(\1\2 \3))
 .*er .ᵉʳ
 .*a .ª
 .*o .º
