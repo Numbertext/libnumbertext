@@ -19,7 +19,7 @@
 #define MODULE_DIR ""
 #define SOROS_EXT ".sor"
 
-bool readfile(std::string filename, std::wstring& result)
+bool readfile(const std::string& filename, std::wstring& result)
 {
     std::wifstream wif(filename);
     if (wif.fail())
@@ -59,7 +59,7 @@ bool Numbertext::load(std::string lang, std::string filename)
     return true;
 }
 
-bool Numbertext::numbertext(std::wstring& number, std::string lang)
+bool Numbertext::numbertext(std::wstring& number, const std::string& lang)
 {
     auto module = modules.find(lang);
     if (module == modules.end())
