@@ -100,21 +100,27 @@ ZAR:(.)	$(\1: dél-afrikai rand, cent)
 # Article a/az (number name)
 
 "(article |cardinal |formal ){3}(([a-zA-Z]+ )*1\d{2}([.,]\d*)?)" az $(formal \2)
-"(article |cardinal ){2}(([a-zA-Z]+ )*1(\d{3})*([.,]\d*)?)" az $2
-"(article |cardinal ){2}(([a-zA-Z]+ )*5.*)" az $2
-"(article |cardinal ){2}(.*)" a $2
+"(article |cardinal |ordinal ){2}(([a-zA-Z]+ )*1(\d{3})*([.,]\d*)?)" az $(\1 \2)
+"(article |cardinal |ordinal ){2}(([a-zA-Z]+ )*5.*)" az $(\1 \2)
+"(article |cardinal |ordinal ){2}(.*)" a $(\1 \2)
 
 
 # Article a/az + suffixation
 
 "article (-[^0-9]+) ([{\(\[]?(\d+|[a-zA-Z])[}\)\]]?)" $(article $(\1 \2))
 
-# Article a/az (number)
+# Article a/az (number, month names and other words)
 
 == article ==
 
-([{\(\[]?(1(\d{3}|\d{6})*|[aefilmnorsuxyAEFILMNORSUXY])[}\)\]]?(-.*)?)	az \1
-([{\(\[]?5.*)		az \1
+((i|v|l(v?i{0,3}|i[vx])|d(xc)?[ilxv]*|m(cm)?[cdilxv]*)[.](-.*)?)   az \1 # Roman numbers
+((I|V|L(V?I{0,3}|I[VX])|D(XC)?[ILXV]*|M(CM)?[CDILXV]*)[.](-.*)?)   az \1 # ROMAN NUMBERS
+((iii?|iv|vi{1,3}|ix|(x{1,3}|xl|lx{1,3}|xc)(i{0,3}|vi{0,3}|ix)|(c{1,3}|cd|dc{1,3})[ilxv]*|mmm?[dilxv]*)[.](-.*)?)   a \1 # Roman numbers II.
+((III?|IV|VI{1,3}|IX|(X{1,3}|XL|LX{1,3}|XC)(I{0,3}|VI{0,3}|IX)|(c{1,3}|CD|DC{1,3})[ILXV]*|MMM?[DILXV]*)[.](-.*)?)   a \1 # ROMAN NUMBERS II.
+
+([{\(\[]?(1(\d{3}|\d{6})*|[aefilmnorsuxyAEFILMNORSUXY])[}\)\]]?(-.*)?)	az \1 # numbers and 1-letter indices
+([{\(\[]?5.*)		az \1 # numbers
+([aáeéiíoóöőuúüűAÁEÉIÍOÓÖŐUÚÜŰ].*) az \1
 (.*)			a \1
 
 == ordinal ==
@@ -344,7 +350,7 @@ vasárnap	vasárnap	# no suffix in dates
 -ától		-étől
 -(.*)[á](.*)	-\2é\3
 -ul		-ül
--ig		-ig
+(-ig?)	\2
 
 == help ==
 
