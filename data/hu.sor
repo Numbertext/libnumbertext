@@ -113,6 +113,8 @@ ZAR:(.)	$(\1: dél-afrikai rand, cent)
 
 == article ==
 
+(-.*) $(article $(\1)) # for example, "article -ban október" -> "az októberben"
+
 ((i|v|l(v?i{0,3}|i[vx])|d(xc)?[ilxv]*|m(cm)?[cdilxv]*)[.](-.*)?)   az \1 # Roman numbers
 ((I|V|L(V?I{0,3}|I[VX])|D(XC)?[ILXV]*|M(CM)?[CDILXV]*)[.](-.*)?)   az \1 # ROMAN NUMBERS
 ((iii?|iv|vi{1,3}|ix|(x{1,3}|xl|lx{1,3}|xc)(i{0,3}|vi{0,3}|ix)|(c{1,3}|cd|dc{1,3})[ilxv]*|mmm?[dilxv]*)[.](-.*)?)   a \1 # Roman numbers II.
@@ -272,6 +274,10 @@ ZAR:(.)	$(\1: dél-afrikai rand, cent)
 # "-ben", "-től", "-ig" using prefix "-on", and remove dash
 
 ((szeptem|októ|novem|decem)ber)	\3$(remove-dash $(-on -\1))$(remove-dash $(-on -\2))
+
+== abbreviation ==
+
+(jan|febr|márc|ápr|máj|jún|júl|aug|szept|okt|nov|dec).* \1.
 
 == remove-dash ==
 
