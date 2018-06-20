@@ -185,7 +185,11 @@ ZAR:(.)	$(\1: dél-afrikai rand, cent)
 (\d{1,4})(\d{15}) \1 billiárd[ $(text \2)]
 
 # suffix functions for numbers, dates, letters and parenthesized references
+
+# canonical names
+
 # -a, -áig, -ától, -ba, -ban, -ból, -d, -dik, -hoz, -nak, -nál, -n, -ra, -ról, -s, -szor, -szoros, -t, -tól, -ul, -vá, -vé
+
 # for example:
 #   -t 2 -> 2-t
 #   -t 3 -> 3-at
@@ -194,6 +198,38 @@ ZAR:(.)	$(\1: dél-afrikai rand, cent)
 #   -t 6 -> 6-ot
 #   -ban a) -> a)-ban
 #   -ban b) -> b)-ben
+
+== database ==
+
+"" :ablative:-tól-től:accusative:-t-at-et-ot-öt:adessive:-nál-nél:adjective:-i-ji:allative:-hoz-hez-höz:dative:-nak-nek:delative:-ról-ről:elative:-ból-ből:illative:-ba-be:inessive:-ban-ben:instrumental:-val-vel:possessive:-a-e-je:possessive-ablative:-ától-étől-jétől:possessive-adjective:-ai-ei-jei:possessive-inessive:-ában-ében:possessive-terminative:-áig-éig-jéig:sublative:-ra-re:superessive:-on-en-ön:terminative:-ig:translative:-vá-vé:
+
+# get suffixed form using the following canonical names
+#
+# for example, "accusative 5" -> "5-öt"
+#
+# (ablative|accusative|adessive|adjective|allative|dative|delative|elative|illative|inessive|instrumental|possessive|sublative|superessive|translative)
+
+== ([a-z]*ive|[a-z]*ive-[a-z]*ive) ==
+
+([^:]*)				$($(\1 $(database)) \2)
+.*\1:(-[^-:]*).*	\2
+
+
+# get suffixed form using the alternative suffix variants
+# by converting them to the preferred (first) variant
+#
+# for example "-et" -> "-t", then
+# "-t 5" -> "5-öt"
+
+== (-[a-z]*[eéöő][a-zéöő]*) ==
+
+([^:]*)						$($(\1 $(database)) \2)
+.*:(-[^-:]+)(-[^-:]+)*\1.*		\2
+
+== canonical-name ==
+
+(-[a-zéáóöő]+)		$(canonical-name \1 $(database) \2)
+(-[a-zéáóöő]+).*:([a-z]+(-[a-z]+)?):[^:]*\1[-,:].*		\2
 
 == -a ==
 
