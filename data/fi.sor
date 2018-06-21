@@ -107,7 +107,7 @@ USD:(\D+) $(\1: Yhdysvaltain dollari, Yhdysvaltain dollaria, sentti, senttiä)
 == ordinal ==
 
 ^0 nolla
-1 ensimmäinen
+1$ ensimmäinen
 2$ toinen
 2 kahdes
 3 kolmas
