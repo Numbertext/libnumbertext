@@ -33,28 +33,28 @@ const wregex Soros::func ( Soros::translate (
     Soros::m2.substr(0, 4), Soros::c, L"\\"));  // \$, \(, \), \| -> \uE000..\uE003
 
 void Soros::replace(std::wstring& s, const std::wstring& search,
-                          const std::wstring& str) {
+                          const std::wstring& replace) {
     size_t pos = 0;
     while ((pos = s.find(search, pos)) != std::wstring::npos) {
-         s.replace(pos, search.length(), str);
-         pos += str.length();
+         s.replace(pos, search.length(), replace);
+         pos += replace.length();
     }
 }
 
-Soros::Soros(std::wstring source, std::wstring filtered_lang):
+Soros::Soros(std::wstring program, std::wstring filtered_lang):
     begins(0),
     ends(0)
 {
-    source = translate(source, m, c, L"\\");     // \\, \", \;, \# -> \uE000..\uE003
+    program = translate(program, m, c, L"\\");     // \\, \", \;, \# -> \uE000..\uE003
     // switch off all country-dependent lines, and switch on the requested ones
-    source = regex_replace(source, wregex(L"(^|[\n;])([^\n;#]*#[^\n]*\\[:[^\n:\\]]*:\\][^\n]*)"), L"$1#$2");
+    program = regex_replace(program, wregex(L"(^|[\n;])([^\n;#]*#[^\n]*\\[:[^\n:\\]]*:\\][^\n]*)"), L"$1#$2");
     replace(filtered_lang, L"_", L"-");
-    source = regex_replace(source, wregex(L"(^|[\n;])#([^\n;#]*#[^\n]*\\[:" + filtered_lang + L":\\][^\n]*)"), L"$1$2");
-    source = regex_replace(source, wregex(L"(#[^\n]*)?(\n|$)"), L";"); // remove comments
+    program = regex_replace(program, wregex(L"(^|[\n;])#([^\n;#]*#[^\n]*\\[:" + filtered_lang + L":\\][^\n]*)"), L"$1$2");
+    program = regex_replace(program, wregex(L"(#[^\n]*)?(\n|$)"), L";"); // remove comments
     // __numbertext__ sets the place of left zero deletion rule
-    if (source.find(L"__numbertext__") == std::wstring::npos)
-        source.insert(0, L"__numbertext__;");
-    source = regex_replace(source, wregex(L"__numbertext__"),
+    if (program.find(L"__numbertext__") == std::wstring::npos)
+        program.insert(0, L"__numbertext__;");
+    program = regex_replace(program, wregex(L"__numbertext__"),
                         // default left zero deletion
                         L"\"([a-z][-a-z]* )?0+(0|[1-9]" FIX L"\\d*)\" $$(" FIX L"\\1" FIX L"\\2);"
                         // separator function
@@ -69,9 +69,9 @@ Soros::Soros(std::wstring source, std::wstring filtered_lang):
     wregex quoteStart(L"^\"");
     wregex quoteEnd(L"\"$");
     std::wstring smacro;
-    while ((pos = source.find(L";", pos)) != std::wstring::npos) {
+    while ((pos = program.find(L";", pos)) != std::wstring::npos) {
         wsmatch sp;
-        std::wstring linOrig = source.substr(old_pos, pos - old_pos);
+        std::wstring linOrig = program.substr(old_pos, pos - old_pos);
         // pattern extension after == macro ==:
         // foo bar -> "macro foo" bar
         // "foo bar" baz -> "macro foo bar" baz
