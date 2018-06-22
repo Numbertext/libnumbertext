@@ -68,7 +68,7 @@ Soros::Soros(std::wstring source, std::wstring filtered_lang):
     size_t old_pos = 0;
     wregex quoteStart(L"^\"");
     wregex quoteEnd(L"\"$");
-    std::wstring smacro = L"";
+    std::wstring smacro;
     while ((pos = source.find(L";", pos)) != std::wstring::npos) {
         wsmatch sp;
         std::wstring linOrig = source.substr(old_pos, pos - old_pos);
@@ -110,7 +110,7 @@ Soros::Soros(std::wstring source, std::wstring filtered_lang):
                 std::wcout << L"Soros: bad regex in \"" << sp[1].str() << "\"" << std::endl;
                 break;
             }
-            std::wstring s2 = L"";
+            std::wstring s2;
             if (sp.size() > 1)
             {
                 s2 = regex_replace(sp[2].str(), quoteStart, L"");
