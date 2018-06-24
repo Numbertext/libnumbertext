@@ -47,7 +47,7 @@ int main(int argc, char* argv[])
 
     Numbertext nt;
     State state = State::base;
-    std::string prefix = "";
+    std::string prefix;
     for (int i = 1; i < argc; i++)
     {
         if (state == State::flag_lang || state == State::flag_prefix)

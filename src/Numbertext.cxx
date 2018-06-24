@@ -87,24 +87,24 @@ std::string Numbertext::numbertext(int number, const std::string& lang)
     return wstring2string(wnumber);
 }
 
-std::wstring Numbertext::string2wstring(const std::string& st)
+std::wstring Numbertext::string2wstring(const std::string& s)
 {
 #ifndef NUMBERTEXT_BOOST
     typedef std::codecvt_utf8<wchar_t> convert_type;
     std::wstring_convert<convert_type, wchar_t> converter;
-    return converter.from_bytes( st );
+    return converter.from_bytes( s );
 #else
-    return ::locale::conv::utf_to_utf<wchar_t>(st.c_str(), st.c_str() + st.size());
+    return ::locale::conv::utf_to_utf<wchar_t>(s.c_str(), s.c_str() + s.size());
 #endif
 }
 
-std::string Numbertext::wstring2string(const std::wstring& st)
+std::string Numbertext::wstring2string(const std::wstring& s)
 {
 #ifndef NUMBERTEXT_BOOST
     typedef std::codecvt_utf8<wchar_t> convert_type;
     std::wstring_convert<convert_type, wchar_t> converter;
-    return converter.to_bytes( st );
+    return converter.to_bytes( s );
 #else
-    return ::locale::conv::utf_to_utf<char>(st.c_str(), st.c_str() + st.size());
+    return ::locale::conv::utf_to_utf<char>(s.c_str(), s.c_str() + s.size());
 #endif
 }
