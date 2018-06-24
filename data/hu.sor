@@ -96,18 +96,32 @@ ZAR:(.)	$(\1: dél-afrikai rand, cent)
 "(([A-Z]{3}) [-−]?\d+)[.,](\d)" $1 $(\30)$(\2:s)
 "(([A-Z]{3}) [-−]?\d+)[.,](\d\d)" $1 $3$(\2:s)
 
-
 # Article a/az (number name)
 
-"(article |cardinal |formal ){3}(([a-zA-Z]+ )*1\d{2}([.,]\d*)?)" az $(formal \2)
-"(article |cardinal |ordinal ){2}(([a-zA-Z]+ )*1(\d{3})*([.,]\d*)?)" az $(\1 \2)
-"(article |cardinal |ordinal ){2}(([a-zA-Z]+ )*5.*)" az $(\1 \2)
-"(article |cardinal |ordinal ){2}(.*)" a $(\1 \2)
+"article (cardinal |formal ){2}(([a-zA-Z]+ )*1\d{2}([.,]\d*)?)" az $(formal \2)
+"article (cardinal |ordinal )(([a-zA-Z]+ )*1(\d{3})*([.,]\d*)?)" az $(\1\2)
+"article (cardinal |ordinal )(([a-zA-Z]+ )*5.*)" az $(\1\2)
+"article (cardinal |ordinal )([^-].*)" a $(\1\2)
 
+# Article a/az + optional cardinal/ordinal + suffixation
 
-# Article a/az + suffixation
+"article ((cardinal |ordinal )?(-[^0-9]+) [{\(\[]?(\d+|[a-zA-Z])[}\)\]]?)" $(article $(\1))
 
-"article (-[^0-9]+) ([{\(\[]?(\d+|[a-zA-Z])[}\)\]]?)" $(article $(\1 \2))
+# cardinal/ordinal + suffixation
+
+"(cardinal )(-[^0-9]+) ([{\(\[]?(\d+)[}\)\]]?)"	$(\1$(\2 \4))
+"(ordinal )(-[^0-9]+) ([{\(\[]?(\d+)[}\)\]]?)"	$(\1$(\2 \4.))
+"(cardinal |ordinal )(\d+)[.]?-([a-záéóöőüű]*)$"				$(fix-grammar $(\1\2)|\3)
+
+== fix-grammar ==
+
+(.*)elsői			\1elsejei
+(.*)elsőe(.*)		\1első\2
+(.*)első(j.*)		\1else\2
+(.*)hároma(t|s)		\1hárma\2
+(.*)húszsz(.*)		\1hússz\2
+(.*)gygy(.*)		\1ggy\2
+(.*)				\1
 
 # Article a/az (number, month names and other words)
 
@@ -185,12 +199,12 @@ ZAR:(.)	$(\1: dél-afrikai rand, cent)
 (\d{1,4})(\d{15}) \1 billiárd[ $(text \2)]
 
 # suffix functions for numbers, dates, letters and parenthesized references
-
-# canonical names
-
-# -a, -áig, -ától, -ba, -ban, -ból, -d, -dik, -hoz, -nak, -nál, -n, -ra, -ról, -s, -szor, -szoros, -t, -tól, -ul, -vá, -vé
-
+#
+# canonical and localized suffix function names
+#
 # for example:
+#
+#   accusative 2 -> 2-t
 #   -t 2 -> 2-t
 #   -t 3 -> 3-at
 #   -t 4 -> 4-et
@@ -201,15 +215,13 @@ ZAR:(.)	$(\1: dél-afrikai rand, cent)
 
 == database ==
 
-"" :ablative:-tól-től:accusative:-t-at-et-ot-öt:adessive:-nál-nél:adjective:-i-ji:allative:-hoz-hez-höz:dative:-nak-nek:delative:-ról-ről:elative:-ból-ből:illative:-ba-be:inessive:-ban-ben:instrumental:-val-vel:possessive:-a-e-je:possessive-ablative:-ától-étől-jétől:possessive-adjective:-ai-ei-jei:possessive-inessive:-ában-ében:possessive-terminative:-áig-éig-jéig:sublative:-ra-re:superessive:-on-en-ön:terminative:-ig:translative:-vá-vé:
+"" :ablative:-tól-től:accusative:-at-et-ot-öt-t:adessive:-nál-nél:adjective:-i-ji:allative:-hoz-hez-höz:attribution-adjective:-as-es-os-ös:dative:-nak-nek:delative:-ról-ről:elative:-ból-ből:fraction-nominative:-ad-ed-od-öd:illative:-ba-be:inessive:-ban-ben:instrumental:-val-vel:multiplicative:-szor-szer-ször:multiplicative-adjective:-szoros-szeres-szörös:possessive:-a-e-je:possessive-ablative:-ától-étől-jétől:possessive-adjective:-ai-ei-jei:possessive-inessive:-ában-ében:possessive-superessive:-án-én:possessive-terminative:-áig-éig-jéig:sublative:-ra-re:superessive:-on-en-ön:terminative:-ig:translative:-vá-vé:
 
 # get suffixed form using the following canonical names
 #
 # for example, "accusative 5" -> "5-öt"
-#
-# (ablative|accusative|adessive|adjective|allative|dative|delative|elative|illative|inessive|instrumental|possessive|sublative|superessive|translative)
 
-== ([a-z]*ive|[a-z]*ive-[a-z]*ive) ==
+== ([a-z][-a-z]*ive) ==
 
 ([^:]*)				$($(\1 $(database)) \2)
 .*\1:(-[^-:]*).*	\2
@@ -218,17 +230,19 @@ ZAR:(.)	$(\1: dél-afrikai rand, cent)
 # get suffixed form using the alternative suffix variants
 # by converting them to the preferred (first) variant
 #
-# for example "-et" -> "-t", then
-# "-t 5" -> "5-öt"
+# for example "-et" -> "-at", then
+# "-at 5" -> "5-öt"
 
-== (-[a-z]*[eéöő][a-zéöő]*) ==
+== (-[a-z]*[eéöő][a-zéöő]*|-t) ==
 
 ([^:]*)						$($(\1 $(database)) \2)
 .*:(-[^-:]+)(-[^-:]+)*\1.*		\2
 
+# replace localized function name with their canonical-name in an input list
+
 == canonical-name ==
 
-(-[a-zéáóöő]+)		$(canonical-name \1 $(database) \2)
+"([^:]* )?(-[a-zéáóöő]+)( [^:]*)?"		\1$(canonical-name \2 $(database))\3
 (-[a-zéáóöő]+).*:([a-z]+(-[a-z]+)?):[^:]*\1[-,:].*		\2
 
 == -a ==
@@ -239,7 +253,7 @@ ZAR:(.)	$(\1: dél-afrikai rand, cent)
 == -ai ==
 
 "(1|.* 1)"	\1-jei
-0"(2|.* 2)"	\1-ai
+"(2|.* 2)"	\1-ai
 
 == -i ==
 
@@ -259,6 +273,14 @@ ZAR:(.)	$(\1: dél-afrikai rand, cent)
 
 "(1|.* 1)"	\1-jétől
 "(2|.* 2)"	\1-ától
+
+== -at ==
+
+1[.]	1.-t
+(\d*)2	\12-t
+2[.] 	2.-at
+(\d*)5	\15-öt
+(\d*)6	\16-ot
 
 == -d ==
 
@@ -284,7 +306,7 @@ ZAR:(.)	$(\1: dél-afrikai rand, cent)
 
 == -hoz ==
 
-((.*2|.*5)[}\)\]]?)	\1-höz
+((.*2|.*5|1[.])[}\)\]]?)	\1-höz
 
 == -szoros ==
 
@@ -349,6 +371,15 @@ vasárnap	vasárnap	# no suffix in dates
 
 == -val ==
 
+# ordinal
+
+(1[.])								\1-vel
+(2[.])								\1-kal
+(.*([368]|[2368]0|\d00|\d0{6,})[.])	\1-kal
+(.*([14579]|[14579]0|\d0{3,5})[.])	\1-kel
+
+# cardinal
+
 ([{\(\[]?(0|.*[^0]0{6,8}|.*[^0]0{12,14}|[ahkoquAHKOQU][.]?)[}\)\]]?)	\1-val
 (.*[14][}\)\]]?)	\1-gyel
 (.*(2|[bcdegijptvwzBCDEGIJPTVWZ][.]?)[}\)\]]?)		\1-vel
@@ -375,14 +406,14 @@ vasárnap	vasárnap	# no suffix in dates
 
 == (-a|-ad|-ai|-án|-áig|-ban?|-ból|-hoz|-i|-nak|-nál|-on|-ra|-ról|-as|-szoros|-at|-á?tól|-ul) ==
 
-# 1-be, 2-nek, 4-et etc., b)-ben, c)-ből, d)-hez, n-et etc.
+# 1-be, 2-nek, 2.-nak, 12.-nek, 4-et etc., b)-ben, c)-ből, d)-hez, n-et etc.
 # add affix after conversion to the alternative form
 
-([{\(\[]?(.*[124579]|.*[14579]0|.*[^0]0{3,5}|[bcdefgijlmnprstvwxzBCDEFGIJLMNPRSTVWXZ][.]?)[}\)\]]?) \2$(-on \1)
+([{\(\[]?(2|.+2[.]?|.*[14579][.]?|.*[14579]0[.]?|.*[^0]0{3,5}[.]?|[bcdefgijlmnprstvwxzBCDEFGIJLMNPRSTVWXZ][.]?)[}\)\]]?) \2$(-on \1)
 
 # otherwise: 0-ba, 3-at, 6-nál etc., a)-ban, h)-ból, k-hoz, y-ról etc.
 
-([{\(\[]?(.*[0-9]+|[ahkoquyAHKOQUY][.]?)[}\)\]]?) \2\1
+([{\(\[]?(.*[0-9]+[.]?|[ahkoquyAHKOQUY][.]?)[}\)\]]?) \2\1
 
 # conversion to the alternative form: -ban -> -ben etc.
 
@@ -396,7 +427,7 @@ vasárnap	vasárnap	# no suffix in dates
 
 == help ==
 
-"" $(1)|, $(2)|, $(3)\n$(\0 ordinal)$(\0 ordinal-number)year: $(year 2001), $(year 2002)|, $(year 2003)\nformal: $(formal 100), $(formal 200), $(formal 1000)\ntext: $(text 1), $(text 12000), $(text 10000000000)\ncurrency \(for example, HUF\): $(HUF 2,5)\nformal HUF: $(formal HUF 102,5)\nSuffixation of numbers and letters: -a, -ában, -án, -áig, -ától, -ba, -ban, -ból, -d, -dik, -hoz,\n    -nak, -nál, -n, -ra, -ról, -s, -szor, -szoros, -t, -tól, -ul, -vá, -val,\n    for example: -szor 15 -> $(-szor 15)\narticle: $(article 5)\narticle cardinal: $(article cardinal 100)\narticle cardinal formal: $(article cardinal formal 100)\narticle -ban: $(article -ban a\))
+"" $(1)|, $(2)|, $(3)\n$(\0 ordinal)$(\0 ordinal-number)year: $(year 2001), $(year 2002)|, $(year 2003)\nformal: $(formal 100), $(formal 200), $(formal 1000)\ntext: $(text 1), $(text 12000), $(text 10000000000)\ncurrency \(for example, HUF\): $(HUF 2,5)\nformal HUF: $(formal HUF 102,5)\nSuffixation of numbers and letters: -a, -ában, -án, -áig, -ától, -ba, -ban, -ból, -d, -dik, -hoz,\n    -nak, -nál, -n, -ra, -ról, -s, -szor, -szoros, -t, -tól, -ul, -vá, -val,\n    for example: -szor 15 -> $(-szor 15)\narticle: $(article 5)\narticle cardinal: $(article cardinal 100)\narticle cardinal formal: $(article cardinal formal 100)\narticle -ban: $(article -ban a\))\narticle ordinal -ai: $(article ordinal -ai 1)|\ncanonical-name: -szor -> $(canonical-name -szor)
 
 "(ordinal(-number)?|USD)" \1: $(\1 1), $(\1 2), $(\1 3)\n
 
