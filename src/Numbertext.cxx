@@ -53,7 +53,20 @@ bool Numbertext::load(std::string lang, std::string filename)
         filename = regex_replace(filename,
                 regex("[-_].." SOROS_EXT "$"), SOROS_EXT);
         if (!readfile(filename, module))
-            return false;
+        {
+            // some exceptional language codes
+            // Norwegian....
+            if (lang == "nb" || lang == "nn")
+            {
+                if (!readfile(regex_replace(filename,
+                        regex("n[bn]" SOROS_EXT "$"), "no" SOROS_EXT), module))
+                    return false;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
     modules.insert(std::make_pair(lang, Soros(module, string2wstring(lang))));
     return true;
