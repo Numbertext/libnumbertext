@@ -68,7 +68,7 @@ Olivier Ronez:
 
 Mihovil Stanić (mihovil dot stanic at gmail dot com):
 
-	- author of Croation module (hr)
+	- author of Croatian module (hr)
 
 Suokunlong: (suokunlong at 126 dot com):
 
@@ -140,6 +140,10 @@ Lucian Adrian Grijincu (lucian dot grijincu at gmail):
 
 	- reported missing gender support in Romanian MONEYTEXT implementation:
 	  https://bugs.launchpad.net/bugs/421309)
+
+Tuomas Hietala (tjhietala at github):
+
+	- fixes and bug reports for Finnish
 
 Stanislav Horáček:
 
@@ -282,6 +286,7 @@ xhydrogene at launchpad dot net:
 
 Miklós Vajna (vmiklos at collabora dot co dot uk):
 
+	- code clean-ups
 	- small performance improvement during Soros compiling
 
 Laimonas Vėbra (laimis) at LaunchPad:
