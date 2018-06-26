@@ -357,6 +357,8 @@ language = {
 "lv": "Latviešu",
 "ms": "Bahasa Melayu",
 "nl": "Nederlands",
+"no": "Bokmål",
+"nn": "Nynorsk",
 "pl": "Polski",
 "pt": "Português",
 "pt-BR": "Português&nbsp;(BR)",
@@ -409,6 +411,8 @@ default_currency = {
 "hu": "HUF",
 "hr": "HRK",
 "nl": "EUR",
+"nb": "NOK",
+"nl": "NOK",
 "pl": "PLN",
 "pt": "EUR",
 "pt-BR": "BRL",
@@ -438,6 +442,7 @@ numlang['fr-BE']=new Soros(document.getElementById('fr').value, 'fr-BE');
 numlang['fr-CH']=new Soros(document.getElementById('fr').value, 'fr-CH');
 numlang['ko-KP']=new Soros(document.getElementById('ko').value, 'ko-KP');
 numlang['pt-BR']=new Soros(document.getElementById('pt').value, 'pt-BR');
+numlang['nn']=new Soros(document.getElementById('no').value, 'nn');
 numlang['Roman-large']=new Soros(document.getElementById('Roman').value, 'Roman-large');
 
 window.header = ""
@@ -479,7 +484,7 @@ function tim( ) {
     	target = document.getElementById('result')
     	if (document.body.scrollTop < target.offsetTop + target.offsetHeight) target.innerHTML = "<table id='conv' width='100%'><tbody><tr id='header' style='text-align:left;background-color:rgba(100%, 100%, 100%, 0)'><td width='150px'>Language<td>" + header + "</td></tr>" +
 <!-- **************************************************************************************************** -->
-<!--!cd ../data; n=3; for i in `ls *.sor | awk '{print}/de/{print"de-CH.sor"}/en/{print"en-GB.sor\nen-IN.sor"}/pt/{print"pt-BR.sor"}/ko/{print"ko-KP.sor"}/fr/{print"fr-BE.sor\nfr-CH.sor"}' | grep -v ^[A-Z]` Hung.sor Roman-large.sor Suzhou.sor; do name=`basename $i .sor`; name2=`echo $name | tr _ -`; head=""; rtl=""; rovas=""; case $name in Hung) rovas="rovas"; rtl="align='right'";; he) rtl="align='right'";; esac; echo "\"$head<tr class='$rovas \"+ ($n%2?\"second\":\"\")+\"' style='text-align:left;' title='$name2'><td valign='top'>\" + language[\"$name\"] + \"</td><td $rtl>\" + numlang['$name'].run((window.currency == \"-\" || window.currency == \"help\" ? \"\" : (window.currency == \"def\" ? default_currency[\"$name\"] : window.currency) + \" \") + window.num).replace(\"\\\n\",\"<br>\") + '</td></tr>' +";n=`echo $n+1 | bc`; done-->
+<!--!cd ../data; n=3; for i in `ls *.sor | awk '{print}/de/{print"de-CH.sor"}/en/{print"en-GB.sor\nen-IN.sor"}/pt/{print"pt-BR.sor"}/ko/{print"ko-KP.sor"}/fr/{print"fr-BE.sor\nfr-CH.sor"}/no/{print"nn.sor"}' | grep -v ^[A-Z]` Hung.sor Roman-large.sor Suzhou.sor; do name=`basename $i .sor`; name2=`echo $name | tr _ -`; head=""; rtl=""; rovas=""; case $name in Hung) rovas="rovas"; rtl="align='right'";; he) rtl="align='right'";; esac; echo "\"$head<tr class='$rovas \"+ ($n%2?\"second\":\"\")+\"' style='text-align:left;' title='$name2'><td valign='top'>\" + language[\"$name\"] + \"</td><td $rtl>\" + numlang['$name'].run((window.currency == \"-\" || window.currency == \"help\" ? \"\" : (window.currency == \"def\" ? default_currency[\"$name\"] : window.currency) + \" \") + window.num).replace(\"\\\n\",\"<br>\") + '</td></tr>' +";n=`echo $n+1 | bc`; done-->
 <!-- **************************************************************************************************** -->
     "<tr><td colspan=2>*Old numeral systems (extended for large numbers) &ndash; Old Hungarian, Roman and Suzhou numerals</td></tr></tbody></table>";
 }
