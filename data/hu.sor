@@ -127,7 +127,7 @@ ZAR:(.)	$(\1: dél-afrikai rand, cent)
 
 == article ==
 
-(-.*) $(article $(\1)) # for example, "article -ban október" -> "az októberben"
+"(-[a-záéö]* .*|[a-z][-a-z]*ive .*)" $(article $(\1)) # for example, "article -ban október" -> "az októberben"
 
 ((i|v|l(v?i{0,3}|i[vx])|d(xc)?[ilxv]*|m(cm)?[cdilxv]*)[.](-.*)?)   az \1 # Roman numbers
 ((I|V|L(V?I{0,3}|I[VX])|D(XC)?[ILXV]*|M(CM)?[CDILXV]*)[.](-.*)?)   az \1 # ROMAN NUMBERS
@@ -224,8 +224,7 @@ ZAR:(.)	$(\1: dél-afrikai rand, cent)
 == ([a-z][-a-z]*ive) ==
 
 ([^:]*)				$($(\1 $(database)) \2)
-.*\1:(-[^-:]*).*	\2
-
+.*:\1:(-[^-:]*).*	\2
 
 # get suffixed form using the alternative suffix variants
 # by converting them to the preferred (first) variant
@@ -356,7 +355,7 @@ szerda	szerdától
 (hétfő|kedd|csütörtök|péntek)	\1től
 (szombat|vasárnap)	\1tól
 
-== -n ==
+== -on ==
 
 hétfő		hétfőn
 (kedd|péntek)	\1en
