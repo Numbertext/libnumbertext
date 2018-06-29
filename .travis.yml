@@ -1,0 +1,12 @@
+language: cpp
+script:
+    - autoreconf -i
+    - CC=gcc-7 CXX=g++-7 ./configure
+    - make
+    - make -f Makefile.orig check
+addons:
+    apt:
+        sources:
+            - ubuntu-toolchain-r-test
+        packages:
+            - g++-7
