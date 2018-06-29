@@ -58,9 +58,9 @@ sp:([^,]*),([^,]*),([^,]*),([^,]*) \4
 AUD:(\D+) $(\1: Australian dollari, Australian dollaria, sentti, senttiä)
 CAD:(\D+) $(\1: Kanadan dollari, Kanadan dollaria, sentti, senttiä)
 CHF:(\D+) $(\1: Sveitsin frangi, Sveitsin frangia, rappeni, rappenia)
-CNY:(\D+) $(\1: Kiinan juan, Kiinan juania, feni, feniä)
+CNY:(\D+) $(\1: Kiinan juan, Kiinan juania, fen, feniä)
 CYP:(\D+) $(\1: Kyproksen punta, Kyproksen puntaa, sentti, senttiä)
-CZK:(\D+) $(\1: Tšekin koruna, Tšekin korunaa, haléři, haléřia)
+CZK:(\D+) $(\1: Tšekin koruna, Tšekin korunaa, haléř, haléřia)
 DKK:(\D+) $(\1: Tanskan kruunu, Tanskan kruunua, äyri, äyriä)
 EEK:(\D+) $(\1: Viron kruunu, Viron kruunua, sentti, senttiä)
 EUR:(\D+) $(\1: euro, euroa, sentti, senttiä)
@@ -68,23 +68,23 @@ GBP:(\D+) $(\1: Englannin punta, Englannin puntaa, penny, pennyä)
 HKD:(\D+) $(\1: Hongkongin dollari, Hongkongin dollaria, sentti, senttiä)
 HRK:(\D+) $(\1: Kroatian kuna, Kroatian kunaa, lipa, lipaa)
 HUF:(\D+) $(\1: Unkarin forintti, Unkarin forinttia, filléri, fillériä)
-IDR:(\D+) $(\1: Indonesian rupia, Indonesian rupiaa, seni, seniä)
+IDR:(\D+) $(\1: Indonesian rupia, Indonesian rupiaa, sen, seniä)
 ISK:(\D+) $(\1: Islannin kruunu, Islannin kruunua, äyri, äyriä)
-JPY:(\D+) $(\1: Japanin jeni, Japanin jeniä, seni, seniä)
+JPY:(\D+) $(\1: Japanin jeni, Japanin jeniä, sen, seniä)
 KRW:(\D+) $(\1: Etelä-Korean won, Etelä-Korean wonia, chon, chonia)
 LTL:(\D+) $(\1: Liettuan lita, Liettuan litiä, centasi, centasia)
 LVL:(\D+) $(\1: Latvian lati, Latvian latia, santiimi, santiimia)
-MYR:(\D+) $(\1: Malesian ringgit, Malesian ringgittia, sentti, senttiä)
+MYR:(\D+) $(\1: Malesian ringgit, Malesian ringgittia, sen, seniä)
 NZD:(\D+) $(\1: Uuden-Seelannin dollari, Uuden-Seelannin dollaria, sentti, senttiä)
 NOK:(\D+) $(\1: Norjan kruunu, Norjan kruunua, äyri, äyriä)
 PHP:(\D+) $(\1: Filippiinien peso, Filippiinien pesoa, centavo, centavoa)
-PLN:(\D+) $(\1: Puolan zloty, Puolan zlotya, groszy, groszya)
-RON:(\D+) $(\1: Romanian leu, Romanian leuta, bani, bania)
+PLN:(\D+) $(\1: Puolan zloty, Puolan zlotya, grosz, groszia)
+RON:(\D+) $(\1: Romanian leu, Romanian leuta, ban, bania)
 RUB:(\D+) $(\1: Venäjän rupla, Venäjän ruplaa, kopeekka, kopeekkaa)
 SEK:(\D+) $(\1: Ruotsin kruunu, Ruotsin kruunua, äyri, äyriä)
 SGD:(\D+) $(\1: Singaporen dollari, Singaporen dollaria, sentti, senttiä)
 THB:(\D+) $(\1: Thaimaan baht, Thaimaan bahtia, satang, satangia)
-TRY:(\D+) $(\1: Turkin liira, Turkin liiraa, kuruşi, kuruşia)
+TRY:(\D+) $(\1: Turkin liira, Turkin liiraa, kuruş, kuruşia)
 USD:(\D+) $(\1: Yhdysvaltain dollari, Yhdysvaltain dollaria, sentti, senttiä)
 
 "(JPY [-−]?\d+)[.,](\d\d)0" $1
@@ -97,7 +97,7 @@ USD:(\D+) $(\1: Yhdysvaltain dollari, Yhdysvaltain dollaria, sentti, senttiä)
 # chiao?
 "(CNY [-−]?\d+)[.,]10?" $1 $2 chiao
 "(CNY [-−]?\d+)[.,](\d)0?" $1 $2 chiaota
-"(CNY [-−]?\d+[.,]\d)1" $1 $2 feni
+"(CNY [-−]?\d+[.,]\d)1" $1 $2 fen
 "(CNY [-−]?\d+[.,]\d)(\d)" $1 $2 feniä
 
 "(([A-Z]{3}) [-−]?\d+)[.,](01)" $1 $(1)$(\2:ss)
