@@ -143,4 +143,4 @@ USD:(\D+) $(\1: Yhdysvaltain dollari, Yhdysvaltain dollaria, sentti, senttiä)
 == help ==
 
 "" $(1), $(2), $(3)\n$(help ordinal)$(help ordinal-number)
-(ordinal(-number)?) \1: $(\1 1), $(\1 2), $(\1 3)\n
+(ordinal(-number)?) \1: $(\1 1)|, $(\1 2)|, $(\1 3)\n
