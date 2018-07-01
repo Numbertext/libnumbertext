@@ -202,7 +202,7 @@
 <option value="GBP">GBP</option>
 <option value="JPY">JPY</option>
 <option value="USD">USD</option>
-<option value="help">help</option>
+<option value="help">Functions (help)</option>
 </select>
  </h2>
     </div>
