@@ -128,11 +128,22 @@ space:(.*) \1
 "(([A-Z]{3}) [-−]?\d+)[.,](\d)" $1 |$(\30)$(\2:sp)
 "(([A-Z]{3}) [-−]?\d+)[.,](\d\d)" $1 $(space:|$3)$(\2:sp)
 
+== ordinal ==
+
+(\d+) $(ordinal $1)
+(.*ü[çz])	\1üncü
+(.*dör)t	\1düncü
+(.*)altı    \1altıncı
+(.*(kırk|doksan|yar|ış))	\1ıncı
+(.*(uz|on))		\1uncu
+(.*)i		\1inci
+(.*)		\1inci
+
 == ordinal-number ==
 
 (\d+)	\1.
 
 == help ==
 
-"" |$(1)|, |$(2)|, |$(3)|\n$(help cardinal-neuter)$(help cardinal-feminine)$(help cardinal-masculine)$(help ordinal)$(help ordinal-number)
+"" |$(1)|, |$(2)|, |$(3)|\n$(help ordinal)$(help ordinal-number)
 (.*) \1: |$(\1 1)|, |$(\1 2)|, |$(\1 3)|\n
