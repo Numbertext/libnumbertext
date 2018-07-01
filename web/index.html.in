@@ -88,7 +88,7 @@
           <h4>From Numbers to Number Names</h4>
 	  <p>We provide easy to configure, lightweight open source C++, Java, JavaScript,  Python libraries
 	  and a LibreOffice Spreadsheet extension for number to number name conversion, including cardinal and
-	  ordinal numbers, ordinal indicators and money amounts with currencies in more than 30 languages
+	  ordinal numbers, ordinal indicators and money amounts with currencies in more than 40 languages
 	  and numeral systems.</p>
 	  <p>Join the Numbertext/LibreOffice development: please, check the Soros language tutorial in the integrated language module development environment, fix bugs or missing parts of the language modules, or create new modules based on the existing ones!</p>
         </div>
@@ -98,7 +98,7 @@
 
           <h4>Background</h4>
 
-	  <p>NUMBERTEXT/MONEYTEXT functions and Soros programming language was developed in 2009 for generalization of BAHTTEXT spreadsheet function, a function of Microsoft Excel for number to Thai number name and currency conversion, standardized by ECMA–376 and ISO/IEC 29&nbsp;500:2008 Office Open XML format.</p>
+	  <p>NUMBERTEXT/MONEYTEXT functions and Soros programming language was developed in 2009 for generalization of BAHTTEXT spreadsheet function, a function of Microsoft Excel for number to Thai number name and currency conversion, standardized by ECMA–376 and ISO/IEC&nbsp;29&nbsp;500:2008 Office Open XML format.</p>
 	  <p>Soros programming language is based on regular expressions, just like its small interpreters (in Python: less, than 120 lines). Despite its simplicity, it can handle language variants, complex spelling functions and rules in a concise manner.</p>
         </div>
       </div>
@@ -117,27 +117,27 @@
       <div class="col-md-3 col-sm-6">
         <div class="service"> <i class="fa fa-table"></i>
           <h3>LibreOffice</h3>
-	  <p>Extension with NUMBERTEXT and MONEYTEXT spreadsheet functions: <a href="https://extensions.libreoffice.org/extensions/numbertext-1/1-0-beta/@@download/file/numbertext-1.0b3.oxt">numbertext-1.0b3.oxt</a>
-	  (<a href="https://extensions.libreoffice.org/extensions/numbertext-1/1-0-beta">description</a>)</p>
+	  <p>Extension with NUMBERTEXT and MONEYTEXT spreadsheet functions: <a href="https://extensions.libreoffice.org/extensions/numbertext-1/1.0/@@download/file/numbertext-1.0.oxt">numbertext-1.0.oxt</a>
+	  (<a href="https://extensions.libreoffice.org/extensions/numbertext-1/1.0">description</a>)</p>
         </div>
       </div>
       <div class="col-md-3 col-sm-6">
         <div class="service"> <i class="fa fa-cogs"></i>
           <h3>C++</h3>
-	  <p>Source distribution (1.0 beta 3): <a href="https://github.com/Numbertext/libnumbertext/releases/download/1.0.beta3/libnumbertext-1.0.2.tar.xz">libnumbertext-1.0.2.tar.xz</a> (<a href="https://github.com/Numbertext/libnumbertext/releases/tag/1.0.beta3">installation</a>)</p>
+	  <p>Source distribution (1.0): <a href="https://github.com/Numbertext/libnumbertext/releases/download/1.0/libnumbertext-1.0.3.tar.xz">libnumbertext-1.0.3.tar.xz</a> (<a href="https://github.com/Numbertext/libnumbertext/releases/tag/1.0">installation</a>)</p>
         </div>
       </div>
       <div class="col-md-3 col-sm-6">
         <div class="service"> <i class="fa fa-coffee"></i>
           <h3>Java</h3>
-	  <p>JAR package: <a href="https://github.com/Numbertext/libnumbertext/releases/download/1.0.beta3/numbertext.jar">numbertext.jar</a> (1.0 beta 3).
+	  <p>JAR package: <a href="https://github.com/Numbertext/libnumbertext/releases/download/1.0/numbertext.jar">numbertext.jar</a> (1.0).
 	  Usage: java -jar numbertext.jar</p>
         </div>
       </div>
       <div class="col-md-3 col-sm-6">
         <div class="service"><i class="fa fa-pencil"></i>
           <h3>Python & JavaScript</h3>
-	  <p>Interpreters: <a href="https://github.com/Numbertext/libnumbertext/blob/master/src/Soros.py">Soros.py</a> and <a href="https://github.com/Numbertext/libnumbertext/blob/master/src/Soros.js">Soros.js</a>. For usage, see source distribution (<a href="https://github.com/Numbertext/libnumbertext/archive/1.0.beta3.zip">zip</a> or <a href="https://github.com/Numbertext/libnumbertext/archive/1.0.beta3.tar.gz">tar.gz</a>).</p>
+	  <p>Interpreters: <a href="https://github.com/Numbertext/libnumbertext/blob/master/src/Soros.py">Soros.py</a> and <a href="https://github.com/Numbertext/libnumbertext/blob/master/src/Soros.js">Soros.js</a>. For usage, see source distribution (<a href="https://github.com/Numbertext/libnumbertext/archive/1.0.zip">zip</a> or <a href="https://github.com/Numbertext/libnumbertext/archive/1.0.tar.gz">tar.gz</a>).</p>
         </div>
       </div>
     </div>

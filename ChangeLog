@@ -1,3 +1,27 @@
+2018-07-01: 1.0 release:
+	* libnumbertext:
+	- load Bokmål (nb) and Nynorsk (nn) from no.sor
+	- code clean-up by Miklós Vajna
+	- enable-boost option by Tomáš Chvátal
+	- keep CXXFLAGS configurable, bug report by Stephan Bergmann
+	* data:
+	- 4(+1) new language modules and several fixes
+	* gl.sor: new Galician module by Adrian Chaves
+	* no.sor: new Norwegian Bokmål and Nynorsk modules
+	* sq.sor: new Albanian module
+	* uk.sor: new Ukrainian module based on Russian
+	* ca.sor: fix ordinal indicators
+	* da.sor: remove double spaces in money amounts
+	* es.sor: use plural for 0 (in currency) by Adrian Chaves
+	* fi.sor: fix currency names and large cardinals by Tuomas Hietala
+	* hu.sor: various suffixation + spell out + article support with
+	  numbers, references and date names for new NatNum12 number format
+	  modifier of LibreOffice, for example, extending default date formats.
+	* ru.sor: fix ordinal-neuter
+	* tr.sor: add ordinal numbers
+	* web:
+	- add "Functions (help)" menu item to show help of the modules
+
 2018-05-28: beta 3 release:
 	* src: numbertext renamed to spellout
 	* libnumbertext: fix cppcheck warnings by Julien Nabet
