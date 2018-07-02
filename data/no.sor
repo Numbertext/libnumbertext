@@ -1,5 +1,5 @@
 ^0 null
-1 éin # [:nn:]
+1 éin # [:nn:] [:nn-NO:]
 1 én
 2 to
 3 tre
@@ -94,7 +94,7 @@ USD:(\D+) $(\1: amerikansk dollar, amerikansk dollar, cent, cent)
 
 == cardinal-neuter ==
 
-1 eitt # [:nn:]
+1 eitt # [:nn:] [:nn-NO:]
 1 ett
 
 == cardinal(-feminine|-masculine|-neuter)? ==

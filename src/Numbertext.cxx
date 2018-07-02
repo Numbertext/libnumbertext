@@ -18,6 +18,7 @@
 
 #define MODULE_DIR ""
 #define SOROS_EXT ".sor"
+#define LANG_PATTERN_NO "n[bn]([-_]NO)\?"
 
 bool readfile(const std::string& filename, std::wstring& result)
 {
@@ -56,10 +57,10 @@ bool Numbertext::load(std::string lang, std::string filename)
         {
             // some exceptional language codes
             // Norwegian....
-            if (lang == "nb" || lang == "nn")
+            if (regex_match(lang, regex(LANG_PATTERN_NO)))
             {
                 if (!readfile(regex_replace(filename,
-                        regex("n[bn]" SOROS_EXT "$"), "no" SOROS_EXT), module))
+                        regex(LANG_PATTERN_NO SOROS_EXT "$"), "no" SOROS_EXT), module))
                     return false;
             }
             else
