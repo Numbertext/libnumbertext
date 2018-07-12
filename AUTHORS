@@ -149,6 +149,10 @@ Stanislav Horáček:
 
 	- bug report for Czech module
 
+Hsonesson1 at GitHub:
+
+	- bug report for Danish (en million, not et million etc.)
+
 Jmzambon at OOO Wiki:
 
 	- patch for French un/une handling for currencies
@@ -164,6 +168,10 @@ Mantas Kriaučiūnas at Launchpad.net:
 Rimas Kudelis:
 
 	- bug report for default Lithuanian currency
+
+c-kuehl at GitHub:
+
+	- patch for German (function year)
 
 mike8p at launchpad.net:
 
