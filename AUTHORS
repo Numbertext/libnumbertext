@@ -296,6 +296,7 @@ Miklós Vajna (vmiklos at collabora dot co dot uk):
 
 	- code clean-ups
 	- small performance improvement during Soros compiling
+	- add Travis CI integration
 
 Laimonas Vėbra (laimis) at LaunchPad:
 
