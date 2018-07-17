@@ -45,6 +45,7 @@
         <li> <a class="page-scroll" href="#services">Download</a> </li>
         <li> <a class="page-scroll" href="#team">Contributors</a> </li>
         <li> <a class="page-scroll" href="#testimonials">Spell out numbers</a> </li>
+        <li> <a class="page-scroll" href="https://travis-ci.org/Numbertext/libnumbertext"><img src="https://travis-ci.org/Numbertext/libnumbertext.svg?branch=master"></a></li>
 	<!--        <li> <a class="page-scroll" href="#contact">Contact</a> </li>-->
       </ul>
     </div>
