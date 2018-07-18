@@ -163,11 +163,13 @@ RUB:(\D+) $(\1: rublis, rublių, rubliai, kapeika, kapeikų, kapeikos)
 
 == ordinal-number(-masculine)? ==
 
-(\d+)	 \2as
+((\d*[02-9])?3)	 \2-ias		# ends in 3 but not 13
+(\d+)	 \2-as
 
 == ordinal-number-feminine ==
 
-(\d+)	 \1a
+((\d*[02-9])?3)	 \1-ia
+(\d+)	 \1-a
 
 == help ==
 
