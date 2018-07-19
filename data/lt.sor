@@ -101,10 +101,10 @@ RUB:(\D+) $(\1: rublis, rublių, rubliai, kapeika, kapeikų, kapeikos)
 "(NOK|SEK) ([-−]?\d*[2-9])([.,]00?)?" $(f:$2)|$(\1:upb)					# *2| *8 ...
 
 # atfer delimiter
-"((NOK|SEK|RUB) [-−]?\d+)[.,](01)" $1| ir |$(f:$(1))$(\2:ss) 				# *,01 convertion to *,1
-"((NOK|SEK|RUB) [-−]?\d+)[.,]([2-9]1)" $1| ir |$(f:$3)|$(\2:ss)				# 21, 51, 91 ...
-"((NOK|SEK|RUB) [-−]?\d+)[.,](\d)" $1| ir |$(\30)$(\2:spa)				# *,2 | *,3 ... convertion to *,20 | *,30 ...
-"((NOK|SEK|RUB) [-−]?\d+)[.,](1[1-9])" $1| ir |$3|$(\2:spa)				# 11-19
+"((NOK|SEK|RUB) [-−]?\d+)[.,](0+)" $1|							# 0, 00
+"((NOK|SEK|RUB) [-−]?\d+)[.,]([02-9]1)" $1| ir |$(f:$3)|$(\2:ss)			# 1, 21, 31, ..., 91
+"((NOK|SEK|RUB) [-−]?\d+)[.,](\d)" $1| ir |$(\30)$(\2:spa)				# *,x conversion to *,x0
+"((NOK|SEK|RUB) [-−]?\d+)[.,](1[0-9]|[2-9]0)" $1| ir |$3|$(\2:spa)			# 10-19, 20, 30, ..., 90
 "((NOK|SEK|RUB) [-−]?\d+)[.,](\d\d)" $1| ir |$(f:$3)$(\2:spb)				# all the rest
 
 # male gender (all except female gender filter matches)
@@ -114,10 +114,9 @@ RUB:(\D+) $(\1: rublis, rublių, rubliai, kapeika, kapeikų, kapeikos)
 "([A-Z]{3}) ([-−]?\d*[2-9])([.,]00?)?" $2|$(\1:upb)
 
 # atfer delimiter
-"(([A-Z]{3}) [-−]?\d+)[.,](01)" $1| ir |$(1)$(\2:ss)
-"(([A-Z]{3}) [-−]?\d+)[.,]([2-9]1)" $1| ir |$3|$(\2:ss)
+"(([A-Z]{3}) [-−]?\d+)[.,]([02-9]1)" $1| ir |$3|$(\2:ss)
 "(([A-Z]{3}) [-−]?\d+)[.,](\d)" $1| ir |$(\30)$(\2:spa)
-"(([A-Z]{3}) [-−]?\d+)[.,](1[1-9])" $1| ir |$3|$(\2:spa)
+"(([A-Z]{3}) [-−]?\d+)[.,](1[0-9]|[2-9]0)" $1| ir |$3|$(\2:spa)
 "(([A-Z]{3}) [-−]?\d+)[.,](\d\d)" $1| ir |$3$(\2:spb)
 
 == feminine ==
