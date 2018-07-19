@@ -65,7 +65,7 @@ USD:(\D+) $(\1: usona dolaro, usonaj dolaroj, cendo, cendoj)
 
 == ordinal-number ==
 
-(\d+)	\1.
+(\d+)	\1-a
 
 == help ==
 
