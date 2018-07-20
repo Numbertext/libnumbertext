@@ -1,5 +1,8 @@
-Soros interpreters for C++11, Java, JavaScript and Python
+# Soros interpreters for C++11, Java, JavaScript and Python
 
+[![Build Status](https://travis-ci.org/Numbertext/libnumbertext.png?branch=master)](https://travis-ci.org/Numbertext/libnumbertext)
+
+```
 Language-neutral NUMBERTEXT and MONEYTEXT functions for LibreOffice Calc
 
 version 1.0 (2018-07-28)
@@ -172,3 +175,4 @@ make -f Makefile.orig check
 test/thaicheck.ods is a simple test of the equivalence of
 the Soros implementation of Thai number to number name conversion
 and BAHTTEXT function.
+```
