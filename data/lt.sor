@@ -86,26 +86,66 @@ ss:([^,]*),([^,]*),([^,]*),([^,]*),([^,]*),([^,]*) \4
 spa:([^,]*),([^,]*),([^,]*),([^,]*),([^,]*),([^,]*) \5
 spb:([^,]*),([^,]*),([^,]*),([^,]*),([^,]*),([^,]*) \6
 
-LTL:(\D+) $(\1: litas, litų, litai, centas, centų, centai)
+AUD:(\D+) $(\1: Australijos doleris, Australijos dolerių, Australijos doleriai, centas, centų, centai)
+BGN:(\D+) $(\1: levas, levų, levai, stotinka, stotinkų, stotinkos)
+CAD:(\D+) $(\1: Kanados doleris, Kanados dolerių, Kanados doleriai, centas, centų, centai)
+CHF:(\D+) $(\1: Šveicarijos frankas, Šveicarijos frankų, Šveicarijos frankai, santimas, santimų, santimai)
+CZK:(\D+) $(\1: Čekijos krona, Čekijos kronų, Čekijos kronos, heleris, helerių, heleriai)
+EEK:(\D+) $(\1: Estijos krona, Estijos kronų, Estijos kronos, sentas, sentų, sentai)
 EUR:(\D+) $(\1: euras, eurų, eurai, euro centas, euro centų, euro centai)
-USD:(\D+) $(\1: doleris, dolerių, doleriai, centas, centų, centai)
-NOK:(\D+) $(\1: Norvegijos krona, Norvegijos kronų, Norvegijos kronos, erė, erių, erės)
-SEK:(\D+) $(\1: Švedijos krona, Švedijos kronų, Švedijos kronos, erė, erių, erės)
 GBP:(\D+) $(\1: svaras sterlingų, svarų sterlingų, svarai sterlingų, pensas, pensų, pensai)
-RUB:(\D+) $(\1: rublis, rublių, rubliai, kapeika, kapeikų, kapeikos)
+GHS:(\D+) $(\1: sedis, sedžių, sedžiai, peseva, pesevų, pesevos)
+HKD:(\D+) $(\1: Honkongo doleris, Honkongo dolerių, Honkongo doleriai, centas, centų, centai)
+HRK:(\D+) $(\1: kuna, kunų, kunos, lipa, lipų, lipos)
+HUF:(\D+) $(\1: forintas, forintų, forintai, fileris, filerių, fileriai)
+INR:(\D+) $(\1: Indijos rupija, Indijos rupijų, Indijos rupijos, paisa, paisų, paisos)
+JMD:(\D+) $(\1: Jamaikos doleris, Jamaikos dolerių, Jamaikos doleriai, centas, centų, centai)
+KES:(\D+) $(\1: Kenijos šilingas, Kenijos šilingų, Kenijos šilingai, centas, centų, centai)
+LRD:(\D+) $(\1: Liberijos doleris, Liberijos dolerių, Liberijos doleriai, centas, centų, centai)
+LTL:(\D+) $(\1: litas, litų, litai, centas, centų, centai)
+LVL:(\D+) $(\1: lats, lati, santims, santimi)
+MUR:(\D+) $(\1: Mauricijaus rupija, Mauricijaus rupijų, Mauricijaus rupijos, centas, centų, centai)
+MXN:(\D+) $(\1: Meksikos pesas, Meksikos pesų, Meksikos pesai, sentavas, sentavų, sentavai)
+MWK:(\D+) $(\1: Malavio kvača, Malavio kvačų, Malavio kvačos, tambala, tambalų, tambalos)
+NAD:(\D+) $(\1: Namibijos doleris, Namibijos dolerių, Namibijos doleriai, centas, centų, centai)
+NGN:(\D+) $(\1: naira, nairų, nairos, koba, kobų, kobos)
+NOK:(\D+) $(\1: Norvegijos krona, Norvegijos kronų, Norvegijos kronos, erė, erių, erės)
+NZD:(\D+) $(\1: Naujosios Zelandijos doleris, Naujosios Zelandijos dolerių, Naujosios Zelandijos doleriai, centas, centų, centai)
+PGK:(\D+) $(\1: kina, kinų, kinos, toja, tojų, tojos)
+PHP:(\D+) $(\1: Filipinų pesas, Filipinų pesų, Filipinų pesai, sentimas, sentimų, sentimai)
+PKR:(\D+) $(\1: Pakistano rupija, Pakistano rupijų, Pakistano rupijos, paisa, paisų, paisos)
+PLN:(\D+) $(\1: zlotas, zlotų, zlotai, grašis, grašių, grašiai)
+RON:(\D+) $(\1: Rumunijos lėja, Rumunijos lėjų, Rumunijos lėjos, banas, banų, banai)
+RSD:(\D+) $(\1: Serbijos dinaras, Serbijos dinarų, Serbijos dinarai, paras, parų, parai)
+RUB:(\D+) $(\1: Rusijos rublis, Rusijos rublių, Rusijos rubliai, kapeika, kapeikų, kapeikos)
+RWF:(\D+) $(\1: Ruandos frankas, Ruandos frankų, Ruandos frankai, sentimas, sentimų, sentimai)
+SDG:(\D+) $(\1: Sudano svaras, Sudano svarų, Sudano svarai, piastras, piastrų, piastrai)
+SEK:(\D+) $(\1: Švedijos krona, Švedijos kronų, Švedijos kronos, erė, erių, erės)
+SGD:(\D+) $(\1: Singapūro doleris, Singapūro dolerių, Singapūro doleriai, centas, centų, centai)
+SLL:(\D+) $(\1: leonė, leonių, leonės, centas, centų, centai)
+THB:(\D+) $(\1: Tailando batas, Tailando batų, Tailando batai, satangas, satangų, satangai)
+TRY:(\D+) $(\1: Turkijos lira, Turkijos lirų, Turkijos liros, kurušas, kurušų, kurušai)
+TTD:(\D+) $(\1: Trinidado ir Tobago doleris, Trinidado ir Tobago dolerių, Trinidado ir Tobago doleriai, centas, centų, centai)
+TZS:(\D+) $(\1: Tanzanijos šilingas, Tanzanijos šilingų, Tanzanijos šilingai, centas, centų, centai)
+UAH:(\D+) $(\1: grivina, grivinų, grivinos, kapeika, kapeikų, kapeikos)
+UGX:(\D+) $(\1: Ugandos šilingas, Ugandos šilingų, Ugandos šilingai, centas, centų, centai)
+USD:(\D+) $(\1: JAV doleris, JAV dolerių, JAV doleriai, centas, centų, centai)
+ZAR:(\D+) $(\1: Pietų Afrikos randas, Pietų Afrikos randų, Pietų Afrikos randai, centas, centų, centai)
+ZMK:(\D+) $(\1: Zambijos kvača, Zambijos kvačų, Zambijos kvačos, ngvi, ngvių, ngvės)
+ZWL:(\D+) $(\1: Zimbabvės doleris, Zimbabvės dolerių, Zimbabvės doleriai, centas, centų, centai)
 
 # female gender
 # before delimiter
-"(NOK|SEK) ([-−]?(1|\d*[02-9]1))([.,]00?)?" $(f:$2)|$(\1:us) 				# 1| *01| *21 ...
-"(NOK|SEK) ([-−]?(0|\d*(1[1-9]|[01-9]0)))([.,]00?)?" $2|$(\1:upa)			# 0 | *11| *19| *10| *30 ...
-"(NOK|SEK) ([-−]?\d*[2-9])([.,]00?)?" $(f:$2)|$(\1:upb)					# *2| *8 ...
+"(CZK|EEK|HRK|INR|MUR|MWK|NGN|NOK|PGK|PKR|RON|SEK|SLL|TRY|UAH|ZMK) ([-−]?(1|\d*[02-9]1))([.,]00?)?" $(f:$2)|$(\1:us) 		# 1| *01| *21 ...
+"(CZK|EEK|HRK|INR|MUR|MWK|NGN|NOK|PGK|PKR|RON|SEK|SLL|TRY|UAH|ZMK) ([-−]?(0|\d*(1[1-9]|[01-9]0)))([.,]00?)?" $2|$(\1:upa)	# 0 | *11| *19| *10| *30 ...
+"(CZK|EEK|HRK|INR|MUR|MWK|NGN|NOK|PGK|PKR|RON|SEK|SLL|TRY|UAH|ZMK) ([-−]?\d*[2-9])([.,]00?)?" $(f:$2)|$(\1:upb)			# *2| *8 ...
 
 # atfer delimiter
-"((NOK|SEK|RUB) [-−]?\d+)[.,](0+)" $1|							# 0, 00
-"((NOK|SEK|RUB) [-−]?\d+)[.,]([02-9]1)" $1| ir |$(f:$3)|$(\2:ss)			# 1, 21, 31, ..., 91
-"((NOK|SEK|RUB) [-−]?\d+)[.,](\d)" $1| ir |$(\30)$(\2:spa)				# *,x conversion to *,x0
-"((NOK|SEK|RUB) [-−]?\d+)[.,](1[0-9]|[2-9]0)" $1| ir |$3|$(\2:spa)			# 10-19, 20, 30, ..., 90
-"((NOK|SEK|RUB) [-−]?\d+)[.,](\d\d)" $1| ir |$(f:$3)$(\2:spb)				# all the rest
+"((BGN|GHS|HRK|INR|MWK|NGN|NOK|PGK|PKR|SEK|RUB|UAH|ZMK) [-−]?\d+)[.,](0+)" $1|					# 0, 00
+"((BGN|GHS|HRK|INR|MWK|NGN|NOK|PGK|PKR|SEK|RUB|UAH|ZMK) [-−]?\d+)[.,]([02-9]1)" $1| ir |$(f:$3)|$(\2:ss)	# 1, 21, 31, ..., 91
+"((BGN|GHS|HRK|INR|MWK|NGN|NOK|PGK|PKR|SEK|RUB|UAH|ZMK) [-−]?\d+)[.,](\d)" $1| ir |$(\30)$(\2:spa)		# *,x conversion to *,x0
+"((BGN|GHS|HRK|INR|MWK|NGN|NOK|PGK|PKR|SEK|RUB|UAH|ZMK) [-−]?\d+)[.,](1[0-9]|[2-9]0)" $1| ir |$3|$(\2:spa)	# 10-19, 20, 30, ..., 90
+"((BGN|GHS|HRK|INR|MWK|NGN|NOK|PGK|PKR|SEK|RUB|UAH|ZMK) [-−]?\d+)[.,](\d\d)" $1| ir |$(f:$3)$(\2:spb)		# all the rest
 
 # male gender (all except female gender filter matches)
 # before delimiter
