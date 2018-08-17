@@ -79,11 +79,11 @@ IDR:(\D+) $(\1: Indonesian rupia, Indonesian rupiaa, sen, seniä)
 ISK:(\D+) $(\1: Islannin kruunu, Islannin kruunua, äyri, äyriä)
 JPY:(\D+) $(\1: Japanin jeni, Japanin jeniä, sen, seniä)
 KRW:(\D+) $(\1: Etelä-Korean won, Etelä-Korean wonia, chon, chonia)
-LTL:(\D+) $(\1: Liettuan lita, Liettuan litiä, centasi, centasia)
+LTL:(\D+) $(\1: Liettuan liti, Liettuan litiä, centas, centasia)
 LVL:(\D+) $(\1: Latvian lati, Latvian latia, santiimi, santiimia)
 MDL:(\D+) $(\1: Moldovan leu, Moldovan leuta, ban, bania)
 MKD:(\D+) $(\1: Makedonian denaari, Makedonian denaaria, deni, deniä)
-MYR:(\D+) $(\1: Malesian ringgit, Malesian ringgittia, sen, seniä)
+MYR:(\D+) $(\1: Malesian ringgit, Malesian ringgitia, sen, seniä)
 NZD:(\D+) $(\1: Uuden-Seelannin dollari, Uuden-Seelannin dollaria, sentti, senttiä)
 NOK:(\D+) $(\1: Norjan kruunu, Norjan kruunua, äyri, äyriä)
 PHP:(\D+) $(\1: Filippiinien peso, Filippiinien pesoa, centavo, centavoa)
@@ -99,7 +99,7 @@ UAH:(\D+) $(\1: Ukrainan hryvnia, Ukrainan hryvniaa, kopeekka, kopeekkaa)
 USD:(\D+) $(\1: Yhdysvaltain dollari, Yhdysvaltain dollaria, sentti, senttiä)
 
 "(JPY [-−]?\d+)[.,](\d\d)0" $1
-"(JPY [-−]?\d+[.,]\d\d)1" $1 $2 rini
+"(JPY [-−]?\d+[.,]\d\d)1" $1 $2 rin
 "(JPY [-−]?\d+[.,]\d\d)(\d)" $1 $2 riniä
 
 "([A-Z]{3}) ([-−]?1)([.,]00?)?" $2$(\1:us)
