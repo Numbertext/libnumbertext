@@ -23,7 +23,7 @@ public class Numbertext {
         String line = null;
         while (( line = f.readLine()) != null) {
             st.append(line);
-            st.append(System.getProperty("line.separator"));
+            st.append("\n");
         }
         s = new Soros(new String(st), langcode);
         if (modules != null && langfile != null) modules.put(langcode, s);
