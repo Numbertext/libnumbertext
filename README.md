@@ -62,6 +62,7 @@ en-IN	English with Indian numbering system (lakh = 100.000, crore = 10^7)
 en-NZ	English (one hundred and one)
 eo	Esperanto
 es	Spanish
+et	Estonian
 fi	Finnish
 fr	French
 fr-BE	Belgian French
