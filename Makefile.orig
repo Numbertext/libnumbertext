@@ -13,7 +13,7 @@ distx:
 
 lo:
 	make -f Makefile.orig
-	zip -r numbertext-`head -1 VERSION`.oxt META-INF rdb idl pythonpath pkg-desc *.xcu *py *xml README
+	zip -r numbertext-`head -1 VERSION`.oxt META-INF rdb idl pythonpath pkg-desc *.xcu *py *xml README.md
 
 check:
 	cd test; make
