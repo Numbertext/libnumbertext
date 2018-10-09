@@ -118,14 +118,14 @@
       <div class="col-md-3 col-sm-6">
         <div class="service"> <i class="fa fa-table"></i>
           <h3>LibreOffice</h3>
-	  <p>Extension with NUMBERTEXT and MONEYTEXT spreadsheet functions: <a href="https://extensions.libreoffice.org/extensions/numbertext-1/1.0.5/@@download/file/numbertext-1.0.5.oxt">numbertext-1.0.5.oxt</a>
-	  (<a href="https://extensions.libreoffice.org/extensions/numbertext-1/1.0.5">description</a>)</p>
+	  <p>Extension with NUMBERTEXT and MONEYTEXT spreadsheet functions: <a href="https://extensions.libreoffice.org/extensions/numbertext-1/1-0.5/@@download/file/numbertext-1.0.5.oxt">numbertext-1.0.5.oxt</a>
+	  (<a href="https://extensions.libreoffice.org/extensions/numbertext-1/1-0.5">description</a>)</p>
         </div>
       </div>
       <div class="col-md-3 col-sm-6">
         <div class="service"> <i class="fa fa-cogs"></i>
           <h3>C++</h3>
-	  <p>Source distribution (1.0): <a href="https://github.com/Numbertext/libnumbertext/releases/download/1.0/libnumbertext-1.0.5.tar.xz">libnumbertext-1.0.5.tar.xz</a> (<a href="https://github.com/Numbertext/libnumbertext/releases/tag/1.0.5">installation</a>)</p>
+	  <p>Source distribution (1.0): <a href="https://github.com/Numbertext/libnumbertext/releases/download/1.0.5/libnumbertext-1.0.5.tar.xz">libnumbertext-1.0.5.tar.xz</a> (<a href="https://github.com/Numbertext/libnumbertext/releases/tag/1.0.5">installation</a>)</p>
         </div>
       </div>
       <div class="col-md-3 col-sm-6">
