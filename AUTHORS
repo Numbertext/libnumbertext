@@ -99,6 +99,7 @@ Ruud Baars:
 Adolfo Jayme Barrientos (fitojb at ubuntu dot com):
 
 	- fix typo on web page
+	- fix Esperanto ordinal indicators (1-a instead of 1.)
 
 Stephan Bergmann:
 
@@ -126,7 +127,11 @@ Susana Sotelo Docío:
 
 Rene Engelhard:
 
-	- Debian packaging, libnumbertext bug reports
+	- Debian packaging, fix DEFPATH in spellout, libnumbertext bug reports
+
+Aurimas Fišeras (aurimas at members fsf org):
+
+	- various fixes for Lithuanian module
 
 Sophie Gautier:
 
@@ -276,6 +281,10 @@ Kálmán Szalai (Kami):
 
 	- ooo-build integration of Numbertext OpenOffice.org extension
 
+tengwar:
+
+	- bug report for Polish (pl) module: bad ordinal numbers
+
 András Tímár (timar74 at gmail dot com):
 
 	- official reviewer, as activist of FSF.hu Foundation, Hungary
@@ -283,6 +292,10 @@ András Tímár (timar74 at gmail dot com):
 Tantai Thanakanok (tantai osdev co th):
 
 	- patch for extended Thai decimal support (1 and more than 2 digits with currencies)
+
+Rens Toonen (rens toonen at topicus nl):
+
+	- Java fix for Windows: replaced the system line seperator with a fixed value.
 
 xhydrogene at launchpad dot net:
 
@@ -297,6 +310,7 @@ Miklós Vajna (vmiklos at collabora dot co dot uk):
 	- code clean-ups
 	- small performance improvement during Soros compiling
 	- add Travis CI integration
+	- README to MarkDown
 
 Laimonas Vėbra (laimis) at LaunchPad:
 

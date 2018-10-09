@@ -1,3 +1,16 @@
+2018-10-09: 1.0.5 release:
+	* et.sor: new Estonian module
+	* Java: fix path separator for Windows by Rens Toonen
+	* spellout: fix DEFPATH in spellout by Rene Engelhard
+	* README: conversion to MarkDown by Miklós Vajna
+	* da.sor: fix "en million", bug report by Hsonesson1
+	* de.sor: add function year by c-kuehl
+	* eo.sor: fix ordinal-number, ie. "1-a" by Adolfo Jayme Barrientos
+	* fi.sor: fixed and more currencies by Tuomas Hietala
+	* lt.sor: fix ordinal numbers and currencies by Aurimas Fišeras
+	* pl.sor: fix ordinal numbers 4x, 7x, bug report by tengwar
+	* sq.sor: add missing 1000-9999
+
 2018-07-01: 1.0 release:
 	* libnumbertext:
 	- load Bokmål (nb) and Nynorsk (nn) from no.sor
