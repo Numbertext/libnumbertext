@@ -94,6 +94,8 @@ USD:(\D+) $(\1: dolar amerykański, dolary amerykańskie, dolarów amerykańskic
 == ordinal(-masculine)? ==
 
 ([-−]?\d+)	$(ordinal |$2)
+"(.*)siąt (.*)"	$(ordinal \2siąty \3)
+"(.*)eści (.*)"	$(ordinal \2esty \3)
 
 (.*)jeden	\2pierwszy
 (.*)dwa		\2drugi
@@ -124,11 +126,13 @@ USD:(\D+) $(\1: dolar amerykański, dolary amerykańskie, dolarów amerykańskic
 == ordinal-feminine ==
 
 ([-−]?\d+)	$(ordinal-feminine $(ordinal |$1))
+"(.*)[yi] (.*)"		$(ordinal-feminine \1a \2)
 (.*)[yi]	\1a
 
 == ordinal-neuter ==
 
-([-−]?\d+)	$(ordinal-feminine $(ordinal |$1))
+([-−]?\d+)	$(ordinal-neuter $(ordinal |$1))
+"(.*)[yi] (.*)"		$(ordinal-neuter \1e \2)
 (.*)[yi]	\1e
 
 == ordinal-number ==
