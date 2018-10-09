@@ -78,10 +78,10 @@
     <div class="row">
       <div class="col-md-4">
         <div class="about-text">
-	      <!--<iframe width="560" height="315" src="https://www.youtube.com/embed/N9BZ1tCsasw" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>-->
-	 <iframe width="350" height="280" src="https://www.youtube.com/embed/N9BZ1tCsasw" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-		Spelling out numbers and money amounts in LibreOffice Calc
+	 <iframe width="350" height="280" src="https://www.youtube.com/embed/c0j4Sjie8t4" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+     New chapter numberings in LibreOffice 6.1 (see also <a href="https://wiki.documentfoundation.org/ReleaseNotes/6.1#New_.E2.80.9Cspell_out.E2.80.9D_NatNum_modifier">NatNum12</a> modifier and <a href="https://youtu.be/N9BZ1tCsasw">NUMBERTEXT()</a> spreadsheet extension).
 	 </div>
+
       </div>
       <div class="col-md-4">
         <div class="about-text">
@@ -98,8 +98,7 @@
         <div class="about-text">
 
           <h4>Background</h4>
-
-	  <p>NUMBERTEXT/MONEYTEXT functions and Soros programming language was developed in 2009 for generalization of BAHTTEXT spreadsheet function, a function of Microsoft Excel for number to Thai number name and currency conversion, standardized by ECMA–376 and ISO/IEC&nbsp;29&nbsp;500:2008 Office Open XML format.</p>
+      <p>Origin of the “spell out” component of LibreOffice 6.1, NUMBERTEXT/MONEYTEXT functions and Soros programming language was developed in 2009 for generalization of BAHTTEXT spreadsheet function, a function of Microsoft Excel for number to Thai number name and currency conversion, standardized by ECMA–376 and ISO/IEC&nbsp;29&nbsp;500:2008 Office Open XML format.</p>
 	  <p>Soros programming language is based on regular expressions, just like its small interpreters (in Python: less, than 120 lines). Despite its simplicity, it can handle language variants, complex spelling functions and rules in a concise manner.</p>
         </div>
       </div>
