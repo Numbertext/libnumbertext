@@ -86,8 +86,8 @@ nl	Dutch
 nn	Norwegian Nynorsk
 no	Norwegian (Bokmål)
 pl	Polish
-pt	Brazilian Portuguese
-pt-PT	Portuguese
+pt	Portuguese
+pt-BR	Brazilian Portuguese
 ro	Romanian
 ru	Russian
 sh	Serbian (Latin)
