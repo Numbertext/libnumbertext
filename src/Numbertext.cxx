@@ -2,6 +2,8 @@
  * 2018 (c) László Németh
  * License: LGPL/BSD dual license */
 
+#include <codecvt>
+#include <locale>
 #include <sstream>
 #include <fstream>
 
@@ -11,8 +13,6 @@
   #include <boost/locale/encoding_utf.hpp>
   using namespace boost;
 #else
-  #include <codecvt>
-  #include <locale>
   using namespace std;
 #endif
 
@@ -25,11 +25,7 @@ bool readfile(const std::string& filename, std::wstring& result)
     std::wifstream wif(filename);
     if (wif.fail())
         return false;
-#ifdef _MSC_VER
     wif.imbue(std::locale(std::locale(), new std::codecvt_utf8<wchar_t>));
-#else
-    wif.imbue(std::locale("en_US.UTF-8"));
-#endif
     std::wstringstream wss;
     wss << wif.rdbuf();
     result = wss.str();
