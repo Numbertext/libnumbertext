@@ -10,8 +10,12 @@ import java.io.BufferedReader;
 import org.numbertext.Soros;
 import java.net.URL;
 import java.util.HashMap;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Numbertext {
+  private static final Pattern LANG_PATTERN_NO = Pattern.compile("n[bn]([-_]NO)?");
+
   static HashMap<String, Soros> modules = new HashMap<String, Soros>();
 
   private static Soros load(String langfile, String langcode) {
@@ -37,6 +41,12 @@ public class Numbertext {
     Soros s = (Soros) modules.get(lang);
     if (s == null) s = load(lang.replace('-', '_'), lang);
     if (s == null) s = load(lang.replaceFirst("[-_].*", ""), lang);
+    if (s == null) {
+        // some exceptional language codes
+        // Norwegian....
+        Matcher m = LANG_PATTERN_NO.matcher(lang);
+        if (m.find()) s = load(m.replaceAll("no"), lang);
+    }
     if (s == null) {
         System.out.println("Missing language module: " + lang);
         return null;
