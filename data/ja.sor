@@ -28,7 +28,7 @@
 
 # negative numbers?
 
-[-−](\d+) 负|$1
+[-−](\d+) 負|$1
 
 # decimals?
 
@@ -77,7 +77,7 @@ JPY 円
 
 # negative numbers?
 
-[-−](\d+) 负|$(formal \1)
+[-−](\d+) 負|$(formal \1)
 
 # decimals
 
