@@ -18,8 +18,9 @@
 17 septiņpadsmit
 18 astoņpadsmit
 19 deniņpadsmit
-([2])(\d) divdesmit[ $2]
-([23456789])(\d) $1|desmit[ $2]
+(\d)(\d) $(remove-i $1)|desmit[ $2]
+"remove-i (.*)i" \1
+"remove-i (.*)" \1
 1(\d\d) simts[ $1]
 (\d)(\d\d) $1 simti[ $2]
 1(\d{3}) viens tūkstotis[ $1]
