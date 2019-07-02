@@ -34,6 +34,7 @@ Portuguese: 2009 (C) Eduardo Moreno (emoreno at tokonhu dot com)
 Turkish: 2009 (C) Randem
 
 Serbian: 2009 (C) Goran Rakić (grakic at devbase dot net)
+Korean: 2019 (C) DaeHyun Sung (sungdh86+git at gmail dot com)
 License: CC BY-SA/LGPL-3+/Modified BSD tri-license
 
 
@@ -75,8 +76,9 @@ id	Indonesian
 is	Icelandic
 it	Italian
 ja	Japanese
-ko	South-Korean
-ko-KP	North-Korean
+ko	Korean
+ko-KR	Korean (South)
+ko-KP	Korean (North)
 lb	Luxembourgish
 lt	Lithuanian
 lv	Latvian
