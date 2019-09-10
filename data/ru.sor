@@ -77,6 +77,10 @@ f:(.*)один \1одна
 f:(.*)два \1две
 f:(.*) \1
 
+# neuter conversion
+n:(.*)один \1одно
+n:(.*) \1
+
 # possessive (1-999) - used in ordinals
 "pos:(.* )?од(ин|на) ?" [$(pos:\1)]одно
 "pos:(.* )?дв[ае] ?" [$(pos:\1)]двух
@@ -124,6 +128,18 @@ USD:(\D+) $(\1: доллар США, доллара США, долларов С�
 "(([A-Z]{3}) [-−]?\d+)[.,]([02-9][234])" $1 |$3$(\2:sp)
 "(([A-Z]{3}) [-−]?\d+)[.,](\d)" $1 |$(\30)$(\2:sg)
 "(([A-Z]{3}) [-−]?\d+)[.,](\d\d)" $1 |$3$(\2:sg)
+
+== cardinal-masculine? ==
+
+(.*) $(\1)
+
+== cardinal-feminine ==
+
+(.*) $(f:$1)
+
+== cardinal-neuter ==
+
+(.*) $(n:$1)
 
 == ordinal-feminine ==
 
@@ -224,5 +240,5 @@ USD:(\D+) $(\1: доллар США, доллара США, долларов С�
 
 == help ==
 
-"" |$(1)|, |$(2)|, |$(3)|\n$(help ordinal-feminine)$(help ordinal-masculine)$(help ordinal-neuter)$(help ordinal-number-feminine)$(help ordinal-number-masculine)$(help ordinal-number-neuter)
+"" |$(1)|, |$(2)|, |$(3)|\n$(help cardinal-feminine)$(help cardinal-masculine)$(help cardinal-neuter)$(help ordinal-feminine)$(help ordinal-masculine)$(help ordinal-neuter)$(help ordinal-number-feminine)$(help ordinal-number-masculine)$(help ordinal-number-neuter)
 (.*) \1: |$(\1 1)|, |$(\1 2)|, |$(\1 3)|\n
