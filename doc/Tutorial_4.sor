@@ -44,7 +44,6 @@
 # Write a program to return with the last two characters
 # of the input, if they don’t contain zeroes.
 
-.*([^0][^0]) \1
 
 
 # TASK 4
