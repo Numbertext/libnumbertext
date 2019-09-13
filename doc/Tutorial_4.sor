@@ -44,7 +44,6 @@
 # Write a program to return with the last two characters
 # of the input, if they don’t contain zeroes.
 
-.*([^0][^0]) \1
 
 
 # TASK 4
@@ -186,7 +185,7 @@ SCROLL DOWN FOR SOLUTIONS
 
 # SOLUTION – OPTIONAL TASK 2
 #
-# (\d)\1+
+# (\d)\1+ Cute number! 🙂
 
 #######################################################
 # CONGRATULATIONS – You have finished Tutorial Four! 🙂
