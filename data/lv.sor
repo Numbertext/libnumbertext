@@ -17,7 +17,7 @@
 16 sešpadsmit
 17 septiņpadsmit
 18 astoņpadsmit
-19 deniņpadsmit
+19 deviņpadsmit
 (\d)(\d) $(remove-i $1)|desmit[ $2]
 "remove-i (.*)i" \1
 "remove-i (.*)" \1
