@@ -119,15 +119,18 @@ USD:(.)	$(\1: dollaro USA, cent, cent)
 == ordinal-feminine ==
 
 ([-−]?\d+)	$(ordinal-feminine |$1)
-(.*)un[ao]	\1prima
-(.*)udue	\1seconda
+un[ao]		\1prima
+(.*)un[ao]	\1unesima
+due		seconda
+(.*)due		\1duesima
 (.*)tre		\1terza
 (.*)quattro	\1quarta
 (.*)cinque	\1quinta
 (.*)sei		\1sesta
-(.*)sette	\1settima
-(.*)otto	\1ottava
-(.*)nove	\1nona
+(.*)sette	\1settesima
+(.*)ootto	\1ottesima
+(.*)otto	\1ottesima
+(.*)nove	\1novesima
 (.*)dieci	\1decima
 (.*tr)é		\1eesima
 (.*sei)		\1esima
