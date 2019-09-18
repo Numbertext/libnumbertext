@@ -28,6 +28,10 @@ Adrián Chaves (adrian at chaves dot io):
 
 	- fix for Spanish: use plural for 0 (in currency)
 
+Dario Gallucci (dario-gallucci at GitHub - issue #42):
+
+	- review ordinal numbers in Italian module
+
 Mike Kaganski (mikekaganski at hotmail dot com:
 
 	- author of ordinal numbers of Russian module (ru)
@@ -35,6 +39,10 @@ Mike Kaganski (mikekaganski at hotmail dot com:
 	- various fixes
 
 	- tdf#115007: add LibreOffice NatNum codes for cardinal/ordinal number names/indicators
+
+Alvar Laigna (alvar at bind dot ee):
+
+	- review and fix Estonian module (et)
 
 Eduardo Moreno (emoreno at tokonhu dot com):
 
@@ -74,6 +82,10 @@ Suokunlong: (suokunlong at 126 dot com):
 
 	- author of real native Simplified Chinese module (zh)
 
+DaeHyun Sung (sungdh86 at gmail):
+
+	- review and fix Korean module (ko) and add won unit to English
+
 Michel Weimerskirch (michel at weimerskirch dot net):
 
 	- author of Luxembourgish module (lb-LU) 
@@ -82,6 +94,14 @@ Michel Weimerskirch (michel at weimerskirch dot net):
 
 Liudas Ališauskas (liudas dot alisauskas at gmail dot com):
 	- fix Lithuanian money handling
+
+andritis at GitHub (issue #52):
+
+	- fix 19 in in Latvian module
+
+armik71 at GitHub (issue #41):
+
+	- report problem with fix EUR 200, EUR 300 etc. in French module
 
 Mushtaque Asghar:
 
@@ -107,6 +127,8 @@ Stephan Bergmann:
 
 	- fixes in LibreOffice for external/libnumbertext
 
+	- don't depend on en_US.UTF-8 locale
+
 Tomáš Chvátal (tchvatal at suse dot com):
 
 	- add enable-boost option to work with older gcc-4.8 and like using boost, default off
@@ -128,6 +150,10 @@ Susana Sotelo Docío:
 Rene Engelhard:
 
 	- Debian packaging, fix DEFPATH in spellout, libnumbertext bug reports
+
+Spiros Evangelatos (sevangelatos at gmail):
+
+	- fixes in Greek module: "and" in currency fractions and "0 euro"
 
 Aurimas Fišeras (aurimas at members fsf org):
 
@@ -157,6 +183,24 @@ Stanislav Horáček:
 Hsonesson1 at GitHub:
 
 	- bug report for Danish (en million, not et million etc.)
+
+Li-Wen Hsu (lwhsu at lwhsu dot org):
+
+	- add prefix-based datadir handling to Makefile.am
+
+Ilya Idamkin (ilya dot idamkin at duallab):
+
+	- port nn/nb language code handling to Java from C++
+
+	- fix handling of Thai 1
+
+	- fix typos
+
+Alexander Ivanov (oshli dot a dot er at gmail):
+
+	- add cardinal functions to Russian module
+
+	- tutorial fixes
 
 Jmzambon at OOO Wiki:
 

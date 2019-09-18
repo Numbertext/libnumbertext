@@ -175,7 +175,7 @@
 <div id="team" class="text-center">
   <div class="container">
     <div class="section-title center">
-<!--!cat ../AUTHORS | awk '/^[^ 	].*:/{if(z!=1)print"•";else{print "<p>";z=0};print toupper(gensub("(\\(| at |:).*", "", "g", $0))}/author/{print gensub("^\\s*-.*author of[^A-Z]*(.*) module.*", "(\\1)", "g", $0)}/^=/{print gensub("= (.*) =", "</p><div id='row'><p></p><p></p></div><h2></h2><h2>\\1</h2>", "g");z=1}{next}'-->
+<!--!cat ../AUTHORS | awk '/^[^ 	].*:/{if(z!=1)print"•";else{print "<p>";z=0};print toupper(gensub("(\\(| at |:).*", "", "g", $0))}/(author|review)/{print gensub("^\\s*-.*(author of|review)[^A-Z]*(.*) module.*", "(\\2)", "g", $0)}/^=/{print gensub("= (.*) =", "</p><div id='row'><p></p><p></p></div><h2></h2><h2>\\1</h2>", "g");z=1}{next}'-->
 <h2></h2>
 <h2>Donors</h2>
 <p><a href="http://fsf.hu">FSF.hu Foundation</a>, Hungary • <a href="https://nlnet.nl">NLNet Foundation</a>, Netherlands</p>
