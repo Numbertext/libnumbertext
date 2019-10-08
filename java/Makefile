@@ -1,6 +1,7 @@
 all:
 	mkdir -p org/numbertext/data
 	cp ../data/*.sor org/numbertext/data
+	cp -r src/main/java/org .
 	CLASSPATH=. javac -encoding utf8 org/numbertext/Numbertext.java
 	jar cfm numbertext.jar Manifest.txt org
 	java -jar numbertext.jar
