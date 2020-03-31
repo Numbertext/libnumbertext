@@ -24,7 +24,7 @@ public class Numbertext {
 
 	private static Soros load(String langfile, String langcode) {
 		final Soros s;
-		try (InputStream input = Numbertext.class.getResourceAsStream("/data/" + langfile + ".sor");
+		try (InputStream input = Numbertext.class.getResourceAsStream("data/" + langfile + ".sor");
 				BufferedReader f = new BufferedReader(new InputStreamReader(input, "UTF-8"));) {
 			final StringBuilder builder = new StringBuilder();
 			String line = null;
@@ -73,8 +73,10 @@ public class Numbertext {
 	private static void printHelp() {
 		System.out.println("Usage: java soros [-l lang] [-p prefix_function] [par1 [par2...]]");
 		System.out.println("Parameter: n: number; n-m: range; n-m~s: range with step");
-		System.out.println("Example: java -jar numbertext -l en_US -p ord 1-10 500 1000-10000~1000");
-		System.out.println("         java -jar numbertext -l en_US # print prefix functions of the language module");
+		System.out.println("Example: java -jar numbertext.jar -l en_US 99 # spell out number 99 in English");
+		System.out.println("         # spell out different ordinal numbers and number ranges");
+		System.out.println("         java -jar numbertext.jar -l en_US -p ordinal 1-10 500 1000-10000~1000");
+		System.out.println("         java -jar numbertext.jar -l en_US # print prefix functions of the language module");
 		System.out.println("License: GNU LGPL/BSD dual-license");
 	}
 
