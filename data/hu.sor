@@ -115,7 +115,8 @@ ZAR:(.)	$(\1: dél-afrikai rand, cent)
 
 == fix-grammar ==
 
-(.*)elsői			\1elsejei
+(.*)elsői			\1elseji
+(.*)elsőei			\1elsejei
 (.*)elsőe(.*)		\1első\2
 (.*)első(j.*)		\1else\2
 (.*)hároma(t|s)		\1hárma\2
@@ -426,7 +427,7 @@ vasárnap	vasárnap	# no suffix in dates
 
 == help ==
 
-"" $(1)|, $(2)|, $(3)\n$(\0 ordinal)$(\0 ordinal-number)year: $(year 2001), $(year 2002)|, $(year 2003)\nformal: $(formal 100), $(formal 200), $(formal 1000)\ntext: $(text 1), $(text 12000), $(text 10000000000)\ncurrency \(for example, HUF\): $(HUF 2,5)\nformal HUF: $(formal HUF 102,5)\nSuffixation of numbers and letters: -a, -ában, -án, -áig, -ától, -ba, -ban, -ból, -d, -dik, -hoz,\n    -nak, -nál, -n, -ra, -ról, -s, -szor, -szoros, -t, -tól, -ul, -vá, -val,\n    for example: -szor 15 -> $(-szor 15)\narticle: $(article 5)\narticle cardinal: $(article cardinal 100)\narticle cardinal formal: $(article cardinal formal 100)\narticle -ban: $(article -ban a\))\narticle ordinal -ai: $(article ordinal -ai 1)|\ncanonical-name: -szor -> $(canonical-name -szor)
+"" $(1)|, $(2)|, $(3)\n$(\0 ordinal)$(\0 ordinal-number)year: $(year 2001), $(year 2002)|, $(year 2003)\nformal: $(formal 100), $(formal 200), $(formal 1000)\ntext: $(text 1), $(text 12000), $(text 10000000000)\ncurrency \(for example, HUF\): $(HUF 2,5)\nformal HUF: $(formal HUF 102,5)\nSuffixation of numbers and letters: -a, -ában, -án, -áig, -ától, -ba, -ban, -ból, -d, -dik, -hoz,\n    -nak, -nál, -n, -ra, -ról, -s, -szor, -szoros, -t, -tól, -ul, -vá, -val,\n    for example: -szor 15 -> $(-szor 15)\narticle: $(article 5)\narticle cardinal: $(article cardinal 100)\narticle cardinal formal: $(article cardinal formal 100)\narticle -ban: $(article -ban a\))\narticle -ai: $(article -ai 1)\narticle ordinal -ai: $(article ordinal -ai 1)|\ncanonical-name: -szor -> $(canonical-name -szor)
 
 "(ordinal(-number)?|USD)" \1: $(\1 1), $(\1 2), $(\1 3)\n
 
