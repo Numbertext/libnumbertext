@@ -5,7 +5,7 @@
 ```
 Language-neutral NUMBERTEXT and MONEYTEXT functions for LibreOffice Calc
 
-version 1.0.5 (2018-10-09)
+version 1.0.6 (2020-06-01)
 
 Numbertext LibreOffice extension,
 Soros programming language specification (draft) and IDE*,
@@ -15,13 +15,13 @@ Soros interpreter in Java: see NUMBERTEXT.org
 
 * Not in LibreOffice Numbertext extension, see http://NUMBERTEXT.org.
 
-Copyright: 2009-2018 (C) László Németh (nemeth at numbertext dot org)
+Copyright: 2009-2020 (C) László Németh (nemeth at numbertext dot org)
 License: LGPL-3+/Modified BSD dual-license
 
 Numbertext language data (Soros programs):
 License: LGPL-3+/Modified BSD dual-license (except Serbian)
 
-Copyright: 2009-2018 (C) László Németh et al. (see AUTHORS)
+Copyright: 2009-2020 (C) László Németh et al. (see AUTHORS)
 Bulgarian: 2018 (C) Mihail Balabanov (m dot balabanov at gmail dot com)
 Croatian: 2014 (C) Mihovil Stanić (mihovil dot stanic at gmail dot com)
 Hebrew module: 2010 (C) Alex Bodnaru (alexbodn at 012 dot net dot il)
@@ -105,7 +105,7 @@ zh	Chinese (simplified)
 
 Old number systems:
 
-Hung		Old Hungarian Script
+hu-Hung		Old Hungarian Script (also word transliteration)
 Roman		Roman numbers
 Roman-large	Roman numbers for very large numbers
 		using parenthesized syntax

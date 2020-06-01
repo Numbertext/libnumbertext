@@ -1,3 +1,28 @@
+2020-06-01: 1.0.6 release:
+	* Numbertext.cxx: don't depend on en_US.UTF-8 locale by Stephan Bergmann
+	* Java:
+		- clean-up by Balázs Meskó with Maven support
+		- port special logic for Norwegian language from C++ by Ilya Idamkin
+	* Makefile.am: prefix for datadir by Li-Wen Hsu
+	* bg.sor: avoid using \d and \D by Mihail Balabanov
+	* ee.sor: update Estonian language spellings by Alvar Laigna
+	* el.sor: fix "and" before currency fractions and "zero" in case of 0 whole euro by Spiros Evangelatos
+	* es.sor: fixes by Juanma Sanchez, and based on him report
+	* gl.sor, es.sor: fix ISO codename of Honduran lempira by Ilya Idamkin
+	* fr.sor: fix EUR 200, 300 etc., bug report by armik71
+	* hu.sor: fix date function for 1
+	* hu_Hung.sor:
+		- Old Hungarian transliteration support for words
+		- remove obsolete function left-to-right
+		- add sch -> s, ä -> é transliteration by Viktor Kovács
+	* it.sor: fix ordinal numbers, bug report by dario-gallucci
+	* ja.sor: fix word "negative" (负 -> 負), bug report by cmplstofB
+	* ko.sor, en.sor: fix Korean module and add Korean Won unit by DaeHyun Sun
+	* lv.sor: fix 40, 50 ... 90, bug report by andritis
+	* my.sor, en.sor: add Malay currency MYR by Bee Ing
+	* ru.sor, uk.sor: fix cardinal and feminine RUB, UAH usage by Alex Ivanov
+	* th.sor: fix usage of 1 by Ilya Idamkin and tyindeepit
+
 2018-10-09: 1.0.5 release:
 	* et.sor: new Estonian module
 	* Java: fix path separator for Windows by Rens Toonen

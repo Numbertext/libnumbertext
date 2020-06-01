@@ -196,19 +196,33 @@ Ilya Idamkin (ilya dot idamkin at duallab):
 
 	- fix typos
 
-Alexander Ivanov (oshli dot a dot er at gmail):
+Bee Ing at GitHub:
+
+	- add Malay currency MYR
+
+Alexander Ivanov (contributorpw at GitHub):
 
 	- add cardinal functions to Russian module
 
 	- tutorial fixes
 
+	- fix feminine RUB, UAH
+
 Jmzambon at OOO Wiki:
 
 	- patch for French un/une handling for currencies
 
+Juanma Sanchez (JuanmaSP at GitHub):
+
+        - bug report for boundary issue with optional function at Spanish and other languages
+
 Kent Karlsson:
 
 	- reported Swedish gender problem with currencies in sv_SE.sor.
+
+Viktor Kovács:
+
+	- add "sch" to "s", "ä" to "é" transliteration to Old Hungarian
 
 Mantas Kriaučiūnas at Launchpad.net:
 
@@ -243,7 +257,7 @@ Joan Montané (jmontane at openoffice dot org):
 		- "menys" for negative
 
 	- reported missing gender support for Catalan and Spanish (http://wiki.services.openoffice.org/wiki/Talk:NUMBERTEXT/MONEYTEXT_development#Some_languages_need_male.2Ffemale_option_for_number_to_text)
-	
+
 	- various fixes and extensions for Catalan
 
 Julien2412 (serval2412 at yahoo dot fr):
@@ -270,6 +284,10 @@ Jerzy Moruś (morchat at o2 dot pl):
 mrw at OOo Extension site:
 
 	- bug report about document language detection in OOo 3.2
+
+Balázs Meskó:
+
+        - clean-up Java implementation, adding also Maven support
 
 Valter Mura:
 
@@ -340,6 +358,10 @@ Tantai Thanakanok (tantai osdev co th):
 Rens Toonen (rens toonen at topicus nl):
 
 	- Java fix for Windows: replaced the system line seperator with a fixed value.
+
+tyindeepit at GitHub:
+
+	- patch for Thai module to fix currency with 1 digit decimal and handling of digit 1
 
 xhydrogene at launchpad dot net:
 
