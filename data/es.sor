@@ -18,6 +18,8 @@
 16 dieciséis
 1(\d) dieci$1
 20 veinte
+21$ veintiuno
+21 veintiún
 22 veintidós
 23 veintitrés
 26 veintiséis
@@ -100,7 +102,7 @@ VEF:(\D+) $(\1: bolívar fuerte, bolívares fuertes, céntimo, céntimos)
 # if "as?$" matches currency name
 
 f:(.*ill)(.*),(.*) \1$(f:\2,\3)		# don't modify un in millions
-f:(.*un)([^a].*,|,)(.*as?) $(f:\1a\2\3)	# un libra -> una libra
+f:(.*)[uú]n([^a].*,|,)(.*as?) $(f:\1una\2\3) # un libra -> una libra
 f:(.*ient)o(s.*),(.*as?) $(f:\1a\2,\3)  # doscientos libra/libras -> doscientas
 f:(.*),(.*) \1\2
 
@@ -119,7 +121,9 @@ f:(.*),(.*) \1\2
 
 # ordinal
 
-feminine:(.*un)o \1a
+feminine:(.*ill)(.*) \1$(feminine:\2) # don't modify un in millions
+feminine:(.*ient)o(s.*) $(feminine:\1a\2)  # doscientos  -> doscientas
+feminine:(.*)[uú]no?([^a].*|$) $(feminine:\1una\2) # un  -> una
 feminine:(.*) \1
 
 == feminine ==
