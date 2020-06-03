@@ -377,7 +377,7 @@ language = {
 "vi": "Tiếng Việt",
 "zh": "中文",
 "zh": "大写",
-"hu-Hung": "𐲭𐲨𐲹𐲽𐲯𐲿𐲭𐲽𐲯*",
+"hu_Hung": "𐳥𐳋𐳓𐳉𐳗 𐳑𐳢𐳁𐳤*",
 "Roman-large": "Roman*",
 "Suzhou": "花碼*"
 }
@@ -490,7 +490,7 @@ function tim( ) {
     	target = document.getElementById('result')
     	if (document.body.scrollTop < target.offsetTop + target.offsetHeight) target.innerHTML = "<table id='conv' width='100%'><tbody><tr id='header' style='text-align:left;background-color:rgba(100%, 100%, 100%, 0)'><td width='150px'>Language<td>" + header + "</td></tr>" +
 <!-- **************************************************************************************************** -->
-<!--!cd ../data; n=3; for i in `ls *.sor | awk '{print}/de/{print"de-CH.sor"}/en/{print"en-GB.sor\nen-IN.sor"}/pt/{print"pt-BR.sor"}/ko/{print"ko-KP.sor"}/fr/{print"fr-BE.sor\nfr-CH.sor"}/no/{print"nn.sor"}' | grep -v ^[A-Z]` hu_Hung.sor Roman-large.sor Suzhou.sor; do name=`basename $i .sor`; name2=`echo $name | tr _ -`; head=""; rtl=""; rovas=""; case $name in hu_Hung) rovas="rovas"; rtl="align='right'";; he) rtl="align='right'";; esac; echo "\"$head<tr class='$rovas \"+ ($n%2?\"second\":\"\")+\"' style='text-align:left;' title='$name2'><td valign='top'>\" + language[\"$name\"] + \"</td><td $rtl>\" + numlang['$name'].run((window.currency == \"-\" || window.currency == \"help\" ? \"\" : (window.currency == \"def\" ? default_currency[\"$name\"] : window.currency) + \" \") + window.num).replace(/\\\n/g,\"<br>\") + '</td></tr>' +";n=`echo $n+1 | bc`; done-->
+<!--!cd ../data; n=3; for i in `ls *.sor | awk '{print}/de/{print"de-CH.sor"}/en/{print"en-GB.sor\nen-IN.sor"}/pt/{print"pt-BR.sor"}/ko/{print"ko-KP.sor"}/fr/{print"fr-BE.sor\nfr-CH.sor"}/no/{print"nn.sor"}' | grep -v ^[A-Z] | grep -v Hung` hu_Hung.sor Roman-large.sor Suzhou.sor; do name=`basename $i .sor`; name2=`echo $name | tr _ -`; head=""; rtl=""; rovas=""; case $name in hu_Hung) rovas="rovas"; rtl="align='right'";; he) rtl="align='right'";; esac; echo "\"$head<tr class='$rovas \"+ ($n%2?\"second\":\"\")+\"' style='text-align:left;' title='$name2'><td valign='top'>\" + language[\"$name\"] + \"</td><td $rtl>\" + numlang['$name'].run((window.currency == \"-\" || window.currency == \"help\" ? \"\" : (window.currency == \"def\" ? default_currency[\"$name\"] : window.currency) + \" \") + window.num).replace(/\\\n/g,\"<br>\") + '</td></tr>' +";n=`echo $n+1 | bc`; done-->
 <!-- **************************************************************************************************** -->
     "<tr><td colspan=2>*Old numeral systems (extended for large numbers) &ndash; Old Hungarian, Roman and Suzhou numerals</td></tr></tbody></table>";
 }
