@@ -30,3 +30,31 @@
 9(\d\d) lw$(:9) [mu $1]
 
 1(\d\d\d) lu$(:10) [mu $1]
+([2-5])(\d\d\d) n$(:10) $1 [mu $2]
+([6-8])(\d\d\d) ka$(:\1) [mu $2]
+9(\d\d\d) k$(:9) [mu $1]
+
+1(\d{4}) mutwalo [gumu mu $1]
+([2-5])(\d{4}) mitwalo e$(:\1) [mu $2]
+([6-9])(\d{4}) mitwalo $1 [mu $2]
+(\d\d)(\d{4}) mitwalo $1 [mu $2]
+
+1(\d{6}) kakadde [kamu ne $1]
+9(\d{6}) bukadde bw$(:9) [ne $1]
+(\d)(\d{6}) bukadde bu$(:\1) [ne $2]
+(\d{2,6})(\d{6}) bukadde $1 [ne $2]
+
+1(\d{12}) kawumbi [kamu ne $1]
+9(\d{12}) buwumbi bw$(:9) [ne $1]
+(\d)(\d{12}) buwumbi bu$(:\1) [ne $2]
+(\d{2,6})(\d{12}) buwumbi $1 [ne $2]
+
+1(\d{18}) kafukunya [kamu ne $1]
+9(\d{18}) bufukunya bw$(:9) [ne $1]
+(\d)(\d{18}) bufukunya bu$(:\1) [ne $2]
+(\d{2,6})(\d{18}) bufukunya $1 [ne $2]
+
+1(\d{24}) kasedde [kamu ne $1]
+9(\d{24}) busedde bw$(:9) [ne $1]
+(\d)(\d{24}) busedde bu$(:\1) [ne $2]
+(\d{2,6})(\d{24}) busedde $1 [ne $2]
