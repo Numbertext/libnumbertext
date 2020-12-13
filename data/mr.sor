@@ -129,7 +129,7 @@
 (\d{1,1})(\d{9}) $1 अब्ज$(:\2)$2  # 9 zero after number thus its a ABJA (equivalant to a BILLION)
 (\d{1,1})(\d{10}) $1 खर्व$(:\2)$2 # 10 zero after number thus its a KHARVA
 (\d{1,1})(\d{11}) $1 निखर्व$(:\2)$2 # 11 zero after number thus its a  NIKHARVA
-(\d{1,1})(\d{12}) $1 निखर्व$(:\2)$2 # 12 zero after number thus its a  MAHAPADMA (equivalant to a TRILLION)
+(\d{1,1})(\d{12}) $1 महापद्म$(:\2)$2 # 12 zero after number thus its a  MAHAPADMA (equivalant to a TRILLION)
 (\d{1,1})(\d{13}) $1 शंकू$(:\2)$2 # 1३ zero after number thus its a  SHANKU
 (\d{1,1})(\d{14}) $1 जलधि$(:\2)$2 # 14 zero after number thus its a JALADHI
 (\d{1,1})(\d{15}) $1 अन्त्य$(:\2)$2 # 15 zero after number thus its a ANTYA (equivalant to a QUADRILLION)
