@@ -8,6 +8,8 @@
 # Number reading after Hundred's place is very similar to English logic ... hence no problem in coding for further Marathi numbers
 # --------------------------------------
 # Number List in English , word in MARATHI
+# - Ankur Joshi , pharmankur@gmail.com
+#
 
 ^0 शून्य
 1	एक
@@ -122,18 +124,29 @@
 
 (\d)(\d\d) $1शे[ $2]		# default: एकशे एक  Note - The intentional space before $ in [ $2] . This is done to eliminate Zero error after 100
 (\d{1,2})(\d\d\d) $1 हजार[ $2]	# दहा हजार दोनशे
-
-(\d{1,2})(\d{5}) $1 लाख$(:\2)$2    # 5 zero after number thus its a LAKH
+(\d{1,2})(\d{5}) $1 लाख$(:\2)$2    # 5 zero after number thus its a LAKH [ 5th power of 10 is LAKH thus expression (\d{5}) , after this next is CRORE which is 7th power i.e. diff of 2 powers thus expression (\d{1,2}) . Foww this henceforth if in future needs to adjust Name of decimal places ]
 (\d{1,2})(\d{7}) $1 कोटी$(:\2)$2  # 7 zero after number thus its a CRORE
-(\d{1,2})(\d{9}) $1 अब्ज$(:\2)$2  # 9 zero after number thus its a ABJA
+(\d{1,1})(\d{9}) $1 अब्ज$(:\2)$2  # 9 zero after number thus its a ABJA (equivalant to a BILLION)
+(\d{1,1})(\d{10}) $1 खर्व$(:\2)$2 # 10 zero after number thus its a KHARVA
+(\d{1,1})(\d{11}) $1 निखर्व$(:\2)$2 # 11 zero after number thus its a  NIKHARVA
+(\d{1,1})(\d{12}) $1 निखर्व$(:\2)$2 # 12 zero after number thus its a  MAHAPADMA (equivalant to a TRILLION)
+(\d{1,1})(\d{13}) $1 शंकू$(:\2)$2 # 1३ zero after number thus its a  SHANKU
+(\d{1,1})(\d{14}) $1 जलधि$(:\2)$2 # 14 zero after number thus its a JALADHI
+(\d{1,1})(\d{15}) $1 अन्त्य$(:\2)$2 # 15 zero after number thus its a ANTYA (equivalant to a QUADRILLION)
+(\d{1,1})(\d{16}) $1 मध्य$(:\2)$2 # 16 zero after number thus its a MADHYA
+(\d{1,50})(\d{17}) $1 परार्ध$(:\2)$2 # 17 zero after number thus its a PARARDH. Practically unlimited numbers are sumed um in Parardh.
 
-(\d{1,14})(\d{11}) $1 खर्व$(:\2)$2  # after this (11th power of 10) directly परार्ध is used (25th power of 10) , thus expression (\d{1,14}) is used where 14 = 25 - 11 | if it needs to be changed in future adjust the number 14 accordingly.
-
-#(\d{1,2})(\d{13}) $1 नील$(:\2)$2  # Ambiguity therefore not used 
-#(\d{1,8})(\d{15}) $1 पद्म$(:\2)$2  # Ambiguity therefore not used 
-#(\d{1,2})(\d{23}) $1 मध्य$(:\2)$2  # Ambiguity therefore not used
-
-(\d{1,50})(\d{25}) $1 परार्ध$(:\2)$2  # # Virtually unlimited numbers summed up in परार्ध PARARDH
+### Above nameing for decimal places is with reference to work by BHASKARACHARYA (1150 AD) from book LILAVATI , SHLOKA (Verse) no 11 & 12 which is -->
+### एक दशशत सहस्त्र अयुत लक्ष प्रयुत कोट्य: क्रमश: |
+### अर्बुदम् अब्जम् खर्व निखर्व महापद्म शंकव: तस्मात्: || 11 ||
+### जलधिंच अन्त्यम् मध्यम् परार्धम् इति दशगुणोत्तरम् संज्ञा: |
+### संख्याया: स्थानानां व्यवहारार्थम् कृता: पूर्वै: || 12 ||
+### 
+### Verse is translated as -->
+### Positions of the digits from right to left are unit, ten, hundred, thousand, ten thousand, hundred thousand (lakh), million, ten million (Crore), hundred million, billion (abja), Kharva, Nikharva, Mahapadma, Sanku, Jaladhi, Antya, Madhya, Parardha. The value of each digit on the left is ten times that on the right.
+### Although for practical purpose this verse goes up to parardha (17th power of 10), there are terms for numbers up to 140th power of 10 in Sanskrit.
+### In todays practice wordings अयुत and प्रयुत are not used and if used are replaced by दशसहस्त्र and दशलक्ष / दशलाख respectively (Not used here)
+###
 
 # ------------------------
 
