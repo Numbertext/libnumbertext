@@ -53,7 +53,7 @@
 
 # numbers with letters, for example dates with affixes
 
-(\d+)(.+) $1$2
+"(\d+)([^ ]+)" $1$2
 
 # letters
 
