@@ -2,15 +2,20 @@
 
 # Transliterate numbers and words
 
-# convert only words with known characters
+# convert words with traditional or foreign "i" written as "y"
+# e.g. Áprily, Champs-Élysées, Élysée-palota, Dolly, Folly, Hollywood, jolly...
+"^(Áp​ril|Champs-Él|[cC]i​t|Do​lák-Sal|[dfhjDFHJ]ol​?l|Él|Feszt|[gG]rizz​l|Ha​raszt|Hat​van|Huszt|[iI]n​ter​ci​t|Kéthl|Ku​ko​?r​?ell|Mind​szent|Noszt|[pP]en​n|Pest|Re​gul|So​n|Szil|Szte​va​no​vit|Thö​kö​l|Vö​rös​mar​t|[zZ][lł]ot)y(.*) 0$" $1𐳐$2
+"^(ÁP​RIL|CHAMPS-ÉL|CI​T|DO​LÁK-SAL|[DFHJ]OL​?L|ÉL|FESZT|GRIZZ​L|HA​RASZT|HAT​VAN|HUSZT|IN​TER​CI​T|KÉTHL|KU​KO​?R​?ELL|MIND​SZEN​T|NOSZT|PEN​N|PEST|RE​GUL|SO​N|SZIL|SZTE​VA​NO​VIT|THÖ​KÖ​L|VÖ​RÖS​MAR​T|Z[LŁ]OT)Y(.*) 0$" $1𐲐$2
+# if the original word contains an unknown character, return without modification
 "^(.*[^-0-9a-zA-ZáéëóöőúüűÁÉËÓÖŐÚÜŰ​–,„”\?\;]) 0$" \1
-# and words with known y
+# words with y
 "^y(ard.*) 0$" 𐳒$1
-"^Y([aA][rR][dD].*|[uU][cC][oO][nN].*) 0$" 𐲒$1
-"^Y([bB][lL].*|vette.*) 0$" 𐲐$1
-"^([bB]o|[cC]owbo|[dD]ispla|[gG]ra|[pP]la)y(.*) 0$" $1𐳒$2
-"^(BO|COWBO|DISPLA|GRA|PLA)Y(.*) 0$" $1𐲒$2
-# don't transliterate words with starting y
+"^Y([aA][rR][dD].*|[uU]​[cC][oO][nN].*) 0$" 𐲒$1
+"^Y([bB][lL].*) 0$" 𐲑$1
+"^Y(vet​?te.*) 0$" 𐲐$1
+"^([bB]o|[cC]ow​bo|[dD]isp​la|[gG]ra|[pP]la)y(.*) 0$" $1𐳒$2
+"^(BO|COW​BO|DISP​LA|GRA|PLA)Y(.*) 0$" $1𐲒$2
+# don't transliterate other words with starting y
 "(^[yY].*) 0$" \1
 # don't transliterate words with q, but not with qu
 "(^.*[qQ][^uU].*) 0$" \1
