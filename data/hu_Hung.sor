@@ -4,8 +4,8 @@
 
 # convert words with traditional or foreign "i" written as "y"
 # e.g. Áprily, Champs-Élysées, Élysée-palota, Dolly, Folly, Hollywood, jolly...
-"^(Áp​ril|Champs-Él|[cC]i​t|Do​lák-Sal|[dfhjDFHJ]ol​?l|Él|Feszt|[gG]rizz​l|Ha​raszt|Hat​van|Huszt|[iI]n​ter​ci​t|Kéthl|Ku​ko​?r​?ell|Mind​szent|Noszt|[pP]en​n|Pest|Re​gul|So​n|Szil|Szte​va​no​vit|Thö​kö​l|Vö​rös​mar​t|[zZ][lł]ot)y(.*) 0$" $1𐳐$2
-"^(ÁP​RIL|CHAMPS-ÉL|CI​T|DO​LÁK-SAL|[DFHJ]OL​?L|ÉL|FESZT|GRIZZ​L|HA​RASZT|HAT​VAN|HUSZT|IN​TER​CI​T|KÉTHL|KU​KO​?R​?ELL|MIND​SZEN​T|NOSZT|PEN​N|PEST|RE​GUL|SO​N|SZIL|SZTE​VA​NO​VIT|THÖ​KÖ​L|VÖ​RÖS​MAR​T|Z[LŁ]OT)Y(.*) 0$" $1𐲐$2
+"^(Áp​?ri​?l|Champs-Él|[cC]i​?t|Do​?lák-Sa​?l|[dfhjDFHJ]ol​?l|Él|Fesz​?t|[gG]rizz​?l|Ha​?rasz​?t|Hat​?va​?n|Husz​?t|[iI]n​?ter​?ci​?t|Kéth​?l|Ku​?ko​?r​?el​?l|Mind​?szen​?t|Nosz​?t|[pP]en​n|Pes​?t|Re​?gu​?l|So​?n|Szi​?l|Szte​?va​?no​?vi​?t|Thö​?kö​?l|Vö​?rös​?mar​?t|[zZ][lł]ot)y(.*) 0$" $1𐳐$2
+"^(ÁP​?RI​?L|CHAMPS-ÉL|CI​?T|DO​?LÁK-SA​?L|[DFHJ]OL​?L|ÉL|FESZ​?T|GRIZZ​?L|HA​?RASZ​?T|HAT​?VA​?N|HUSZ​?T|IN​?TER​?CI​?T|KÉTH​?L|KU​?KO​?R​?EL​?L|MIND​?SZEN​?T|NOSZ​?T|PEN​?N|PES​?T|RE​GU​?L|SO​N|SZI​?L|SZTE​?VA​?NO​?VI​?T|THÖ​?KÖ​?L|VÖ​?RÖS​?MAR​?T|Z[LŁ]OT)Y(.*) 0$" $1𐲐$2
 # if the original word contains an unknown character, return without modification
 "^(.*[^-0-9a-zA-ZáéëóöőúüűÁÉËÓÖŐÚÜŰ​–,„”\?\;]) 0$" \1
 # words with y
