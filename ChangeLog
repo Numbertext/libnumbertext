@@ -1,3 +1,17 @@
+2021-01-31: 1.0.7 release:
+	* ga.sor: new module Irish by László Németh
+	* lg.sor: new module Luganda by Phillip Samuel
+	* mr.sor: new module Marathi by Ankur Heramb Joshi
+	* mt.sor: new module Maltase by László Németh
+
+	* fi.sor: fix ordinal 0, bug report by Tuomas Hietala
+	* hu_Hung.sor:
+		- fix transliteration of Vörösmarty, bug report by Zoltán Óvári
+		- replace ü and ű by Viktor Kovács
+		- fix transliteration of dates with affixation
+	* th.sor: fix big (>999,999) numbers by Vladislav Kiper
+	* ua.sor: fix euro cent, bug report by Kty0mka 
+
 2020-06-01: 1.0.6 release:
 	* Numbertext.cxx: don't depend on en_US.UTF-8 locale by Stephan Bergmann
 	* Java:

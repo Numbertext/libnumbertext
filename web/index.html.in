@@ -72,7 +72,7 @@
 <div id="about">
   <div class="container">
     <div class="section-title text-center center">
-      <h2>About Us</h2>
+    <h2>1, 2, 3 →  One, Two, Three</h2>
       <hr>
     </div>
     <div class="row">
@@ -86,19 +86,19 @@
       <div class="col-md-4">
         <div class="about-text">
 
-          <h4>From Numbers to Number Names</h4>
+          <h4>Write Out Numbers Using Words</h4>
 	  <p>We provide easy to configure, lightweight open source C++, Java, JavaScript,  Python libraries
-	  and a LibreOffice Spreadsheet extension for number to number name conversion, including cardinal and
-	  ordinal numbers, ordinal indicators and money amounts with currencies in more than 40 languages
+	  and a LibreOffice Spreadsheet extension for writing out numbers (including cardinal and
+	  ordinal numbers, ordinal indicators and money amounts with currencies) in words in more than 50 languages
 	  and numeral systems.</p>
-	  <p>Join the Numbertext/LibreOffice development: please, check the Soros language tutorial in the integrated language module development environment, fix bugs or missing parts of the language modules, or create new modules based on the existing ones!</p>
+	  <p>Join the Numbertext/LibreOffice development: check the Soros language tutorial in the integrated language module development environment, fix bugs or missing parts of the language modules, or create new modules based on the existing ones.</p>
         </div>
       </div>
       <div class="col-md-4">
         <div class="about-text">
 
           <h4>Background</h4>
-      <p>Origin of the “spell out” component of LibreOffice 6.1, NUMBERTEXT/MONEYTEXT functions and Soros programming language was developed in 2009 for generalization of BAHTTEXT spreadsheet function, a function of Microsoft Excel for number to Thai number name and currency conversion, standardized by ECMA–376 and ISO/IEC&nbsp;29&nbsp;500:2008 Office Open XML format.</p>
+      <p>Origin of the “spell out” component of LibreOffice 6.1, NUMBERTEXT/MONEYTEXT functions and Soros programming language was developed in 2009 for generalization of BAHTTEXT spreadsheet function, a function of Microsoft Excel to write out numbers and Thai money amounts using Thai words, standardized by ECMA–376 and ISO/IEC&nbsp;29&nbsp;500:2008 Office Open XML format.</p>
 	  <p>Soros programming language is based on regular expressions, just like its small interpreters (in Python: less, than 120 lines). Despite its simplicity, it can handle language variants, complex spelling functions and rules in a concise manner.</p>
         </div>
       </div>
@@ -117,27 +117,27 @@
       <div class="col-md-3 col-sm-6">
         <div class="service"> <i class="fa fa-table"></i>
           <h3>LibreOffice</h3>
-	  <p>Extension with NUMBERTEXT and MONEYTEXT spreadsheet functions: <a href="https://extensions.libreoffice.org/extensions/numbertext-1/1-0.6/@@download/file/numbertext-1.0.6.oxt">numbertext-1.0.6.oxt</a>
-	  (<a href="https://extensions.libreoffice.org/extensions/numbertext-1/1-0.6">description</a>)</p>
+	  <p>Extension with NUMBERTEXT and MONEYTEXT spreadsheet functions: <a href="https://extensions.libreoffice.org/extensions/numbertext-1/1-0.7/@@download/file/numbertext-1.0.7.oxt">numbertext-1.0.7.oxt</a>
+	  (<a href="https://extensions.libreoffice.org/extensions/numbertext-1/1-0.7">description</a>)</p>
         </div>
       </div>
       <div class="col-md-3 col-sm-6">
         <div class="service"> <i class="fa fa-cogs"></i>
           <h3>C++</h3>
-	  <p>Source distribution (1.0.6): <a href="https://github.com/Numbertext/libnumbertext/releases/download/1.0.6/libnumbertext-1.0.6.tar.xz">libnumbertext-1.0.6.tar.xz</a> (<a href="https://github.com/Numbertext/libnumbertext/releases/tag/1.0.6">installation</a>)</p>
+	  <p>Source distribution (1.0.7): <a href="https://github.com/Numbertext/libnumbertext/releases/download/1.0.7/libnumbertext-1.0.7.tar.xz">libnumbertext-1.0.7.tar.xz</a> (<a href="https://github.com/Numbertext/libnumbertext/releases/tag/1.0.7">installation</a>)</p>
         </div>
       </div>
       <div class="col-md-3 col-sm-6">
         <div class="service"> <i class="fa fa-coffee"></i>
           <h3>Java</h3>
-	  <p>JAR package: <a href="https://github.com/Numbertext/libnumbertext/releases/download/1.0.6/numbertext.jar">numbertext.jar</a> (1.0.6).
+	  <p>JAR package: <a href="https://github.com/Numbertext/libnumbertext/releases/download/1.0.7/numbertext.jar">numbertext.jar</a> (1.0.7).
 	  Usage: java -jar numbertext.jar</p>
         </div>
       </div>
       <div class="col-md-3 col-sm-6">
         <div class="service"><i class="fa fa-pencil"></i>
           <h3>Python & JavaScript</h3>
-	  <p>Interpreters: <a href="https://github.com/Numbertext/libnumbertext/blob/master/src/Soros.py">Soros.py</a> and <a href="https://github.com/Numbertext/libnumbertext/blob/master/src/Soros.js">Soros.js</a>. For usage, see source distribution (<a href="https://github.com/Numbertext/libnumbertext/archive/1.0.6.zip">zip</a> or <a href="https://github.com/Numbertext/libnumbertext/archive/1.0.6.tar.gz">tar.gz</a>).</p>
+	  <p>Interpreters: <a href="https://github.com/Numbertext/libnumbertext/blob/master/src/Soros.py">Soros.py</a> and <a href="https://github.com/Numbertext/libnumbertext/blob/master/src/Soros.js">Soros.js</a>. For usage, see source distribution (<a href="https://github.com/Numbertext/libnumbertext/archive/1.0.7.zip">zip</a> or <a href="https://github.com/Numbertext/libnumbertext/archive/1.0.7.tar.gz">tar.gz</a>).</p>
         </div>
       </div>
     </div>
@@ -342,6 +342,7 @@ language = {
 "fr": "Français",
 "fr-BE": "Français&nbsp;(BE)",
 "fr-CH": "Français&nbsp;(CH)",
+"ga": "Gaeilge",
 "gl": "Galego",
 "he": "עברית",
 "hr": "Hrvatski",
@@ -354,9 +355,12 @@ language = {
 "ko": "한국어&nbsp;(KR)",
 "ko-KP": "한국어&nbsp;(KP)",
 "lb": "Luxembourgish",
+"lg": "Luganda",
 "lt": "Lietuvių",
 "lv": "Latviešu",
+"mr": "मराठी",
 "ms": "Bahasa Melayu",
+"mt": "Malti",
 "nl": "Nederlands",
 "no": "Bokmål",
 "nn": "Nynorsk",
@@ -400,6 +404,7 @@ default_currency = {
 "fr": "EUR",
 "fr-BE": "EUR",
 "fr-CH": "CHF",
+"ga": "EUR",
 "gl": "EUR",
 "id": "IDR",
 "is": "ISK",
@@ -408,9 +413,12 @@ default_currency = {
 "ko-KP": "KPW",
 "ko": "KRW",
 "lb": "EUR",
+"lg": "UGX",
 "lt": "EUR",
 "lv": "EUR",
+"mr": "INR",
 "ms": "MYR",
+"mt": "EUR",
 "he": "ILS",
 "hu": "HUF",
 "hr": "HRK",
@@ -484,9 +492,9 @@ function tim( ) {
     var header = ""
     if (window.header == "") {
 	window.num = (window.currency == "help") ? "help" : Math.round(b.getTime()/1000) + "";
-	header = "Unix time in sec (" + num + ")"
+	header = "Number: " + num + " (Unix time in sec)"
 	window.time = setTimeout("tim()", 1000);
-    } else header = "Number (" + window.num + ")"
+    } else header = "Number: " + window.num
     	target = document.getElementById('result')
     	if (document.body.scrollTop < target.offsetTop + target.offsetHeight) target.innerHTML = "<table id='conv' width='100%'><tbody><tr id='header' style='text-align:left;background-color:rgba(100%, 100%, 100%, 0)'><td width='150px'>Language<td>" + header + "</td></tr>" +
 <!-- **************************************************************************************************** -->

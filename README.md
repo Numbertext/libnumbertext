@@ -5,7 +5,7 @@
 ```
 Language-neutral NUMBERTEXT and MONEYTEXT functions for LibreOffice Calc
 
-version 1.0.6 (2020-06-01)
+version 1.0.7 (2021-01-31)
 
 Numbertext LibreOffice extension,
 Soros programming language specification (draft) and IDE*,
@@ -15,13 +15,13 @@ Soros interpreter in Java: see NUMBERTEXT.org
 
 * Not in LibreOffice Numbertext extension, see http://NUMBERTEXT.org.
 
-Copyright: 2009-2020 (C) László Németh (nemeth at numbertext dot org)
+Copyright: 2009-2021 (C) László Németh (nemeth at numbertext dot org)
 License: LGPL-3+/Modified BSD dual-license
 
 Numbertext language data (Soros programs):
 License: LGPL-3+/Modified BSD dual-license (except Serbian)
 
-Copyright: 2009-2020 (C) László Németh et al. (see AUTHORS)
+Copyright: 2009-2021 (C) László Németh et al. (see AUTHORS)
 Bulgarian: 2018 (C) Mihail Balabanov (m dot balabanov at gmail dot com)
 Croatian: 2014 (C) Mihovil Stanić (mihovil dot stanic at gmail dot com)
 Hebrew module: 2010 (C) Alex Bodnaru (alexbodn at 012 dot net dot il)
@@ -29,7 +29,9 @@ French (Belgian and Swiss): 2009 (C) Olivier Ronez
 Galician: 2018 (C) Adrián Chaves (adrian at chaves dot io)
 Indonesian: 2010 (C) Eko Prasetiyo (ekoprasetiyo at gmail)
 Latvian: 2012 (C) Asterisks at OOo Wiki
+Luganda: 2020 (C) Phillip Samuel <phillipsamuelk3 at gmail dot com>
 Luxembourgish: 2009 (C) Michel Weimerskirch (michel at weimerskirch dot net)
+Marathi: 2020 (C) Ankur Heramb Joshi
 Portuguese: 2009 (C) Eduardo Moreno (emoreno at tokonhu dot com)
 Turkish: 2009 (C) Randem
 
@@ -68,6 +70,7 @@ fi	Finnish
 fr	French
 fr-BE	Belgian French
 fr-CH	Swiss French
+ga	Irish
 gl	Galician
 he	Hebrew
 hr	Croatian
@@ -80,9 +83,12 @@ ko	Korean
 ko-KR	Korean (South)
 ko-KP	Korean (North)
 lb	Luxembourgish
+lg	Luganda
 lt	Lithuanian
 lv	Latvian
+mr	Marathi
 ms	Malaysian
+mt	Maltese
 nb	Norwegian Bokmål
 nl	Dutch
 nn	Norwegian Nynorsk
