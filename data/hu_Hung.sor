@@ -3,22 +3,125 @@
 # Transliterate numbers and words
 
 # convert words with traditional or foreign "i" written as "y"
-# e.g. Áprily, Champs-Élysées, Élysée-palota, Dolly, Folly, Hollywood, jolly...
-"^(Áp​?ri​?l|Champs-Él|[cC]i​?t|Do​?lák-Sa​?l|[dfhjDFHJ]ol​?l|Él|Fesz​?t|[gG]rizz​?l|Ha​?rasz​?t|Hat​?va​?n|Husz​?t|[iI]n​?ter​?ci​?t|Kéth​?l|Ku​?ko​?r​?el​?l|Mind​?szen​?t|Nosz​?t|[pP]en​n|Pes​?t|Re​?gu​?l|So​?n|Szi​?l|Szte​?va​?no​?vi​?t|Thö​?kö​?l|Vö​?rös​?mar​?t|[zZ][lł]ot)y(.*) 0$" $1𐳐$2
-"^(ÁP​?RI​?L|CHAMPS-ÉL|CI​?T|DO​?LÁK-SA​?L|[DFHJ]OL​?L|ÉL|FESZ​?T|GRIZZ​?L|HA​?RASZ​?T|HAT​?VA​?N|HUSZ​?T|IN​?TER​?CI​?T|KÉTH​?L|KU​?KO​?R​?EL​?L|MIND​?SZEN​?T|NOSZ​?T|PEN​?N|PES​?T|RE​GU​?L|SO​N|SZI​?L|SZTE​?VA​?NO​?VI​?T|THÖ​?KÖ​?L|VÖ​?RÖS​?MAR​?T|Z[LŁ]OT)Y(.*) 0$" $1𐲐$2
+# e.g. Áprily, Champs-Élysées, Élysée-palota, Dolly, Folly, Hollywood, jolly, intercity, Kisfaludy ...
+"^(Áp​?ri​?l|Champs-Él|[cC]i​?t|Do​?lák-Sa​?l|[dfhjDFHJ]ol​?l|Él|Fesz​?t|[gG]rizz​?l|Ha​?rasz​?t|Hat​?va​?n|Husz​?t|[iI]n​?ter​?ci​?t|Jé​?ke​?l|Kis​?fa​?lu​?d|Ku​?ko​?r​?el​?l|Mo​?ho​?l|Mind​?szen​?t|Nosz​?t|[pP]en​n|Pes​?t|Re​?gu​?l|So​?n|Szi​?l|Szte​?va​?no​?vi​?t|Vö​?rös​?mar​?t|[zZ][lł]ot)y(.*) 0$" $1𐳐$2
+"^(ÁP​?RI​?L|CHAMPS-ÉL|CI​?T|DO​?LÁK-SA​?L|[DFHJ]OL​?L|ÉL|FESZ​?T|GRIZZ​?L|HA​?RASZ​?T|HAT​?VA​?N|HUSZ​?T|IN​?TER​?CI​?T|JÉ​?KE​?L|KIS​FA​LU​?D|KU​?KO​?R​?EL​?L|MIND​?SZEN​?T|MO​?HO​?L|NOSZ​?T|PEN​?N|PES​?T|RE​?GU​?L|SO​?N|SZI​?L|SZTE​?VA​?NO​?VI​?T|VÖ​?RÖS​?MAR​?T|Z[LŁ]OT)Y(.*) 0$" $1𐲐$2
 # if the original word contains an unknown character, return without modification
 "^(.*[^-0-9a-zA-ZáéëóöőúüűÁÉËÓÖŐÚÜŰ​–,„”\?\;]) 0$" \1
 # words with y
 "^y(ard.*) 0$" 𐳒$1
-"^Y([aA][rR][dD].*|[uU]​[cC][oO][nN].*) 0$" 𐲒$1
+"^Y([aA][rR][dD].*|[uU]​?[cC][oO][nN].*) 0$" 𐲒$1
 "^Y([bB][lL].*) 0$" 𐲑$1
 "^Y(vet​?te.*) 0$" 𐲐$1
-"^([bB]o|[cC]ow​bo|[dD]isp​la|[gG]ra|[pP]la)y(.*) 0$" $1𐳒$2
-"^(BO|COW​BO|DISP​LA|GRA|PLA)Y(.*) 0$" $1𐲒$2
+"^([bB]o|[cC]ow​?bo|[dD]isp​?la|[gG]ra|[pP]la)y(.*) 0$" $1𐳒$2
+"^(BO|COW​?BO|DISP​?LA|GRA|PLA)Y(.*) 0$" $1𐲒$2
 # don't transliterate other words with starting y
 "(^[yY].*) 0$" \1
 # don't transliterate words with q, but not with qu
 "(^.*[qQ][^uU].*) 0$" \1
+# other exceptions
+# Ágh -> Ág, Balogh -> Balog, Horváth -> Horvát, Mikszáth -> Mikszát, Németh -> Német, Tóth -> Tót, Virágh -> Virág, Végh -> Vég
+^([Á][gG]|B[aA]​?[lL][oO][gG]|H[oO][rR]​?[vV][áÁ][tT]|M[iI][kK]​?[sS][zZ][áÁ][tT]|N[éÉ]​?[mM][eE][tT]|T[óÓ][tT]|V[iI]​?[rR][áÁ][gG]|V[éÉ][gG])[hH](.*) $(\1\2)
+# Antall -> Antal, Gáll -> Gál, Széll -> Szél
+"^(An​?tal|Gál|Szél)​?l 0$" $(\1)
+"^(AN​?TAL|GÁL|SZÉL)​?L 0$" $(\1)
+# Apáthy -> Apáti, Bláthy -> Bláti, Básthy -> Básti ...
+^(A​?pá|Blá|Bás|Hon|Hor|Ka​?rin|Kom​?já|Szent​?ku|Szom​?ba)​?thy(.*) $(\1ti\2)
+^(A​?PÁ|BLÁ|BÁS|HON|HOR|KA​?RIN|KOM​?JÁ|SZENT​?KU|SZOM​?BA)​?THY(.*) $(\1TI\2)
+# Apponyi -> Aponyi
+^Ap​?([pP][oO]​?[nN][yY][iI].*) $(A\1)
+# Babits -> Babics, Derkovits -> Derkovics, Takáts -> Takács, Szűts -> Szűcs
+^(Ba​?bi|Der​?ko​?vi|Sin​?ko​?vi|Ta​?ká|Sz[üű])ts(.*) $(\1cs\2)
+^(BA​?BI|DER​?KO​?VI|SIN​?KO​?VI|TA​?KÁ|SZ[ÜŰ])TS(.*) $(\1CS\2)
+# Bakách -> Bakács, Damjanich -> Damjanics, Forgách -> Forgács, Jurisich -> Jurisics, Madách -> Madács
+^(Ba​?ká|Dam​?ja​?ni|For​?gá|Gras​?sal​?ko​?vi|Ju​?ri​?si|Ma​?dá)ch(.*) $(\1cs\2)
+^(BA​?KÁ|DAM​?JA​?NI|FOR​?GÁ|GRAS​?SAL​?KO​?VI|JU​?RI​?SI|MA​?DÁ)CH(.*) $(\1CS\2)
+# Bakócz -> Bakóc, Börötz -> Böröc, Göncz -> Gönc, Makovecz -> Makovec, Móricz -> Móric ...
+^(B[aA]​?[kK][óÓ]|B[öÖ]​?[rR][öÖ][cC]|G[öÖ][nN]|M[aA]​?[kK][oO]​?[vV][eE]|M[óÓ]​?[rR][iI]|K[oO][nN]|O​?[rR][aA]​?[vV][eE]|R[áÁ]|R[áÁ]|T[iI]​?[bB][oO][rR])([cCtT])[zZ](.*) $(\1\2\3)
+# Bakoss -> Bakos, Baross -> Baros, Boross -> Boros, Hankiss -> Hankis, Kass -> Kas, Kiss -> Kis, Terebess -> Terebes, Vass -> Vas
+"^(Ba​?kos|Ba​?ros|Bo​?ros|Han​?kis|Kas|Kis|Lo​?vas|Te​?re​?bes|Vas)​?s 0$" $(\1)
+"^(BA​?KOS|BA​?ROS|BO​?ROS|HAN​?KIS|KAS|KIS|LO​?VAS|TE​?RE​?BES|VAS)​?S 0$" $(\1)
+# Bay -> Baji
+"^Bay 0$" $(Baji)
+# Batsányi -> Bacsányi
+^Ba​?tsá​?nyi(.*) $(Bacsányi)
+^BA​?TSÁ​?NYI(.*) $(BACSÁNYI)
+# Bárczi -> Bárci, Kazinczy -> Kazinci, Rákóczi -> Rákóci
+^(Bár|Ka​?zin|Rá​?kó)​?cz[iy](.*) $(\1ci\2)
+^(BÁR|KA​?ZIN|RÁ​?KÓ)​?CZ[IY](.*) $(\1CI\2)
+# Báthory -> Bátori
+^(B[áÁ]​?[tT])[hH]([oO]​?[rR][yY].*) $(\1\2)
+# Batthyány -> Battyányi
+^Bat​?thyá​?ny(.*) $(Battyányi\1)
+^BAT​?THYÁ​?NY(.*) $(BATTYÁNYI\1)
+# Bessenyei -> Besenyei
+^(B[eE][sS])​?[sS]([eE]​?[nN][yY][eE]​?[iI].*) $(\1\2)
+# Czuci -> Cuci, Czuczor -> Cucor
+^Cz(u​?c)z(([iI]|[oO][rR]).*) $(C\1\2)
+# Csathó -> Csató
+^(C[sS][aA]​?[tT])[hH]([óÓ].*) $(\1\2)
+# Dessewffy -> Dezsőfi
+^De​?ssew​?ffy(.*) $(Dezsőfi\1)
+^DE​?SSEW​?FFY(.*) $(DEZSŐFI\1)
+# Eördögh -> Ördög
+^Eör​?dögh(.*) $(Ördög\1)
+^EÖR​?DÖGH(.*) $(ÖRDÖG\1)
+# Eöry -> Őri, Eőry -> Őri
+^E[öő]​?ry(.*) $(Őri\1)
+^E[ÖŐ]​?RY(.*) $(ŐRI\1)
+# Eötvös -> Ötvös
+^Eöt​?vös(.*) $(Ötvös\1)
+^EÖT​?VÖS(.*) $(ÖTVÖS\1)
+# Gaál -> Gál
+^Gaál(.*) $(Gál\1)
+# Háy -> Háji, Fáy -> Fáji, Márki-Zay -> Márki-Zaji, Vay -> Vaji
+^(Há|Fá|Már​?ki-​?Za|Va|Za)y(.*) $(\1ji\2)
+^(HÁ|FÁ|MÁR​?KI-​?ZA|VA|ZA)Y(.*) $(\1JI\2)
+# Joó -> Jó
+^J[oO]([óÓ].*) $(J\1)
+# Kéthly -> Kétli
+^Kéth​?ly(.*) $(Kétli\1)
+^KÉTH​?LY(.*) $(KÉTLI\1)
+# Konkoly-Thege -> Konkoli-Tege
+^Kon​?koly-​?The​?g([eé].*) $(Konkoli-Teg\1)
+^KON​?KOLY-​?THE​?G([EÉ].*) $(KONKOLI-TEG\1)
+# Koós -> Kós, Soós -> Sós
+^([KS])[oO]([óÓ][sS])(.*) $(\1\2\3)
+# Kossuth -> Kosut, Passuth -> Pasut
+^(K[oO]|P[aA])[sS]​?([sS][uU][tT])[hH](.*) $(\1\2\3)
+# Pais -> Pajzs
+^Pai​?s(.*) $(Pajzs\1)
+^PAI​?S(.*) $(PAJZS\1)
+# Széchenyi -> Szécsényi
+^Szé​?che​?nyi(.*) $(Szécsényi\1)
+^SZÉ​?CHE​?NYI(.*) $(SZÉCSÉNYI\1)
+# Széchy -> Szécsi, Zichy -> Zicsi
+^(Szé|Zi)​?chy(.*) $(\1csi\2)
+^(SZÉ|ZI)​?CHY(.*) $(\1CSI\2)
+# Tarr -> Tar
+"^(T[aA][rR])[rR] 0$" $(\1)
+# Thewrewk -> Török
+^Thew​?rewk(.*) $(Török\1)
+^THEW​?REWK(.*) $(TÖRÖK\1)
+# Thököly -> Tököli
+^Thö​?kö​?ly(.*) $(Tököli\1)
+^THÖ​?KÖ​?LY(.*) $(TÖKÖLI\1)
+# Veér -> Vér
+^V[eE]([éÉ][rR].*) $(V\1)
+# Verseghy -> Versegi
+^Ver​?se​?ghy(.*) $(Versegi\1)
+# Wass -> Vas
+^Was​?s(.*) $(Vas\1)
+^WAS​?S(.*) $(VAS\1)
+# Wesselényi -> Veselényi
+^Wes​?se​?lé​?nyi(.*) $(Veselényi\1)
+^WES​?SE​?LÉ​?NYI(.*) $(VESELÉNYI\1)
+# Weöres -> Vörös
+^Weö​?res(.*) $(Vörös\1)
+^WEÖ​?RES(.*) $(VÖRÖS\1)
+# Zigány -> Cigány
+^Zi​?gán(y|ny)(.*) $(Cigán\1\2)
+^ZI​?GÁN(Y|NY)(.*) $(CIGÁN\1\2)
 
 # avoid of exceeding recursion depth
 # convert by 200-character parts

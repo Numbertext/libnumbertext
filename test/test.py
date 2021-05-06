@@ -2,13 +2,17 @@ from __future__ import print_function
 import sys
 import Soros
 import codecs
+from os import path
 #
 # test input_file input_stream output_stream [conditional_language_codes...]
 #
-fil = codecs.open(sys.argv[1], encoding="UTF-8")
+program_file = sys.argv[1]
+if not path.exists(program_file):
+    # search in data
+    program_file = '../data/' + program_file
+prg = codecs.open(program_file, encoding="UTF-8").read()
 inp = codecs.open(sys.argv[2], encoding="UTF-8").readlines()
 out = codecs.open(sys.argv[3], "wb", encoding="UTF-8")
-prg = fil.read()
 s = {}
 langs = ["default"] + sys.argv[4:]
 for l in langs:
