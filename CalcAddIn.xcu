@@ -15,6 +15,7 @@
 	<value xml:lang="sh">Ispisuje broj slovima.</value>
 	<value xml:lang="he">ממיר מספר לייצוגו במילים.</value>
 	<value xml:lang="bg">Преобразува число към думи.</value>
+	<value xml:lang="uk">Перетворює число в текст.</value>
     </prop>
     <prop oor:name="Category"><value>Add-In</value></prop>
     <prop oor:name="CompatibilityName"><value xml:lang="en">org.NUMBERTEXT.numbertext</value></prop>
@@ -30,6 +31,7 @@
 	    <value xml:lang="sh">Broj</value>
 	    <value xml:lang="he">מספר</value>
 	    <value xml:lang="bg">Число</value>
+	    <value xml:lang="uk">Число</value>
 	</prop>
         <prop oor:name="Description">
 	    <value xml:lang="en">Value.</value>
@@ -41,6 +43,7 @@
 	    <value xml:lang="sh">Vrednost.</value>
 	    <value xml:lang="sh">ערך קלט.</value>
 	    <value xml:lang="bg">Стойност.</value>
+	    <value xml:lang="uk">Значення.</value>
 	</prop>
       </node>
       <node oor:name="lang" oor:op="replace">
@@ -54,6 +57,7 @@
 	    <value xml:lang="sh">Jezik</value>
 	    <value xml:lang="he">שפה</value>
 	    <value xml:lang="bg">Език</value>
+	    <value xml:lang="uk">Мова</value>
 	</prop>
         <prop oor:name="Description">
 	    <value xml:lang="en">Language code (eg. en-US).</value>
@@ -65,6 +69,7 @@
 	    <value xml:lang="sh">Kod jezika (npr. sr ili sh).</value>
 	    <value xml:lang="he">קוד שפה (כגון he-IL).</value>
 	    <value xml:lang="bg">Код на език (напр. bg-BG).</value>
+	    <value xml:lang="uk">Код мови (напр. uk-UA).</value>
 	</prop>
       </node>
     </node>
@@ -81,6 +86,7 @@
 	<value xml:lang="sh">Ispisuje broj slovima uz isticanje oznake valute.</value>
 	<value xml:lang="he">ממיר מספר לייצוגו במילים עם המטבע הנתון.</value>
 	<value xml:lang="bg">Преобразува число към текст с дадена валута.</value>
+	<value xml:lang="uk">Перетворює число в текст зі вказаною валютою.</value>
     </prop>
     <prop oor:name="Category"><value>Add-In</value></prop>
     <prop oor:name="CompatibilityName"><value xml:lang="en">org.NUMBERTEXT.moneytext</value></prop>
@@ -96,6 +102,7 @@
 	    <value xml:lang="sh">Broj</value>
 	    <value xml:lang="he">מספר</value>
 	    <value xml:lang="bg">Число</value>
+	    <value xml:lang="uk">Число</value>
 	</prop>
         <prop oor:name="Description">
 	    <value xml:lang="en">Input value.</value>
@@ -107,6 +114,7 @@
 	    <value xml:lang="sh">Ulazna vrednost.</value>
 	    <value xml:lang="sh">ערך קלט.</value>
 	    <value xml:lang="bg">Входната стойност.</value>
+	    <value xml:lang="uk">Вхідне значення.</value>
 	</prop>
       </node>
       <node oor:name="currency" oor:op="replace">
@@ -120,6 +128,7 @@
 	    <value xml:lang="sh">Valuta</value>
 	    <value xml:lang="he">מטבע</value>
 	    <value xml:lang="bg">Валута/функция</value>
+	    <value xml:lang="uk">Валюта</value>
 	</prop>
         <prop oor:name="Description">
 	    <value xml:lang="en">ISO 4217 code (eg. USD) or Numbertext function (eg. ord = ordinal number).</value>
@@ -131,6 +140,7 @@
 	    <value xml:lang="sh">ISO 4217 kod (npr. RSD).</value>
 	    <value xml:lang="he">קוד ISO 4217 (כגון ILS).</value>
 	    <value xml:lang="bg">Код по ISO 4217 (напр. BGN) или функция на Numbertext (напр. ordinal = редни числителни).</value>
+	    <value xml:lang="uk">Код по ISO 4217 (напр. UAH), або функція  Numbertext (напр. ordinal = порядковий номер).</value>
 	</prop>
       </node>
       <node oor:name="lang" oor:op="replace">
@@ -144,6 +154,7 @@
 	    <value xml:lang="sh">Jezik</value>
 	    <value xml:lang="he">שפה</value>
 	    <value xml:lang="bg">Език</value>
+	    <value xml:lang="uk">Мова</value>
 	</prop>
         <prop oor:name="Description">
 	    <value xml:lang="en">Language code (eg. en-US).</value>
@@ -155,6 +166,7 @@
 	    <value xml:lang="sh">Kod jezika (npr. sr ili sh).</value>
 	    <value xml:lang="he">קוד שפה (כגון he-IL).</value>
 	    <value xml:lang="bg">Код на език (напр. bg-BG).</value>
+	    <value xml:lang="uk">Код мови (напр. uk-UA).</value>
 	</prop>
       </node>
     </node>
