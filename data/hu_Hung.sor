@@ -61,8 +61,8 @@
 # Csathó -> Csató
 ^(C[sS][aA]​?[tT])[hH]([óÓ].*) $(\1\2)
 # Dessewffy -> Dezsőfi
-^De​?ssew​?ffy(.*) $(Dezsőfi\1)
-^DE​?SSEW​?FFY(.*) $(DEZSŐFI\1)
+^De​?s​?sew​?ffy(.*) $(Dezsőfi\1)
+^DE​?S​?SEW​?FFY(.*) $(DEZSŐFI\1)
 # Eördögh -> Ördög
 ^Eör​?dögh(.*) $(Ördög\1)
 ^EÖR​?DÖGH(.*) $(ÖRDÖG\1)
@@ -73,18 +73,18 @@
 ^Eöt​?vös(.*) $(Ötvös\1)
 ^EÖT​?VÖS(.*) $(ÖTVÖS\1)
 # Gaál -> Gál
-^Gaál(.*) $(Gál\1)
+^Ga​?ál(.*) $(Gál\1)
 # Háy -> Háji, Fáy -> Fáji, Márki-Zay -> Márki-Zaji, Vay -> Vaji
 ^(Há|Fá|Már​?ki-​?Za|Va|Za)y(.*) $(\1ji\2)
 ^(HÁ|FÁ|MÁR​?KI-​?ZA|VA|ZA)Y(.*) $(\1JI\2)
 # Joó -> Jó
-^J[oO]([óÓ].*) $(J\1)
+^J[oO]​?([óÓ].*) $(J\1)
 # Kéthly -> Kétli
 ^Kéth​?ly(.*) $(Kétli\1)
 ^KÉTH​?LY(.*) $(KÉTLI\1)
 # Konkoly-Thege -> Konkoli-Tege
-^Kon​?koly-​?The​?g([eé].*) $(Konkoli-Teg\1)
-^KON​?KOLY-​?THE​?G([EÉ].*) $(KONKOLI-TEG\1)
+^Kon​?ko​?ly-​?The​?g([eé].*) $(Konkoli-Teg\1)
+^KON​?KO​?LY-​?THE​?G([EÉ].*) $(KONKOLI-TEG\1)
 # Koós -> Kós, Soós -> Sós
 ^([KS])[oO]([óÓ][sS])(.*) $(\1\2\3)
 # Kossuth -> Kosut, Passuth -> Pasut
@@ -107,10 +107,12 @@
 ^Thö​?kö​?ly(.*) $(Tököli\1)
 ^THÖ​?KÖ​?LY(.*) $(TÖKÖLI\1)
 # Veér -> Vér
-^V[eE]([éÉ][rR].*) $(V\1)
+^V[eE]​?([éÉ][rR].*) $(V\1)
 # Verseghy -> Versegi
 ^Ver​?se​?ghy(.*) $(Versegi\1)
 # Wass -> Vas
+"^Was​?(sal|sá) 0$" $(Vas\1)
+"^WAS​?(SAL|SÁ) 0$" $(VAS\1)
 ^Was​?s(.*) $(Vas\1)
 ^WAS​?S(.*) $(VAS\1)
 # Wesselényi -> Veselényi
