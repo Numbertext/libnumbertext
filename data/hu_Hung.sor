@@ -7,7 +7,7 @@
 "^(Áp​?ri​?l|Champs-Él|[cC]i​?t|Do​?lák-Sa​?l|[dfhjDFHJ]ol​?l|Él|Fesz​?t|[gG]rizz​?l|Ha​?rasz​?t|Hat​?va​?n|Husz​?t|[iI]n​?ter​?ci​?t|Jé​?ke​?l|Kis​?fa​?lu​?d|Ku​?ko​?r​?el​?l|Mo​?ho​?l|Mind​?szen​?t|Nosz​?t|[pP]en​n|Pes​?t|Re​?gu​?l|So​?n|Szi​?l|Szte​?va​?no​?vi​?t|Vö​?rös​?mar​?t|[zZ][lł]ot)y(.*) 0$" $1𐳐$2
 "^(ÁP​?RI​?L|CHAMPS-ÉL|CI​?T|DO​?LÁK-SA​?L|[DFHJ]OL​?L|ÉL|FESZ​?T|GRIZZ​?L|HA​?RASZ​?T|HAT​?VA​?N|HUSZ​?T|IN​?TER​?CI​?T|JÉ​?KE​?L|KIS​FA​LU​?D|KU​?KO​?R​?EL​?L|MIND​?SZEN​?T|MO​?HO​?L|NOSZ​?T|PEN​?N|PES​?T|RE​?GU​?L|SO​?N|SZI​?L|SZTE​?VA​?NO​?VI​?T|VÖ​?RÖS​?MAR​?T|Z[LŁ]OT)Y(.*) 0$" $1𐲐$2
 # if the original word contains an unknown character, return without modification
-"^(.*[^-0-9a-zA-ZáéëóöőúüűÁÉËÓÖŐÚÜŰ​–,„”\?\;]) 0$" \1
+"^(.*[^-0-9qwertzuiopasdfghjklyxcvbnmQWERTZUIOPASDFGHJKLYXCVBNMáäéëíóöőúüűÁÄÉËÍÓÖŐÚÜŰ​–,„”\?\;].*) 0$" \1
 # words with y
 "^y(ard.*) 0$" 𐳒$1
 "^Y([aA][rR][dD].*|[uU]​?[cC][oO][nN].*) 0$" 𐲒$1
@@ -19,6 +19,7 @@
 "(^[yY].*) 0$" \1
 # don't transliterate words with q, but not with qu
 "(^.*[qQ][^uU].*) 0$" \1
+"(^.*[qQ]) 0$" \1
 # other exceptions
 # Ágh -> Ág, Balogh -> Balog, Horváth -> Horvát, Mikszáth -> Mikszát, Németh -> Német, Tóth -> Tót, Virágh -> Virág, Végh -> Vég
 ^([Á][gG]|B[aA]​?[lL][oO][gG]|H[oO][rR]​?[vV][áÁ][tT]|M[iI][kK]​?[sS][zZ][áÁ][tT]|N[éÉ]​?[mM][eE][tT]|T[óÓ][tT]|V[iI]​?[rR][áÁ][gG]|V[éÉ][gG])[hH](.*) $(\1\2)
@@ -214,7 +215,7 @@ M(.*) 𐲘$1
 nny(.*) 𐳚𐳚$1
 NNY(.*) 𐲚𐲚$1
 ny(.*) 𐳚$1
-N[ny](.*) 𐲚$1
+N[yY](.*) 𐲚$1
 n(.*) 𐳙$1
 N(.*) 𐲙$1
 o(.*) 𐳛$1
