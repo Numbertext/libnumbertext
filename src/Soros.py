@@ -41,8 +41,8 @@ class _Soros:
 """)
         prg = _tr(prg, _m[:4], _c[:4], "\\") # \\, \", \;, \# -> \uE000..\uE003
         # switch off all country-dependent lines, and switch on the requested ones
-        prg = re.sub(r"(^|[\n;])([^\n;#]*#[^\n]*[[]:[^\n:\]]*:][^\n]*)", r"\1#\2", prg)
-        prg = re.sub(r"(^|[\n;])#([^\n;#]*#[^\n]*[[]:" + lang.replace("_", "-") + r":][^\n]*)", r"\1\2", prg)
+        prg = re.sub(r"(^|[\n;])([^\n;#]*#[^\n]*[\[]:[^\n:\]]*:][^\n]*)", r"\1#\2", prg)
+        prg = re.sub(r"(^|[\n;])#([^\n;#]*#[^\n]*[\[]:" + lang.replace("_", "-") + r":][^\n]*)", r"\1\2", prg)
         matchline = re.compile("^\s*(\"[^\"]*\"|[^\s]*)\s*(.*[^\s])?\s*$")
         prefix = ""
         for s in re.sub("(#[^\n]*)?(\n|$)", ";", prg).split(";"):
@@ -70,8 +70,8 @@ class _Soros:
                     s2 = ""
                 s2 = _tr(s2, _m[4:], _c[4:], "\\") # \$, \(, \), \|, \[, \] -> \uE004..\uE009
                 # call inner separator: [ ... $1 ... ] -> $(\uE00A ... \uE00A$1\uE00A ... )
-                s2 = re.sub(r"[[]\$(\d\d?|\([^\)]+\))",u"$(\uE00A\uE00A|$\\1\uE00A", s2)
-                s2 = re.sub(r"[[]([^\$[\\]*)\$(\d\d?|\([^\)]+\))",u"$(\uE00A\\1\uE00A$\\2\uE00A", s2)
+                s2 = re.sub(r"[\[]\$(\d\d?|\([^\)]+\))",u"$(\uE00A\uE00A|$\\1\uE00A", s2)
+                s2 = re.sub(r"[\[]([^\$[\\]*)\$(\d\d?|\([^\)]+\))",u"$(\uE00A\\1\uE00A$\\2\uE00A", s2)
                 s2 = re.sub(r"\uE00A]$","|\uE00A)", s2) # add "|" in terminating position
                 s2 = re.sub(r"]",")", s2)
                 s2 = re.sub(r"(\$\d|\))\|\$", r"\1||$", s2) # $()|$() -> $()||$()
