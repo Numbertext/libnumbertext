@@ -21,45 +21,45 @@
 50 cinquante
 60 soixante
 
-71 septante et un		# [:fr-CH:] [:fr-BE:]
+71 septante-et-un		# [:fr-CH:] [:fr-BE:]
 7(\d) septante[-$1]		# [:fr-CH:] [:fr-BE:]
-71 soixante et onze		# default
+71 soixante-et-onze		# default
 7(\d) soixante-$(1\1)		# default
 
-81 huitante et un		# [:fr-CH:]
+81 huitante-et-un		# [:fr-CH:]
 8(\d) huitante[-$1]		# [:fr-CH:]
 80$ quatre-vingts		# default
 80 quatre-vingt			# default
 81 quatre-vingt-un		# default
 
-91 nonante et un		# [:fr-CH:] [:fr-BE:]
+91 nonante-et-un		# [:fr-CH:] [:fr-BE:]
 9(\d) nonante[-$1]		# [:fr-CH:] [:fr-BE:]
 9(\d) quatre-vingt-$(1\1)	# default
 
-(\d)1 $(\10) et un
+(\d)1 $(\10)-et-un
 (\d)(\d) $(\10)-$2
 
-1(\d\d) cent[ $1]
-(\d)00$ $1 cents
-(\d)(\d\d) $1 cent[ $2]
-1100 onze cents
-11(\d\d) onze cent[ $1]
-1(\d{3}) mille[ $1]
-(\d{1,3})(\d{3}) $1 mille[ $2]
-1(\d{6}) un million[ $1]
-(\d{1,3})(\d{6}) $1| millions[ $2]
-1(\d{9}) un milliard[ $1]
-(\d{1,3})(\d{9}) $1| milliards[ $2]
-1(\d{12}) un billion[ $1]
-(\d{1,3})(\d{12}) $1| billions[ $2]
-1(\d{15}) un billiard[ $1]
-(\d{1,3})(\d{15}) $1| billiards[ $2]
-1(\d{18}) un trillion[ $1]
-(\d{1,3})(\d{18}) $1| trillions[ $2]
-1(\d{21}) un trilliard[ $1]
-(\d{1,3})(\d{21}) $1| trilliards[ $2]
-1(\d{24}) un quadrillion[ $1]
-(\d{1,3})(\d{24}) $1| quadrillions[ $2]
+1(\d\d) cent[-$1]
+(\d)00$ $1-cents
+(\d)(\d\d) $1-cent[-$2]
+1100 onze-cents
+11(\d\d) onze-cent[-$1]
+1(\d{3}) mille[-$1]
+(\d{1,3})(\d{3}) $1-mille[-$2]
+1(\d{6}) un-million[-$1]
+(\d{1,3})(\d{6}) $1|-millions[-$2]
+1(\d{9}) un-milliard[-$1]
+(\d{1,3})(\d{9}) $1|-milliards[-$2]
+1(\d{12}) un-billion[-$1]
+(\d{1,3})(\d{12}) $1|-billions[-$2]
+1(\d{15}) un-billiard[-$1]
+(\d{1,3})(\d{15}) $1|-billiards[-$2]
+1(\d{18}) un-trillion[-$1]
+(\d{1,3})(\d{18}) $1|-trillions[-$2]
+1(\d{21}) un-trilliard[-$1]
+(\d{1,3})(\d{21}) $1|-trilliards[-$2]
+1(\d{24}) un-quadrillion[-$1]
+(\d{1,3})(\d{24}) $1|-quadrillions[-$2]
 
 # negative number
 
