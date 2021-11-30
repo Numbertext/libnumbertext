@@ -96,6 +96,8 @@ USD:(\D+) $(\1: dolar amerykański, dolary amerykańskie, dolarów amerykańskic
 ([-−]?\d+)	$(ordinal |$2)
 "(.*)siąt (.*)"	$(ordinal \2siąty \3)
 "(.*)eści (.*)"	$(ordinal \2esty \3)
+"(.*)dwadzieścia (.*)" $(ordinal \2dwudziesty \3)
+(.*)dwadzieścia \2dwudziesty
 
 (.*)jeden	\2pierwszy
 (.*)dwa		\2drugi
