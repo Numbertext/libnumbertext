@@ -42,8 +42,6 @@
 1(\d\d) cent[-$1]
 (\d)00$ $1-cents
 (\d)(\d\d) $1-cent[-$2]
-1100 onze-cents
-11(\d\d) onze-cent[-$1]
 1(\d{3}) mille[-$1]
 (\d{1,3})(\d{3}) $1-mille[-$2]
 1(\d{6}) un-million[-$1]
@@ -133,6 +131,12 @@ XPF:(\D+) $(\1: franc Pacifique, francs Pacifique, de francs Pacifique, centime,
 "(([A-Z]{3}) [-−]?\d+)[.,](\d)" $1 et |$(\30)$(\2:sp)
 "(([A-Z]{3}) [-−]?\d+)[.,](\d\d)" $1 et |$3$(\2:sp)
 
+== informal ==
+
+(1\d)00 $1-cents
+(1\d)(\d\d) $1-cent[-$1]
+(.*)    $1
+
 == feminine ==
 
 1 une
@@ -167,5 +171,6 @@ XPF:(\D+) $(\1: franc Pacifique, francs Pacifique, de francs Pacifique, centime,
 
 == help ==
 
-"" $(1), $(2), $(3)\n$(help feminine)$(help masculine)$(help ordinal)$(help ordinal-feminine)$(help ordinal-masculine)$(help ordinal-number-feminine)$(help ordinal-number-masculine)
+"" $(1), $(2), $(3)\n$(help feminine)$(help masculine)$(help ordinal)$(help ordinal-feminine)$(help ordinal-masculine)$(help ordinal-number-feminine)$(help ordinal-number-masculine)$(help informal)
+(informal) \1: $(\1 1100), $(\1 1200), $(\1 1300)\n
 (feminine|masculine|ordinal(-feminine|-masculine|-number)?) \1: $(\1 1), $(\1 2), $(\1 3)\n
