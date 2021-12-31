@@ -5,7 +5,7 @@
 ```
 Language-neutral NUMBERTEXT and MONEYTEXT functions for LibreOffice Calc
 
-version 1.0.7 (2021-01-31)
+version 1.0.8 (2021-12-31)
 
 Numbertext LibreOffice extension,
 Soros programming language specification (draft) and IDE*,

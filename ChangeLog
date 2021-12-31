@@ -1,3 +1,24 @@
+2021-12-31: 1.0.8 release:
+	* src/Soros.py: fix FutureWarning: Possible nested set at position, reported by Rene Engelhard
+	* fr.sor:
+		- use hyphens instead of spaces, e.g. cent-deux, reported by "4560041" at GitHub
+		- new prefix "informal" for 1100–1900 (onze-cents - dix-neuf-cents)
+		- add prefix "feminine" and "masculine" (1 -> une/un), bug reports by arena94 at GitGub
+	* hu_Hung.sor:
+		- fix transliteration of old Hungarian family names, bug report by Zoltán Óvári
+		- fix 100–199, 1000–1999, 1000000–1999999 and 1000000000–1999999999 (bad ordering)
+		– fix conversion of single letters "í", "Í" and "NY";
+		- fix unnecessary conversion of words ending with "q", e.g. "IQ";
+		- fix unnecessary conversion of words not ending with unknown letters
+	* mr.sor: Marathi spelling corrections by Shantanu Oak
+	* pl.sor: fix ordinal 20-29, reported by Gabryha at GitHub
+	* uk.sor, CalcAddIn.xcu, description.xml.in: fix spell by Olexandr Nesterenko
+		- replace apostrophe symbol to U+02BC, reported by Volodymyr Lisivka
+		- up number to 10^42
+		- add cardinal, update help
+		- add uk locale
+	* zh.sor: add ordinal numbers, use always 二 for 2, reported by Ming-Hua
+
 2021-01-31: 1.0.7 release:
 	* ga.sor: new module Irish by László Németh
 	* lg.sor: new module Luganda by Phillip Samuel
@@ -10,7 +31,7 @@
 		- replace ü and ű by Viktor Kovács
 		- fix transliteration of dates with affixation
 	* th.sor: fix big (>999,999) numbers by Vladislav Kiper
-	* ua.sor: fix euro cent, bug report by Kty0mka 
+	* ua.sor: fix euro cent, bug report by Kty0mka
 
 2020-06-01: 1.0.6 release:
 	* Numbertext.cxx: don't depend on en_US.UTF-8 locale by Stephan Bergmann
@@ -214,7 +235,7 @@
 	  BSD license for example Python and Java interpreters
 
 2010-05-20: László Németh (nemeth numbertext org):
-	* data/sv_SE.sor: 
+	* data/sv_SE.sor:
 	- fix 30 (trettio)
 	- reference implementation with grammar and year support,
 	  also with gender parameters for currencies. Gender problem
@@ -301,12 +322,12 @@
 	– for numbers ending in 1 that are not 'teens':
 	   (1, 21, 31, 41, 101, 121, etc.): roubles = рубль; kopeks = копейка
 	– for all numbers ending in 1 in the kopeks column (.01, .21, etc):
-	  one = одна, eg. 
+	  one = одна, eg.
 	  21.00 = двадцать один *рубль*
 	  21.01 = двадцать один *рубль одна* копейка
 	  21.21 = двадцать один *рубль* двадцать *одна копейка*
 
-	* data/th_TH.sor: fix number 1 in 201, 5001 etc. 
+	* data/th_TH.sor: fix number 1 in 201, 5001 etc.
 	  1 is เอ็ด in all numbers greater than 1 (หนึ่ง).
 	  This is an old Excel bug revived in OOo, too (see OOo Issue 83490),
 	  reported by Supapong at OOo Numbertext Wiki.
@@ -370,7 +391,7 @@
 	  EUR 1000001 --> un milió un euros (it lacks " de/d' " preposition).
 	  EUR 1000000,xx --> un milió d'euros amb xx cèntims
 	  EUR 1000001,xx --> un milió un euros amb xx cèntims
-	                
+
 	Improvements:
 	- Added all the currencies replaced by EUR
 	- Added all the actives code beginning by A (I'm working in B-Z)
@@ -434,7 +455,7 @@
 
 2009-08-27: Olivier Ronez:
 
-	* data/fr_BE.sor, data/fr_CH: patches for new modules 
+	* data/fr_BE.sor, data/fr_CH: patches for new modules
 
 	* data/fr_FR.aff: other patches:
 	- milliarde -> milliards (reported by Sophie Gautier and
@@ -481,7 +502,7 @@
 
 	* CalcAddIn.xcu: add compatibility names: working XLS export-import
           (XLS portability bug reported by Mushtaque Asghar).
-    
+
 	* numbertext.py: now NUMBERTEXT() has no default rounding:
 
         =NUMBERTEXT(4.12345) -> four dot one two three four five
@@ -501,7 +522,7 @@
 	- add number to Devanagari number example to the Soros specification;
 	- add Python implementation
 
-	* data/pt_PT.sor: Portuguese 
+	* data/pt_PT.sor: Portuguese
 	- initial version from Eduardo Moreno (emoreno tokonhu com):
           "Nombres en portugues de los números, con ayuda de Flavia Viegas".
 	- extension:
@@ -517,10 +538,10 @@
 	* data/af_ZA.sor: Africaans
 	- the orthography based on Bruce C. Donaldson: A grammar of Africaans,
 	  MOUTON DE GRUYTER, 1993
-	  
+
 	* data/zh_ZH_2.sor: Simplified financial Chinese module.
 
-	* data/fr_FR.sor, data/en_US*.sor, data/es_ES.sor: 
+	* data/fr_FR.sor, data/en_US*.sor, data/es_ES.sor:
 	
 	- extended currency names for English, French and Spanish modules
 

@@ -54,6 +54,10 @@ Eduardo Moreno (emoreno at tokonhu dot com):
 
 	- bug reports about Spanish module and short language code "es"
 
+Olexandr Nesterenko (olexn at ukr dot net):
+
+	- various fixes in Ukrainian module
+
 Eko Prasetiyo (ekoprasetiyo at gmail):
 
 	- author of Indonesian module
@@ -100,12 +104,21 @@ Michel Weimerskirch (michel at weimerskirch dot net):
 
 = Contributors =
 
+4560041 at GitHub (issue #93):
+
+	- bug report about French: use hyphens instead of spaces, e.g. cent-deux
+
 Liudas Ališauskas (liudas dot alisauskas at gmail dot com):
+
 	- fix Lithuanian money handling
 
 andritis at GitHub (issue #52):
 
 	- fix 19 in in Latvian module
+
+arena94 at GitHub (issue #89–#90):
+
+	- bug report about French: missing formal 1100 and feminine
 
 armik71 at GitHub (issue #41):
 
@@ -159,6 +172,8 @@ Rene Engelhard:
 
 	- Debian packaging, fix DEFPATH in spellout, libnumbertext bug reports
 
+	- report Python FutureWarning: Possible nested set at position
+
 Spiros Evangelatos (sevangelatos at gmail):
 
 	- fixes in Greek module: "and" in currency fractions and "0 euro"
@@ -166,6 +181,10 @@ Spiros Evangelatos (sevangelatos at gmail):
 Aurimas Fišeras (aurimas at members fsf org):
 
 	- various fixes for Lithuanian module
+
+Gabryha at GitHub:
+
+	- bug report for Polish: fix ordinal 20-29 
 
 Sophie Gautier:
 
@@ -256,10 +275,18 @@ mike8p at launchpad.net:
 
 	- Spanish module: bug report for y dos cents -> con dos céntimos
 
+Volodymyr Lisivka:
+
+	- bug report about Ukrainian: replace apostrophe symbol to U+02BC
+
 Marcin Miłkowski (milek_pl at o2 dot pl):
 
 	- patch for Polish: https://bugs.launchpad.net/numbertext/+bug/421031:
 		- correct special affixation of number names after 2, 3 and 4
+
+Ming-Hua at GitHub:
+
+	- bug report about Chinese: missing ordinal numbers, use always 二
 
 Petr Mladek:
 
@@ -317,6 +344,10 @@ Julien Nabet (serval2412 at yahoo dot fr):
 
 Stephan Nilsson (Stephan at Nilsson dot tf):
 	- sv_SE bug report: the Swedish 7 is "sju", not *sjo
+
+Shantanu Oak (shantanu dot oak at gmail):
+
+	- various fixes in Marathi module
 
 Zoltán Óvári (ovari123 at zoho dot org):
 
