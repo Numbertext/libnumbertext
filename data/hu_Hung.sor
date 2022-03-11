@@ -6,6 +6,8 @@
 # e.g. Áprily, Champs-Élysées, Élysée-palota, Dolly, Folly, Hollywood, jolly, intercity, Kisfaludy ...
 "^(Áp​?ri​?l|Champs-Él|[cC]i​?t|Do​?lák-Sa​?l|[dfhjDFHJ]ol​?l|Él|Fesz​?t|[gG]rizz​?l|Ha​?rasz​?t|Hat​?va​?n|Husz​?t|[iI]n​?ter​?ci​?t|Jé​?ke​?l|Kis​?fa​?lu​?d|Ku​?ko​?r​?el​?l|Mo​?ho​?l|Mind​?szen​?t|Nosz​?t|[pP]en​n|Pes​?t|Re​?gu​?l|So​?n|Szi​?l|Szte​?va​?no​?vi​?t|Vö​?rös​?mar​?t|[zZ][lł]ot)y(.*) 0$" $1𐳐$2
 "^(ÁP​?RI​?L|CHAMPS-ÉL|CI​?T|DO​?LÁK-SA​?L|[DFHJ]OL​?L|ÉL|FESZ​?T|GRIZZ​?L|HA​?RASZ​?T|HAT​?VA​?N|HUSZ​?T|IN​?TER​?CI​?T|JÉ​?KE​?L|KIS​FA​LU​?D|KU​?KO​?R​?EL​?L|MIND​?SZEN​?T|MO​?HO​?L|NOSZ​?T|PEN​?N|PES​?T|RE​?GU​?L|SO​?N|SZI​?L|SZTE​?VA​?NO​?VI​?T|VÖ​?RÖS​?MAR​?T|Z[LŁ]OT)Y(.*) 0$" $1𐲐$2
+# punctuation with transliterated letters
+"^([-𐲀-𐳿0-9​–,„”\?\;‟⁏⸮⹁⹂]*[,„”\?\;]) 0$" $1
 # if the original word contains an unknown character, return without modification
 "^(.*[^-0-9qwertzuiopasdfghjklyxcvbnmQWERTZUIOPASDFGHJKLYXCVBNMáäéëíóöőúüűÁÄÉËÍÓÖŐÚÜŰ​–,„”\?\;].*) 0$" \1
 # words with y
