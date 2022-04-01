@@ -1,3 +1,6 @@
+2022-04-01: 1.0.9 release:
+	* hu_Hung.sor: fix regression of transliteration of punctuation marks
+
 2021-12-31: 1.0.8 release:
 	* src/Soros.py: fix FutureWarning: Possible nested set at position, reported by Rene Engelhard
 	* fr.sor:
