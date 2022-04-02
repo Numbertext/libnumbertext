@@ -7,7 +7,7 @@
 "^(Áp​?ri​?l|Champs-Él|[cC]i​?t|Do​?lák-Sa​?l|[dfhjDFHJ]ol​?l|Él|Fesz​?t|[gG]rizz​?l|Ha​?rasz​?t|Hat​?va​?n|Husz​?t|[iI]n​?ter​?ci​?t|Jé​?ke​?l|Kis​?fa​?lu​?d|Ku​?ko​?r​?el​?l|Mo​?ho​?l|Mind​?szen​?t|Nosz​?t|[pP]en​n|Pes​?t|Re​?gu​?l|So​?n|Szi​?l|Szte​?va​?no​?vi​?t|Vö​?rös​?mar​?t|[zZ][lł]ot)y(.*) 0$" $1𐳐$2
 "^(ÁP​?RI​?L|CHAMPS-ÉL|CI​?T|DO​?LÁK-SA​?L|[DFHJ]OL​?L|ÉL|FESZ​?T|GRIZZ​?L|HA​?RASZ​?T|HAT​?VA​?N|HUSZ​?T|IN​?TER​?CI​?T|JÉ​?KE​?L|KIS​FA​LU​?D|KU​?KO​?R​?EL​?L|MIND​?SZEN​?T|MO​?HO​?L|NOSZ​?T|PEN​?N|PES​?T|RE​?GU​?L|SO​?N|SZI​?L|SZTE​?VA​?NO​?VI​?T|VÖ​?RÖS​?MAR​?T|Z[LŁ]OT)Y(.*) 0$" $1𐲐$2
 # punctuation with transliterated letters
-"^([-𐲀-𐳿0-9​–,„”\?\;‟⁏⸮⹁⹂]*[,„”\?\;]) 0$" $1
+"^((𐲀|𐲁|𐲂|𐲄|𐲆|𐲇|𐲉|𐲊|𐲋|𐲌|𐲍|𐲎|𐲏|𐲐|𐲑|𐲒|𐲓|𐲖|𐲗|𐲘|𐲙|𐲚|𐲛|𐲜|𐲞|𐲟|𐲠|𐲢|𐲤|𐲥|𐲦|𐲨|𐲪|𐲫|𐲬|𐲭|𐲮|𐲯|𐲰|𐳀|𐳁|𐳂|𐳄|𐳆|𐳇|𐳉|𐳊|𐳋|𐳌|𐳍|𐳎|𐳏|𐳐|𐳑|𐳒|𐳓|𐳖|𐳗|𐳘|𐳙|𐳚|𐳛|𐳜|𐳞|𐳟|𐳠|𐳢|𐳤|𐳥|𐳦|𐳨|𐳪|𐳫|𐳬|𐳭|𐳮|𐳯|𐳰|𐳺|𐳻|𐳼|𐳽|𐳾|𐳿|[-0-9​–,„”.!\?\;‟⹂⹁⁏⸮])*[,„”\?\;]) 0$" $1
 # if the original word contains an unknown character, return without modification
 "^(.*[^-0-9qwertzuiopasdfghjklyxcvbnmQWERTZUIOPASDFGHJKLYXCVBNMáäéëíóöőúüűÁÄÉËÍÓÖŐÚÜŰ​–,„”\?\;].*) 0$" \1
 # words with y

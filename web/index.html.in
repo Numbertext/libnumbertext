@@ -117,27 +117,27 @@
       <div class="col-md-3 col-sm-6">
         <div class="service"> <i class="fa fa-table"></i>
           <h3>LibreOffice</h3>
-	  <p>Extension with NUMBERTEXT and MONEYTEXT spreadsheet functions: <a href="https://extensions.libreoffice.org/extensions/numbertext-1/1-0.9/@@download/file/numbertext-1.0.9.oxt">numbertext-1.0.9.oxt</a>
-	  (<a href="https://extensions.libreoffice.org/extensions/numbertext-1/1-0.9">description</a>)</p>
+	  <p>Extension with NUMBERTEXT and MONEYTEXT spreadsheet functions: <a href="https://extensions.libreoffice.org/extensions/numbertext-1/1-0.10/@@download/file/numbertext-1.0.10.oxt">numbertext-1.0.10.oxt</a>
+	  (<a href="https://extensions.libreoffice.org/extensions/numbertext-1/1-0.10">description</a>)</p>
         </div>
       </div>
       <div class="col-md-3 col-sm-6">
         <div class="service"> <i class="fa fa-cogs"></i>
           <h3>C++</h3>
-	  <p>Source distribution (1.0.9): <a href="https://github.com/Numbertext/libnumbertext/releases/download/1.0.9/libnumbertext-1.0.9.tar.xz">libnumbertext-1.0.9.tar.xz</a> (<a href="https://github.com/Numbertext/libnumbertext/releases/tag/1.0.9">installation</a>)</p>
+	  <p>Source distribution (1.0.10): <a href="https://github.com/Numbertext/libnumbertext/releases/download/1.0.10/libnumbertext-1.0.10.tar.xz">libnumbertext-1.0.10.tar.xz</a> (<a href="https://github.com/Numbertext/libnumbertext/releases/tag/1.0.10">installation</a>)</p>
         </div>
       </div>
       <div class="col-md-3 col-sm-6">
         <div class="service"> <i class="fa fa-coffee"></i>
           <h3>Java</h3>
-	  <p>JAR package: <a href="https://github.com/Numbertext/libnumbertext/releases/download/1.0.9/numbertext.jar">numbertext.jar</a> (1.0.9).
+	  <p>JAR package: <a href="https://github.com/Numbertext/libnumbertext/releases/download/1.0.10/numbertext.jar">numbertext.jar</a> (1.0.10).
 	  Usage: java -jar numbertext.jar</p>
         </div>
       </div>
       <div class="col-md-3 col-sm-6">
         <div class="service"><i class="fa fa-pencil"></i>
           <h3>Python & JavaScript</h3>
-	  <p>Interpreters: <a href="https://github.com/Numbertext/libnumbertext/blob/master/src/Soros.py">Soros.py</a> and <a href="https://github.com/Numbertext/libnumbertext/blob/master/src/Soros.js">Soros.js</a>. For usage, see source distribution (<a href="https://github.com/Numbertext/libnumbertext/archive/1.0.9.zip">zip</a> or <a href="https://github.com/Numbertext/libnumbertext/archive/1.0.9.tar.gz">tar.gz</a>).</p>
+	  <p>Interpreters: <a href="https://github.com/Numbertext/libnumbertext/blob/master/src/Soros.py">Soros.py</a> and <a href="https://github.com/Numbertext/libnumbertext/blob/master/src/Soros.js">Soros.js</a>. For usage, see source distribution (<a href="https://github.com/Numbertext/libnumbertext/archive/1.0.10.zip">zip</a> or <a href="https://github.com/Numbertext/libnumbertext/archive/1.0.10.tar.gz">tar.gz</a>).</p>
         </div>
       </div>
     </div>
