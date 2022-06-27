@@ -98,8 +98,8 @@ Soros::Soros(std::wstring program, std::wstring filtered_lang):
             s = regex_replace(s, quoteEnd, L"");
             s = translate(s, c.substr(1), m.substr(1), L"");
             replace(s, slash, L"\\\\"); // -> \\, ", ;, #
-            begins.push_back(s[0] == L'^');
-            ends.push_back(s[s.length()-1] == L'$');
+            begins.push_back(!s.empty() && s[0] == L'^');
+            ends.push_back(!s.empty() && s[s.length()-1] == L'$');
             s = L"^" + regex_replace(s, wregex(L"^\\^"), L"");
             s = regex_replace(s, wregex(L"\\$$"), L"") + L"$";
             try
