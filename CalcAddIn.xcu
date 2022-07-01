@@ -11,6 +11,7 @@
 	<value xml:lang="pl">Przekształca liczbę na postać słowną. Część ułamkowa wymieniana jest jako kolejne cyfry.</value>
 	<value xml:lang="fr">Convertit un nombre en texte.</value>
 	<value xml:lang="hu">Számot számnévvé alakít.</value>
+	<value xml:lang="ru">Преобразует число в его письменный эквивалент.</value>
 	<value xml:lang="sr">Исписује број словима.</value>
 	<value xml:lang="sh">Ispisuje broj slovima.</value>
 	<value xml:lang="he">ממיר מספר לייצוגו במילים.</value>
@@ -27,6 +28,7 @@
 	    <value xml:lang="pl">Liczba</value>
 	    <value xml:lang="fr">Nombre</value>
 	    <value xml:lang="hu">Szám</value>
+	    <value xml:lang="ru">Число</value>
 	    <value xml:lang="sr">Број</value>
 	    <value xml:lang="sh">Broj</value>
 	    <value xml:lang="he">מספר</value>
@@ -39,6 +41,7 @@
 	    <value xml:lang="pl">Wartość.</value>
 	    <value xml:lang="fr">Valeur.</value>
 	    <value xml:lang="hu">Az átalakítandó szám.</value>
+	    <value xml:lang="ru">Значение.</value>
 	    <value xml:lang="sr">Вредност.</value>
 	    <value xml:lang="sh">Vrednost.</value>
 	    <value xml:lang="sh">ערך קלט.</value>
@@ -53,6 +56,7 @@
 	    <value xml:lang="pl">Język</value>
 	    <value xml:lang="fr">Langue</value>
 	    <value xml:lang="hu">Nyelv</value>
+	    <value xml:lang="ru">Язык</value>
 	    <value xml:lang="sr">Језик</value>
 	    <value xml:lang="sh">Jezik</value>
 	    <value xml:lang="he">שפה</value>
@@ -65,6 +69,7 @@
 	    <value xml:lang="pl">Kod języka w jakim ma być podany rezultat (np. pl - polski, en - angielski, ru - rosyjski).</value>
 	    <value xml:lang="fr">Code langue (exemple fr-BE).</value>
 	    <value xml:lang="hu">Nyelvkód (pl. hu-HU).</value>
+	    <value xml:lang="ru">Код языка (напр. ru-RU).</value>
 	    <value xml:lang="sr">Код језика (нпр. sr или sh).</value>
 	    <value xml:lang="sh">Kod jezika (npr. sr ili sh).</value>
 	    <value xml:lang="he">קוד שפה (כגון he-IL).</value>
@@ -82,6 +87,7 @@
 	<value xml:lang="pl">Przekształca liczbę na postac słowną z podaniem waluty. Uwzględnia dwa miejsca po przecinku po zaokrągleniu.</value>
 	<value xml:lang="fr">Convertit un nombre en texte avec la devise indiquée.</value>
 	<value xml:lang="hu">Számot számnévvé alakít a megadott pénznemmel.</value>
+	<value xml:lang="ru">Преобразует число в текст в заданной валюте.</value>
 	<value xml:lang="sr">Исписује број словима уз истицање ознаке валуте.</value>
 	<value xml:lang="sh">Ispisuje broj slovima uz isticanje oznake valute.</value>
 	<value xml:lang="he">ממיר מספר לייצוגו במילים עם המטבע הנתון.</value>
@@ -98,6 +104,7 @@
 	    <value xml:lang="pl">Liczba</value>
 	    <value xml:lang="fr">Nombre</value>
 	    <value xml:lang="hu">Szám</value>
+	    <value xml:lang="ru">Число</value>
 	    <value xml:lang="sr">Број</value>
 	    <value xml:lang="sh">Broj</value>
 	    <value xml:lang="he">מספר</value>
@@ -110,6 +117,7 @@
 	    <value xml:lang="pl">Wartość przekształcana.</value>
 	    <value xml:lang="fr">Valeur.</value>
 	    <value xml:lang="hu">Az átalakítandó szám.</value>
+	    <value xml:lang="ru">Введенное значение.</value>
 	    <value xml:lang="sr">Улазна вредност.</value>
 	    <value xml:lang="sh">Ulazna vrednost.</value>
 	    <value xml:lang="sh">ערך קלט.</value>
@@ -124,6 +132,7 @@
 	    <value xml:lang="pl">Waluta</value>
 	    <value xml:lang="fr">Devise</value>
 	    <value xml:lang="hu">Pénznem/függvény</value>
+	    <value xml:lang="ru">Валюта</value>
 	    <value xml:lang="sr">Валута</value>
 	    <value xml:lang="sh">Valuta</value>
 	    <value xml:lang="he">מטבע</value>
@@ -136,6 +145,7 @@
 	    <value xml:lang="pl">Kod waluty wg ISO 4217 zapisany wersalikami (tak jak w bankach, PLN - dla Polski, XXX - bez waluty).</value>
 	    <value xml:lang="fr">Code ISO 4217 (exemple EUR).</value>
 	    <value xml:lang="hu">ISO 4217 kód (pl. HUF) vagy Numbertext függvény (pl. ord = sorszám).</value>
+	    <value xml:lang="ru">Код по ISO 4217 (напр. RUB), или функция Numbertext (напр. ordinal = порядковый номер).</value>
 	    <value xml:lang="sr">ISO 4217 код (нпр. RSD).</value>
 	    <value xml:lang="sh">ISO 4217 kod (npr. RSD).</value>
 	    <value xml:lang="he">קוד ISO 4217 (כגון ILS).</value>
@@ -150,6 +160,7 @@
 	    <value xml:lang="pl">Język</value>
 	    <value xml:lang="fr">Langue</value>
 	    <value xml:lang="hu">Nyelv</value>
+	    <value xml:lang="ru">Язык</value>
 	    <value xml:lang="sr">Језик</value>
 	    <value xml:lang="sh">Jezik</value>
 	    <value xml:lang="he">שפה</value>
@@ -162,6 +173,7 @@
 	    <value xml:lang="pl">Kod języka w jakim ma być podany rezultat (np. pl - polski, en - angielski, ru - rosyjski).</value>
 	    <value xml:lang="fr">Code langue (exemple fr-BE).</value>
 	    <value xml:lang="hu">Nyelvkód (pl. hu-HU).</value>
+	    <value xml:lang="ru">Код языка (напр. ru-RU).</value>
 	    <value xml:lang="sr">Код језика (нпр. sr или sh).</value>
 	    <value xml:lang="sh">Kod jezika (npr. sr ili sh).</value>
 	    <value xml:lang="he">קוד שפה (כגון he-IL).</value>
