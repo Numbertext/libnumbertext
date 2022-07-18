@@ -89,6 +89,7 @@ lv	Latvian
 mr	Marathi
 ms	Malaysian
 mt	Maltese
+mul	note symbols, e.g. \*, †, ‡, ... for multiple languages
 nb	Norwegian Bokmål
 nl	Dutch
 nn	Norwegian Nynorsk

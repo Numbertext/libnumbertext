@@ -1,0 +1,189 @@
+# numbering for multiple languages
+
+# note symbols
+
+# default: *, **, ***, ****, †, ‡, §
+# source: The United Nations Editorial Manual Online, access: 2022-07-14
+# https://www.un.org/dgacm/en/content/editorial-manual/footnotes/chap-09
+
+1 *
+2 **
+3 ***
+4 ****
+5 †
+6 ‡
+7 §
+(\d*) \1
+
+# Note for LibreOffice users: adding ZWJ character before the return value
+# disables superscript only for that symbol in Writer. E.g. when asterisk is
+# already designed as a superscript letter, but the other symbols need manual
+# approximation of superscript character style:
+#
+#1 ‍*
+#5 ‍**
+#9 ‍***
+#
+# In Writer, there are different numbering variants of the
+# following functions, (1) default, (2) superscript, except *,
+# (3) superscript, except *, †, ‡ (when the font contains also superscript
+# variants of † and ‡, and used by setting font feature "sups").
+
+
+== chicago ==
+
+# *, †, ‡, §, **, ††, ...
+# source: The Chicago Manual of Style Online access: 2022-07-14,
+# also used by LibreOffice Writer and OOXML (referred as "chicago")
+
+1 *
+2 †
+3 ‡
+4 §
+5 **
+6 ††
+7 ‡‡
+8 §§
+9 ***
+10 †††
+11 ‡‡‡
+12 §§§
+13 ****
+14 ††††
+15 ‡‡‡‡
+16 §§§§
+17 *****
+18 †††††
+19 ‡‡‡‡‡
+20 §§§§§
+(\d*) \1
+
+
+== chicago-table ==
+
+# source: The Chicago Manual of Style Online access: 2022-07-14
+# 3.79: Notes to specific parts of a table
+# https://www.chicagomanualofstyle.org/search.html?clause=dagger
+
+1 *
+2 †
+3 ‡
+4 §
+5 ‖
+6 \#
+7 **
+8 ††
+9 ‡‡
+10 §§
+11 ‖‖
+12 \#\#
+13 ***
+14 †††
+15 ‡‡‡
+16 §§§
+17 ‖‖‖
+18 \#\#\#
+(.*) \1
+
+
+== bringhurst ==
+
+# source: Bringhurst, R.: The Elements of Typographic Style,
+# implemented in footmisc – a portmanteau package for customizing
+# footnotes in LATEX, https://texdoc.org/serve/footmisc/0, access: 2022-07-14
+
+1 *
+2 †
+3 ‡
+4 §
+5 ‖
+6 ¶
+7 **
+8 ††
+9 ‡‡
+10 §§
+11 ‖‖
+12 ¶¶
+13 ***
+14 †††
+15 ‡‡‡
+16 §§§
+17 ‖‖‖
+18 ¶¶¶
+
+(.*) \1
+
+
+== gyurgyak ==
+
+# source: J. Gyurgyák: Szerkesztők és szerzők kézikönyve, Osiris, 1997
+# also used by Linux Libertine G font feature "foot" = 2 (default in Hungarian),
+# see http://numbertext.org/linux/fontfeatures.pdf
+
+1 *
+2 **
+3 ***
+4 †
+5 ††
+6 †††
+7 ‡
+8 ‡‡
+9 ‡‡‡
+10 §
+11 §§
+12 §§§
+(.*) \1
+
+
+== lamport ==
+
+# source: footmisc – a portmanteau package for customizing footnotes in LATEX
+# https://texdoc.org/serve/footmisc/0, access: 2022-07-14
+
+1 *
+2 †
+3 ‡
+4 §
+5 ¶
+6 ‖
+7 **
+8 ††
+9 ‡‡
+10 §§
+11 ¶¶
+12 ‖‖
+13 **
+14 ††
+15 ‡‡
+16 §§
+(.*) \1
+
+
+== un ==
+
+# source: The United Nations Editorial Manual Online, access: 2022-07-14
+# https://www.un.org/dgacm/en/content/editorial-manual/footnotes/chap-09
+
+# same as the default style
+(.*) $1
+
+
+== wiley ==
+
+# source: footmisc – a portmanteau package for customizing footnotes in LATEX
+# https://texdoc.org/serve/footmisc/0, access: 2022-07-14
+
+1 *
+2 **
+3 †
+4 ‡
+5 §
+6 ¶
+7 ‖
+(.*) \1
+
+== help ==
+"" |$(1)|, |$(2)|, |$(3), |$(4), |$(5), |$(6), |$(7)|\n$(help chicago)$(help chicago-table)|$(help bringhurst)|$(help gyurgyak)|$(help lamport)|$(help un)|$(help wiley)
+(chicago-table) \1: |$(\1 1)|, |$(\1 2)|, |$(\1 3)|, $(\1 4)|, $(\1 5)|, $(\1 6)|\n
+([-a-z]*?) \1: |$(\1 1)|, |$(\1 2)|, |$(\1 3)|, $(\1 4)|, $(\1 5)|, $(\1 6)|, $(\1 7)|\n
+
