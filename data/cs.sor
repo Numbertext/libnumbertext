@@ -109,21 +109,23 @@ USD:(\D+) $(\1: americký dolar, amerických dolarů, cent, centů)
 
 ([-−]?\d+)	$(ordinal |$1)
 
-(.*)(jedno|jeden)(.*)	$(ordinal \1první\3)
-
 "(.*)dvě stě(.*)"	$(ordinal \1dvoustý\2)
 "(.*)tři sta(.*)"	$(ordinal \1třístý\2)
 "(.*)čtyři sta(.*)"	$(ordinal \1čtyřstý\2)
 "(.*)(pět|šest|sedm|osm) set(.*)"	$(ordinal \1\2istý\3)
 "(.*)devět set(.*)"	$(ordinal \1devítistý\2)
 
+nula	nultý
+(.*)(jedno|jeden)	$(ordinal \1první)
+(.*)(jedenáct)	$(ordinal \1jedenáctý)
+(.*)(dva|dvě)	$(ordinal \1druhý)
 (.*)(dvě|dva)\b(.*)	$(ordinal \1druhý\3)
 (.*)tři\b(.*)		$(ordinal \1třetí\2)
 (.*)čtyři\b(.*)		$(ordinal \1čtvrtý\2)
 (.*)pět\b(.*)		$(ordinal \1pátý\2)
 "(.*)(šest|sedm|osm|desát|náct|sát)( .+|$)"	$(ordinal \1\2ý\3)
 (.*)devět\b(.*)		$(ordinal \1devátý\2)
-"(.*)[^ ](c|s)et\b(.*)"	$(ordinal \1\2átý\3)
+"(.*)(c|s)et\b(.*)"	$(ordinal \1\2átý\3)
 (.*)sto\b(.*)		$(ordinal \1stý\2)
 (.*)tisíce?(.*)		\1tisící\2
 (.*)milión[yů](.*)	\1milióntý\2
