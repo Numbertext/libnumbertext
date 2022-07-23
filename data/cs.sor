@@ -1,8 +1,7 @@
 ^0 nula
-^1$ jedno
-1 jeden
-^2$ dvě
+1 jedna
 2 dva
+^2$ dvě
 3 tři
 4 čtyři
 5 pět
@@ -27,7 +26,7 @@
 (\d)(\d\d) $1 set[ $2]
 1(\d\d\d) tisíc[ $1]
 ([234])(\d\d\d) $1 tisíce[ $2]
-(\d{1,3})(\d\d\d) $1 tisíce[ $2]
+(\d{1,3})(\d\d\d) $1 tisíc[ $2]
 1(\d{6}) milión[ $1]
 ([234])(\d{6}) $1 milióny[ $2]
 (\d{1,3})(\d{6}) $1 miliónů[ $2]
@@ -92,17 +91,19 @@ USD:(\D+) $(\1: americký dolar, amerických dolarů, cent, centů)
 
 == cardinal-neuter ==
 
+1 jedno
+2 dvě
 (.*) $1
 
 == cardinal-feminine ==
 
 1 jedna
+2 dvě
 (.*) $1
 
 == cardinal-masculine ==
 
 1 jeden
-2 dva
 (.*) $1
 
 == ordinal ==
@@ -116,7 +117,7 @@ USD:(\D+) $(\1: americký dolar, amerických dolarů, cent, centů)
 "(.*)devět set(.*)"	$(ordinal \1devítistý\2)
 
 nula	nultý
-(.*)(jedno|jeden)	$(ordinal \1první)
+(.*)(jedno|jedna|jeden)	$(ordinal \1první)
 (.*)(jedenáct)	$(ordinal \1jedenáctý)
 (.*)(dva|dvě)	$(ordinal \1druhý)
 (.*)(dvě|dva)\b(.*)	$(ordinal \1druhý\3)
