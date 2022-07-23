@@ -133,11 +133,27 @@ nula	nultý
 (.*)miliard[ay]?(.*)	\1miliardtý\2
 (.*)			\1
 
+== ordinal-masculine ==
+
+(.*) $(ordinal |$1)
+
+== ordinal-feminine ==
+
+([-−]?\d+) $(ordinal-feminine |$(ordinal-masculine \1))
+(.*)ý(.*)		$(ordinal-feminine \1á\2)
+(.*)	\1
+
+== ordinal-neuter ==
+
+([-−]?\d+) $(ordinal-neuter |$(ordinal-masculine \1))
+(.*)ý(.*)		$(ordinal-neuter \1é\2)
+(.*)	\1
+
 == ordinal-number ==
 
 (\d+)	\1.
 
 == help ==
 
-"" |$(1)|, |$(2)|, |$(3)|\n$(help cardinal-neuter)$(help cardinal-feminine)$(help cardinal-masculine)$(help ordinal)$(help ordinal-number)
+"" |$(1)|, |$(2)|, |$(3)|\n$(help cardinal-neuter)$(help cardinal-feminine)$(help cardinal-masculine)$(help ordinal)$(help ordinal-masculine)$(help ordinal-feminine)$(help ordinal-neuter)$(help ordinal-number)
 (.*) \1: |$(\1 1)|, |$(\1 2)|, |$(\1 3)|\n
