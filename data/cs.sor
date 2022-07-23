@@ -128,7 +128,7 @@ nula	nultý
 "(.*)(c|s)et\b(.*)"	$(ordinal \1\2átý\3)
 (.*)sto\b(.*)		$(ordinal \1stý\2)
 (.*)tisíce?(.*)		\1tisící\2
-(.*)milión[yů](.*)	\1milióntý\2
+(.*)milión[yů]?(.*)	\1milióntý\2
 (.*)miliard[ay]?(.*)	\1miliardtý\2
 (.*)			\1
 
