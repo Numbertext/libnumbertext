@@ -66,6 +66,7 @@ en-NZ	English (one hundred and one)
 eo	Esperanto
 es	Spanish
 et	Estonian
+fa	Persian (Farsi)
 fi	Finnish
 fr	French
 fr-BE	Belgian French
