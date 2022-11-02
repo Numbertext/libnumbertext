@@ -92,10 +92,13 @@ HNL:(\D+) $(\1: lempira, lempiras, centavo, centavos)
 JPY:(\D+) $(\1: yen, yenes, sen, sen)
 MXN:(\D+) $(\1: peso mexicano, pesos mexicanos, centavo, centavos)
 NIO:(\D+) $(\1: córdoba, córdobas, centavo, centavos)
+PAB:(\D+) $(\1: balboa, balboas, céntimo, céntimos)
 PEN:(\D+) $(\1: sol, soles, centavo, centavos)
 PYG:(\D+) $(\1: guaraní, guaraníes, céntimo, céntimos)
+SVC:(\D+) $(\1: colón salvadoreño, colones salvadoreños, céntimo, céntimos)
 USD:(\D+) $(\1: dólar estadounidense, dólares estadounidenses, centavo, centavos)
 UYU:(\D+) $(\1: peso uruguayo, pesos uruguayos, centésimo, centésimos)
+VE[DS]:(\D+) $(\1: bolívar venezolano, bolívares venezolanos, centavo, centavos)
 VEF:(\D+) $(\1: bolívar fuerte, bolívares fuertes, céntimo, céntimos)
 
 # masculine to feminine conversion of "un" after millions,
