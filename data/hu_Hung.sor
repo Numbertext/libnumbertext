@@ -2,6 +2,10 @@
 
 # Transliterate numbers and words
 
+# parentheses
+"([\(\[\{])(.*)([]\)\}]) 0$" \1$2\3
+"([\(\[\{])(.*) 0$" \1$2
+"(.*)([]\)\}]) 0$" $1\2
 # convert words with traditional or foreign "i" written as "y"
 # e.g. Áprily, Champs-Élysées, Élysée-palota, Dolly, Folly, Hollywood, jolly, intercity, Kisfaludy ...
 "^(Áp​?ri​?l|Champs-Él|[cC]i​?t|Do​?lák-Sa​?l|[dfhjDFHJ]ol​?l|Él|Fesz​?t|[gG]rizz​?l|Ha​?rasz​?t|Hat​?va​?n|Husz​?t|[iI]n​?ter​?ci​?t|Jé​?ke​?l|Kis​?fa​?lu​?d|Ku​?ko​?r​?el​?l|Mo​?ho​?l|Mind​?szen​?t|Nosz​?t|[pP]en​n|Pes​?t|Re​?gu​?l|So​?n|Szi​?l|Szte​?va​?no​?vi​?t|Vö​?rös​?mar​?t|[zZ][lł]ot)y(.*) 0$" $1𐳐$2
