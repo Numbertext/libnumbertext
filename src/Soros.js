@@ -1,5 +1,5 @@
 function Soros(program, lang) {
-    this.funcpat = /(\|?(\uE008\()+)?(\|?\uE008\(([^\(\)]*)\)\|?)(\)+\|?)?/
+    this.funcpat = /(\|?(\uE008\()+)?(\|?\uE008\(([^\(\)]*)\)\|?)(\uE00A?\)+\|?)?/
     this.meta = "\\\"$()|#;[]"
     this.enc = "\uE000\uE001\uE002\uE003\uE004\uE005\uE006\uE007\uE008\uE009"
     this.lines = []
@@ -116,7 +116,6 @@ function Soros(program, lang) {
                     // call inner separator: [ ... $1 ... ] -> $(\uE00A ... \uE00A$1\uE00A ... )
                     .replace(/^[[]\$(\d\d?|\([^\)]+\))/g,"$(\uE00A\uE00A|$$$1\uE00A")
                     .replace(/[[]([^\$[\\]*)\$(\d\d?|\([^\)]+\))/g,"$(\uE00A$1\uE00A$$$2\uE00A")
-                    .replace(/\uE00A]$/, "|\uE00A)") // add "|" in terminating position
                     .replace(/]/g, ")")
                     .replace(/(\$\d|\))\|\$/g,"$1||$$") // $(..)|$(..) -> $(..)||$(..)
                     .replace(/\$/g, "\uE008")

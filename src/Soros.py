@@ -24,7 +24,7 @@ _pipe = u"\uE003"
 # pattern to recognize function calls in the replacement string
 _func = re.compile(_tr(r"""(?:\|?(?:\$\()+)?  # optional nested calls
                 (\|?\$\(([^\(\)]*)\)\|?)      # inner call (2 subgroups)
-                (?:\)+\|?)?""",               # optional nested calls
+                (?:\uE00A?\)+\|?)?""",        # optional nested calls
                 _m[4:8], _c[:4], "\\"), re.X)  # \$, \(, \), \| -> \uE000..\uE003
 
 class _Soros:
@@ -72,7 +72,6 @@ class _Soros:
                 # call inner separator: [ ... $1 ... ] -> $(\uE00A ... \uE00A$1\uE00A ... )
                 s2 = re.sub(r"[\[]\$(\d\d?|\([^\)]+\))",u"$(\uE00A\uE00A|$\\1\uE00A", s2)
                 s2 = re.sub(r"[\[]([^\$[\\]*)\$(\d\d?|\([^\)]+\))",u"$(\uE00A\\1\uE00A$\\2\uE00A", s2)
-                s2 = re.sub(r"\uE00A]$","|\uE00A)", s2) # add "|" in terminating position
                 s2 = re.sub(r"]",")", s2)
                 s2 = re.sub(r"(\$\d|\))\|\$", r"\1||$", s2) # $()|$() -> $()||$()
                 s2 = _tr(s2, _c[:4], _m[:4], "")   # \uE000..\uE003-> \, ", ;, #

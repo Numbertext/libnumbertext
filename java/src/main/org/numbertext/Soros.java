@@ -27,7 +27,7 @@ public class Soros {
 
 	private static Pattern func = Pattern.compile(translate("(?:\\|?(?:\\$\\()+)?" + // optional nested calls
 			"(\\|?\\$\\(([^\\(\\)]*)\\)\\|?)" + // inner call (2 subgroups)
-			"(?:\\)+\\|?)?", // optional nested calls
+			"(?:\uE00A?\\)+\\|?)?", // optional nested calls
 			m2.substring(0, c.length()), c, "\\")); // \$, \(, \), \| -> \uE000..\uE003
 
 	public Soros(String source, String lang) {
@@ -74,7 +74,6 @@ public class Soros {
 				// call inner separator: [ ... $1 ... ] -> $(\uE00A ... \uE00A$1\uE00A ... )
 				s2 = s2.replaceAll("^\\[[$](\\d\\d?|\\([^\\)]+\\))", "\\$(\uE00A\uE00A|\\$$1\uE00A"); // add "|"
 				s2 = s2.replaceAll("\\[([^$\\[\\\\]*)[$](\\d\\d?|\\([^\\)]+\\))", "\\$(\uE00A$1\uE00A\\$$2\uE00A");
-				s2 = s2.replaceAll("\uE00A\\]$", "|\uE00A)"); // add "|" in terminating position
 				s2 = s2.replaceAll("\\]", ")");
 				s2 = s2.replaceAll("(\\$\\d|\\))\\|\\$", "$1||\\$"); // $()|$() -> $()||$()
 				s2 = translate(s2, c, m, ""); // \uE000..\uE003-> \, ", ;, #
