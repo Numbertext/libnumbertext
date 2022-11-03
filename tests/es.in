@@ -1,5 +1,5 @@
-# "mil uno", but "mil un millones"
-# (bad boundary handling of optional spacing, here: "mil[ $1]")
+# Issue #94 "mil uno", but "mil un millones"
+# (bad boundary handling of conditional text, here: "mil[ $1]")
 
 1001000000
 1001001001000000
@@ -15,3 +15,10 @@
 10021000000
 100021000000
 1000021000000
+
+# Issue #70 - revert removed conditional etxt of ca, da, es
+# (bad boundary handling of conditional text, here: "mil[ $1]")
+
+231231 # contained "uno mil" instead of "un mil"
+531531 # this was correct
+
