@@ -124,6 +124,7 @@ Suzhou		Chinese Suzhou numerals
 autoreconf -i
 ./configure
 make
+make check
 
 # test it
 

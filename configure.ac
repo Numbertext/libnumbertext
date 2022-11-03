@@ -75,6 +75,7 @@ Makefile
 data/Makefile
 src/Makefile
 src/numbertext-version.h
+tests/Makefile
 ])
 AC_OUTPUT
 
