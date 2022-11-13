@@ -3,6 +3,8 @@
 TESTS =	\
 es.test
 
+AM_TESTS_ENVIRONMENT = export MODULES=$(top_srcdir)/data;
+
 clean-local:
 	-rm -rf testSubDir
         

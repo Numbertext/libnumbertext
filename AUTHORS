@@ -40,13 +40,17 @@ Mike Kaganski (mikekaganski at hotmail dot com:
 
 	- author of ordinal numbers of Russian module (ru)
 
-	- various fixes
+	- various fixes, including Windows Unicode patches of LibreOffice for libnumbertext
 
 	- tdf#115007: add LibreOffice NatNum codes for cardinal/ordinal number names/indicators
 
 Alvar Laigna (alvar at bind dot ee):
 
 	- review and fix Estonian module (et)
+
+Amir Hossein Maher (github at amiria703 dot ir):
+
+	- author of Persian (Farsi) module (fa)
 
 Eduardo Moreno (emoreno at tokonhu dot com):
 
@@ -150,6 +154,10 @@ Stephan Bergmann:
 
 	- don't depend on en_US.UTF-8 locale
 
+Antonio Bueno:
+
+	- bug report about conditional text in Spanish module
+
 Tomáš Chvátal (tchvatal at suse dot com):
 
 	- add enable-boost option to work with older gcc-4.8 and like using boost, default off
@@ -157,6 +165,10 @@ Tomáš Chvátal (tchvatal at suse dot com):
 Claudio Colombo (claudio underline c77 at yahoo dot it):
 
 	- it_IT bug report ("*unocento")
+
+Zdeněk Crhonek:
+
+	- bug report and test of Czech ordinals
 
 Dániel Darabos:
 
@@ -204,6 +216,8 @@ Tuomas Hietala (tjhietala at github):
 	- fixes and bug reports for Finnish
 
 Stanislav Horáček:
+
+	- fix Czech ordinals, cardinals and currencies
 
 	- bug report for Czech module
 
@@ -271,6 +285,10 @@ c-kuehl at GitHub:
 
 	- patch for German (function year)
 
+Evgeniy Kukhtinov:
+
+	- add Russian translation
+
 mike8p at launchpad.net:
 
 	- Spanish module: bug report for y dos cents -> con dos céntimos
@@ -320,6 +338,10 @@ Bernard Marcelly (bmarcelly at openoffice dot org):
 
 	- bug report about missing conversion beetween 0 and 1
 
+Caolán McNamara:
+
+	- fix an assert seen with in libreoffice crashtesting on an empty string
+
 Jerzy Moruś (morchat at o2 dot pl):
 
 	- Polish translation of NUMBERTEXT/MONEYTEXT
@@ -353,6 +375,8 @@ Zoltán Óvári (ovari123 at zoho dot org):
 
 	- report problem with Old Hungarian transliteration of "Vörösmarty" and similar words in LibreOffice issue tdf#136368
 
+	- report missing hu_Hung transliteration of words with parenthesis in LibreOffice tdf#148672
+
 Nicolas Pagni (Nicolas dot Pagni at npagni dot it):
 
 	- bug report about the bad conversion of 1 eurocent in the Italian module
@@ -384,6 +408,8 @@ Johanna Sørensen:
 Martin Srebotnjak:
 
 	- testing Slovenian module, information about ordinal and ordinal adverbial numbers
+
+	- report problem with cardinal-masculine 1 and 3 and cardinal-neuter 1
 
 Marcin Stępniak:
 
