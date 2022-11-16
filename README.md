@@ -102,6 +102,7 @@ ro	Romanian
 ru	Russian
 sh	Serbian (Latin)
 sl	Slovenian
+sk  Slovakian
 sq	Albanian
 sr	Serbian (Cyrillic)
 sv	Swedish
