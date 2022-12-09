@@ -1,7 +1,7 @@
 ^0 nula
 1 jeden
-2 dva
-^2$ dve
+2$ dva
+^2 dve
 3 tri
 4 štyri
 5 päť
@@ -11,20 +11,19 @@
 9 deväť
 10 desať
 11 jedenásť
+12 dvanásť
 14 štrnásť
 15 pätnásť
+16 šestnásť
 19 devätnásť
 1(\d) $1násť
+(2)(\d) dvadsať[ $2]
 ([234])(\d) $1dsať[ $2]
-5(\d) päťdesiat[ $1]
-6(\d) šesdesiat[ $1]
-9(\d) devädesiat[ $1]
 (\d)(\d) $1desiat[ $2]
 1(\d\d) sto[ $1]
-([234])(\d\d) $1sto[ $2]
 (\d)(\d\d) $1sto[ $2]
 1(\d\d\d) tisíc[ $1]
-(\d{1,3})(\d\d\d) $1 tisíc[ $2]
+(\d{1,3})(\d\d\d) $1tisíc[ $2]
 1(\d{6}) milión[ $1]
 ([234])(\d{6}) $1 milióny[ $2]
 (\d{1,3})(\d{6}) $1 miliónov[ $2]
@@ -72,10 +71,10 @@ ugender:([^,]*),([^,]*),([^,]*),([^,]*),([^,]*),([^,]*),([^,]*),([^,]*) \7
 sgender:([^,]*),([^,]*),([^,]*),([^,]*),([^,]*),([^,]*),([^,]*),([^,]*) \8
 
 CHF:(\D+) $(\1: švajčiarsky frank, švajčiarske franky, švajčiarskych frankov, cent, centy, centov,masculine,masculine)
-CNY:(\D+) $(\1: jüan, jüany, jüanů, fen, feny, fenů,masculine,masculine)
+CNY:(\D+) $(\1: juan, juany, juanov, fen, feny, fenov,masculine,masculine)
 CZK:(\D+) $(\1: koruna česká, koruny české, korún českých, halier, haliere, halierov,feminine,masculine)
 EUR:(\D+) $(\1: euro, eurá, eur, cent, centy, centov,neuter,masculine)
-GBP:(\D+) $(\1: britská libra, britské libry, britské liber, penca, pence, pencí,feminine,feminine)
+GBP:(\D+) $(\1: britská libra, britské libry, britských libier, penca, pence, pencí,feminine,feminine)
 JPY:(\D+) $(\1: jen, jeny, jenov, sen, seny, senov,masculine,masculine)
 RUB:(\D+) $(\1: rubeľ, ruble, rublov, kopejka, kopejky, kopejok,masculine,feminine)
 SKK:(\D+) $(\1: slovenská koruna, slovenské koruny, slovenských korún, halier, haliere, halierov,feminine,masculine)
@@ -118,26 +117,35 @@ USD:(\D+) $(\1: americký dolár, americké doláre, amerických dolárov, cent,
 
 ([-−]?\d+)	$(ordinal |$1)
 
-"(.*)dvesto(.*)"	$(ordinal \1dvojstý\2)
-"(.*)tristo(.*)"	$(ordinal \1trojstý\2)
+(.*)dvesto	$(ordinal \1dvojstý)
+(.*)tristo	$(ordinal \1trojstý)
 "(.*)štyristo(.*)"	$(ordinal \1štvorstý\2)
 "(.*)(päť|šesť|sedem|osem|deväť)sto(.*)"	$(ordinal \1\2stý\3)
 
+(.*)dvetisíc	$(ordinal \1dvojtisíci)
+(.*)tritisíc	$(ordinal \1trojtisíci)
+"(.*)štyritisíc(.*)"	$(ordinal \1štvortisíci\2)
+"(.*)(päť|šesť|sedem|osem|deväť)tisíc(.*)"	$(ordinal \1\2tisíci\3)
+
 nula	nultý
 (.*)(jedno|jedna|jeden)	$(ordinal \1prvý)
-(.*)(jedenásť)	$(ordinal \1jedenásty)
-(.*)(dva|dve)	$(ordinal \1druhý)
-(.*)(dve|dva)\b(.*)	$(ordinal \1druhý\3)
+(.*)(dva|dve)		$(ordinal \1druhý)
+(.*)(dve|dva)\b(.*)	$(ordinal \1dvoj\3)
 (.*)tri\b(.*)		$(ordinal \1tretí\2)
 (.*)štyri\b(.*)		$(ordinal \1štvrtý\2)
-(.*)päť\b(.*)		$(ordinal \1piaty\2)
-"(.*)(šesť|sedem|osem|desiat|násť|siat)( .+|$)"	$(ordinal \1\2y\3)
-(.*)deväť\b(.*)		$(ordinal \1deviaty\2)
-"(.*)sto\b(.*)"	$(ordinal \1\2iaty\3)
-(.*)sto\b(.*)		$(ordinal \1stý\2)
-(.*)tisíc?(.*)		\1tisíci\2
-(.*)milión(y|ov)(.*)	\1miliónty\2
-(.*)miliard[ay]?(.*)	\1miliardtý\2
+(.*)päť(\s.+|$)		$(ordinal \1piaty\2)
+(.*)šesť(\s.+|$)	$(ordinal \1šiesty\2)
+(.*)sedem\b(.*)		$(ordinal \1siedmy\2)
+(.*)osem\b(.*)		$(ordinal \1ôsmy\2)
+(.*)deväť		$(ordinal \1deviaty)
+(.*)násť		$(ordinal \1násty)
+(.*)siat\b(.*)		$(ordinal \1siaty\2)
+"(.*)sať(.*)"		$(ordinal \1siaty\2)
+(.*)sto			$(ordinal \1stý)
+(.*)tisíc		\1tisíci
+(.*)(mi|bi|tri|kvadri)lión(y|ov)(.*)	\1\2liónty\3
+(.*)(mi|bi|tri|kvadri)liard[ay]?(.*)	\1\2liardtý\3
+
 (.*)			\1
 
 == ordinal-masculine ==
@@ -147,17 +155,17 @@ nula	nultý
 == ordinal-feminine ==
 
 ([-−]?\d+) $(ordinal-feminine |$(ordinal-masculine \1))
-(.*)ý(.*)		$(ordinal-feminine \1á\2)
-(.*)[yi](.*)		$(ordinal-feminine \1a\2)
-(.*)tretí(.*)		$(ordinal-feminine \1tretia\2)
+(.*)ý(\s.*|$)		$(ordinal-feminine \1á\2)
+(.*)y(\s.*|$)		$(ordinal-feminine \1a\2)
+(.*)í			$(ordinal-feminine \1ia)
 (.*)	\1
 
 == ordinal-neuter ==
 
 ([-−]?\d+) $(ordinal-neuter |$(ordinal-masculine \1))
-(.*)ý(.*)		$(ordinal-neuter \1é\2)
-(.*)[yi](.*)		$(ordinal-neuter \1e\2)
-(.*)tretí(.*)		$(ordinal-feminine \1tretie\2)
+(.*)ý(\s.*|$)		$(ordinal-neuter \1é\2)
+(.*)y(\s.*|$)		$(ordinal-neuter \1e\2)
+(.*)í			$(ordinal-neuter \1ie)
 (.*)	\1
 
 == ordinal-number ==
