@@ -39,7 +39,7 @@
 1(\d{15}) biliarda[ $1]
 ([234])(\d{15}) $1 biliardy[ $2]
 (\d{1,3})(\d{15}) $1 biliard[ $2]
-1(\d{18}) trilion[ $1]
+1(\d{18}) trilión[ $1]
 ([234])(\d{18}) $1 trilióny[ $2]
 (\d{1,3})(\d{18}) $1 triliónů[ $2]
 1(\d{21}) triliarda[ $1]
