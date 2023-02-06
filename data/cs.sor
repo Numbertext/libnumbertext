@@ -171,9 +171,9 @@ nula	nultý
 (.*)devět\b(.*)		$(ordinal \1devátý\2)
 "(.*)(c|s)et\b(.*)"	$(ordinal \1\2átý\3)
 (.*)sto\b(.*)		$(ordinal \1stý\2)
-(.*)tisíce?(.*)		\1tisící\2
-(.*)milión[yů]?(.*)	\1milióntý\2
-(.*)miliard[ay]?(.*)	\1miliardtý\2
+(.*)tisíce?(.*)		$(ordinal \1)tisící$(ordinal \2)
+(.*)milión[yů]?(.*)	$(ordinal \1)milióntý$(ordinal \2)
+(.*)miliard[ay]?(.*)	$(ordinal \1)miliardtý$(ordinal \2)
 (.*)			\1
 
 == ordinal-masculine ==
