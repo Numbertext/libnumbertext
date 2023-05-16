@@ -39,8 +39,12 @@ private:
     std::vector<std::wstring> values;
     std::vector<bool> begins;
     std::vector<bool> ends;
+	
+    std::vector<std::wstring> constants;
+    std::vector<std::wstring> constantValues;
 
-    static const std::wstring m, m2, c, c2, slash, pipe;
+    static const std::wstring m, m2, c, c2, slash;
+    static const wchar_t pipe;
 };
 
 #endif
