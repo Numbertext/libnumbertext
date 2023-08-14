@@ -1,0 +1,153 @@
+^0 zèro
+1 un
+2 dos
+3 tres
+4 quatre
+5 cinc
+6 sièis
+7 sèt
+8 uèch
+9 nòu
+10 dètz
+11 onze
+12 dotze
+13 tretze
+14 catòrze
+15 quinze
+16 setze
+1(\d) dètz e $1
+20 vint
+2(\d) vint e $1
+30 trenta
+40 quaranta
+50 cinquanta
+60 seissanta
+70 setanta
+80 ochanta
+90 nonanta
+
+(\d)(\d) $(\10) $2
+
+1(\d\d) cent[ $1]
+(\d)(\d\d) $1 cents[ $2]
+1(\d{3}) mila[ $1]
+(\d{1,3})(\d{3}) $1 mila[ $2]
+1(\d{6}) un milion[ $1]
+(\d{1,3})(\d{6}) $1| milions[ $2]
+1(\d{9}) un miliard[ $1]
+(\d{1,3})(\d{9}) $1| miliards[ $2]
+1(\d{12}) un bilion[ $1]
+(\d{1,6})(\d{12}) $1 bilions[ $2]
+1(\d{18}) un trilion[ $1]
+(\d{1,6})(\d{18}) $1 trilions[ $2]
+1(\d{24}) un quadrilion[ $1]
+(\d{1,6})(\d{24}) $1 quadrilions[ $2]
+
+# negative number
+
+[-−](\d+) mens |$1
+
+# decimals
+
+"([-−]?\d+)[.,]" |$1| virgula
+"([-−]?\d+[.,]\d*)(\d)" $1| |$2
+
+# currency
+
+# unit/subunit singular/plural
+
+us:([^,]*),([^,]*),([^,]*),([^,]*) \1
+up:([^,]*),([^,]*),([^,]*),([^,]*) \2
+ss:([^,]*),([^,]*),([^,]*),([^,]*) \3
+sp:([^,]*),([^,]*),([^,]*),([^,]*) \4
+
+# Usually used by Occitan users
+AUD:(\D+) $(\1: dòlar australian, dòlars australians, cent, cents)
+CHF:(\D+) $(\1: franc soís, francs soïsses, centim, centims)
+EUR:(\D+) $(\1: èuro,èuros, centim, centims)
+GBP:(\D+) $(\1: liura esterlina, liuras esterlinas, penny, pence)
+JPY:(\D+) $(\1: ien,iens, sen, sen)
+USD:(\D+) $(\1: dòlar estatsunidenc, dòlars estatsunidencs, cent, cents)
+
+# OBSOLETE ISO 4217 CODES --Replaced by EUR--
+ADF:(\D+) $(\1: franc andorran, francs andorrans, centim, centims)
+ADP:(\D+) $(\1: peseta andorrana, pesetas andorranas, centim, centims)
+ESP:(\D+) $(\1: peseta, pesetas, centim, centims)
+FRF:(\D+) $(\1: franc francés, francs franceses, centim, centims)
+ITL:(\D+) $(\1: lira italiana, liras italianas, centim, centims)
+LUF:(\D+) $(\1: franc luxemborgés, francs luxemborgeses, centim, centims)
+MCF:(\D+) $(\1: franc monegasc, francs monegascs, centim, centims)
+PTE:(\D+) $(\1: escut portugués,escuts portugueses, cent, cents)
+VAL:(\D+) $(\1: lira vaticana, liras vaticanas, centim, centims)
+
+
+# masculine to feminine conversion of "un" after millions,
+# if "as?$" matches currency name
+
+#f:(.*ill)(.*),(.*) \1$(f:\2,\3)             # don't modify un in millions
+f:(.*ili)(.*) \1$(f:\2) # convert only <1000000
+f:(.*un)([^a].*,|,)(.*as?) $(f:\1a\2\3)	# un lira/liura/peseta -> una lira/liura/peseta
+f:(.*d)o(s.*),(.*as?) $(f:\1oa\2,\3)	# dos lira/liura/peseta -> doas liras/liuras/pesetas
+f:(.*),(.*) \1\2
+
+
+"([A-Z]{3}) ([-−]?1)([.,]00?)?"$(f:|$2,$(\1:us))
+"(EUR) ([-−]?\d+0{6,})([.,]00?)?" $2 d'$(\1:up)
+"(EUR) ([-−]?\d+0{0,})([.,]00?)?" $2 $(\1:up)
+"(PTE) ([-−]?\d+0{6,})([.,]00?)?" $2 d'$(\1:up)
+"(PTE) ([-−]?\d+0{0,})([.,]00?)?" $2 $(\1:up)
+"(JPY) ([-−]?\d+0{6,})([.,]00?)?" $2 d'$(\1:up)
+"(JPY) ([-−]?\d+0{0,})([.,]00?)?" $2 $(\1:up)
+"([A-Z]{3}) ([-−]?\d+0{6,})([.,]00?)?" $2 de$(\1:up)
+"([A-Z]{3}) ([-−]?\d+)([.,]00?)?"$(f:|$2,$(\1:up))
+
+"(([A-Z]{3}) [-−]?\d+)[.,](01)" $1 e |$(1)$(\2:ss)
+"(([A-Z]{3}) [-−]?\d+)[.,](\d)" $1 e |$(\30)$(\2:sp)
+"(([A-Z]{3}) [-−]?\d+)[.,](\d\d)" $1 e |$3$(\2:sp)
+
+== ordinal(-masculine)? ==
+
+1 primièr
+2 segond
+([-−]?\d+) $(ordinal |$2)
+
+zèro             zèro
+(.*-)u(na?)?	\2unen
+"(.* t|t)res"	\2resen
+"(.* q|q)uatre"	\2uatren
+(.*)cinc	    \2cinquen
+(.*)sièis		\2seisen
+(.*)sèt		    \2seten
+(.*)uèch		\2ochen
+(.*)nòu		    \2noven
+(.*)dètz		\2desen
+(.*)catòrze		\2catorzen
+"(.*)nta   	    \2nten
+"(.*)ze" 	    \2zen
+(.*)vint		\2vinten
+(.*)cents		\2centen
+(.*)mila		\2milen
+(.*)milions		\2milionen
+(.*)miliards \2miliarden
+
+==ordinal-number==
+"(.* 0|0)"	\2
+(.*1)		\2èr
+(.*2)		\2nd
+(.*)		\2en
+
+== ordinal-feminine ==
+
+([-−]?\d+) $(ordinal-feminine $(ordinal-masculine \1))
+zèro    zèro
+"(.* 0|0)"	\1
+(.*)en   \1ena
+(.*1)   \1èra
+(.*2)   \1nda
+(.*\d)  \1ena
+(.*)   \1a
+
+== help ==
+
+"" $(1)|, $(2), $(3)\n$(help feminine)$(help masculine)$(help ordinal-number-masculine)$(help ordinal-number-feminine)$(help ordinal-feminine)$(help ordinal-masculine)
+(feminine|masculine|ordinal(-number)?(-feminine|-masculine)?) \1: $(\1 1), $(\1 2), $(\1 3)\n
