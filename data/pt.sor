@@ -42,7 +42,7 @@
 :0*\d00(\d{6}){0,} " e "	# mil e quinhentos
 :0*\d{1,2}000(\d{6}){0,} " e "	# um milhão e onze mil
 :0*\d{1}00000(\d{6}){0,} " e "	# um milhão e cem mil
-:\d+ " "
+:\d+ ", "  # cento e vinte e três milhões, quatrocentos e cinquenta e seis mil, setecentos e oitenta e nove
 
 pl:1	ão			# milhão
 pl:.*	ões			# milhões
@@ -138,6 +138,7 @@ f:(.*),(.*) \1\2
 
 == ordinal(-masculine)? ==
 
+0 zerésimo
 1 primeiro
 2 segundo
 3 terceiro
@@ -183,8 +184,9 @@ f:(.*),(.*) \1\2
 == (ordinal)-number(-feminine|-masculine)? ==
 
 ([-−]?\d+) \3$(ordinal-number $(\1\2 \3))
-.*er .ᵉʳ
+.*a ª    # [:pt-BR:]
 .*a .ª
+.*o º    # [:pt-BR:]
 .*o .º
 
 == help ==
