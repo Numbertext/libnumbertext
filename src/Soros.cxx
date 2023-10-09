@@ -24,7 +24,7 @@ const std::wstring Soros::m2 = L"$()|[]";
 const std::wstring Soros::c = L"\uE000\uE001\uE002\uE003";
 const std::wstring Soros::c2 = L"\uE004\uE005\uE006\uE007\uE008\uE009";
 const std::wstring Soros::slash = L"\uE000";
-const std::wstring Soros::pipe = L"\uE003";
+const wchar_t Soros::pipe = L'\uE003';
 // pattern to recognize function calls in the replacement string
 const wregex Soros::func ( Soros::translate (
     L"(?:\\|?(?:\\$\\()+)?"           // optional nested calls
@@ -94,45 +94,58 @@ Soros::Soros(std::wstring program, std::wstring filtered_lang):
         }
         else if (lin.length() > 0 && regex_search(lin, sp, p))
         {
-            std::wstring s = regex_replace(sp[1].str(), quoteStart, L"");
-            s = regex_replace(s, quoteEnd, L"");
-            s = translate(s, c.substr(1), m.substr(1), L"");
-            replace(s, slash, L"\\\\"); // -> \\, ", ;, #
-            begins.push_back(!s.empty() && s[0] == L'^');
-            ends.push_back(!s.empty() && s[s.length()-1] == L'$');
-            s = L"^" + regex_replace(s, wregex(L"^\\^"), L"");
-            s = regex_replace(s, wregex(L"\\$$"), L"") + L"$";
-            try
-            {
-                patterns.emplace_back(s);
-            } catch (...)
-            {
-                std::wcout << L"Soros: bad regex in \"" << sp[1].str() << "\"" << std::endl;
-                break;
-            }
-            std::wstring s2;
-            if (sp.size() > 1)
-            {
-                s2 = regex_replace(sp[2].str(), quoteStart, L"");
-                s2 = regex_replace(s2, quoteEnd, L"");
-            }
-            s2 = translate(s2, m2, c2, L"\\");  // \$, \(, \), \|, \[, \]  -> \uE004..\uE009
-            // call inner separator: "[ ... $1 ... ]" -> "$(" SEP " ... " SEP "$1" SEP "... )"
-            s2 = regex_replace(s2, wregex(L"^\\[[$](\\d\\d?|\\([^\\)]+\\))"),
-                            L"$$(" SEP SEP L"|$$$1" SEP); // add "|" in terminating position
-            s2 = regex_replace(s2, wregex(L"\\[([^$\\[\\\\]*)[$](\\d\\d?|\\([^\\)]+\\))"),
-                            L"$$(" SEP L"$1" SEP L"$$$2" SEP);
-            s2 = translate(s2, L"]", L")", L"");
-            s2 = regex_replace(s2, wregex(L"([$]\\d|\\))\\|[$]"), L"$1||$$"); // $()|$() -> $()||$()
-            s2 = translate(s2, c, m, L"");   // \uE000..\uE003-> \, ", ;, #
-            s2 = translate(s2, m2.substr(0, 4), c, L"");  // $, (, ), | -> \uE000..\uE003
-            s2 = translate(s2, c2, m2, L""); // \uE004..\uE007 -> $, (, ), |
-            s2 = regex_replace(s2, wregex(L"[$]"), L"\\$$");    // $ -> \$
-            s2 = regex_replace(s2, wregex(L"\uE000(\\d)"), L"\uE000\uE001$$$1\uE002"); // $n -> $(\n)
-            s2 = regex_replace(s2, wregex(L"\\\\([1-9])"), L"$$0$1"); // \[n] -> $[n]
-            s2 = regex_replace(s2, wregex(L"\\\\0"), L"$$0"); // \0 -> $0
-            s2 = regex_replace(s2, wregex(L"\\\\n"), L"\n"); // \n -> [new line]
-            values.push_back(s2);
+			// If instruction does not contain a regex,
+			// we add it has a constant
+			if(regex_match(sp[1].str(), wregex(L"^[0-9]+$")))
+			{
+				constants.emplace_back(sp[1].str());
+				constantValues.push_back(sp[2].str());
+			}
+			else
+			{
+				// Otherwise, extract the pattern...
+				std::wstring s = regex_replace(sp[1].str(), quoteStart, L"");
+				s = regex_replace(s, quoteEnd, L"");
+				s = translate(s, c.substr(1), m.substr(1), L"");
+				replace(s, slash, L"\\\\"); // -> \\, ", ;, #
+				begins.push_back(!s.empty() && s[0] == L'^');
+				ends.push_back(!s.empty() && s[s.length()-1] == L'$');
+				s = L"^" + regex_replace(s, wregex(L"^\\^"), L"");
+				s = regex_replace(s, wregex(L"\\$$"), L"") + L"$";
+				try
+				{
+					patterns.emplace_back(s);
+				} catch (...)
+				{
+					std::wcout << L"Soros: bad regex in \"" << sp[1].str() << "\"" << std::endl;
+					break;
+				}
+				
+				// And then extract the value...
+				std::wstring s2;
+				if (sp.size() > 1)
+				{
+					s2 = regex_replace(sp[2].str(), quoteStart, L"");
+					s2 = regex_replace(s2, quoteEnd, L"");
+				}
+				s2 = translate(s2, m2, c2, L"\\");  // \$, \(, \), \|, \[, \]  -> \uE004..\uE009
+				// call inner separator: "[ ... $1 ... ]" -> "$(" SEP " ... " SEP "$1" SEP "... )"
+				s2 = regex_replace(s2, wregex(L"^\\[[$](\\d\\d?|\\([^\\)]+\\))"),
+								L"$$(" SEP SEP L"|$$$1" SEP); // add "|" in terminating position
+				s2 = regex_replace(s2, wregex(L"\\[([^$\\[\\\\]*)[$](\\d\\d?|\\([^\\)]+\\))"),
+								L"$$(" SEP L"$1" SEP L"$$$2" SEP);
+				s2 = translate(s2, L"]", L")", L"");
+				s2 = regex_replace(s2, wregex(L"([$]\\d|\\))\\|[$]"), L"$1||$$"); // $()|$() -> $()||$()
+				s2 = translate(s2, c, m, L"");   // \uE000..\uE003-> \, ", ;, #
+				s2 = translate(s2, m2.substr(0, 4), c, L"");  // $, (, ), | -> \uE000..\uE003
+				s2 = translate(s2, c2, m2, L""); // \uE004..\uE007 -> $, (, ), |
+				s2 = regex_replace(s2, wregex(L"[$]"), L"\\$$");    // $ -> \$
+				s2 = regex_replace(s2, wregex(L"\uE000(\\d)"), L"\uE000\uE001$$$1\uE002"); // $n -> $(\n)
+				s2 = regex_replace(s2, wregex(L"\\\\([1-9])"), L"$$0$1"); // \[n] -> $[n]
+				s2 = regex_replace(s2, wregex(L"\\\\0"), L"$$0"); // \0 -> $0
+				s2 = regex_replace(s2, wregex(L"\\\\n"), L"\n"); // \n -> [new line]
+				values.push_back(s2);
+			}
         }
         pos++;
         old_pos = pos;
@@ -157,6 +170,18 @@ void Soros::run(std::wstring& input, int& level, bool begin, bool end)
         level = -1;
         return;
     }
+	
+	// First, try to replace non-regexes for optimization purposes
+	for (size_t i = 0; i < constants.size(); i++)
+	{
+		if(input == constants[i])
+		{
+			input = constantValues[i];
+			return;
+		}
+	}
+	
+	// Otherwise, consider it as a pattern
     for (size_t i = 0; i < patterns.size(); i++)
     {
         if ((!begin && begins[i]) || (!end && ends[i]))
@@ -169,7 +194,7 @@ void Soros::run(std::wstring& input, int& level, bool begin, bool end)
         {
             bool b = false;
             bool e = false;
-            if (n[1].str()[0] == pipe[0] || n[0].str()[0] == pipe[0])
+            if (n[1].str()[0] == pipe || n[0].str()[0] == pipe)
             {
                 b = true;
             }
@@ -177,7 +202,7 @@ void Soros::run(std::wstring& input, int& level, bool begin, bool end)
             {
                 b = begin;
             }
-            if (n[1].str().back() == pipe[0] || n[0].str().back() == pipe[0])
+            if (n[1].str().back() == pipe || n[0].str().back() == pipe)
             {
                 e = true;
             }
@@ -198,7 +223,7 @@ void Soros::run(std::wstring& input, int& level, bool begin, bool end)
 
 std::wstring Soros::translate(
         std::wstring s,
-        const std::wstring chars,
+        const std::wstring& chars,
         const std::wstring& chars2,
         const std::wstring& delim)
 {

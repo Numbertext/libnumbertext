@@ -23,7 +23,7 @@ public:
     Soros(std::wstring program, std::wstring filtered_lang);
     int run(std::wstring& input);
     static std::wstring translate(std::wstring s,
-                std::wstring chars, const std::wstring& chars2, const std::wstring& delim);
+                const std::wstring& chars, const std::wstring& chars2, const std::wstring& delim);
 private:
     void run(std::wstring& input, int& level, bool begin = true, bool end = true);
     static void replace(std::wstring& s, const std::wstring& search,
@@ -39,8 +39,12 @@ private:
     std::vector<std::wstring> values;
     std::vector<bool> begins;
     std::vector<bool> ends;
+	
+    std::vector<std::wstring> constants;
+    std::vector<std::wstring> constantValues;
 
-    static const std::wstring m, m2, c, c2, slash, pipe;
+    static const std::wstring m, m2, c, c2, slash;
+    static const wchar_t pipe;
 };
 
 #endif
