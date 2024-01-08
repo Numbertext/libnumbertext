@@ -5,8 +5,7 @@
 3 trei
 4 patru
 5 cinci
-6$ șase
-6 șai
+6 șase
 7 șapte
 8 opt
 9 nouă
@@ -14,7 +13,10 @@
 11 unsprezece
 12 doisprezece
 14 paisprezece
+16 șaisprezece
+60 șaizeci
 1(\d) $1sprezece
+6(\d) șaizeci[ și $2]
 (\d)(\d) $1zeci[ și $2]
 1(\d\d) o sută[ $1]
 (\d)(\d\d) $1 sute[ $2]
