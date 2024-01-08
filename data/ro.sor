@@ -14,6 +14,7 @@
 12 doisprezece
 14 paisprezece
 16 șaisprezece
+60 șaizeci
 1(\d) $1sprezece
 6(\d) șaizeci[ și $2]
 (\d)(\d) $1zeci[ și $2]
