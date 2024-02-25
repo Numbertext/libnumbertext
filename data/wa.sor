@@ -33,6 +33,9 @@
 (\d)1 $(\10)-ey-onk
 (\d)(\d) $(\10)-$2
 
+(\d)01 $(\100)-ey-onk
+(\d)001 $(\1000)-ey-onk
+
 1(\d\d) cint[ $1]
 (\d)00$ $1 cints
 (\d)(\d\d) $1 cint[ $2]
@@ -43,11 +46,11 @@
 1(\d{9}) on miyård[ $1]
 (\d{1,3})(\d{9}) $1| miyårds[ $2]
 1(\d{12}) on biyon[ $1]
-(\d{1,3})(\d{12}) $1| biyons[ $2]
+(\d{1,6})(\d{12}) $1| biyons[ $2]
 1(\d{18}) on triyon[ $1]
-(\d{1,3})(\d{18}) $1| triyons[ $2]
+(\d{1,6})(\d{18}) $1| triyons[ $2]
 1(\d{24}) on cwadriyon[-$1]
-(\d{1,3})(\d{24}) $1| cwadriyons[ $2]
+(\d{1,6})(\d{24}) $1| cwadriyons[ $2]
 
 # negative number
 
