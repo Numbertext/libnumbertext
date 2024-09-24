@@ -100,12 +100,12 @@ USD:(\D+) $(\1: US-Dollar, US-Dollar, Cent, Cents)
 (.*)eent	\1éischt
 (.*)dräi	\1drëtt
 (.*)aacht	\1aacht
-"(.*)eine Milli(on|ard)e?"	\1einmilli\2st
-"(.*)eine Billi(on|ard)e?"	\1einbilli\2st
-"(.*)eine Trilli(on|ard)e?"	\1eintrilli\2st
-"(.*) Milli(on|ard)en"	\1milli\2st
-"(.*) Billi(on|ard)en"	\1billi\2st
-"(.*) Trilli(on|ard)en"	\1trilli\2st
+"(.*)eng Milli(oun|ard)"	\1engmilli\2st
+"(.*)eng Billi(oun|ard)"	\1engbilli\2st
+"(.*)eng Trilli(oun|ard)"	\1engtrilli\2st
+"(.*) Milli(oun|ard)en"	\1milli\2st
+"(.*) Billi(oun|ard)en"	\1billi\2st
+"(.*) Trilli(oun|ard)en"	\1trilli\2st
 (.*)		\1st
 
 == ordinal-number ==
