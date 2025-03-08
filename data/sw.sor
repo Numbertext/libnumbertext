@@ -1,0 +1,274 @@
+# SPDX-FileCopyrightText: Lukas Sommer <sommerluk@gmail.com>
+# SPDX-License-Identifier: LGPL-3.0-or-later OR BSD-3-Clause OR BSD-2-Clause OR MIT OR Unlicense OR CC0-1.0 OR 0BSD
+
+### 1-digit numbers
+#
+#     “Numbers in Swahili are treated just like other adjectives and being of
+#     course concerned with quantity, will come at the end of the adjectives,
+#     but before the demonstrative. Only the units 1, 2, 3, 4 , 5, and 8 take
+#     agreements with the noun they describe, the remainder take no
+#     agreements. The numbers are:
+#
+#         -moja     1        kumi na -moja    11
+#         -wili     2        kumi na -wili    12
+#         -tatu     3        kumi na -tatu    13
+#         -nne      4        kumi na -nne     14
+#         -tano     5        kumi na -tano    15
+#         sita      6        kumi na sita     16
+#         saba      7        kumi na saba     17
+#         -nane     8        kumi na -nane    18
+#         tisa      9        kumi na tisa     19
+#         kumi     10        ishirini         20
+#
+#     N.B. The word ‘-moja’ will only ever take singular agreements and
+#     similarly ‘-wili’ and upwards will only take plural agreements.
+#
+#     You may hear ‘mbili’ for ‘2’, but this is only used when either counting
+#     abstractly, or when agreeing with the ‘N’ class.
+#
+#     Examples
+#         Mikate miwili.                 Two loaves.
+#         Miezi sita.                    Six months.
+#         Wanyama wakubwa wanne.         Four large animals.
+#         Mpishi hodari mmoja.           One able cook.
+#         Viti kumi na kimoja.           Eleven chairs, (lit. ‘Ten chairs and
+#                                          one chair’, hence the singular
+#                                          agreement on ‘-moja’)
+#         Watoto wadogo kumi na          These 18 small children.
+#           wanane hawa.
+#         Miaka mitano hii.              These five years.
+#         Vikombe ishirini vinatosha.    Twenty cups are enough.
+#         Nilinunua vitabu vipya         I bought these four new books.
+#           vinne hivi.
+#     ”
+#
+# (Wilson 1985:56-57)
+#
+0 sifuri
+1 moja
+2 mbili
+3 tatu
+4 nne
+5 tano
+6 sita
+7 saba
+8 nana
+9 tisa
+
+### 2-digit numbers
+#
+#     “The tens ascend in this manner:
+#
+#     kumi          ten
+#     ishirini      twenty
+#     thelathini    thirty
+#     arobaini      forty
+#     hamsini       fifty
+#     sitini        sixty
+#     sabini        seventy
+#     themanini     eighty
+#     tisini        ninety
+#
+#     The units following all these tens are added as with the teens, i.e. by
+#     inserting the word ‘na’ followed by the appropriate unit,remembering
+#     that those which take agreements are given the appropriate concord.
+#         e.g.    thelathini na mbili       32.
+#                 watu hamsini na watatu    53 people.
+#                 viti sabini na kimoja     71 chairs.”
+#
+# (Wilson 1985:101)
+#
+10 kumi
+20 ishirini
+30 thelathini
+40 arobaini
+50 hamsini
+60 sitini
+70 sabini
+80 themanini
+90 tisini
+(\d)(\d) $(\10) na $2           # other numbers lower than 100
+
+#     “Hundreds, thousands, etc.,
+#
+#         mia        hundred (100).
+#         elfu       thousand (1,000).
+#         laki       a hundred thousand (100,000).
+#         milioni    a million (1,000,000)
+#
+#     All the above are, in effect, N class nouns, so when giving several
+#     hundreds, agreements of the unit numbers are as for N class.
+#
+#         e.g.    mia tatu      three hundred
+#                 elfu mbili    two thousand”
+#
+# (Wilson 1985:101)
+
+#     “N.B. The word ‘moja’ is generally used after ‘mia’ and ‘elfu’ when
+#     appropriate, though it may occasionally be omitted.”
+#
+# (Wilson 1985:102)
+
+### 3-digit numbers
+#
+#     “When giving a number consisting of hundreds, tens and units, the
+#     word ‘na’ is only used once, and will occur between the last two
+#     words.
+#
+#         e.g. mia tatu, arobaini na tano     345
+#              mia tisa, themanini na saba    987
+#         but  mia sita na thelathini         630 (no units)
+#              mia moja na tatu               103”
+#
+# (Wilson 1985:101)
+(\d)00 mia $(\1)                # tens and units are 0
+(\d)0(\d) mia $(\1) na $(\2)    # tens are 0, units aren’t
+(\d)(\d)0 mia $(\1) na $(\20)   # units are 0, tens aren’t
+(\d)(\d)(\d) mia $(\1), $(\2\3) # all other cases
+
+### Big numbers
+#
+# In Swahili, the word order places the noun first, followed by the adjective,
+# which complicates numbering larger values. The units (0-9) and the tens
+# (10-90) act as adjectives, while “mia” (100) and “elfu” (1,000) are nouns.
+# Unlike English, where you might say “seven hundred”, in Swahili the
+# adjective follows the noun, resulting in “mia saba”.
+#
+# This creates ambiguity with larger numbers, as there is no specific Swahili
+# word for 10,000, necessitating constructions like “elfu kumi” (ten
+# thousand). For example, “elfu ishirini na saba” (literally
+# thousand-twenty-seven) could mean “twenty thousand and seven” (20,007),
+# “twenty-seven thousand” (27,000), or “(one) thousand and twenty-seven”
+# (1,027). Although “elfu moja, ishirini na saba” is the formal way to say
+# 1,027, in colloquial Swahili, it might be shortened to
+# “elfu, ishirini na saba” making it virtually indistinguishable from
+# “elfu ishirini na saba” as the comma is the only difference. So the
+# traditional counting method inherently carries ambiguities for certain
+# numbers but remains unambiguous for others, like “elfu ishirini, mia saba”
+# (20,700).
+#
+# “mia” and “laki” are always unambiguous because counting them involves only
+# units, and never hundreds or thousands. Therefore, they always use the
+# traditional word order, placing the count of “mia” and “laki” after the
+# words “mia” and “laki”.
+#
+# However, “elfu”, as well as “milioni” and higher, may reverse this order,
+# placing the count before the words “elfu” and “milioni” instead of after
+# them. This reversal is contrary to the traditional word order and may sound
+# unusual, leading to a preference for the traditional method. However, there
+# is also a tendency towards unambiguity. These two contradicting tendencies
+# result in both traditional and modern methods being used simultaneously.
+#
+# This number-to-text conversion ensures unambiguous results. “mia” and “laki”
+# always follow the traditional word order. For “elfu”, as well as “milioni”
+# and larger units, the traditional word order is used only for one-digit
+# counts, as these are unambiguous in standard Swahili. For two-digit and
+# three-digit counts, we consistently apply the modern counting method, even
+# in cases where the traditional format is unambiguous.
+
+
+### 4-digit-numbers
+#
+#     “When using a number containing thousands, the word na is never
+#     used between thousands and hundreds, even though no tens or units
+#     may follow, but it will precede tens or units:
+#
+#         elfu moja, mia tatu na ishirini        1,320
+#         elfu mbili, mia nne, tisini na moja    2,491
+#         elfu nne na hamsini                    4,050
+#         elfu sita, sitini na tano              6,065
+#         elfu tano, mia saba                    5,700”
+#
+# (Wilson 1985:101-102)
+#
+(\d)000 elfu $(\1)              # tens and units are 0
+(\d)00(\d) elfu $(\1) na $(\2)  # tens are 0, units aren’t
+(\d)0(\d)0 elfu $(\1) na $(\20) # units are 0, tens aren’t
+(\d)(\d{3}) elfu $(\1), $(\2)   # all other cases
+
+### 5-digit numbers
+#
+#     “When using a number containing thousands, the word na is never
+#     used between thousands and hundreds, even though no tens or units
+#     may follow, but it will precede tens or units:
+#
+#         elfu moja, mia tatu na ishirini        1,320
+#         elfu mbili, mia nne, tisini na moja    2,491
+#         elfu nne na hamsini                    4,050
+#         elfu sita, sitini na tano              6,065
+#         elfu tano, mia saba                    5,700”
+#
+# (Wilson 1985:101-102)
+#
+(\d\d)000 $(\1) elfu              # tens and units are 0
+(\d\d)00(\d) $(\1) elfu na $(\2)  # tens are 0, units aren’t
+(\d\d)0(\d)0 $(\1) elfu na $(\20) # units are 0, tens aren’t
+(\d\d)(\d{3}) $(\1) elfu, $(\2)   # all other cases
+
+### 6-digit numbers
+#
+(\d)00000 laki $(\1)              # tens and units are 0
+(\d)0000(\d) laki $(\1) na $(\2)  # tens are 0, units aren’t
+(\d)000(\d)0 laki $(\1) na $(\20) # units are 0, tens aren’t
+(\d)(\d{5}) laki $(\1), $(\2)     # all other cases
+
+### 7-digit numbers
+#
+(\d)000000 milioni $(\1)              # tens and units are 0
+(\d)00000(\d) milioni $(\1) na $(\2)  # tens are 0, units aren’t
+(\d)0000(\d)0 milioni $(\1) na $(\20) # units are 0, tens aren’t
+(\d)(\d{6}) milioni $(\1), $(\2)      # all other cases
+
+### 8-digit numbers and 9-digit numbers
+#
+(\d\d\d?)000000 $(\1) milioni              # tens and units are 0
+(\d\d\d?)00000(\d) $(\1) milioni na $(\2)  # tens are 0, units aren’t
+(\d\d\d?)0000(\d)0 $(\1) milioni na $(\20) # units are 0, tens aren’t
+(\d\d\d?)(\d{6}) $(\1) milioni, $(\2)      # all other cases
+
+# Even higher numbers
+#
+# Does Swahili use the long or the short scale: Is a billion 10⁹or 10¹²?
+# To avoid ambiguity, those numbers are not supported here.
+
+### Negative numbers
+#
+# Dictionaries might disagree on whether “hasi” should be placed before or
+# after the number.
+#
+#     “minus I konj: (ku)toa; neun ~ vier
+#       ⇨ tisa (ku)toa nne II adv: (math, phys)
+#       hasi; ~ 20°C ⇨ digrii ishirini hasi
+#       Selsiasi”
+#
+# (Lazaro 2022:246)
+#
+#
+#     “minus. (a). (less), ◈ except. prep. kasoro. Eight minus
+#        three. Nane kasoro tatu. ◈ All of them have left,
+#        except three. Wote wameondoka kasoro watatu.
+#        ▷ minus sign. n. alama ya kutoa [9/10].
+#     b. minus (negative). conj. hasi. Today’s temperature
+#        is minus 3 degrees Celsius. Halijoto ya leo ni nyuzi
+#        hasi tatu Selsiasi.”
+#
+# (Mpiranya 2024:198)
+#
+# But in practice, “hasi” is usually placed before the number.
+#
+[-−](\d+) hasi |$1
+
+### Decimals
+#
+# In Swahili, the standard term for the decimal separator is “nukta”.
+# However, “pointi” is also used in informal speech.
+#
+"([-−]?\d+)[.,]" $1| nukta
+"([-−]?\d+[.,]\d*)(\d)" $1| |$2
+
+### References
+# Lazaro, Cosmo (2022): Wörterbuch Deutsch-Swahili. Großwörterbuch des
+#     Internationalen Kiswahili, Köln: Verlag AM-CO Publishers.
+# Mpiranya, Fidèle (2024): English-Swahili Swahili-English Immersive
+#     Dictionary, Abingdon: Routledge.
+# Wilson, Peter M. (1985): Simplified Swahili, Nairobi: Longman Kenya Ltd.

@@ -106,6 +106,7 @@ sk	Slovakian
 sq	Albanian
 sr	Serbian (Cyrillic)
 sv	Swedish
+sw      Swahili
 th	Thai
 tr	Turkish
 uk	Ukrainian
