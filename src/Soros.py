@@ -43,7 +43,7 @@ class _Soros:
         # switch off all country-dependent lines, and switch on the requested ones
         prg = re.sub(r"(^|[\n;])([^\n;#]*#[^\n]*[\[]:[^\n:\]]*:][^\n]*)", r"\1#\2", prg)
         prg = re.sub(r"(^|[\n;])#([^\n;#]*#[^\n]*[\[]:" + lang.replace("_", "-") + r":][^\n]*)", r"\1\2", prg)
-        matchline = re.compile("^\s*(\"[^\"]*\"|[^\s]*)\s*(.*[^\s])?\s*$")
+        matchline = re.compile(r"^\s*(\"[^\"]*\"|[^\s]*)\s*(.*[^\s])?\s*$")
         prefix = ""
         for s in re.sub("(#[^\n]*)?(\n|$)", ";", prg).split(";"):
             macro = re.match("== *(.*[^ ]?) ==", s)

@@ -18,7 +18,7 @@ AC_PROG_CXX
 AC_PROG_CPP
 AC_PROG_INSTALL
 AC_PROG_LN_S
-AC_PROG_LIBTOOL
+LT_INIT
 
 dnl Checks for typedefs, structures, and compiler characteristics.
 AC_LANG([C++])
