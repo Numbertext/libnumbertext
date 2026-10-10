@@ -1,17 +1,48 @@
 #
-# Regular number to text transducer for Serbian (Cyrillic) written in Soros
-# Copyright (c) Goran Rakic <grakic@devbase.net> 2009.
-# Modified and translated for Croatian by Mihovil Stanic <mihovil.stanic@gmail.com> 2014.
-#
-# Released under Creative Commons 3.0 Attribution - Share Alike license
+# Numbers to text transducer for Croatian
+# Krunoslav Šebetić (2026) kruno.se@gmx.com
+# Ordinal and cardinal numbers were created without assistance.
+# Decimal numbers are AI-generated.
+# Rest of the code (currency part) is based on Mihovil Stanić's 2014 adaptation of Goran Rakić's 2009 Serbian version.
+
+# Released under Creative Commons 3.0 Attribution-ShareAlike license
 # and relicensed under GNU Lesser General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
 # (at your option) any later version.
 #
-# Visit http://numbertext.org for more info on Soros language and syntax
+# Visit http://numbertext.org for more info on Soros language and syntax.
 #
 
-(\d{1,3})\.([\d.,]+) $(\1\2)
+
+# negative number
+
+[-−] minus
+[-−](\d+) minus |$1
+
+
+# decimalni brojevi
+# Pomoćno pravilo: rekurzivno čita sve nule i znamenke iza točke
+"nule:0(\d+)" nula $(nule:\1)
+"nule:(\d+)"  $1
+
+# Pomoćna funkcija za srednji rod (Pretvara završni "jedan" u "jedno" ispred riječi cijelo)
+"cardinal-neuter:(\d*1[1-9])" $(\1)
+"cardinal-neuter:(\d*1)"      $(c-mod:$(\1))
+"cardinal-neuter:(\d+)"       $(\1)
+
+# Podfunkcija koja u gotovom tekstu mijenja "jedan" u "jedno"
+"c-mod:(.*)jedan" \1jedno
+"c-mod:(.*)"      \1
+
+# GLAVNI ULAZI - Razvrstavaju brojeve prema zadnjoj znamenki prije točke
+"(\d*1[1-9])\.(\d+)" $(\1) cijelih i $(nule:\2)
+"(\d*1)\.(\d+)"       $(cardinal-neuter:\1) cijelo i $(nule:\2)
+"(\d*[2-4])\.(\d+)"   $(\1) cijela i $(nule:\2)
+"(\d+)\.(\d+)"        $(\1) cijelih i $(nule:\2)
+
+
+
+# glavni brojevi
 
 ^0 nula
 1 jedan
@@ -25,82 +56,949 @@
 9 devet
 10 deset
 
-11 jedanaest
+11 jedanaest 
+12 dvanaest
+13 trinaest
 14 četrnaest
+15 petnaest
 16 šesnaest
-1(\d) $1naest
+17 sedamnaest
+18 osamnaest
+19 devetnaest
 
-4(\d) četrdeset[ $1]
-5(\d) pedeset[ $1]
-6(\d) šezdeset[ $1]
-9(\d) devedeset[ $1]
-(\d)(\d) $1deset[ $2]
+(2)0 $1deset
+(3)0 $1deset
+40 četrdeset
+50 pedeset
+60 šezdeset
+70 sedamdeset
+80 osamdeset
+90 devedeset
 
-1(\d\d) sto[ $1]
-2(\d\d) dvjesto[ $1]
-3(\d\d) tristo[ $1]
-(\d)(\d\d) $1sto[ $2]
+([2-3])(\d) $1deset $2
+4(\d) četrdeset $1
+5(\d) pedeset $1
+6(\d) šezdeset $1
+([7-8])(\d) $1deset $2
+9(\d) devedeset $1
 
-1(\d\d\d) tisuću[ $1]
-2(\d\d\d) dvije tisuće[ $1]
-([34])(\d\d\d) $1 tisuće[ $2]
-(\d{0,1})1(\d)(\d\d\d) $(\11\2) tisuća[ $3]
-(\d{1,2})1(\d\d\d) $(\10) jedna tisuća[ $2]
-(\d{1,2})2(\d\d\d) $(\10) dvije tisuće[ $2]
-(\d{1,2})([34])(\d\d\d) $(\10) $2 tisuće[ $3]
-(\d{1,3})(\d\d\d) $1 tisuća[ $2]
+100 sto
+200 dvjesto
+([3-5])00 $1sto
+600 šesto
+([7-9])00 $1sto
 
-1(\d{6}) milion[ $1]
-(\d{0,4})1(\d)(\d{6}) $(\11\2) miliona[ $3]
-(\d{1,5})1(\d{6}) $(\10) jedan milion[ $2]
-(\d{1,3})(\d{6}) $1 miliona[ $2]
+1(\d{2}) sto $1
+2(\d{2}) dvjesto $1
+([3-5])(\d{2}) $1sto $2
+6(\d{2}) šesto $1
+([7-9])(\d{2}) $1sto $2
 
-1(\d{9}) milijarda[ $1]
-2(\d{9}) dvije milijarde[ $1]
-([34])(\d{9}) $1 milijarde[ $2]
-(\d{1,2})0(\d{9}) $(\10) milijardi[ $2]
-(\d{0,1})1(\d)(\d{9}) $(\11\2) milijardi[ $3]
-(\d{1,2})1(\d{9}) $(\10) jedna milijarda[ $2]
-(\d{1,2})2(\d{9}) $(\10) dvije milijarde[ $2]
-(\d{1,2})([34])(\d{9}) $(\10) $2 milijarde[ $3]
-(\d{1,3})(\d{9}) $1 milijarde[ $2]
+# ------ tisuća ------ #
 
-1(\d{12}) bilijun[ $1]
-(\d{0,4})1(\d)(\d{12}) $(\11\2) bilijuna[ $3]
-(\d{1,5})1(\d{12}) $(\10) jedan bilijun[ $2]
-(\d{1,6})(\d{12}) $1 bilijuna[ $2]
+1000 jedna tisuća
+2000 dvije tisuće
+([3-4])000 $1 tisuće
+([5-9])000 $1 tisuća
+1(\d{3}) jedna tisuća $1
+2(\d{3}) dvije tisuće $1
+([3-4])(\d{3}) $1 tisuće $2
+([5-9])(\d{3}) $1 tisuća $2
+([1-9]0)000 $1 tisuća
+(\d0)(\d{3}) $1 tisuća $2
+(1[0-9])000 $1 tisuća
+(1[0-9])(\d{3}) $1 tisuća $2
+([2-3,7,8])1000 $1deset jedna tisuća
+([2-3,7,8])1(\d{3}) $1deset jedna tisuća $2
+51000 pedeset jedna tisuća
+51(\d{3}) pedeset jedna tisuća $1
+61000 šezdeset jedna tisuća
+61(\d{3}) šezdeset jedna tisuća $1
+91000 devedeset jedna tisuća
+91(\d{3}) devedeset jedna tisuća $1
+([2-3,7,8])2000 $1deset dvije tisuće
+([2-3,7,8])(\d{4}) $1deset $2
+52000 pedeset dvije tisuće
+5(\d{4}) pedeset $1
+62000 šezdeset dvije tisuće
+6(\d{4}) šezdeset $1
+92000 devedeset dvije tisuće
+9(\d{4}) devedeset $1
+([1-9]00)000 $1 tisuća
+([1-9]00)(\d{3}) $1 tisuća $2
+10(\d{4}) sto $1
+20(\d{4}) dvjesto $1
+([3-4,7,8]0)(\d{4}) $1sto $2
+50(\d{4}) petsto $1
+60(\d{4}) šesto $1
+90(\d{4}) devetsto $1
+1(\d{5}) sto $1
+2(\d{5}) dvjesto $1
+([3-4,7,8])(\d{5}) $1sto $2
+5(\d{5}) petsto $1
+6(\d{5}) šesto $1
+9(\d{5}) devetsto $1
 
-1(\d{18}) trilijun[ $1]
-(\d{0,4})1(\d)(\d{18}) $(\11\2) trilijuna[ $3]
-(\d{1,5})1(\d{18}) $(\10) jedan trilijun[ $2]
-(\d{1,6})(\d{18}) $1 trilijuna[ $2]
+# ------ tisuća -------- #
 
-1(\d{24}) kvadrilijun[ $1]
-(\d{0,4})1(\d)(\d{24}) $(\11\2) kvadrilijuna[ $3]
-(\d{1,5})1(\d{24}) $(\10) jedan kvadrilijun[ $2]
-(\d{1,6})(\d{24}) $1 kvadrilijuna[ $2]
 
-1(\d{30}) kvintilijun[ $1]
-(\d{0,4})1(\d)(\d{30}) $(\11\2) kvintilijuna[ $3]
-(\d{1,5})1(\d{30}) $(\10) jedan kvintilijun[ $2]
-(\d{1,6})(\d{30}) $1 kvintilijuna[ $2]
+# ------ milijun ------- #
 
-1(\d{36}) sekstilijun[ $1]
-(\d{0,4})1(\d)(\d{36}) $(\11\2) sekstilijuna[ $3]
-(\d{1,5})1(\d{36}) $(\10) jedan sekstilijun[ $2]
-(\d{1,6})(\d{36}) $1 sekstilijuna[ $2]
+1(\d{6}) jedan milijun $1
+([2-9])(\d{6}) $1 milijuna $2
+(1[0-9])(\d{6}) $1 milijuna $2
+([2-9]1)(\d{6}) $1 milijun $2
+([2-9][0,2-9])(\d{6}) $1 milijuna $2
+([1-9]00)(\d{6}) $1 milijuna $2
+([1-9][1-9][0,2-9])(\d{6}) $1 milijuna $2
+([1-9][1-9]1)(\d{6}) $1 milijun $2
 
-# negative number
+# ------ milijun ------- #
 
-[-−] minus
-[-−](\d+) minus |$1
 
-# Decimal code by https://twitter.com/_uranium_
-"([-−]?\d+)[.,]" $1| zarez
-"([-−]?\d+[.,])([^0]\d)" $1 $2
-"([-−]?\d+[.,]\d*[1-9]?)0+$" $1
-"([-−]?\d+[.,])(\d)(\d)(\d)" $1| |$2 |$3 |$4
-"([-−]?\d+[.,]\d*)(\d)" $1 |$2
+# ------ milijarda ----- #
+
+1(\d{9}) jedna milijarda 
+2(\d{9}) dvije milijarde
+([3-4])(\d{9}) $1 milijarde $2
+([5-9])(\d{9}) $1 milijardi $2
+(1[0-9])(\d{9}) $1 milijardi $2
+([2-9]0)(\d{9}) $1 milijardi $2
+
+([2,3,7,8])1(\d{9}) $1deset jedna milijarda $2
+41(\d{9}) četrdeset jedna milijarda $1
+51(\d{9}) pedeset jedna milijarda $1
+61(\d{9}) šezdeset jedna milijarda $1
+91(\d{9}) devedeset jedna milijarda $1
+
+([2,3,7,8])1(\d{9}) $1deset jedna milijarda $2
+41(\d{9}) četrdeset jedna milijarda $1
+51(\d{9}) pedeset jedna milijarda $1
+61(\d{9}) šezdeset jedna milijarda $1
+91(\d{9}) devedeset jenda milijarda $1
+
+([2,3,7,8])2(\d{9}) $1deset dvije milijarde $2
+42(\d{9}) četrdeset dvije milijarde $1
+52(\d{9}) pedeset dvije milijarde $1
+62(\d{9}) šezdeset dvije milijarde $1
+92(\d{9}) devedeset dvije milijarde $1
+
+([2,3,7,8])([3,4])(\d{9}) $1deset $2 milijarde $3
+4([3,4])(\d{9}) četrdeset $1 milijarde $2
+5([3,4])(\d{9}) pedeset $1 milijarde $2
+6([3,4])(\d{9}) šezdeset $1 milijarde $2
+9([3,4])(\d{9}) devedeset $1 milijarde $2
+([2,3,7,8])([5-9])(\d{9}) $1deset $2 milijardi $3
+4([5-9])(\d{9}) četrdeset $1 milijardi $2
+5([5-9])(\d{9}) pedeset $1 milijardi $2
+6([5-9])(\d{9}) šezdeset $1 milijardi $2
+9([5-9])(\d{9}) devedeset $1 milijardi $2
+
+([1-9]00)(\d{9}) $1 milijardi $2
+1(\d{11}) sto $1
+2(\d{11}) dvjesto $1
+([3,5,7,8,9])(\d{11}) $1sto $2
+6(\d{11}) šesto $1
+
+# ------ milijarda ------ #
+
+
+# ------ bilijun ------- #
+
+1(\d{12}) jedan bilijun $1
+([2-9])(\d{12}) $1 bilijuna $2
+(1[0-9])(\d{12}) $1 bilijuna $2
+([2-9]1)(\d{12}) $1 bilijun $2
+([2-9][0,2-9])(\d{12}) $1 bilijuna $2
+([1-9]00)(\d{12}) $1 bilijuna $2
+([1-9][1-9][0,2-9])(\d{12}) $1 bilijuna $2
+([1-9][1-9]1)(\d{12}) $1 bilijun $2
+
+# ------ bilijun ------- #
+
+
+# ------ bilijarda ----- #
+
+1(\d{15}) jedna bilijarda 
+2(\d{15}) dvije bilijarde
+([3-4])(\d{15}) $1 bilijarde $2
+([5-9])(\d{15}) $1 bilijardi $2
+(1[0-9])(\d{15}) $1 bilijardi $2
+([2-9]0)(\d{15}) $1 bilijarde $2
+
+([2,3,7,8])1(\d{15}) $1deset jedna bilijarda $2
+41(\d{15}) četrdeset jedna bilijarda $1
+51(\d{15}) pedeset jedna bilijarda $1
+61(\d{15}) šezdeset jedna bilijarda $1
+91(\d{15}) devedeset jedna bilijarda $1
+
+([2,3,7,8])1(\d{15}) $1deset jedna bilijarda $2
+41(\d{15}) četrdeset jedna bilijarda $1
+51(\d{15}) pedeset jedna bilijarda $1
+61(\d{15}) šezdeset jedna bilijarda $1
+91(\d{15}) devedeset jenda bilijarda $1
+
+([2,3,7,8])2(\d{15}) $1deset dvije bilijarde $2
+42(\d{15}) četrdeset dvije bilijarde $1
+52(\d{15}) pedeset dvije bilijarde $1
+62(\d{15}) šezdeset dvije bilijarde $1
+92(\d{15}) devedeset dvije bilijarde $1
+
+([2,3,7,8])([3,4])(\d{15}) $1deset $2 bilijarde $3
+4([3,4])(\d{15}) četrdeset $1 bilijarde $2
+5([3,4])(\d{15}) pedeset $1 bilijarde $2
+6([3,4])(\d{15}) šezdeset $1 bilijarde $2
+9([3,4])(\d{15}) devedeset $1 bilijarde $2
+([2,3,7,8])([5-9])(\d{15}) $1deset $2 bilijardi $3
+4([5-9])(\d{15}) četrdeset $1 bilijardi $2
+5([5-9])(\d{15}) pedeset $1 bilijardi $2
+6([5-9])(\d{15}) šezdeset $1 bilijardi $2
+9([5-9])(\d{15}) devedeset $1 bilijardi $2
+
+([1-9]00)(\d{15}) $1 bilijardi $2
+1(\d{17}) sto $1
+2(\d{17}) dvjesto $1
+([3,5,7,8,9])(\d{17}) $1sto $2
+6(\d{17}) šesto $1
+
+# ------ bilijarda ------ #
+
+
+# ------ trilijun ------- #
+
+1(\d{18}) jedan trilijun $1
+([2-9])(\d{18}) $1 trilijuna $2
+(1[0-9])(\d{18}) $1 trilijuna $2
+([2-9]1)(\d{18}) $1 trilijun $2
+([2-9][0,2-9])(\d{18}) $1 trilijuna $2
+([1-9]00)(\d{18}) $1 trilijuna $2
+([1-9][1-9][0,2-9])(\d{18}) $1 trilijuna $2
+([1-9][1-9]1)(\d{18}) $1 trilijun $2
+
+# ------ trilijun ------- #
+
+
+# ------ trilijarda ----- #
+
+1(\d{21}) jedna trilijarda 
+2(\d{21}) dvije trilijarde
+([3-4])(\d{21}) $1 trilijarde $2
+([5-9])(\d{21}) $1 trilijardi $2
+(1[0-9])(\d{21}) $1 trilijardi $2
+([2-9]0)(\d{21}) $1 trilijarde $2
+
+([2,3,7,8])1(\d{21}) $1deset jedna trilijarda $2
+41(\d{21}) četrdeset jedna trilijarda $1
+51(\d{21}) pedeset jedna trilijarda $1
+61(\d{21}) šezdeset jedna trilijarda $1
+91(\d{21}) devedeset jedna trilijarda $1
+
+([2,3,7,8])1(\d{21}) $1deset jedna trilijarda $2
+41(\d{21}) četrdeset jedna trilijarda $1
+51(\d{21}) pedeset jedna trilijarda $1
+61(\d{21}) šezdeset jedna trilijarda $1
+91(\d{21}) devedeset jenda trilijarda $1
+
+([2,3,7,8])2(\d{21}) $1deset dvije trilijarde $2
+42(\d{21}) četrdeset dvije trilijarde $1
+52(\d{21}) pedeset dvije trilijarde $1
+62(\d{21}) šezdeset dvije trilijarde $1
+92(\d{21}) devedeset dvije trilijarde $1
+
+([2,3,7,8])([3,4])(\d{21}) $1deset $2 trilijarde $3
+4([3,4])(\d{21}) četrdeset $1 trilijarde $2
+5([3,4])(\d{21}) pedeset $1 trilijarde $2
+6([3,4])(\d{21}) šezdeset $1 trilijarde $2
+9([3,4])(\d{21}) devedeset $1 trilijarde $2
+([2,3,7,8])([5-9])(\d{21}) $1deset $2 trilijardi $3
+4([5-9])(\d{21}) četrdeset $1 trilijardi $2
+5([5-9])(\d{21}) pedeset $1 trilijardi $2
+6([5-9])(\d{21}) šezdeset $1 trilijardi $2
+9([5-9])(\d{21}) devedeset $1 trilijardi $2
+
+([1-9]00)(\d{21}) $1 bilijardi $2
+1(\d{23}) sto $1
+2(\d{23}) dvjesto $1
+([3,5,7,8,9])(\d{23}) $1sto $2
+6(\d{23}) šesto $1
+
+# ------ trilijarda ------ #
+
+
+# ------ kvadrilijun ------- #
+
+1(\d{24}) jedan kvadrilijun $1
+([2-9])(\d{24}) $1 kvadrilijuna $2
+(1[0-9])(\d{24}) $1 kvadrilijuna $2
+([2-9]1)(\d{24}) $1 kvadrilijun $2
+([2-9][0,2-9])(\d{24}) $1 kvadrilijuna $2
+([1-9]00)(\d{24}) $1 kvadrilijuna $2
+([1-9][1-9][0,2-9])(\d{24}) $1 kvadrilijuna $2
+([1-9][1-9]1)(\d{24}) $1 kvadrilijun $2
+
+# ------ kvadrilijun ------- #
+
+
+# ------ kvadrilijarda ----- #
+
+1(\d{27}) jedna kvadrilijarda 
+2(\d{27}) dvije kvadrilijarde
+([3-4])(\d{27}) $1 kvadrilijarde $2
+([5-9])(\d{27}) $1 kvadrilijardi $2
+(1[0-9])(\d{27}) $1 kvadrilijardi $2
+([2-9]0)(\d{27}) $1 kvadrilijarde $2
+
+([2,3,7,8])1(\d{27}) $1deset jedna kvadrilijarda $2
+41(\d{27}) četrdeset jedna kvadrilijarda $1
+51(\d{27}) pedeset jedna kvadrilijarda $1
+61(\d{27}) šezdeset jedna kvadrilijarda $1
+91(\d{27}) devedeset jedna kvadrilijarda $1
+
+([2,3,7,8])1(\d{27}) $1deset jedna kvadrilijarda $2
+41(\d{27}) četrdeset jedna kvadrilijarda $1
+51(\d{27}) pedeset jedna kvadrilijarda $1
+61(\d{27}) šezdeset jedna kvadrilijarda $1
+91(\d{27}) devedeset jenda kvadrilijarda $1
+
+([2,3,7,8])2(\d{27}) $1deset dvije kvadrilijarde $2
+42(\d{27}) četrdeset dvije kvadrilijarde $1
+52(\d{27}) pedeset dvije kvadrilijarde $1
+62(\d{27}) šezdeset dvije kvadrilijarde $1
+92(\d{27}) devedeset dvije kvadrilijarde $1
+
+([2,3,7,8])([3,4])(\d{27}) $1deset $2 kvadrilijarde $3
+4([3,4])(\d{27}) četrdeset $1 kvadrilijarde $2
+5([3,4])(\d{27}) pedeset $1 kvadrilijarde $2
+6([3,4])(\d{27}) šezdeset $1 kvadrilijarde $2
+9([3,4])(\d{27}) devedeset $1 kvadrilijarde $2
+([2,3,7,8])([5-9])(\d{27}) $1deset $2 kvadrilijardi $3
+4([5-9])(\d{27}) četrdeset $1 kvadrilijardi $2
+5([5-9])(\d{27}) pedeset $1 kvadrilijardi $2
+6([5-9])(\d{27}) šezdeset $1 kvadrilijardi $2
+9([5-9])(\d{27}) devedeset $1 kvadrilijardi $2
+
+([1-9]00)(\d{27}) $1 kvadrilijardi $2
+1(\d{29}) sto $1
+2(\d{29}) dvjesto $1
+([3,5,7,8,9])(\d{29}) $1sto $2
+6(\d{29}) šesto $1
+
+# ------ kvadrilijarda ------ #
+
+
+# ------ kvintilijun ------- #
+
+1(\d{30}) jedan kvintilijun $1
+([2-9])(\d{30}) $1 kvintilijuna $2
+(1[0-9])(\d{30}) $1 kvintilijuna $2
+([2-9]1)(\d{30}) $1 kvintilijun $2
+([2-9][0,2-9])(\d{30}) $1 kvintilijuna $2
+([1-9]00)(\d{30}) $1 kvintilijuna $2
+([1-9][1-9][0,2-9])(\d{30}) $1 kvintilijuna $2
+([1-9][1-9]1)(\d{30}) $1 kvintilijun $2
+
+# ------ kvintilijun ------- #
+
+
+# ------ kvintilijarda ----- #
+
+1(\d{33}) jedna kvintilijarda 
+2(\d{33}) dvije kvintilijarde
+([3-4])(\d{33}) $1 kvintilijarde $2
+([5-9])(\d{33}) $1 kvintilijardi $2
+(1[0-9])(\d{33}) $1 kvintilijardi $2
+([2-9]0)(\d{33}) $1 kvintilijarde $2
+
+([2,3,7,8])1(\d{33}) $1deset jedna kvintilijarda $2
+41(\d{33}) četrdeset jedna kvintilijarda $1
+51(\d{33}) pedeset jedna kvintilijarda $1
+61(\d{33}) šezdeset jedna kvintilijarda $1
+91(\d{33}) devedeset jedna kvintilijarda $1
+
+([2,3,7,8])1(\d{33}) $1deset jedna kvintilijarda $2
+41(\d{33}) četrdeset jedna kvintilijarda $1
+51(\d{33}) pedeset jedna kvintilijarda $1
+61(\d{33}) šezdeset jedna kvintilijarda $1
+91(\d{33}) devedeset jenda kvintilijarda $1
+
+([2,3,7,8])2(\d{33}) $1deset dvije kvintilijarde $2
+42(\d{33}) četrdeset dvije kvintilijarde $1
+52(\d{33}) pedeset dvije kvintilijarde $1
+62(\d{33}) šezdeset dvije kvintilijarde $1
+92(\d{33}) devedeset dvije kvintilijarde $1
+
+([2,3,7,8])([3,4])(\d{33}) $1deset $2 kvintilijarde $3
+4([3,4])(\d{33}) četrdeset $1 kvintilijarde $2
+5([3,4])(\d{33}) pedeset $1 kvintilijarde $2
+6([3,4])(\d{33}) šezdeset $1 kvintilijarde $2
+9([3,4])(\d{33}) devedeset $1 kvintilijarde $2
+([2,3,7,8])([5-9])(\d{33}) $1deset $2 kvintilijardi $3
+4([5-9])(\d{33}) četrdeset $1 kvintilijardi $2
+5([5-9])(\d{33}) pedeset $1 kvintilijardi $2
+6([5-9])(\d{33}) šezdeset $1 kvintilijardi $2
+9([5-9])(\d{33}) devedeset $1 kvintilijardi $2
+
+([1-9]00)(\d{33}) $1 kvintilijardi $2
+1(\d{35}) sto $1
+2(\d{35}) dvjesto $1
+([3,5,7,8,9])(\d{35}) $1sto $2
+6(\d{35}) šesto $1
+
+# ------ kvintilijarda ------ #
+
+
+# ------ sekstilijun ------- #
+
+1(\d{36}) jedan sekstilijun $1
+([2-9])(\d{36}) $1 sekstilijuna $2
+(1[0-9])(\d{36}) $1 sekstilijuna $2
+([2-9]1)(\d{36}) $1 sekstilijun $2
+([2-9][0,2-9])(\d{36}) $1 sekstilijuna $2
+([1-9]00)(\d{36}) $1 sekstilijuna $2
+([1-9][1-9][0,2-9])(\d{36}) $1 sekstilijuna $2
+([1-9][1-9]1)(\d{36}) $1 sekstilijun $2
+
+# ------ sekstilijun ------- #
+
+
+# ------ sekstilijarda ----- #
+
+1(\d{39}) jedna sekstilijarda 
+2(\d{39}) dvije sekstilijarde
+([3-4])(\d{39}) $1 sekstilijarde $2
+([5-9])(\d{39}) $1 sekstilijardi $2
+(1[0-9])(\d{39}) $1 sekstilijardi $2
+([2-9]0)(\d{39}) $1 sekstilijarde $2
+
+([2,3,7,8])1(\d{39}) $1deset jedna sekstilijarda $2
+41(\d{39}) četrdeset jedna sekstilijarda $1
+51(\d{39}) pedeset jedna sekstilijarda $1
+61(\d{39}) šezdeset jedna sekstilijarda $1
+91(\d{39}) devedeset jedna sekstilijarda $1
+
+([2,3,7,8])1(\d{39}) $1deset jedna sekstilijarda $2
+41(\d{39}) četrdeset jedna sekstilijarda $1
+51(\d{39}) pedeset jedna sekstilijarda $1
+61(\d{39}) šezdeset jedna sekstilijarda $1
+91(\d{39}) devedeset jenda sekstilijarda $1
+
+([2,3,7,8])2(\d{39}) $1deset dvije sekstilijarde $2
+42(\d{39}) četrdeset dvije sekstilijarde $1
+52(\d{39}) pedeset dvije sekstilijarde $1
+62(\d{39}) šezdeset dvije sekstilijarde $1
+92(\d{39}) devedeset dvije sekstilijarde $1
+
+([2,3,7,8])([3,4])(\d{39}) $1deset $2 sekstilijarde $3
+4([3,4])(\d{39}) četrdeset $1 sekstilijarde $2
+5([3,4])(\d{39}) pedeset $1 sekstilijarde $2
+6([3,4])(\d{39}) šezdeset $1 sekstilijarde $2
+9([3,4])(\d{39}) devedeset $1 sekstilijarde $2
+([2,3,7,8])([5-9])(\d{39}) $1deset $2 sekstilijardi $3
+4([5-9])(\d{39}) četrdeset $1 sekstilijardi $2
+5([5-9])(\d{39}) pedeset $1 sekstilijardi $2
+6([5-9])(\d{39}) šezdeset $1 sekstilijardi $2
+9([5-9])(\d{39}) devedeset $1 sekstilijardi $2
+
+([1-9]00)(\d{39}) $1 sekstilijardi $2
+1(\d{41}) sto $1
+2(\d{41}) dvjesto $1
+([3,5,7,8,9])(\d{41}) $1sto $2
+6(\d{41}) šesto $1
+
+# ------ sekstilijarda ------ #
+
+
+# ------ septilijun ------- #
+
+1(\d{42}) jedan septilijun $1
+([2-9])(\d{42}) $1 septilijuna $2
+(1[0-9])(\d{42}) $1 septilijuna $2
+([2-9]1)(\d{42}) $1 septilijun $2
+([2-9][0,2-9])(\d{42}) $1 septilijuna $2
+([1-9]00)(\d{42}) $1 septilijuna $2
+([1-9][1-9][0,2-9])(\d{42}) $1 septilijuna $2
+([1-9][1-9]1)(\d{42}) $1 septilijun $2
+
+# ------ septilijun ------- #
+
+
+# ------ septilijarda ----- #
+
+1(\d{45}) jedna septilijarda 
+2(\d{45}) dvije septilijarde
+([3-4])(\d{45}) $1 septilijarde $2
+([5-9])(\d{45}) $1 septilijardi $2
+(1[0-9])(\d{45}) $1 septilijardi $2
+([2-9]0)(\d{45}) $1 septilijarde $2
+
+([2,3,7,8])1(\d{45}) $1deset jedna septilijarda $2
+41(\d{45}) četrdeset jedna septilijarda $1
+51(\d{45}) pedeset jedna septilijarda $1
+61(\d{45}) šezdeset jedna septilijarda $1
+91(\d{45}) devedeset jedna septilijarda $1
+
+([2,3,7,8])1(\d{45}) $1deset jedna septilijarda $2
+41(\d{45}) četrdeset jedna septilijarda $1
+51(\d{45}) pedeset jedna septilijarda $1
+61(\d{45}) šezdeset jedna septilijarda $1
+91(\d{45}) devedeset jenda septilijarda $1
+
+([2,3,7,8])2(\d{45}) $1deset dvije septilijarde $2
+42(\d{45}) četrdeset dvije septilijarde $1
+52(\d{45}) pedeset dvije septilijarde $1
+62(\d{45}) šezdeset dvije septilijarde $1
+92(\d{45}) devedeset dvije septilijarde $1
+
+([2,3,7,8])([3,4])(\d{45}) $1deset $2 septilijarde $3
+4([3,4])(\d{45}) četrdeset $1 septilijarde $2
+5([3,4])(\d{45}) pedeset $1 septilijarde $2
+6([3,4])(\d{45}) šezdeset $1 septilijarde $2
+9([3,4])(\d{45}) devedeset $1 septilijarde $2
+([2,3,7,8])([5-9])(\d{45}) $1deset $2 septilijardi $3
+4([5-9])(\d{45}) četrdeset $1 septilijardi $2
+5([5-9])(\d{45}) pedeset $1 septilijardi $2
+6([5-9])(\d{45}) šezdeset $1 septilijardi $2
+9([5-9])(\d{45}) devedeset $1 septilijardi $2
+
+([1-9]00)(\d{45}) $1 septilijardi $2
+1(\d{47}) sto $1
+2(\d{47}) dvjesto $1
+([3,5,7,8,9])(\d{47}) $1sto $2
+6(\d{47}) šesto $1
+
+# ------ septilijarda ------ #
+
+
+# ------ oktilijun ------- #
+
+1(\d{48}) jedan oktilijun $1
+([2-9])(\d{48}) $1 oktilijuna $2
+(1[0-9])(\d{48}) $1 oktilijuna $2
+([2-9]1)(\d{48}) $1 oktilijun $2
+([2-9][0,2-9])(\d{48}) $1 oktilijuna $2
+([1-9]00)(\d{48}) $1 oktilijuna $2
+([1-9][1-9][0,2-9])(\d{48}) $1 oktilijuna $2
+([1-9][1-9]1)(\d{48}) $1 oktilijun $2
+
+# ------ oktilijun ------- #
+
+
+# ------ oktilijarda ----- #
+
+1(\d{51}) jedna oktilijarda 
+2(\d{51}) dvije oktilijarde
+([3-4])(\d{51}) $1 oktilijarde $2
+([5-9])(\d{51}) $1 oktilijardi $2
+(1[0-9])(\d{51}) $1 oktilijardi $2
+([2-9]0)(\d{51}) $1 oktilijarde $2
+
+([2,3,7,8])1(\d{51}) $1deset jedna oktilijarda $2
+41(\d{51}) četrdeset jedna oktilijarda $1
+51(\d{51}) pedeset jedna oktilijarda $1
+61(\d{51}) šezdeset jedna oktilijarda $1
+91(\d{51}) devedeset jedna oktilijarda $1
+
+([2,3,7,8])1(\d{51}) $1deset jedna oktilijarda $2
+41(\d{51}) četrdeset jedna oktilijarda $1
+51(\d{51}) pedeset jedna oktilijarda $1
+61(\d{51}) šezdeset jedna oktilijarda $1
+91(\d{51}) devedeset jenda oktilijarda $1
+
+([2,3,7,8])2(\d{51}) $1deset dvije oktilijarde $2
+42(\d{51}) četrdeset dvije oktilijarde $1
+52(\d{51}) pedeset dvije oktilijarde $1
+62(\d{51}) šezdeset dvije oktilijarde $1
+92(\d{51}) devedeset dvije oktilijarde $1
+
+([2,3,7,8])([3,4])(\d{51}) $1deset $2 oktilijarde $3
+4([3,4])(\d{51}) četrdeset $1 oktilijarde $2
+5([3,4])(\d{51}) pedeset $1 oktilijarde $2
+6([3,4])(\d{51}) šezdeset $1 oktilijarde $2
+9([3,4])(\d{51}) devedeset $1 oktilijarde $2
+([2,3,7,8])([5-9])(\d{51}) $1deset $2 oktilijardi $3
+4([5-9])(\d{51}) četrdeset $1 oktilijardi $2
+5([5-9])(\d{51}) pedeset $1 oktilijardi $2
+6([5-9])(\d{51}) šezdeset $1 oktilijardi $2
+9([5-9])(\d{51}) devedeset $1 oktilijardi $2
+
+([1-9]00)(\d{51}) $1 oktilijardi $2
+1(\d{53}) sto $1
+2(\d{53}) dvjesto $1
+([3,5,7,8,9])(\d{53}) $1sto $2
+6(\d{53}) šesto $1
+
+# ------ oktilijarda ------ #
+
+
+# ------ nonilijun ------- #
+
+1(\d{54}) jedan nonilijun $1
+([2-9])(\d{54}) $1 nonilijuna $2
+(1[0-9])(\d{54}) $1 nonilijuna $2
+([2-9]1)(\d{54}) $1 nonilijun $2
+([2-9][0,2-9])(\d{54}) $1 nonilijuna $2
+([1-9]00)(\d{54}) $1 nonilijuna $2
+([1-9][1-9][0,2-9])(\d{54}) $1 nonilijuna $2
+([1-9][1-9]1)(\d{54}) $1 nonilijun $2
+
+# ------ nonilijun ------- #
+
+
+# ------ nonilijarda ----- #
+
+1(\d{57}) jedna nonilijarda 
+2(\d{57}) dvije nonilijarde
+([3-4])(\d{57}) $1 nonilijarde $2
+([5-9])(\d{57}) $1 nonilijardi $2
+(1[0-9])(\d{57}) $1 nonilijardi $2
+([2-9]0)(\d{57}) $1 nonilijarde $2
+
+([2,3,7,8])1(\d{57}) $1deset jedna nonilijarda $2
+41(\d{57}) četrdeset jedna nonilijarda $1
+51(\d{57}) pedeset jedna nonilijarda $1
+61(\d{57}) šezdeset jedna nonilijarda $1
+91(\d{57}) devedeset jedna nonilijarda $1
+
+([2,3,7,8])1(\d{57}) $1deset jedna nonilijarda $2
+41(\d{57}) četrdeset jedna nonilijarda $1
+51(\d{57}) pedeset jedna nonilijarda $1
+61(\d{57}) šezdeset jedna nonilijarda $1
+91(\d{57}) devedeset jenda nonilijarda $1
+
+([2,3,7,8])2(\d{57}) $1deset dvije nonilijarde $2
+42(\d{57}) četrdeset dvije nonilijarde $1
+52(\d{57}) pedeset dvije nonilijarde $1
+62(\d{57}) šezdeset dvije nonilijarde $1
+92(\d{57}) devedeset dvije nonilijarde $1
+
+([2,3,7,8])([3,4])(\d{57}) $1deset $2 nonilijarde $3
+4([3,4])(\d{57}) četrdeset $1 nonilijarde $2
+5([3,4])(\d{57}) pedeset $1 nonilijarde $2
+6([3,4])(\d{57}) šezdeset $1 nonilijarde $2
+9([3,4])(\d{57}) devedeset $1 nonilijarde $2
+([2,3,7,8])([5-9])(\d{57}) $1deset $2 nonilijardi $3
+4([5-9])(\d{57}) četrdeset $1 nonilijardi $2
+5([5-9])(\d{57}) pedeset $1 nonilijardi $2
+6([5-9])(\d{57}) šezdeset $1 nonilijardi $2
+9([5-9])(\d{57}) devedeset $1 nonilijardi $2
+
+([1-9]00)(\d{57}) $1 nonilijardi $2
+1(\d{59}) sto $1
+2(\d{59}) dvjesto $1
+([3,5,7,8,9])(\d{59}) $1sto $2
+6(\d{59}) šesto $1
+
+# ------ nonilijarda ------ #
+
+
+# ------ decilijun ------- #
+
+1(\d{60}) jedan decilijun $1
+([2-9])(\d{60}) $1 decilijuna $2
+(1[0-9])(\d{60}) $1 decilijuna $2
+([2-9]1)(\d{60}) $1 decilijun $2
+([2-9][0,2-9])(\d{60}) $1 decilijuna $2
+([1-9]00)(\d{60}) $1 decilijuna $2
+([1-9][1-9][0,2-9])(\d{60}) $1 decilijuna $2
+([1-9][1-9]1)(\d{60}) $1 decilijun $2
+
+# ------ decilijun ------- #
+
+
+# ------ decilijarda ----- #
+
+1(\d{63}) jedna decilijarda 
+2(\d{63}) dvije decilijarde
+([3-4])(\d{63}) $1 decilijarde $2
+([5-9])(\d{63}) $1 decilijardi $2
+(1[0-9])(\d{63}) $1 decilijardi $2
+([2-9]0)(\d{63}) $1 decilijarde $2
+
+([2,3,7,8])1(\d{63}) $1deset jedna decilijarda $2
+41(\d{63}) četrdeset jedna decilijarda $1
+51(\d{63}) pedeset jedna decilijarda $1
+61(\d{63}) šezdeset jedna decilijarda $1
+91(\d{63}) devedeset jedna decilijarda $1
+
+([2,3,7,8])1(\d{63}) $1deset jedna decilijarda $2
+41(\d{63}) četrdeset jedna decilijarda $1
+51(\d{63}) pedeset jedna decilijarda $1
+61(\d{63}) šezdeset jedna decilijarda $1
+91(\d{63}) devedeset jenda decilijarda $1
+
+([2,3,7,8])2(\d{63}) $1deset dvije decilijarde $2
+42(\d{63}) četrdeset dvije decilijarde $1
+52(\d{63}) pedeset dvije decilijarde $1
+62(\d{63}) šezdeset dvije decilijarde $1
+92(\d{63}) devedeset dvije decilijarde $1
+
+([2,3,7,8])([3,4])(\d{63}) $1deset $2 decilijarde $3
+4([3,4])(\d{63}) četrdeset $1 decilijarde $2
+5([3,4])(\d{63}) pedeset $1 decilijarde $2
+6([3,4])(\d{63}) šezdeset $1 decilijarde $2
+9([3,4])(\d{63}) devedeset $1 decilijarde $2
+([2,3,7,8])([5-9])(\d{63}) $1deset $2 decilijardi $3
+4([5-9])(\d{63}) četrdeset $1 decilijardi $2
+5([5-9])(\d{63}) pedeset $1 decilijardi $2
+6([5-9])(\d{63}) šezdeset $1 decilijardi $2
+9([5-9])(\d{63}) devedeset $1 decilijardi $2
+
+([1-9]00)(\d{63}) $1 decilijardi $2
+1(\d{65}) sto $1
+2(\d{65}) dvjesto $1
+([3,5,7,8,9])(\d{65}) $1sto $2
+6(\d{65}) šesto $1
+
+# ------ decilijarda ------ #
+
+
+# Redni brojevi
+
+# muški rod
+"ord:0" nulti
+"ord:1" prvi
+"ord:2" drugi
+"ord:3" treći
+"ord:4" četvrti
+"ord:5" peti
+"ord:6" šesti
+"ord:7" sedmi
+"ord:8" osmi
+"ord:9" deveti
+"ord:10" deseti
+"ord:11" jedanaesti
+"ord:12" dvanaesti
+"ord:13" trinaesti
+"ord:14" četrnaesti
+"ord:15" petnaesti
+"ord:16" šesnaesti
+"ord:17" sedamnaesti
+"ord:18" osamnaesti
+"ord:19" devetnaesti
+"ord:20" dvadeseti
+"ord:30" trideseti
+"ord:40" četrdeseti
+"ord:50" pedeseti
+"ord:60" šezdeseti
+"ord:70" sedamdeseti
+"ord:80" osamdeseti
+"ord:90" devedeseti
+"ord:100" stoti
+"ord:200" dvjestoti
+"ord:300" tristoti
+"ord:400" četiristoti
+"ord:500" petstoti
+"ord:600" šestoti
+"ord:700" sedamstoti
+"ord:800" osamstoti
+"ord:900" devetstoti
+"ord:1000" tisućiti
+"ord:2000" dvijetisućiti
+"ord:3000" tritisućiti
+"ord:4000" četiritisućiti
+"ord:5000" pettisućiti
+"ord:6000" šesttisućiti
+"ord:7000" sedamtisućiti
+"ord:8000" osamtisućiti
+"ord:9000" devettisućiti
+"ord:10000" desettisućiti
+"ord:20000" dvadesettisućiti
+"ord:30000" tridesettisućiti
+"ord:40000" četrdesettisućiti
+"ord:50000" pedesettisućiti
+"ord:60000" šezdesettisućiti
+"ord:70000" sedamdesettisućiti
+"ord:80000" osamdesettisućiti
+"ord:90000" devedesettisućiti
+"ord:100000" stotisućiti
+
+# dvoznamenskasti brojevi
+"ord:([1-9])([1-9])" $(\10) $(ord:\2)
+
+# troznamenkasti brojevi
+"ord:([1-9])(0)([1-9])" $(\100) $(ord:\3)
+"ord:([1-9])([0-9][0-9])" $(\100) $(ord:\2)
+"ord:([1-9])([1-9])([1-9]) $(\100) $(\20) $(ord:\3)
+
+# četveroznamenkasti brojevi
+"ord:(1)(0)(0)([1-9])" tisuću $(ord:\4)
+"ord:(1)(0)([0-9][0-9])" tisuću $(ord:\3)
+"ord:(1)([0-9][0-9][0-9])" tisuću $(ord:\2)
+
+"ord:([2-9])(0)(0)([1-9])" $(\1000) $(ord:\4)
+"ord:([2-9])(0)([0-9][0-9])" $(\1000) $(ord:\3)
+"ord:([2-9])([0-9][0-9][0-9])" $(\1000) $(ord:\2)
+
+# peteroznamenkasti brojevi
+"ord:([1-9])(0)(0)(0)([1-9])" $(\10000) $(ord:\5)
+"ord:([1-9])(0)(0)([0-9][0-9])" $(\10000) $(ord:\4)
+"ord:([1-9])(0)([0-9][0-9][0-9])" $(\10000) $(ord:\3)
+"ord:([1-9])([0-9])([0-9][0-9][0-9]) $(\10) $(\2000) $(ord:\3)
+
+# ženski rod
+
+"ord-fem:0" nulta
+"ord-fem:1" prva
+"ord-fem:2" druga
+"ord-fem:3" treća
+"ord-fem:4" četvrta
+"ord-fem:5" peta
+"ord-fem:6" šesta
+"ord-fem:7" sedma
+"ord-fem:8" osma
+"ord-fem:9" deveta
+"ord-fem:10" deseta
+"ord-fem:11" jedanaesta
+"ord-fem:12" dvanaesta
+"ord-fem:13" trinaesta
+"ord-fem:14" četrnaesta
+"ord-fem:15" petnaesta
+"ord-fem:16" šesnaesta
+"ord-fem:17" sedamnaesta
+"ord-fem:18" osamnaesta
+"ord-fem:19" devetnaesta
+"ord-fem:20" dvadeseta
+"ord-fem:30" trideseta
+"ord-fem:40" četrdeseta
+"ord-fem:50" pedeseta
+"ord-fem:60" šezdeseta
+"ord-fem:70" sedamdeseta
+"ord-fem:80" osamdeseta
+"ord-fem:90" devedeseta
+"ord-fem:100" stota
+"ord-fem:200" dvjestota
+"ord-fem:300" tristota
+"ord-fem:400" četiristota
+"ord-fem:500" petstota
+"ord-fem:600" šestota
+"ord-fem:700" sedamstota
+"ord-fem:800" osamstota
+"ord-fem:900" devetstota
+"ord-fem:1000" tisućita
+"ord-fem:2000" dvijetisućita
+"ord-fem:3000" tritisućita
+"ord-fem:4000" četiritisućita
+"ord-fem:5000" pettisućita
+"ord-fem:6000" šesttisućita
+"ord-fem:7000" sedamtisućita
+"ord-fem:8000" osamtisućita
+"ord-fem:9000" devettisućita
+"ord-fem:10000" desettisućita
+"ord-fem:20000" dvadesettisućita
+"ord-fem:30000" tridesettisućita
+"ord-fem:40000" četrdesettisućita
+"ord-fem:50000" pedesettisućita
+"ord-fem:60000" šezdesettisućita
+"ord-fem:70000" sedamdesettisućita
+"ord-fem:80000" osamdesettisućita
+"ord-fem:90000" devedesettisućita
+"ord-fem:100000" stotisućita
+
+# dvoznamenskasti brojevi
+"ord-fem:([1-9])([1-9])" $(\10) $(ord-fem:\2)
+
+# troznamenkasti brojevi
+"ord-fem:([1-9])(0)([1-9])" $(\100) $(ord-fem:\3)
+"ord-fem:([1-9])([0-9][0-9])" $(\100) $(ord-fem:\2)
+"ord-fem:([1-9])([1-9])([1-9]) $(\100) $(\20) $(ord-fem:\3)
+
+# četveroznamenkasti brojevi
+"ord-fem:(1)(0)(0)([1-9])" tisuću $(ord-fem:\4)
+"ord-fem:(1)(0)([0-9][0-9])" tisuću $(ord-fem:\3)
+"ord-fem:(1)([0-9][0-9][0-9])" tisuću $(ord-fem:\2)
+
+"ord-fem:([2-9])(0)(0)([1-9])" $(\1000) $(ord-fem:\4)
+"ord-fem:([2-9])(0)([0-9][0-9])" $(\1000) $(ord-fem:\3)
+"ord-fem:([2-9])([0-9][0-9][0-9])" $(\1000) $(ord-fem:\2)
+
+# peteroznamenkasti brojevi
+"ord-fem:([1-9])(0)(0)(0)([1-9])" $(\10000) $(ord-fem:\5)
+"ord-fem:([1-9])(0)(0)([0-9][0-9])" $(\10000) $(ord-fem:\4)
+"ord-fem:([1-9])(0)([0-9][0-9][0-9])" $(\10000) $(ord-fem:\3)
+"ord-fem:([1-9])([0-9])([0-9][0-9][0-9]) $(\10) $(\2000) $(ord-fem:\3)
+
+# srednji rod
+"ord-neu:0" nulto
+"ord-neu:1" prvo
+"ord-neu:2" drugo
+"ord-neu:3" treće
+"ord-neu:4" četvrto
+"ord-neu:5" peto
+"ord-neu:6" šesto
+"ord-neu:7" sedmo
+"ord-neu:8" osmo
+"ord-neu:9" deveto
+"ord-neu:10" deseto
+"ord-neu:11" jedanaesto
+"ord-neu:12" dvanaesto
+"ord-neu:13" trinaesto
+"ord-neu:14" četrnaesto
+"ord-neu:15" petnaesto
+"ord-neu:16" šesnaesto
+"ord-neu:17" sedamnaesto
+"ord-neu:18" osamnaesto
+"ord-neu:19" devetnaesto
+"ord-neu:20" dvadeseto
+"ord-neu:30" trideseto
+"ord-neu:40" četrdeseto
+"ord-neu:50" pedeseto
+"ord-neu:60" šezdeseto
+"ord-neu:70" sedamdeseto
+"ord-neu:80" osamdeseto
+"ord-neu:90" devedeseto
+"ord-neu:100" stoto
+"ord-neu:200" dvjestoto
+"ord-neu:300" tristoto
+"ord-neu:400" četiristoto
+"ord-neu:500" petstoto
+"ord-neu:600" šestoto
+"ord-neu:700" sedamstoto
+"ord-neu:800" osamstoto
+"ord-neu:900" devetstoto
+"ord-neu:1000" tisućito
+"ord-neu:2000" dvijetisućito
+"ord-neu:3000" tritisućito
+"ord-neu:4000" četiritisućito
+"ord-neu:5000" pettisućito
+"ord-neu:6000" šesttisućito
+"ord-neu:7000" sedamtisućito
+"ord-neu:8000" osamtisućito
+"ord-neu:9000" devettisućito
+"ord-neu:10000" desettisućito
+"ord-neu:20000" dvadesettisućito
+"ord-neu:30000" tridesettisućito
+"ord-neu:40000" četrdesettisućito
+"ord-neu:50000" pedesettisućito
+"ord-neu:60000" šezdesettisućito
+"ord-neu:70000" sedamdesettisućito
+"ord-neu:80000" osamdesettisućito
+"ord-neu:90000" devedesettisućito
+"ord-neu:100000" stotisućito
+
+# dvoznamenskasti brojevi
+"ord-neu:([1-9])([1-9])" $(\10) $(ord-neu:\2)
+
+# troznamenkasti brojevi
+"ord-neu:([1-9])(0)([1-9])" $(\100) $(ord-neu:\3)
+"ord-neu:([1-9])([0-9][0-9])" $(\100) $(ord-neu:\2)
+"ord-neu:([1-9])([1-9])([1-9]) $(\100) $(\20) $(ord-neu:\3)
+
+# četveroznamenkasti brojevi
+"ord-neu:(1)(0)(0)([1-9])" tisuću $(ord-neu:\4)
+"ord-neu:(1)(0)([0-9][0-9])" tisuću $(ord-neu:\3)
+"ord-neu:(1)([0-9][0-9][0-9])" tisuću $(ord-neu:\2)
+
+"ord-neu:([2-9])(0)(0)([1-9])" $(\1000) $(ord-neu:\4)
+"ord-neu:([2-9])(0)([0-9][0-9])" $(\1000) $(ord-neu:\3)
+"ord-neu:([2-9])([0-9][0-9][0-9])" $(\1000) $(ord-neu:\2)
+
+# peteroznamenkasti brojevi
+"ord-neu:([1-9])(0)(0)(0)([1-9])" $(\10000) $(ord-neu:\5)
+"ord-neu:([1-9])(0)(0)([0-9][0-9])" $(\10000) $(ord-neu:\4)
+"ord-neu:([1-9])(0)([0-9][0-9][0-9])" $(\10000) $(ord-neu:\3)
+"ord-neu:([1-9])([0-9])([0-9][0-9][0-9]) $(\10) $(\2000) $(ord-neu:\3)
+
+
 
 # currency
 
@@ -176,11 +1074,3 @@ PLN:(\D+) $(\1: zlot, zlota, zlota, groš, groša, groša) #mm
 "(([A-Z]{3}) [-−]?\d+)[.,](\d)" $1 |$(\30)$(\2:sg)
 "(([A-Z]{3}) [-−]?\d+)[.,](\d\d)" $1 |$3$(\2:sg)
 
-== ordinal-number ==
-
-(\d+)	\1.
-
-== help ==
-
-"" |$(1)|, |$(2)|, |$(3)|\n$(help ordinal-number)
-(.*) \1: |$(\1 1)|, |$(\1 2)|, |$(\1 3)|\n
