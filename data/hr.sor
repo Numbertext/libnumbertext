@@ -226,12 +226,6 @@
 61(\d{15}) šezdeset jedna bilijarda $1
 91(\d{15}) devedeset jedna bilijarda $1
 
-([2,3,7,8])1(\d{15}) $1deset jedna bilijarda $2
-41(\d{15}) četrdeset jedna bilijarda $1
-51(\d{15}) pedeset jedna bilijarda $1
-61(\d{15}) šezdeset jedna bilijarda $1
-91(\d{15}) devedeset jedna bilijarda $1
-
 ([2,3,7,8])2(\d{15}) $1deset dvije bilijarde $2
 42(\d{15}) četrdeset dvije bilijarde $1
 52(\d{15}) pedeset dvije bilijarde $1
@@ -280,12 +274,6 @@
 ([5-9])(\d{21}) $1 trilijardi $2
 (1[0-9])(\d{21}) $1 trilijardi $2
 ([2-9]0)(\d{21}) $1 trilijarde $2
-
-([2,3,7,8])1(\d{21}) $1deset jedna trilijarda $2
-41(\d{21}) četrdeset jedna trilijarda $1
-51(\d{21}) pedeset jedna trilijarda $1
-61(\d{21}) šezdeset jedna trilijarda $1
-91(\d{21}) devedeset jedna trilijarda $1
 
 ([2,3,7,8])1(\d{21}) $1deset jedna trilijarda $2
 41(\d{21}) četrdeset jedna trilijarda $1
@@ -348,12 +336,6 @@
 61(\d{27}) šezdeset jedna kvadrilijarda $1
 91(\d{27}) devedeset jedna kvadrilijarda $1
 
-([2,3,7,8])1(\d{27}) $1deset jedna kvadrilijarda $2
-41(\d{27}) četrdeset jedna kvadrilijarda $1
-51(\d{27}) pedeset jedna kvadrilijarda $1
-61(\d{27}) šezdeset jedna kvadrilijarda $1
-91(\d{27}) devedeset jedna kvadrilijarda $1
-
 ([2,3,7,8])2(\d{27}) $1deset dvije kvadrilijarde $2
 42(\d{27}) četrdeset dvije kvadrilijarde $1
 52(\d{27}) pedeset dvije kvadrilijarde $1
@@ -402,12 +384,6 @@
 ([5-9])(\d{33}) $1 kvintilijardi $2
 (1[0-9])(\d{33}) $1 kvintilijardi $2
 ([2-9]0)(\d{33}) $1 kvintilijarde $2
-
-([2,3,7,8])1(\d{33}) $1deset jedna kvintilijarda $2
-41(\d{33}) četrdeset jedna kvintilijarda $1
-51(\d{33}) pedeset jedna kvintilijarda $1
-61(\d{33}) šezdeset jedna kvintilijarda $1
-91(\d{33}) devedeset jedna kvintilijarda $1
 
 ([2,3,7,8])1(\d{33}) $1deset jedna kvintilijarda $2
 41(\d{33}) četrdeset jedna kvintilijarda $1
@@ -470,12 +446,6 @@
 61(\d{39}) šezdeset jedna sekstilijarda $1
 91(\d{39}) devedeset jedna sekstilijarda $1
 
-([2,3,7,8])1(\d{39}) $1deset jedna sekstilijarda $2
-41(\d{39}) četrdeset jedna sekstilijarda $1
-51(\d{39}) pedeset jedna sekstilijarda $1
-61(\d{39}) šezdeset jedna sekstilijarda $1
-91(\d{39}) devedeset jedna sekstilijarda $1
-
 ([2,3,7,8])2(\d{39}) $1deset dvije sekstilijarde $2
 42(\d{39}) četrdeset dvije sekstilijarde $1
 52(\d{39}) pedeset dvije sekstilijarde $1
@@ -524,12 +494,6 @@
 ([5-9])(\d{45}) $1 septilijardi $2
 (1[0-9])(\d{45}) $1 septilijardi $2
 ([2-9]0)(\d{45}) $1 septilijarde $2
-
-([2,3,7,8])1(\d{45}) $1deset jedna septilijarda $2
-41(\d{45}) četrdeset jedna septilijarda $1
-51(\d{45}) pedeset jedna septilijarda $1
-61(\d{45}) šezdeset jedna septilijarda $1
-91(\d{45}) devedeset jedna septilijarda $1
 
 ([2,3,7,8])1(\d{45}) $1deset jedna septilijarda $2
 41(\d{45}) četrdeset jedna septilijarda $1
@@ -592,12 +556,6 @@
 61(\d{51}) šezdeset jedna oktilijarda $1
 91(\d{51}) devedeset jedna oktilijarda $1
 
-([2,3,7,8])1(\d{51}) $1deset jedna oktilijarda $2
-41(\d{51}) četrdeset jedna oktilijarda $1
-51(\d{51}) pedeset jedna oktilijarda $1
-61(\d{51}) šezdeset jedna oktilijarda $1
-91(\d{51}) devedeset jedna oktilijarda $1
-
 ([2,3,7,8])2(\d{51}) $1deset dvije oktilijarde $2
 42(\d{51}) četrdeset dvije oktilijarde $1
 52(\d{51}) pedeset dvije oktilijarde $1
@@ -653,12 +611,6 @@
 61(\d{57}) šezdeset jedna nonilijarda $1
 91(\d{57}) devedeset jedna nonilijarda $1
 
-([2,3,7,8])1(\d{57}) $1deset jedna nonilijarda $2
-41(\d{57}) četrdeset jedna nonilijarda $1
-51(\d{57}) pedeset jedna nonilijarda $1
-61(\d{57}) šezdeset jedna nonilijarda $1
-91(\d{57}) devedeset jedna nonilijarda $1
-
 ([2,3,7,8])2(\d{57}) $1deset dvije nonilijarde $2
 42(\d{57}) četrdeset dvije nonilijarde $1
 52(\d{57}) pedeset dvije nonilijarde $1
@@ -707,12 +659,6 @@
 ([5-9])(\d{63}) $1 decilijardi $2
 (1[0-9])(\d{63}) $1 decilijardi $2
 ([2-9]0)(\d{63}) $1 decilijarde $2
-
-([2,3,7,8])1(\d{63}) $1deset jedna decilijarda $2
-41(\d{63}) četrdeset jedna decilijarda $1
-51(\d{63}) pedeset jedna decilijarda $1
-61(\d{63}) šezdeset jedna decilijarda $1
-91(\d{63}) devedeset jedna decilijarda $1
 
 ([2,3,7,8])1(\d{63}) $1deset jedna decilijarda $2
 41(\d{63}) četrdeset jedna decilijarda $1
