@@ -89,7 +89,16 @@ bool Numbertext::numbertext(std::wstring& number, const std::string& lang)
             return false;
         module = modules.find(lang);
     }
-    module->second.run(number);
+    std::wstring result(number);
+    try
+    {
+        module->second.run(result);
+    }
+    catch (const std::exception&)
+    {
+        return false;
+    }
+    number = std::move(result);
     return true;
 }
 
