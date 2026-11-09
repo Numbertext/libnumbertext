@@ -189,6 +189,11 @@ void Soros::run(std::wstring& input, int& level, int& calls, bool begin, bool en
             }
             std::wstring piece = n[2].str();
             run(piece, level, calls, b, e);
+            if (level == -1)
+            {
+                input = L"";
+                return;
+            }
             input.replace(n.position(1), n[1].length(), piece);
         }
         level--;
