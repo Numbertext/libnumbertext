@@ -21,6 +21,7 @@
 #define SOROS_EXT ".sor"
 #define LANG_PATTERN_NO "n[bn]([-_]NO)\?"
 #define MAX_INPUT_LENGTH 1024
+#define MAX_MODULES 64
 
 // U+E000..U+E00A are the internal markers of the Soros programs
 static bool is_marker(wchar_t c)
@@ -73,6 +74,8 @@ bool Numbertext::load(std::string lang, std::string filename)
             }
         }
     }
+    if (modules.size() >= MAX_MODULES)
+        modules.erase(modules.begin());
     modules.insert(std::make_pair(lang, Soros(module, string2wstring(lang))));
     return true;
 }
