@@ -11,6 +11,7 @@
 #endif
 
 #define ITERATION_LIMIT 250
+#define CALL_LIMIT 10000
 #define SEP L"\uE00A"
 
 #ifdef NUMBERTEXT_BOOST
@@ -142,15 +143,16 @@ Soros::Soros(std::wstring program, std::wstring filtered_lang):
 int Soros::run(std::wstring& input)
 {
     int level = 0;
-    run(input, level);
+    int calls = 0;
+    run(input, level, calls);
     return level;
 }
 
-void Soros::run(std::wstring& input, int& level, bool begin, bool end)
+void Soros::run(std::wstring& input, int& level, int& calls, bool begin, bool end)
 {
     if (level == -1)
         return;
-    if (++level > ITERATION_LIMIT)
+    if (++level > ITERATION_LIMIT || ++calls > CALL_LIMIT)
     {
         std::wcout << "Soros: iteration limit exceeded at the input \"" << input << "\"" << std::endl;
         input = L"";
@@ -186,7 +188,12 @@ void Soros::run(std::wstring& input, int& level, bool begin, bool end)
                 e = end;
             }
             std::wstring piece = n[2].str();
-            run(piece, level, b, e);
+            run(piece, level, calls, b, e);
+            if (level == -1)
+            {
+                input = L"";
+                return;
+            }
             input.replace(n.position(1), n[1].length(), piece);
         }
         level--;

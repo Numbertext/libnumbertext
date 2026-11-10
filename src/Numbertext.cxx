@@ -2,6 +2,7 @@
  * 2018 (c) László Németh
  * License: LGPL/BSD dual license */
 
+#include <algorithm>
 #include <codecvt>
 #include <locale>
 #include <sstream>
@@ -19,6 +20,14 @@
 #define MODULE_DIR ""
 #define SOROS_EXT ".sor"
 #define LANG_PATTERN_NO "n[bn]([-_]NO)\?"
+#define MAX_INPUT_LENGTH 1024
+#define MAX_MODULES 64
+
+// U+E000..U+E00A are the internal markers of the Soros programs
+static bool is_marker(wchar_t c)
+{
+    return c >= 0xE000 && c <= 0xE00A;
+}
 
 bool readfile(const std::string& filename, std::wstring& result)
 {
@@ -65,12 +74,17 @@ bool Numbertext::load(std::string lang, std::string filename)
             }
         }
     }
+    if (modules.size() >= MAX_MODULES)
+        modules.erase(modules.begin());
     modules.insert(std::make_pair(lang, Soros(module, string2wstring(lang))));
     return true;
 }
 
 bool Numbertext::numbertext(std::wstring& number, const std::string& lang)
 {
+    if (number.length() > MAX_INPUT_LENGTH
+        || std::any_of(number.begin(), number.end(), is_marker))
+        return false;
     auto module = modules.find(lang);
     if (module == modules.end())
     {
@@ -78,7 +92,16 @@ bool Numbertext::numbertext(std::wstring& number, const std::string& lang)
             return false;
         module = modules.find(lang);
     }
-    module->second.run(number);
+    std::wstring result(number);
+    try
+    {
+        module->second.run(result);
+    }
+    catch (const std::exception&)
+    {
+        return false;
+    }
+    number = std::move(result);
     return true;
 }
 
